@@ -60,7 +60,9 @@ self.addEventListener('fetch', event => {
     event.respondWith(caches.open(CACHE).then(cache => cache.match(new URL('./index.html', SCOPE).href)).then(cached => cached || fetch(request)));
     return;
   }
-  event.respondWith(caches.open(CACHE).then(cache => cache.match(request)).then(cached => cached || fetch(request)));
+  // Static assets are identical regardless of Origin headers. Vite/hosts may
+  // return Vary: Origin; module requests differ from install-time requests.
+  event.respondWith(caches.open(CACHE).then(cache => cache.match(request, { ignoreVary: true })).then(cached => cached || fetch(request)));
 });
 `;
 await writeFile('dist/sw.js', sw);

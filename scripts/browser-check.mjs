@@ -48,7 +48,6 @@ try {
   expect(JSON.parse(await page.evaluate(() => localStorage.getItem('it-words-progress-v1')))).toEqual(JSON.parse(before));
   await context.setOffline(true);
   await page.reload();
-  console.log('Offline diagnostics:', JSON.stringify({ errors, url: page.url(), body: (await page.locator('body').innerText()).slice(0, 500), serviceWorker: await page.evaluate(() => ({ controller: navigator.serviceWorker.controller?.scriptURL, online: navigator.onLine })) }));
   await expect(page.getByRole('heading', { name: /Chào bạn/ })).toBeVisible();
   await expect(page.getByRole('button', { name: /Đang offline/ })).toBeVisible();
   await page.getByRole('button', { name: 'Các unit', exact: true }).click();
