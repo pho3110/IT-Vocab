@@ -17,6 +17,7 @@ Mở địa chỉ Vite in ra (thường là `http://localhost:5173`). Nếu Powe
 
 ## Tính năng
 
+- Giao diện game học tập: tím/vàng, robot minh họa bằng SVG, thẻ lớn và nút có hiệu ứng nhấn. Nhiệm vụ ôn 10 lượt/ngày hiển thị đúng tiến độ thực tế; không cần tải hình ảnh ngoài.
 - Tổng quan, tiến độ theo unit và lesson; giao diện responsive và thanh điều hướng trên điện thoại.
 - Flashcard: thử nhớ → lật thẻ → chọn Đã nhớ / Chưa nhớ.
 - Quiz bốn lựa chọn, giải thích đáp án, kết quả và luyện lại từ sai.
@@ -54,6 +55,7 @@ content/             Bản trích xuất PDF, bản dịch, báo cáo đủ mụ
 src/study.js         Lịch ôn, kiểm tra bản sao, tìm kiếm và đáp án quiz
 src/App.jsx          Giao diện, điều hướng, phiên học và lưu tiến độ
 src/styles.css       Giao diện desktop/mobile, không dùng thư viện CSS
+src/game.css         Phong cách game học tập, màu sắc và giao diện thẻ/nút
 scripts/build-pwa.mjs Tạo PNG icon và service worker từ asset thực tế của bản build
 test/                Kiểm tra dữ liệu, lịch ôn, backup, quiz và cache offline
 ```
