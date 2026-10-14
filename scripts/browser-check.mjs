@@ -1,0 +1,68 @@
+import { chromium, expect } from '@playwright/test';
+import { mkdir } from 'node:fs/promises';
+
+const browser = await chromium.launch({ channel: 'msedge', headless: true });
+const errors = [];
+try {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, deviceScaleFactor: 1, hasTouch: true });
+  const page = await context.newPage();
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('http://localhost:4173/');
+  await expect(page.getByRole('heading', { name: /Chào bạn/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /Sẵn sàng offline/ })).toBeVisible({ timeout: 20000 });
+  await mkdir('qa', { recursive: true });
+  await page.screenshot({ path: 'qa/mobile-home.png', fullPage: true });
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+  expect(overflow).toBe(false);
+  await page.getByRole('button', { name: 'Các unit', exact: true }).click();
+  await page.getByRole('button', { name: /UNIT 01/ }).click();
+  await page.getByRole('button', { name: 'Học flashcard', exact: true }).first().click();
+  await expect(page.getByRole('button', { name: 'Đã nhớ', exact: true })).toBeDisabled();
+  for (let i = 0; i < 5; i++) {
+    await page.getByRole('button', { name: 'Lật thẻ để xem nghĩa', exact: true }).click();
+    await expect(page.getByRole('button', { name: 'Đã nhớ', exact: true })).toBeEnabled();
+    await page.getByRole('button', { name: i === 0 ? 'Chưa nhớ' : 'Đã nhớ', exact: true }).click();
+  }
+  await expect(page.getByRole('heading', { name: 'Thêm một bước tiến!' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Luyện lại 1 từ chưa nhớ' })).toBeVisible();
+  await page.getByRole('button', { name: 'Về bài học', exact: true }).click();
+  await page.getByRole('button', { name: 'Làm quiz', exact: true }).first().click();
+  for (let i = 0; i < 5; i++) {
+    await page.locator('.quiz-option').first().click();
+    await expect(page.locator('.quiz-option.correct')).toHaveCount(1);
+    await page.getByRole('button', { name: i === 4 ? 'Xem kết quả' : 'Từ tiếp theo', exact: true }).click();
+  }
+  await expect(page.getByRole('heading', { name: 'Thêm một bước tiến!' })).toBeVisible();
+  await page.getByRole('button', { name: 'Từ điển của bạn', exact: true }).click();
+  await page.getByRole('searchbox').fill('ma hoa');
+  await expect(page.locator('.word-row')).toHaveCount(1);
+  await expect(page.getByRole('heading', { name: 'encrypt', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Lưu từ encrypt', exact: true }).click();
+  await page.getByRole('button', { name: 'Cài đặt & offline', exact: true }).click();
+  const before = await page.evaluate(() => localStorage.getItem('it-words-progress-v1'));
+  expect(JSON.parse(before).favorites).toContain('3D-5');
+  await page.locator('input[type=file]').setInputFiles({ name: 'bad.json', mimeType: 'application/json', buffer: Buffer.from('{}') });
+  await expect(page.getByRole('status')).toContainText('không đúng định dạng');
+  expect(JSON.parse(await page.evaluate(() => localStorage.getItem('it-words-progress-v1')))).toEqual(JSON.parse(before));
+  await page.reload();
+  expect(JSON.parse(await page.evaluate(() => localStorage.getItem('it-words-progress-v1')))).toEqual(JSON.parse(before));
+  await context.setOffline(true);
+  await page.reload();
+  console.log('Offline diagnostics:', JSON.stringify({ errors, url: page.url(), body: (await page.locator('body').innerText()).slice(0, 500), serviceWorker: await page.evaluate(() => ({ controller: navigator.serviceWorker.controller?.scriptURL, online: navigator.onLine })) }));
+  await expect(page.getByRole('heading', { name: /Chào bạn/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /Đang offline/ })).toBeVisible();
+  await page.getByRole('button', { name: 'Các unit', exact: true }).click();
+  await page.getByRole('button', { name: /UNIT 07/ }).click();
+  await page.getByRole('button', { name: 'Học flashcard', exact: true }).first().click();
+  await page.getByRole('button', { name: 'Lật thẻ để xem nghĩa', exact: true }).click();
+  await page.getByRole('button', { name: 'Đã nhớ', exact: true }).click();
+  await page.screenshot({ path: 'qa/mobile-offline-study.png', fullPage: true });
+  expect(errors).toEqual([]);
+  await context.close();
+  const desktop = await browser.newContext({ viewport: { width: 1440, height: 1050 } });
+  const desktopPage = await desktop.newPage();
+  await desktopPage.goto('http://localhost:4173/');
+  await desktopPage.screenshot({ path: 'qa/desktop-home.png', fullPage: true });
+  await desktop.close();
+  console.log('Browser QA passed: mobile layout, flashcards, quiz, search, favorites, invalid backup, reload persistence, real service-worker offline reload and learning.');
+} finally { await browser.close(); }
