@@ -1,0 +1,1282 @@
+[
+  {
+    "id": "1A-1",
+    "unitId": 1,
+    "lessonId": "1A",
+    "term": "developer",
+    "meaning": "lập trình viên",
+    "definition": "A person who creates software."
+  },
+  {
+    "id": "1A-2",
+    "unitId": 1,
+    "lessonId": "1A",
+    "term": "project manager",
+    "meaning": "người quản lý dự án",
+    "definition": "A person who plans and manages a project."
+  },
+  {
+    "id": "1A-3",
+    "unitId": 1,
+    "lessonId": "1A",
+    "term": "database administrator",
+    "meaning": "quản trị viên cơ sở dữ liệu",
+    "definition": "A person who manages and maintains databases."
+  },
+  {
+    "id": "1A-4",
+    "unitId": 1,
+    "lessonId": "1A",
+    "term": "install",
+    "meaning": "cài đặt",
+    "definition": "To set up software or equipment for use."
+  },
+  {
+    "id": "1A-5",
+    "unitId": 1,
+    "lessonId": "1A",
+    "term": "maintain",
+    "meaning": "bảo trì",
+    "definition": "To keep a system in good working condition."
+  },
+  {
+    "id": "1B-1",
+    "unitId": 1,
+    "lessonId": "1B",
+    "term": "provider",
+    "meaning": "nhà cung cấp dịch vụ",
+    "definition": "A company or person that provides a service."
+  },
+  {
+    "id": "1B-2",
+    "unitId": 1,
+    "lessonId": "1B",
+    "term": "supplier",
+    "meaning": "nhà cung cấp sản phẩm",
+    "definition": "A company or person that supplies goods."
+  },
+  {
+    "id": "1B-3",
+    "unitId": 1,
+    "lessonId": "1B",
+    "term": "manufacturer",
+    "meaning": "nhà sản xuất",
+    "definition": "A company that makes products."
+  },
+  {
+    "id": "1B-4",
+    "unitId": 1,
+    "lessonId": "1B",
+    "term": "client",
+    "meaning": "khách hàng",
+    "definition": "A person or organisation that uses a service."
+  },
+  {
+    "id": "1B-5",
+    "unitId": 1,
+    "lessonId": "1B",
+    "term": "launch",
+    "meaning": "ra mắt",
+    "definition": "To make a new product available for the first time."
+  },
+  {
+    "id": "1C-1",
+    "unitId": 1,
+    "lessonId": "1C",
+    "term": "security",
+    "meaning": "bảo mật",
+    "definition": "Measures used to protect systems and information."
+  },
+  {
+    "id": "1C-2",
+    "unitId": 1,
+    "lessonId": "1C",
+    "term": "password",
+    "meaning": "mật khẩu",
+    "definition": "A secret sequence used to access an account."
+  },
+  {
+    "id": "1C-3",
+    "unitId": 1,
+    "lessonId": "1C",
+    "term": "alphanumeric",
+    "meaning": "gồm chữ và số",
+    "definition": "Containing both letters and numbers."
+  },
+  {
+    "id": "1C-4",
+    "unitId": 1,
+    "lessonId": "1C",
+    "term": "colleague",
+    "meaning": "đồng nghiệp",
+    "definition": "A person you work with."
+  },
+  {
+    "id": "1C-5",
+    "unitId": 1,
+    "lessonId": "1C",
+    "term": "download",
+    "meaning": "tải xuống",
+    "definition": "To transfer a file from a remote system to your device."
+  },
+  {
+    "id": "1D-1",
+    "unitId": 1,
+    "lessonId": "1D",
+    "term": "chairperson",
+    "meaning": "người chủ trì",
+    "definition": "The person who leads a meeting."
+  },
+  {
+    "id": "1D-2",
+    "unitId": 1,
+    "lessonId": "1D",
+    "term": "agenda",
+    "meaning": "chương trình cuộc họp",
+    "definition": "A list of topics to discuss at a meeting."
+  },
+  {
+    "id": "1D-3",
+    "unitId": 1,
+    "lessonId": "1D",
+    "term": "minutes",
+    "meaning": "biên bản cuộc họp",
+    "definition": "A written record of a meeting."
+  },
+  {
+    "id": "1D-4",
+    "unitId": 1,
+    "lessonId": "1D",
+    "term": "teleconference",
+    "meaning": "hội nghị qua điện thoại",
+    "definition": "A meeting between people using telephone connections."
+  },
+  {
+    "id": "1D-5",
+    "unitId": 1,
+    "lessonId": "1D",
+    "term": "videoconference",
+    "meaning": "hội nghị truyền hình",
+    "definition": "A meeting using live video and audio."
+  },
+  {
+    "id": "2A-1",
+    "unitId": 2,
+    "lessonId": "2A",
+    "term": "resize",
+    "meaning": "thay đổi kích thước",
+    "definition": "To change the size of a window or image."
+  },
+  {
+    "id": "2A-2",
+    "unitId": 2,
+    "lessonId": "2A",
+    "term": "scroll bar",
+    "meaning": "thanh cuộn",
+    "definition": "A control used to move through content."
+  },
+  {
+    "id": "2A-3",
+    "unitId": 2,
+    "lessonId": "2A",
+    "term": "icon",
+    "meaning": "biểu tượng",
+    "definition": "A small graphic representing an app, file or action."
+  },
+  {
+    "id": "2A-4",
+    "unitId": 2,
+    "lessonId": "2A",
+    "term": "folder",
+    "meaning": "thư mục",
+    "definition": "A container used to organise files."
+  },
+  {
+    "id": "2A-5",
+    "unitId": 2,
+    "lessonId": "2A",
+    "term": "drag",
+    "meaning": "kéo",
+    "definition": "To move an item while holding a pointer button."
+  },
+  {
+    "id": "2B-1",
+    "unitId": 2,
+    "lessonId": "2B",
+    "term": "microphone",
+    "meaning": "micro",
+    "definition": "A device that captures sound."
+  },
+  {
+    "id": "2B-2",
+    "unitId": 2,
+    "lessonId": "2B",
+    "term": "projector",
+    "meaning": "máy chiếu",
+    "definition": "A device that projects images onto a surface."
+  },
+  {
+    "id": "2B-3",
+    "unitId": 2,
+    "lessonId": "2B",
+    "term": "speaker",
+    "meaning": "loa",
+    "definition": "A device that produces sound."
+  },
+  {
+    "id": "2B-4",
+    "unitId": 2,
+    "lessonId": "2B",
+    "term": "webcam",
+    "meaning": "camera máy tính",
+    "definition": "A camera used to capture video on a computer."
+  },
+  {
+    "id": "2B-5",
+    "unitId": 2,
+    "lessonId": "2B",
+    "term": "unplug",
+    "meaning": "rút phích cắm",
+    "definition": "To disconnect a cable from a socket or device."
+  },
+  {
+    "id": "2C-1",
+    "unitId": 2,
+    "lessonId": "2C",
+    "term": "restart",
+    "meaning": "khởi động lại",
+    "definition": "To stop and start a system again."
+  },
+  {
+    "id": "2C-2",
+    "unitId": 2,
+    "lessonId": "2C",
+    "term": "partition",
+    "meaning": "phân vùng",
+    "definition": "To divide a storage drive into separate sections."
+  },
+  {
+    "id": "2C-3",
+    "unitId": 2,
+    "lessonId": "2C",
+    "term": "boot drive",
+    "meaning": "ổ đĩa khởi động",
+    "definition": "A drive containing the files needed to start a system."
+  },
+  {
+    "id": "2C-4",
+    "unitId": 2,
+    "lessonId": "2C",
+    "term": "user account",
+    "meaning": "tài khoản người dùng",
+    "definition": "An identity with settings and access permissions."
+  },
+  {
+    "id": "2C-5",
+    "unitId": 2,
+    "lessonId": "2C",
+    "term": "open source",
+    "meaning": "mã nguồn mở",
+    "definition": "Describing software whose source code is available under an open-source licence."
+  },
+  {
+    "id": "2D-1",
+    "unitId": 2,
+    "lessonId": "2D",
+    "term": "external",
+    "meaning": "bên ngoài",
+    "definition": "Located outside the main device or system."
+  },
+  {
+    "id": "2D-2",
+    "unitId": 2,
+    "lessonId": "2D",
+    "term": "headphones",
+    "meaning": "tai nghe",
+    "definition": "A device worn over or in the ears to hear audio."
+  },
+  {
+    "id": "2D-3",
+    "unitId": 2,
+    "lessonId": "2D",
+    "term": "solid state drive",
+    "meaning": "ổ cứng thể rắn",
+    "definition": "A storage device that uses flash memory."
+  },
+  {
+    "id": "2D-4",
+    "unitId": 2,
+    "lessonId": "2D",
+    "term": "CPU",
+    "meaning": "bộ xử lý trung tâm",
+    "definition": "The processor that executes instructions."
+  },
+  {
+    "id": "2D-5",
+    "unitId": 2,
+    "lessonId": "2D",
+    "term": "RAM",
+    "meaning": "bộ nhớ truy cập ngẫu nhiên",
+    "definition": "Working memory used by running programs."
+  },
+  {
+    "id": "3A-1",
+    "unitId": 3,
+    "lessonId": "3A",
+    "term": "subject line",
+    "meaning": "dòng tiêu đề",
+    "definition": "The part of an email that states its topic."
+  },
+  {
+    "id": "3A-2",
+    "unitId": 3,
+    "lessonId": "3A",
+    "term": "recipient",
+    "meaning": "người nhận",
+    "definition": "A person who receives a message."
+  },
+  {
+    "id": "3A-3",
+    "unitId": 3,
+    "lessonId": "3A",
+    "term": "signature",
+    "meaning": "chữ ký",
+    "definition": "Text identifying the sender at the end of an email."
+  },
+  {
+    "id": "3A-4",
+    "unitId": 3,
+    "lessonId": "3A",
+    "term": "attachment",
+    "meaning": "tệp đính kèm",
+    "definition": "A file sent with an email."
+  },
+  {
+    "id": "3A-5",
+    "unitId": 3,
+    "lessonId": "3A",
+    "term": "spell checker",
+    "meaning": "công cụ kiểm tra chính tả",
+    "definition": "A tool that finds possible spelling mistakes."
+  },
+  {
+    "id": "3B-1",
+    "unitId": 3,
+    "lessonId": "3B",
+    "term": "browser",
+    "meaning": "trình duyệt",
+    "definition": "An application used to view websites."
+  },
+  {
+    "id": "3B-2",
+    "unitId": 3,
+    "lessonId": "3B",
+    "term": "bookmark",
+    "meaning": "dấu trang",
+    "definition": "A saved link to a web page."
+  },
+  {
+    "id": "3B-3",
+    "unitId": 3,
+    "lessonId": "3B",
+    "term": "link",
+    "meaning": "liên kết",
+    "definition": "A reference that opens another page or resource."
+  },
+  {
+    "id": "3B-4",
+    "unitId": 3,
+    "lessonId": "3B",
+    "term": "refresh",
+    "meaning": "tải lại",
+    "definition": "To reload content to show its latest version."
+  },
+  {
+    "id": "3B-5",
+    "unitId": 3,
+    "lessonId": "3B",
+    "term": "access",
+    "meaning": "truy cập",
+    "definition": "To reach or use a system or information."
+  },
+  {
+    "id": "3C-1",
+    "unitId": 3,
+    "lessonId": "3C",
+    "term": "feature",
+    "meaning": "tính năng",
+    "definition": "A capability or characteristic of a product."
+  },
+  {
+    "id": "3C-2",
+    "unitId": 3,
+    "lessonId": "3C",
+    "term": "GPS",
+    "meaning": "hệ thống định vị toàn cầu",
+    "definition": "A satellite-based system for determining location."
+  },
+  {
+    "id": "3C-3",
+    "unitId": 3,
+    "lessonId": "3C",
+    "term": "battery life",
+    "meaning": "thời lượng pin",
+    "definition": "The time a device can operate on its battery."
+  },
+  {
+    "id": "3C-4",
+    "unitId": 3,
+    "lessonId": "3C",
+    "term": "customise",
+    "meaning": "tùy chỉnh",
+    "definition": "To change something to suit your needs."
+  },
+  {
+    "id": "3C-5",
+    "unitId": 3,
+    "lessonId": "3C",
+    "term": "OCR",
+    "meaning": "nhận dạng ký tự quang học",
+    "definition": "Technology that recognises text in scanned documents or images."
+  },
+  {
+    "id": "3D-1",
+    "unitId": 3,
+    "lessonId": "3D",
+    "term": "wired",
+    "meaning": "có dây",
+    "definition": "Connected using physical cables."
+  },
+  {
+    "id": "3D-2",
+    "unitId": 3,
+    "lessonId": "3D",
+    "term": "wireless",
+    "meaning": "không dây",
+    "definition": "Connected without physical cables."
+  },
+  {
+    "id": "3D-3",
+    "unitId": 3,
+    "lessonId": "3D",
+    "term": "LAN",
+    "meaning": "mạng cục bộ",
+    "definition": "A network covering a limited local area."
+  },
+  {
+    "id": "3D-4",
+    "unitId": 3,
+    "lessonId": "3D",
+    "term": "VPN",
+    "meaning": "mạng riêng ảo",
+    "definition": "A technology that creates a protected connection over another network."
+  },
+  {
+    "id": "3D-5",
+    "unitId": 3,
+    "lessonId": "3D",
+    "term": "encrypt",
+    "meaning": "mã hóa",
+    "definition": "To transform data so it requires a key to read."
+  },
+  {
+    "id": "4A-1",
+    "unitId": 4,
+    "lessonId": "4A",
+    "term": "table",
+    "meaning": "bảng dữ liệu",
+    "definition": "A collection of data arranged in rows and columns."
+  },
+  {
+    "id": "4A-2",
+    "unitId": 4,
+    "lessonId": "4A",
+    "term": "field",
+    "meaning": "trường dữ liệu",
+    "definition": "A named data item in a record."
+  },
+  {
+    "id": "4A-3",
+    "unitId": 4,
+    "lessonId": "4A",
+    "term": "primary key",
+    "meaning": "khóa chính",
+    "definition": "A field or set of fields that uniquely identifies a record."
+  },
+  {
+    "id": "4A-4",
+    "unitId": 4,
+    "lessonId": "4A",
+    "term": "query the database",
+    "meaning": "truy vấn cơ sở dữ liệu",
+    "definition": "To request information from a database."
+  },
+  {
+    "id": "4A-5",
+    "unitId": 4,
+    "lessonId": "4A",
+    "term": "retrieve a record",
+    "meaning": "truy xuất bản ghi",
+    "definition": "To get a stored record from a database."
+  },
+  {
+    "id": "4B-1",
+    "unitId": 4,
+    "lessonId": "4B",
+    "term": "NAS",
+    "meaning": "thiết bị lưu trữ gắn mạng",
+    "definition": "Storage that can be accessed through a network."
+  },
+  {
+    "id": "4B-2",
+    "unitId": 4,
+    "lessonId": "4B",
+    "term": "stylus",
+    "meaning": "bút cảm ứng",
+    "definition": "A pen-shaped tool used with a touch surface."
+  },
+  {
+    "id": "4B-3",
+    "unitId": 4,
+    "lessonId": "4B",
+    "term": "touch screen",
+    "meaning": "màn hình cảm ứng",
+    "definition": "A display that detects touch input."
+  },
+  {
+    "id": "4B-4",
+    "unitId": 4,
+    "lessonId": "4B",
+    "term": "headset",
+    "meaning": "tai nghe có micro",
+    "definition": "Headphones combined with a microphone."
+  },
+  {
+    "id": "4B-5",
+    "unitId": 4,
+    "lessonId": "4B",
+    "term": "input device",
+    "meaning": "thiết bị nhập",
+    "definition": "Hardware used to send data or commands to a computer."
+  },
+  {
+    "id": "4C-1",
+    "unitId": 4,
+    "lessonId": "4C",
+    "term": "column",
+    "meaning": "cột",
+    "definition": "A vertical set of cells in a spreadsheet."
+  },
+  {
+    "id": "4C-2",
+    "unitId": 4,
+    "lessonId": "4C",
+    "term": "row",
+    "meaning": "hàng",
+    "definition": "A horizontal set of cells in a spreadsheet."
+  },
+  {
+    "id": "4C-3",
+    "unitId": 4,
+    "lessonId": "4C",
+    "term": "worksheet",
+    "meaning": "trang tính",
+    "definition": "A sheet containing cells in a spreadsheet file."
+  },
+  {
+    "id": "4C-4",
+    "unitId": 4,
+    "lessonId": "4C",
+    "term": "multiply",
+    "meaning": "nhân",
+    "definition": "To calculate the product of numbers."
+  },
+  {
+    "id": "4C-5",
+    "unitId": 4,
+    "lessonId": "4C",
+    "term": "sum",
+    "meaning": "tổng",
+    "definition": "The result of adding numbers together."
+  },
+  {
+    "id": "4D-1",
+    "unitId": 4,
+    "lessonId": "4D",
+    "term": "deploy",
+    "meaning": "triển khai",
+    "definition": "To put software into an environment where it can be used."
+  },
+  {
+    "id": "4D-2",
+    "unitId": 4,
+    "lessonId": "4D",
+    "term": "crash",
+    "meaning": "sự cố dừng chương trình",
+    "definition": "An unexpected failure that stops a program."
+  },
+  {
+    "id": "4D-3",
+    "unitId": 4,
+    "lessonId": "4D",
+    "term": "read-only access",
+    "meaning": "quyền chỉ đọc",
+    "definition": "Permission to view data without changing it."
+  },
+  {
+    "id": "4D-4",
+    "unitId": 4,
+    "lessonId": "4D",
+    "term": "lock someone out",
+    "meaning": "chặn quyền truy cập",
+    "definition": "To prevent someone from accessing a system."
+  },
+  {
+    "id": "4D-5",
+    "unitId": 4,
+    "lessonId": "4D",
+    "term": "up and running again",
+    "meaning": "hoạt động trở lại",
+    "definition": "Working again after an interruption."
+  },
+  {
+    "id": "5A-1",
+    "unitId": 5,
+    "lessonId": "5A",
+    "term": "accessory",
+    "meaning": "phụ kiện",
+    "definition": "An extra item used with a main product."
+  },
+  {
+    "id": "5A-2",
+    "unitId": 5,
+    "lessonId": "5A",
+    "term": "charger",
+    "meaning": "bộ sạc",
+    "definition": "A device that supplies power to recharge a battery."
+  },
+  {
+    "id": "5A-3",
+    "unitId": 5,
+    "lessonId": "5A",
+    "term": "extended warranty",
+    "meaning": "bảo hành mở rộng",
+    "definition": "Warranty coverage extended beyond the standard period."
+  },
+  {
+    "id": "5A-4",
+    "unitId": 5,
+    "lessonId": "5A",
+    "term": "service",
+    "meaning": "dịch vụ",
+    "definition": "Work or assistance provided to a customer."
+  },
+  {
+    "id": "5A-5",
+    "unitId": 5,
+    "lessonId": "5A",
+    "term": "analyse",
+    "meaning": "phân tích",
+    "definition": "To examine something carefully to understand it."
+  },
+  {
+    "id": "5B-1",
+    "unitId": 5,
+    "lessonId": "5B",
+    "term": "capability",
+    "meaning": "khả năng",
+    "definition": "Something a system or product is able to do."
+  },
+  {
+    "id": "5B-2",
+    "unitId": 5,
+    "lessonId": "5B",
+    "term": "compatibility",
+    "meaning": "khả năng tương thích",
+    "definition": "The ability of systems or products to work together."
+  },
+  {
+    "id": "5B-3",
+    "unitId": 5,
+    "lessonId": "5B",
+    "term": "user guide",
+    "meaning": "hướng dẫn sử dụng",
+    "definition": "Instructions explaining how to use a product."
+  },
+  {
+    "id": "5B-4",
+    "unitId": 5,
+    "lessonId": "5B",
+    "term": "forum",
+    "meaning": "diễn đàn",
+    "definition": "An online space for discussion."
+  },
+  {
+    "id": "5B-5",
+    "unitId": 5,
+    "lessonId": "5B",
+    "term": "conclusion",
+    "meaning": "kết luận",
+    "definition": "The final judgment or summary of a discussion."
+  },
+  {
+    "id": "5C-1",
+    "unitId": 5,
+    "lessonId": "5C",
+    "term": "traditional pricing",
+    "meaning": "định giá truyền thống",
+    "definition": "A conventional pricing approach rather than tier-based pricing."
+  },
+  {
+    "id": "5C-2",
+    "unitId": 5,
+    "lessonId": "5C",
+    "term": "tiered pricing",
+    "meaning": "định giá theo bậc",
+    "definition": "Different prices for different levels of service or usage."
+  },
+  {
+    "id": "5C-3",
+    "unitId": 5,
+    "lessonId": "5C",
+    "term": "trial period",
+    "meaning": "thời gian dùng thử",
+    "definition": "A limited period for trying a product or service."
+  },
+  {
+    "id": "5C-4",
+    "unitId": 5,
+    "lessonId": "5C",
+    "term": "try out",
+    "meaning": "dùng thử",
+    "definition": "To use something to see how well it works."
+  },
+  {
+    "id": "5C-5",
+    "unitId": 5,
+    "lessonId": "5C",
+    "term": "come out",
+    "meaning": "được phát hành",
+    "definition": "To become available to the public."
+  },
+  {
+    "id": "5D-1",
+    "unitId": 5,
+    "lessonId": "5D",
+    "term": "shared hosting",
+    "meaning": "hosting dùng chung",
+    "definition": "Hosting where multiple customers share server resources."
+  },
+  {
+    "id": "5D-2",
+    "unitId": 5,
+    "lessonId": "5D",
+    "term": "dedicated hosting",
+    "meaning": "hosting máy chủ riêng",
+    "definition": "Hosting using a server dedicated to one customer."
+  },
+  {
+    "id": "5D-3",
+    "unitId": 5,
+    "lessonId": "5D",
+    "term": "uptime",
+    "meaning": "thời gian hoạt động",
+    "definition": "The amount of time a service is operational."
+  },
+  {
+    "id": "5D-4",
+    "unitId": 5,
+    "lessonId": "5D",
+    "term": "monthly bandwidth",
+    "meaning": "dung lượng truyền tải hàng tháng",
+    "definition": "The data-transfer allowance for a month in a hosting plan."
+  },
+  {
+    "id": "5D-5",
+    "unitId": 5,
+    "lessonId": "5D",
+    "term": "IP address",
+    "meaning": "địa chỉ IP",
+    "definition": "An address used to identify a network interface."
+  },
+  {
+    "id": "6A-1",
+    "unitId": 6,
+    "lessonId": "6A",
+    "term": "integrate",
+    "meaning": "tích hợp",
+    "definition": "To combine parts so they work together."
+  },
+  {
+    "id": "6A-2",
+    "unitId": 6,
+    "lessonId": "6A",
+    "term": "component",
+    "meaning": "thành phần",
+    "definition": "One part of a larger system."
+  },
+  {
+    "id": "6A-3",
+    "unitId": 6,
+    "lessonId": "6A",
+    "term": "cookie",
+    "meaning": "cookie trình duyệt",
+    "definition": "A small piece of data stored by a website in a browser."
+  },
+  {
+    "id": "6A-4",
+    "unitId": 6,
+    "lessonId": "6A",
+    "term": "order",
+    "meaning": "đơn hàng",
+    "definition": "A request to buy goods or services."
+  },
+  {
+    "id": "6A-5",
+    "unitId": 6,
+    "lessonId": "6A",
+    "term": "DRM",
+    "meaning": "quản lý quyền kỹ thuật số",
+    "definition": "Technology used to control access to digital content."
+  },
+  {
+    "id": "6B-1",
+    "unitId": 6,
+    "lessonId": "6B",
+    "term": "file sharing service",
+    "meaning": "dịch vụ chia sẻ tệp",
+    "definition": "A service for making files available to other people."
+  },
+  {
+    "id": "6B-2",
+    "unitId": 6,
+    "lessonId": "6B",
+    "term": "privacy",
+    "meaning": "quyền riêng tư",
+    "definition": "Control over access to personal information."
+  },
+  {
+    "id": "6B-3",
+    "unitId": 6,
+    "lessonId": "6B",
+    "term": "trend",
+    "meaning": "xu hướng",
+    "definition": "A general direction of change over time."
+  },
+  {
+    "id": "6B-4",
+    "unitId": 6,
+    "lessonId": "6B",
+    "term": "document management system",
+    "meaning": "hệ thống quản lý tài liệu",
+    "definition": "Software for organising and managing documents."
+  },
+  {
+    "id": "6B-5",
+    "unitId": 6,
+    "lessonId": "6B",
+    "term": "voice recognition",
+    "meaning": "nhận dạng giọng nói",
+    "definition": "Technology that identifies or interprets spoken input."
+  },
+  {
+    "id": "6C-1",
+    "unitId": 6,
+    "lessonId": "6C",
+    "term": "instant messaging",
+    "meaning": "nhắn tin tức thời",
+    "definition": "Exchanging text messages in real time."
+  },
+  {
+    "id": "6C-2",
+    "unitId": 6,
+    "lessonId": "6C",
+    "term": "policy",
+    "meaning": "chính sách",
+    "definition": "A set of rules or principles guiding actions."
+  },
+  {
+    "id": "6C-3",
+    "unitId": 6,
+    "lessonId": "6C",
+    "term": "procedure",
+    "meaning": "quy trình",
+    "definition": "A defined sequence of steps for a task."
+  },
+  {
+    "id": "6C-4",
+    "unitId": 6,
+    "lessonId": "6C",
+    "term": "archiving",
+    "meaning": "lưu trữ lâu dài",
+    "definition": "Moving or preserving information for future reference."
+  },
+  {
+    "id": "6C-5",
+    "unitId": 6,
+    "lessonId": "6C",
+    "term": "tagging",
+    "meaning": "gắn thẻ",
+    "definition": "Adding labels to organise or find content."
+  },
+  {
+    "id": "6D-1",
+    "unitId": 6,
+    "lessonId": "6D",
+    "term": "face-to-face",
+    "meaning": "trực tiếp",
+    "definition": "With people physically present together."
+  },
+  {
+    "id": "6D-2",
+    "unitId": 6,
+    "lessonId": "6D",
+    "term": "high-definition",
+    "meaning": "độ nét cao",
+    "definition": "Describing video or images with high resolution."
+  },
+  {
+    "id": "6D-3",
+    "unitId": 6,
+    "lessonId": "6D",
+    "term": "remote",
+    "meaning": "từ xa",
+    "definition": "Located away from the main location."
+  },
+  {
+    "id": "6D-4",
+    "unitId": 6,
+    "lessonId": "6D",
+    "term": "data compression",
+    "meaning": "nén dữ liệu",
+    "definition": "Reducing the size of data for storage or transmission."
+  },
+  {
+    "id": "6D-5",
+    "unitId": 6,
+    "lessonId": "6D",
+    "term": "MCU",
+    "meaning": "bộ điều khiển hội nghị đa điểm",
+    "definition": "A device or system that connects multiple conferencing endpoints."
+  },
+  {
+    "id": "7A-1",
+    "unitId": 7,
+    "lessonId": "7A",
+    "term": "Gantt chart",
+    "meaning": "biểu đồ Gantt",
+    "definition": "A chart showing tasks and their planned timing."
+  },
+  {
+    "id": "7A-2",
+    "unitId": 7,
+    "lessonId": "7A",
+    "term": "alpha testing",
+    "meaning": "kiểm thử alpha",
+    "definition": "Early testing usually carried out in a controlled internal environment."
+  },
+  {
+    "id": "7A-3",
+    "unitId": 7,
+    "lessonId": "7A",
+    "term": "beta testing",
+    "meaning": "kiểm thử beta",
+    "definition": "Testing by selected users before a final release."
+  },
+  {
+    "id": "7A-4",
+    "unitId": 7,
+    "lessonId": "7A",
+    "term": "feedback",
+    "meaning": "phản hồi",
+    "definition": "Comments used to evaluate or improve something."
+  },
+  {
+    "id": "7A-5",
+    "unitId": 7,
+    "lessonId": "7A",
+    "term": "release candidate",
+    "meaning": "bản ứng viên phát hành",
+    "definition": "A version that may become the final release if no blocking problems are found."
+  },
+  {
+    "id": "7B-1",
+    "unitId": 7,
+    "lessonId": "7B",
+    "term": "approve",
+    "meaning": "phê duyệt",
+    "definition": "To formally accept a proposal or result."
+  },
+  {
+    "id": "7B-2",
+    "unitId": 7,
+    "lessonId": "7B",
+    "term": "programmer",
+    "meaning": "lập trình viên",
+    "definition": "A person who writes computer programs."
+  },
+  {
+    "id": "7B-3",
+    "unitId": 7,
+    "lessonId": "7B",
+    "term": "debug",
+    "meaning": "gỡ lỗi",
+    "definition": "To find and fix problems in software."
+  },
+  {
+    "id": "7B-4",
+    "unitId": 7,
+    "lessonId": "7B",
+    "term": "interview",
+    "meaning": "phỏng vấn",
+    "definition": "To ask questions to gather information."
+  },
+  {
+    "id": "7B-5",
+    "unitId": 7,
+    "lessonId": "7B",
+    "term": "specification",
+    "meaning": "đặc tả",
+    "definition": "A detailed description of required behaviour or features."
+  },
+  {
+    "id": "7C-1",
+    "unitId": 7,
+    "lessonId": "7C",
+    "term": "line of code",
+    "meaning": "dòng mã",
+    "definition": "One line of instructions in a program."
+  },
+  {
+    "id": "7C-2",
+    "unitId": 7,
+    "lessonId": "7C",
+    "term": "instruction",
+    "meaning": "chỉ thị",
+    "definition": "A command that tells a computer what to do."
+  },
+  {
+    "id": "7C-3",
+    "unitId": 7,
+    "lessonId": "7C",
+    "term": "variable",
+    "meaning": "biến",
+    "definition": "A named reference to a value that may change."
+  },
+  {
+    "id": "7C-4",
+    "unitId": 7,
+    "lessonId": "7C",
+    "term": "value",
+    "meaning": "giá trị",
+    "definition": "The data represented by an expression or variable."
+  },
+  {
+    "id": "7C-5",
+    "unitId": 7,
+    "lessonId": "7C",
+    "term": "calculate",
+    "meaning": "tính toán",
+    "definition": "To work out a result using numbers or rules."
+  },
+  {
+    "id": "7D-1",
+    "unitId": 7,
+    "lessonId": "7D",
+    "term": "home page",
+    "meaning": "trang chủ",
+    "definition": "The main entry page of a website."
+  },
+  {
+    "id": "7D-2",
+    "unitId": 7,
+    "lessonId": "7D",
+    "term": "FAQs",
+    "meaning": "câu hỏi thường gặp",
+    "definition": "Frequently asked questions and their answers."
+  },
+  {
+    "id": "7D-3",
+    "unitId": 7,
+    "lessonId": "7D",
+    "term": "purchase",
+    "meaning": "mua hàng",
+    "definition": "To buy a product or service."
+  },
+  {
+    "id": "7D-4",
+    "unitId": 7,
+    "lessonId": "7D",
+    "term": "private",
+    "meaning": "riêng tư",
+    "definition": "Available only to authorised people."
+  },
+  {
+    "id": "7D-5",
+    "unitId": 7,
+    "lessonId": "7D",
+    "term": "dynamic",
+    "meaning": "động",
+    "definition": "Changing in response to data or user interaction."
+  },
+  {
+    "id": "8A-1",
+    "unitId": 8,
+    "lessonId": "8A",
+    "term": "call centre",
+    "meaning": "trung tâm cuộc gọi",
+    "definition": "An organisation that handles customer calls."
+  },
+  {
+    "id": "8A-2",
+    "unitId": 8,
+    "lessonId": "8A",
+    "term": "issue tracking system",
+    "meaning": "hệ thống theo dõi sự cố",
+    "definition": "Software used to record and track reported problems."
+  },
+  {
+    "id": "8A-3",
+    "unitId": 8,
+    "lessonId": "8A",
+    "term": "ticket",
+    "meaning": "phiếu hỗ trợ",
+    "definition": "A record of a support request or issue."
+  },
+  {
+    "id": "8A-4",
+    "unitId": 8,
+    "lessonId": "8A",
+    "term": "escalate",
+    "meaning": "chuyển lên cấp hỗ trợ cao hơn",
+    "definition": "To pass an issue to a higher support level."
+  },
+  {
+    "id": "8A-5",
+    "unitId": 8,
+    "lessonId": "8A",
+    "term": "troubleshooting guide",
+    "meaning": "hướng dẫn xử lý sự cố",
+    "definition": "Instructions for identifying and resolving problems."
+  },
+  {
+    "id": "8B-1",
+    "unitId": 8,
+    "lessonId": "8B",
+    "term": "connection error",
+    "meaning": "lỗi kết nối",
+    "definition": "A problem that prevents a connection from working."
+  },
+  {
+    "id": "8B-2",
+    "unitId": 8,
+    "lessonId": "8B",
+    "term": "failure",
+    "meaning": "sự hỏng hóc",
+    "definition": "A situation where a system cannot perform its function."
+  },
+  {
+    "id": "8B-3",
+    "unitId": 8,
+    "lessonId": "8B",
+    "term": "fault",
+    "meaning": "lỗi kỹ thuật",
+    "definition": "A defect that causes incorrect operation."
+  },
+  {
+    "id": "8B-4",
+    "unitId": 8,
+    "lessonId": "8B",
+    "term": "hang",
+    "meaning": "treo máy hoặc chương trình",
+    "definition": "To stop responding while still appearing to run."
+  },
+  {
+    "id": "8B-5",
+    "unitId": 8,
+    "lessonId": "8B",
+    "term": "error code",
+    "meaning": "mã lỗi",
+    "definition": "A code identifying a specific error condition."
+  },
+  {
+    "id": "8C-1",
+    "unitId": 8,
+    "lessonId": "8C",
+    "term": "bloatware",
+    "meaning": "phần mềm dư thừa",
+    "definition": "Unwanted software that uses storage or system resources."
+  },
+  {
+    "id": "8C-2",
+    "unitId": 8,
+    "lessonId": "8C",
+    "term": "electric shock",
+    "meaning": "điện giật",
+    "definition": "An injury or sensation caused by electricity passing through the body."
+  },
+  {
+    "id": "8C-3",
+    "unitId": 8,
+    "lessonId": "8C",
+    "term": "short circuit",
+    "meaning": "đoản mạch",
+    "definition": "An unintended electrical connection with low resistance."
+  },
+  {
+    "id": "8C-4",
+    "unitId": 8,
+    "lessonId": "8C",
+    "term": "RSI",
+    "meaning": "chấn thương do thao tác lặp lại",
+    "definition": "Repetitive strain injury caused by repeated movements."
+  },
+  {
+    "id": "8C-5",
+    "unitId": 8,
+    "lessonId": "8C",
+    "term": "cool down",
+    "meaning": "làm nguội",
+    "definition": "To reduce temperature or allow something to become cooler."
+  },
+  {
+    "id": "8D-1",
+    "unitId": 8,
+    "lessonId": "8D",
+    "term": "CV",
+    "meaning": "sơ yếu lý lịch nghề nghiệp",
+    "definition": "A document summarising education, skills and work experience."
+  },
+  {
+    "id": "8D-2",
+    "unitId": 8,
+    "lessonId": "8D",
+    "term": "education",
+    "meaning": "học vấn",
+    "definition": "Learning and qualifications gained through study."
+  },
+  {
+    "id": "8D-3",
+    "unitId": 8,
+    "lessonId": "8D",
+    "term": "responsibility",
+    "meaning": "trách nhiệm",
+    "definition": "A duty or task that someone is expected to handle."
+  },
+  {
+    "id": "8D-4",
+    "unitId": 8,
+    "lessonId": "8D",
+    "term": "organisational skill",
+    "meaning": "kỹ năng tổ chức",
+    "definition": "The ability to plan and arrange work effectively."
+  },
+  {
+    "id": "8D-5",
+    "unitId": 8,
+    "lessonId": "8D",
+    "term": "personal information",
+    "meaning": "thông tin cá nhân",
+    "definition": "Details relating to an individual."
+  }
+]

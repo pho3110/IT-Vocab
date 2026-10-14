@@ -1,0 +1,2799 @@
+[
+  {
+    "lessonId": "1A",
+    "definition": "sb whose job is to look after a computer database that has many users",
+    "page": 6,
+    "term": "database administrator",
+    "partOfSpeech": "n",
+    "rawTerm": "database administrator (n)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "sb who supervises the department of a company that people call for help, especially with computer problems",
+    "page": 6,
+    "term": "helpdesk supervisor",
+    "partOfSpeech": "n",
+    "rawTerm": "helpdesk supervisor (n)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "sb whose job is to manage a carefully planned piece of work",
+    "page": 6,
+    "term": "project manager",
+    "partOfSpeech": "n",
+    "rawTerm": "project manager (n)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "a person or organisation that works on a new piece of software to make it successful",
+    "page": 6,
+    "term": "developer",
+    "partOfSpeech": "n",
+    "rawTerm": "developer (n)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "sb whose job is to provide help or information that you need to improve a computer system, make it continue working, or use it correctly",
+    "page": 6,
+    "term": "support technician",
+    "partOfSpeech": "n",
+    "rawTerm": "support technician (n)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "sb whose job is to study a company’s computer needs and provide them with suitable software and equipment",
+    "page": 6,
+    "term": "systems analyst",
+    "partOfSpeech": "n",
+    "rawTerm": "systems analyst (n)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "to be in charge of (an activity or person) and make sure that things are done in the correct way",
+    "page": 6,
+    "term": "supervise",
+    "partOfSpeech": "v",
+    "rawTerm": "supervise (v)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "to have a duty to be in charge of or to look after sb or sth",
+    "page": 6,
+    "term": "be responsible",
+    "partOfSpeech": "v phr",
+    "rawTerm": "be responsible (v phr)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "to put (a piece of equipment) somewhere and connect it so that it is ready to be used, or to add (new software) to a computer so that it is ready to be used",
+    "page": 6,
+    "term": "install",
+    "partOfSpeech": "v",
+    "rawTerm": "install (v)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "to find out what the cause of (a fault) is, after doing tests, examinations, etc.",
+    "page": 6,
+    "term": "diagnose",
+    "partOfSpeech": "v",
+    "rawTerm": "diagnose (v)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "to make a drawing or plan of (sth that will be made or built)",
+    "page": 6,
+    "term": "design",
+    "partOfSpeech": "v",
+    "rawTerm": "design (v)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "to keep (a machine, building, etc.) in good condition by checking and repairing it regularly",
+    "page": 7,
+    "term": "maintain",
+    "partOfSpeech": "v",
+    "rawTerm": "maintain (v)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "to look to see whether you have received messages that are sent from one person to another using computers",
+    "page": 7,
+    "term": "check email",
+    "partOfSpeech": "phr",
+    "rawTerm": "check email (phr)"
+  },
+  {
+    "lessonId": "1A",
+    "definition": "to go to events at which people meet to discuss and decide things",
+    "page": 7,
+    "term": "attend meetings",
+    "partOfSpeech": "phr",
+    "rawTerm": "attend meetings (phr)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "to do (sth that needs to be organised and planned)",
+    "page": 7,
+    "term": "carry out",
+    "partOfSpeech": "phr v",
+    "rawTerm": "carry out (phr v)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "a company or person that provides a service",
+    "page": 7,
+    "term": "provider",
+    "partOfSpeech": "n",
+    "rawTerm": "provider (n)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "a company or person that provides a particular product",
+    "page": 7,
+    "term": "supplier",
+    "partOfSpeech": "n",
+    "rawTerm": "supplier (n)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "a company that makes large quantities of goods",
+    "page": 7,
+    "term": "manufacturer",
+    "partOfSpeech": "n",
+    "rawTerm": "manufacturer (n)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "a place or building used for making or growing things to be sold, especially in large quantities",
+    "page": 7,
+    "term": "production facility",
+    "partOfSpeech": "n",
+    "rawTerm": "production facility (n)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "sth that is grown or made in a factory in large quantities, usually in order to be sold",
+    "page": 7,
+    "term": "product",
+    "partOfSpeech": "n",
+    "rawTerm": "product (n)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "a building from which a particular type of help or work is provided by a business to customers, but not one that involves producing goods",
+    "page": 7,
+    "term": "service centre",
+    "partOfSpeech": "n",
+    "rawTerm": "service centre (n)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "to provide computing facilities and storage capacity as a service to a group of similar customers",
+    "page": 7,
+    "term": "supply cloud computing",
+    "partOfSpeech": "phr",
+    "rawTerm": "computing (phr)",
+    "extractionNote": "Term prefix supply cloud recovered from the preceding definition cell."
+  },
+  {
+    "lessonId": "1B",
+    "definition": "the activity of using computer software or a small computer for writing letters and other documents",
+    "page": 7,
+    "term": "word processing",
+    "partOfSpeech": "n",
+    "rawTerm": "word processing (n)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "a document produced by a computer program that can show and calculate financial information",
+    "page": 8,
+    "term": "spreadsheet",
+    "partOfSpeech": "n",
+    "rawTerm": "spreadsheet (n)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "a document produced by a computer program that can show a new product or idea or display information",
+    "page": 8,
+    "term": "presentation",
+    "partOfSpeech": "n",
+    "rawTerm": "presentation (n)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "a large amount of data stored in a computer system so that you can find and use it easily, or a file that stores this data",
+    "page": 8,
+    "term": "database",
+    "partOfSpeech": "n",
+    "rawTerm": "database (n)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "sb who gets services or advice from a professional person, company or organisation; a customer",
+    "page": 8,
+    "term": "client",
+    "partOfSpeech": "n",
+    "rawTerm": "client (n)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "a system in a computer that helps all the programs in it to work together",
+    "page": 8,
+    "term": "operating system",
+    "partOfSpeech": "n phr",
+    "rawTerm": "operating system (n phr)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "to make (a new product, book, etc.) available for sale for the first time",
+    "page": 8,
+    "term": "launch",
+    "partOfSpeech": "v",
+    "rawTerm": "launch (v)"
+  },
+  {
+    "lessonId": "1B",
+    "definition": "a copy of sth that has been changed so that it is slightly different",
+    "page": 8,
+    "term": "version",
+    "partOfSpeech": "n",
+    "rawTerm": "version (n)"
+  },
+  {
+    "lessonId": "1C",
+    "definition": "things that are done to keep a person, building or country safe from danger or crime",
+    "page": 8,
+    "term": "security",
+    "partOfSpeech": "n",
+    "rawTerm": "security (n)"
+  },
+  {
+    "lessonId": "1C",
+    "definition": "information in a form that can be stored and used, especially on a computer",
+    "page": 8,
+    "term": "data",
+    "partOfSpeech": "n",
+    "rawTerm": "data (n)"
+  },
+  {
+    "lessonId": "1C",
+    "definition": "a secret group of letters or numbers that you must type into a computer before you can use a system or program",
+    "page": 8,
+    "term": "password",
+    "partOfSpeech": "n",
+    "rawTerm": "password (n)"
+  },
+  {
+    "lessonId": "1C",
+    "definition": "a set of computers that are connected to each other so that they can share information",
+    "page": 8,
+    "term": "network",
+    "partOfSpeech": "n",
+    "rawTerm": "network (n)"
+  },
+  {
+    "lessonId": "1C",
+    "definition": "using letters and numbers",
+    "page": 8,
+    "term": "alphanumeric",
+    "partOfSpeech": "adj",
+    "rawTerm": "alphanumeric (adj)"
+  },
+  {
+    "lessonId": "1C",
+    "definition": "a letter, mark or sign used in writing, printing or on a computer",
+    "page": 8,
+    "term": "character",
+    "partOfSpeech": "n",
+    "rawTerm": "character (n)"
+  },
+  {
+    "lessonId": "1C",
+    "definition": "sb you work with, used especially by professional people",
+    "page": 8,
+    "term": "colleague",
+    "partOfSpeech": "n",
+    "rawTerm": "colleague (n)"
+  },
+  {
+    "lessonId": "1C",
+    "definition": "to join (two or more things) together",
+    "page": 9,
+    "term": "connect",
+    "partOfSpeech": "v",
+    "rawTerm": "connect (v)"
+  },
+  {
+    "lessonId": "1C",
+    "definition": "belonging or relating to one particular person, rather than to other people, to people in general or to the company you work for",
+    "page": 9,
+    "term": "personal",
+    "partOfSpeech": "adj",
+    "rawTerm": "personal (adj)"
+  },
+  {
+    "lessonId": "1C",
+    "definition": "to move (information or programs) from a computer network to an individual computer",
+    "page": 9,
+    "term": "download",
+    "partOfSpeech": "v",
+    "rawTerm": "download (v)"
+  },
+  {
+    "lessonId": "1C",
+    "definition": "if you stream sound or video, you play it on your computer while it is being downloaded from the Internet, rather than saving it as a file and then playing it",
+    "page": 9,
+    "term": "stream",
+    "partOfSpeech": "v",
+    "rawTerm": "stream (v)"
+  },
+  {
+    "lessonId": "1D",
+    "definition": "sb who is in charge of a meeting or directs the work of a committee or organisation",
+    "page": 9,
+    "term": "chairperson",
+    "partOfSpeech": "n",
+    "rawTerm": "chairperson (n)"
+  },
+  {
+    "lessonId": "1D",
+    "definition": "a list of the subjects to be discussed at a meeting",
+    "page": 9,
+    "term": "agenda",
+    "partOfSpeech": "n",
+    "rawTerm": "agenda (n)"
+  },
+  {
+    "lessonId": "1D",
+    "definition": "an official written record of what is said and decided at a meeting",
+    "page": 9,
+    "term": "minutes",
+    "partOfSpeech": "n pl",
+    "rawTerm": "minutes (n pl)"
+  },
+  {
+    "lessonId": "1D",
+    "definition": "a discussion in which people in different places talk to each other using telephones or video equipment",
+    "page": 9,
+    "term": "teleconference",
+    "partOfSpeech": "n",
+    "rawTerm": "teleconference (n)"
+  },
+  {
+    "lessonId": "1D",
+    "definition": "a discussion in which people in different places talk to each other using video equipment",
+    "page": 9,
+    "term": "videoconference",
+    "partOfSpeech": "n",
+    "rawTerm": "videoconference (n)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "to change the size of sth",
+    "page": 15,
+    "term": "resize",
+    "partOfSpeech": "v",
+    "rawTerm": "resize (v)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "a part on the side of a computer screen that you move using a mouse in order to move up or down",
+    "page": 15,
+    "term": "scroll bar",
+    "partOfSpeech": "n phr",
+    "rawTerm": "scroll bar (n phr)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "a list of things on a computer screen that you can ask the computer to do",
+    "page": 15,
+    "term": "menu",
+    "partOfSpeech": "n",
+    "rawTerm": "menu (n)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "a small area on a computer screen that you click on in order to make a document or program window very small when you are not using it but still want to keep it open",
+    "page": 15,
+    "term": "minimise button",
+    "partOfSpeech": "n phr",
+    "rawTerm": "minimise button (n phr)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "a small area on a computer screen that you click on in order to make a document or program window as large as possible",
+    "page": 15,
+    "term": "maximise button",
+    "partOfSpeech": "n phr",
+    "rawTerm": "maximise button (n phr)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "the coloured bar at the top of a computer window that shows the name of the program and whether it is being used at that time",
+    "page": 15,
+    "term": "title bar",
+    "partOfSpeech": "n",
+    "rawTerm": "title bar (n)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "a small sign or picture on a computer screen that is used to start a particular operation",
+    "page": 15,
+    "term": "icon",
+    "partOfSpeech": "n",
+    "rawTerm": "icon (n)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "a place where you store a group of related documents together on a computer, or the icon for this",
+    "page": 15,
+    "term": "folder",
+    "partOfSpeech": "n",
+    "rawTerm": "folder (n)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "the name you give to a particular computer file",
+    "page": 15,
+    "term": "filename",
+    "partOfSpeech": "n",
+    "rawTerm": "filename (n)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "one of the separate areas of a computer window where part of a program or set of files is displayed",
+    "page": 15,
+    "term": "pane",
+    "partOfSpeech": "n",
+    "rawTerm": "pane (n)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "one of several areas in a computer window that allows multiple documents to be shown at the same time",
+    "page": 15,
+    "term": "tab",
+    "partOfSpeech": "n",
+    "rawTerm": "tab (n)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "a box for a mark written next to an answer, sth on a list, etc., to show that it is correct, has been dealt with or is required",
+    "page": 16,
+    "term": "tick box",
+    "partOfSpeech": "n",
+    "rawTerm": "tick box (n)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "to press (a button on a computer mouse) twice in order to send an instruction to the computer",
+    "page": 16,
+    "term": "double click",
+    "partOfSpeech": "v",
+    "rawTerm": "double click (v)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "to press (a button on a computer mouse) to choose sth from the screen that you want the computer to do",
+    "page": 16,
+    "term": "click",
+    "partOfSpeech": "v",
+    "rawTerm": "click (v)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "to press the right-hand button on a computer mouse to make the computer do something",
+    "page": 16,
+    "term": "right-click",
+    "partOfSpeech": "v",
+    "rawTerm": "right-click (v)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "to move smoothly over a surface while continuing to touch it, or to make sth move in this way",
+    "page": 16,
+    "term": "slide",
+    "partOfSpeech": "v",
+    "rawTerm": "slide (v)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "to move (words, pictures, etc.) on a computer screen by pulling them along with the mouse",
+    "page": 16,
+    "term": "drag",
+    "partOfSpeech": "v",
+    "rawTerm": "drag (v)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "to choose (sth or sb)",
+    "page": 16,
+    "term": "select",
+    "partOfSpeech": "v",
+    "rawTerm": "select (v)"
+  },
+  {
+    "lessonId": "2A",
+    "definition": "the sign (+), showing that you should add two or more numbers together, or that a number is more than zero",
+    "page": 16,
+    "term": "plus",
+    "partOfSpeech": "n",
+    "rawTerm": "plus (n)"
+  },
+  {
+    "lessonId": "2B",
+    "definition": "pictures or images that are designed to represent objects or facts, especially in a computer program",
+    "page": 16,
+    "term": "graphics",
+    "partOfSpeech": "n pl",
+    "rawTerm": "graphics (n pl)"
+  },
+  {
+    "lessonId": "2B",
+    "definition": "a picture on the screen of a television, cinema or computer",
+    "page": 16,
+    "term": "image",
+    "partOfSpeech": "n",
+    "rawTerm": "image (n)"
+  },
+  {
+    "lessonId": "2B",
+    "definition": "a copy of a film or television programme, or a series of events, recorded as an electronic file",
+    "page": 16,
+    "term": "video",
+    "partOfSpeech": "n",
+    "rawTerm": "video (n)"
+  },
+  {
+    "lessonId": "2B",
+    "definition": "a piece of equipment that you speak into to record your voice or make it louder when you are speaking or performing in public",
+    "page": 16,
+    "term": "microphone",
+    "partOfSpeech": "n",
+    "rawTerm": "microphone (n)"
+  },
+  {
+    "lessonId": "2B",
+    "definition": "a piece of equipment that makes a film or picture appear on a screen or flat surface",
+    "page": 17,
+    "term": "projector",
+    "partOfSpeech": "n",
+    "rawTerm": "projector (n)"
+  },
+  {
+    "lessonId": "2B",
+    "definition": "the part of a radio, sound system, computer, etc. where the sound comes out",
+    "page": 17,
+    "term": "speaker",
+    "partOfSpeech": "n",
+    "rawTerm": "speaker (n)"
+  },
+  {
+    "lessonId": "2B",
+    "definition": "a special camera that can be used to film events and convert them into electronic files",
+    "page": 17,
+    "term": "video camera",
+    "partOfSpeech": "n",
+    "rawTerm": "video camera (n)"
+  },
+  {
+    "lessonId": "2B",
+    "definition": "a pair of special glasses that allow you to see an environment produced by a computer that looks and seems real",
+    "page": 17,
+    "term": "virtual reality goggles",
+    "partOfSpeech": "n pl",
+    "rawTerm": "goggles (n pl)",
+    "extractionNote": "Term prefix virtual reality recovered from the preceding definition cell."
+  },
+  {
+    "lessonId": "2B",
+    "definition": "a video camera that broadcasts what it is filming on a website or on another person’s computer",
+    "page": 17,
+    "term": "webcam",
+    "partOfSpeech": "n",
+    "rawTerm": "webcam (n)"
+  },
+  {
+    "lessonId": "2B",
+    "definition": "a plastic or rubber tube containing wires that carry telephone messages, electronic signals, television pictures, etc.",
+    "page": 17,
+    "term": "cable",
+    "partOfSpeech": "n",
+    "rawTerm": "cable (n)"
+  },
+  {
+    "lessonId": "2B",
+    "definition": "to push (a button, switch, etc.) to make a machine start or do sth, a bell ring, etc.",
+    "page": 17,
+    "term": "press",
+    "partOfSpeech": "v",
+    "rawTerm": "press (v)"
+  },
+  {
+    "lessonId": "2B",
+    "definition": "to turn off (a machine, light, radio, etc.) using a switch",
+    "page": 17,
+    "term": "switch off",
+    "partOfSpeech": "phr v",
+    "rawTerm": "switch off (phr v)"
+  },
+  {
+    "lessonId": "2B",
+    "definition": "to disconnect (a piece of electrical equipment) by pulling its plug out of a socket",
+    "page": 17,
+    "term": "unplug",
+    "partOfSpeech": "v",
+    "rawTerm": "unplug (v)"
+  },
+  {
+    "lessonId": "2C",
+    "definition": "to start sth (a machine, process, etc.) again after it has stopped",
+    "page": 17,
+    "term": "restart",
+    "partOfSpeech": "v",
+    "rawTerm": "restart (v)"
+  },
+  {
+    "lessonId": "2C",
+    "definition": "to divide (the storage area of a hard disk) into two or more parts",
+    "page": 17,
+    "term": "partition",
+    "partOfSpeech": "v",
+    "rawTerm": "partition (v)"
+  },
+  {
+    "lessonId": "2C",
+    "definition": "(= Basic Input Output System) a system on PCs that provides a small library of basic input/output functions used to operate and control the keyboard, text display, etc.",
+    "page": 17,
+    "term": "BIOS",
+    "partOfSpeech": "n",
+    "rawTerm": "BIOS (n)"
+  },
+  {
+    "lessonId": "2C",
+    "definition": "the disk in a computer that is used to start the program that makes the computer ready to be used",
+    "page": 17,
+    "term": "boot drive",
+    "partOfSpeech": "n",
+    "rawTerm": "boot drive (n)"
+  },
+  {
+    "lessonId": "2C",
+    "definition": "a unique sequence of numbers and letters that is typed into a computer to prove that the user has a licence to load and use a program",
+    "page": 18,
+    "term": "product key",
+    "partOfSpeech": "n",
+    "rawTerm": "product key (n)"
+  },
+  {
+    "lessonId": "2C",
+    "definition": "a system that records your username and password and gives you access to a computer, your email, etc.",
+    "page": 18,
+    "term": "user account",
+    "partOfSpeech": "n",
+    "rawTerm": "user account (n)"
+  },
+  {
+    "lessonId": "2C",
+    "definition": "if you reboot a computer, or if it reboots, you start it up again",
+    "page": 18,
+    "term": "reboot",
+    "partOfSpeech": "v",
+    "rawTerm": "reboot (v)"
+  },
+  {
+    "lessonId": "2C",
+    "definition": "a series of actions that are done in order to achieve a particular result",
+    "page": 18,
+    "term": "process",
+    "partOfSpeech": "n",
+    "rawTerm": "process (n)"
+  },
+  {
+    "lessonId": "2C",
+    "definition": "to make a copy of (information stored on a computer)",
+    "page": 18,
+    "term": "back up",
+    "partOfSpeech": "phr v",
+    "rawTerm": "back up (phr v)"
+  },
+  {
+    "lessonId": "2C",
+    "definition": "the conditions, set by the software developer, under which a user can use a computer program",
+    "page": 18,
+    "term": "licence terms",
+    "partOfSpeech": "n pl",
+    "rawTerm": "licence terms (n pl)"
+  },
+  {
+    "lessonId": "2C",
+    "definition": "open source software is provided free, and includes the language the program is written in, so that the people who use it can make changes to the software",
+    "page": 18,
+    "term": "open source",
+    "partOfSpeech": "adj",
+    "rawTerm": "open source (adj)"
+  },
+  {
+    "lessonId": "2C",
+    "definition": "a proprietary product is one that is sold under a trade name",
+    "page": 18,
+    "term": "proprietary",
+    "partOfSpeech": "adj",
+    "rawTerm": "proprietary (adj)"
+  },
+  {
+    "lessonId": "2D",
+    "definition": "not contained within the case of a computer, but attached by a cable or wirelessly",
+    "page": 18,
+    "term": "external",
+    "partOfSpeech": "adj",
+    "rawTerm": "external (adj)"
+  },
+  {
+    "lessonId": "2D",
+    "definition": "a piece of equipment that you wear over your ears to listen to the radio, music, etc. without other people hearing it",
+    "page": 18,
+    "term": "headphones",
+    "partOfSpeech": "n pl",
+    "rawTerm": "headphones (n pl)"
+  },
+  {
+    "lessonId": "2D",
+    "definition": "a computer disk that contains electronic parts, such as silicon chips, rather than moving mechanical parts",
+    "page": 18,
+    "term": "solid state drive",
+    "partOfSpeech": "n phr",
+    "rawTerm": "solid state drive (n phr)"
+  },
+  {
+    "lessonId": "2D",
+    "definition": "a machine that is connected to a computer and can make a printed record of computer information",
+    "page": 19,
+    "term": "printer",
+    "partOfSpeech": "n",
+    "rawTerm": "printer (n)"
+  },
+  {
+    "lessonId": "2D",
+    "definition": "a board where all the circuits of a computer are placed",
+    "page": 19,
+    "term": "motherboard",
+    "partOfSpeech": "n",
+    "rawTerm": "motherboard (n)"
+  },
+  {
+    "lessonId": "2D",
+    "definition": "sb who is being trained for a job",
+    "page": 19,
+    "term": "trainee",
+    "partOfSpeech": "n",
+    "rawTerm": "trainee (n)"
+  },
+  {
+    "lessonId": "2D",
+    "definition": "the part of a recording that contains sounds and music but not pictures",
+    "page": 19,
+    "term": "audio",
+    "partOfSpeech": "n",
+    "rawTerm": "audio (n)"
+  },
+  {
+    "lessonId": "2D",
+    "definition": "the place on a piece of electrical equipment that you put a plug into",
+    "page": 19,
+    "term": "socket",
+    "partOfSpeech": "n",
+    "rawTerm": "socket (n)"
+  },
+  {
+    "lessonId": "2D",
+    "definition": "(= Central Processing Unit) the part of a computer that controls what it does",
+    "page": 19,
+    "term": "CPU",
+    "partOfSpeech": "n",
+    "rawTerm": "CPU (n)"
+  },
+  {
+    "lessonId": "2D",
+    "definition": "the place on a computer where you can insert a DIMM (= Dual Inline Memory Module) to increase its random-access memory",
+    "page": 19,
+    "term": "DIMM slot",
+    "partOfSpeech": "n",
+    "rawTerm": "DIMM slot (n)"
+  },
+  {
+    "lessonId": "2D",
+    "definition": "a type of cable used when a computer is connected to other computer networks",
+    "page": 19,
+    "term": "Ethernet connector",
+    "partOfSpeech": "n",
+    "rawTerm": "connector (n)",
+    "extractionNote": "Term prefix Ethernet recovered from the preceding definition cell."
+  },
+  {
+    "lessonId": "3A",
+    "definition": "the place in an email where you put the name of thing you are talking about or considering",
+    "page": 26,
+    "term": "subject line",
+    "partOfSpeech": "n",
+    "rawTerm": "subject line (n)"
+  },
+  {
+    "lessonId": "3A",
+    "definition": "sb who receives sth",
+    "page": 26,
+    "term": "recipient",
+    "partOfSpeech": "n",
+    "rawTerm": "recipient (n)"
+  },
+  {
+    "lessonId": "3A",
+    "definition": "your name written in the way you usually write it, for example at the end of an email, a letter, or on a cheque to show that you have written it",
+    "page": 26,
+    "term": "signature",
+    "partOfSpeech": "n",
+    "rawTerm": "signature (n)"
+  },
+  {
+    "lessonId": "3A",
+    "definition": "a document or file that is sent with an email message",
+    "page": 26,
+    "term": "attachment",
+    "partOfSpeech": "n",
+    "rawTerm": "attachment (n)"
+  },
+  {
+    "lessonId": "3A",
+    "definition": "a computer program that tells you when you have spelled a word wrongly",
+    "page": 26,
+    "term": "spell checker",
+    "partOfSpeech": "n",
+    "rawTerm": "spell checker (n)"
+  },
+  {
+    "lessonId": "3A",
+    "definition": "a duplicate of an email message you are sending to sb else",
+    "page": 26,
+    "term": "copy",
+    "partOfSpeech": "n",
+    "rawTerm": "copy (n)"
+  },
+  {
+    "lessonId": "3A",
+    "definition": "to remove (sth that has been written down or stored in a computer)",
+    "page": 26,
+    "term": "delete",
+    "partOfSpeech": "v",
+    "rawTerm": "delete (v)"
+  },
+  {
+    "lessonId": "3A",
+    "definition": "a rule or instruction about the best way to do sth",
+    "page": 26,
+    "term": "guideline",
+    "partOfSpeech": "n",
+    "rawTerm": "guideline (n)"
+  },
+  {
+    "lessonId": "3B",
+    "definition": "a computer program that finds information on the Internet and shows it on your computer screen",
+    "page": 26,
+    "term": "browser",
+    "partOfSpeech": "n",
+    "rawTerm": "browser (n)"
+  },
+  {
+    "lessonId": "3B",
+    "definition": "to find (information), especially on a computer",
+    "page": 26,
+    "term": "access",
+    "partOfSpeech": "v",
+    "rawTerm": "access (v)"
+  },
+  {
+    "lessonId": "3B",
+    "definition": "a way of saving the address of a page on the Internet so that you can find it again",
+    "page": 26,
+    "term": "bookmark",
+    "partOfSpeech": "n",
+    "rawTerm": "bookmark (n)"
+  },
+  {
+    "lessonId": "3B",
+    "definition": "a small area on a web browser or a computer program that you click on in order to go back to the previous page",
+    "page": 26,
+    "term": "back button",
+    "partOfSpeech": "n phr",
+    "rawTerm": "back button (n phr)"
+  },
+  {
+    "lessonId": "3B",
+    "definition": "a special word or picture in an Internet document or on a web page, that you click on to move quickly to another part of the same document/web page or to another document/web page",
+    "page": 27,
+    "term": "link",
+    "partOfSpeech": "n",
+    "rawTerm": "link (n)"
+  },
+  {
+    "lessonId": "3B",
+    "definition": "if you refresh your computer screen while you are connected to the Internet, you make the screen show any new information that has arrived since you first began looking at it",
+    "page": 27,
+    "term": "refresh",
+    "partOfSpeech": "v",
+    "rawTerm": "refresh (v)"
+  },
+  {
+    "lessonId": "3B",
+    "definition": "to click on (a link) and go to the part of a document or web page that it takes you to",
+    "page": 27,
+    "term": "follow",
+    "partOfSpeech": "v",
+    "rawTerm": "follow (v)"
+  },
+  {
+    "lessonId": "3B",
+    "definition": "to be involved in (an activity, sport, event, etc.) with other people",
+    "page": 27,
+    "term": "take part in",
+    "partOfSpeech": "phr v",
+    "rawTerm": "take part in (phr v)"
+  },
+  {
+    "lessonId": "3B",
+    "definition": "to put (a message or computer document) on the Internet so that other people can see it",
+    "page": 27,
+    "term": "post",
+    "partOfSpeech": "v",
+    "rawTerm": "post (v)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "a part of sth that you notice because it seems important, interesting or typical",
+    "page": 27,
+    "term": "feature",
+    "partOfSpeech": "n",
+    "rawTerm": "feature (n)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "a drawing that uses shapes and lines to show how the different stages in a process are connected to each other",
+    "page": 27,
+    "term": "flowchart",
+    "partOfSpeech": "n",
+    "rawTerm": "flowchart (n)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "a list of goods that have been supplied or work that has been done, showing how much you owe for them",
+    "page": 27,
+    "term": "invoice",
+    "partOfSpeech": "n",
+    "rawTerm": "invoice (n)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "to write your signature on (sth) to show that you wrote it, agree with it or were present",
+    "page": 27,
+    "term": "sign",
+    "partOfSpeech": "v",
+    "rawTerm": "sign (v)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "(= Global Positioning System) a system that uses radio signals from satellites to show your exact position on the Earth on a special piece of equipment",
+    "page": 27,
+    "term": "GPS",
+    "partOfSpeech": "n",
+    "rawTerm": "GPS (n)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "a copy of sth presented in a form that can be read on a computer",
+    "page": 28,
+    "term": "electronic version",
+    "partOfSpeech": "n phr",
+    "rawTerm": "electronic version (n phr)"
+  },
+  {
+    "lessonId": "3C",
+    "term": "remotely",
+    "definition": "from far away",
+    "partOfSpeech": "adv",
+    "page": 28,
+    "rawTerm": "remotely (adv)",
+    "extractionNote": "Separate vocabulary entry embedded in the preceding definition cell in the PDF."
+  },
+  {
+    "lessonId": "3C",
+    "definition": "one of the basic operations performed by a computer",
+    "page": 28,
+    "term": "function",
+    "partOfSpeech": "n",
+    "rawTerm": "function (n)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "the period of time during which an object that provides a supply of electricity for sth such as a radio, car or toy is still good enough to use",
+    "page": 28,
+    "term": "battery life",
+    "partOfSpeech": "n",
+    "rawTerm": "battery life (n)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "a machine that puts a new supply of electricity into a battery",
+    "page": 28,
+    "term": "recharger",
+    "partOfSpeech": "n",
+    "rawTerm": "recharger (n)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "to change (sth) to make it more suitable for you, or to make it look special or different from things of a similar type",
+    "page": 28,
+    "term": "customise",
+    "partOfSpeech": "v",
+    "rawTerm": "customise (v)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "to attach a computer code to (a word, phrase, image, etc.) in order to arrange the data in a particular way",
+    "page": 28,
+    "term": "tag",
+    "partOfSpeech": "v",
+    "rawTerm": "tag (v)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "(= Optical Character Recognition) computer software that recognizes numbers and letters of the alphabet that are written on paper, so that information from paper documents can be scanned into a computer",
+    "page": 28,
+    "term": "OCR",
+    "partOfSpeech": "n",
+    "rawTerm": "OCR (n)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "to give people information about (recent events)",
+    "page": 28,
+    "term": "report",
+    "partOfSpeech": "v",
+    "rawTerm": "report (v)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "the position of sth or sb",
+    "page": 28,
+    "term": "location",
+    "partOfSpeech": "n",
+    "rawTerm": "location (n)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "used to emphasise that a number, amount or piece of information is or should be completely correct in every detail",
+    "page": 28,
+    "term": "exactly",
+    "partOfSpeech": "adv",
+    "rawTerm": "exactly (adv)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "information about sth that is written down or stored on computer, film, etc. so that it can be looked at in the future",
+    "page": 28,
+    "term": "record",
+    "partOfSpeech": "n",
+    "rawTerm": "record (n)"
+  },
+  {
+    "lessonId": "3C",
+    "definition": "a device that measures the rate at which the speed of an object increases",
+    "page": 28,
+    "term": "accelerometer",
+    "partOfSpeech": "n",
+    "rawTerm": "accelerometer (n)"
+  },
+  {
+    "lessonId": "3D",
+    "definition": "connected together using pieces of thin metal in the form of threads",
+    "page": 29,
+    "term": "wired",
+    "partOfSpeech": "adj",
+    "rawTerm": "wired (adj)"
+  },
+  {
+    "lessonId": "3D",
+    "definition": "connected together by using radio signals rather than wires",
+    "page": 29,
+    "term": "wireless",
+    "partOfSpeech": "adj",
+    "rawTerm": "wireless (adj)"
+  },
+  {
+    "lessonId": "3D",
+    "definition": "(= Local Area Network) a system that connects computers to each other within a building or organisation so that people can use and work on the same information",
+    "page": 29,
+    "term": "LAN",
+    "partOfSpeech": "n",
+    "rawTerm": "LAN (n)"
+  },
+  {
+    "lessonId": "3D",
+    "definition": "(= Wide Area Network) a system that connects computers to each other over a large area, sometimes between countries, so that people can use and work on the same information",
+    "page": 29,
+    "term": "WAN",
+    "partOfSpeech": "n",
+    "rawTerm": "WAN (n)"
+  },
+  {
+    "lessonId": "3D",
+    "definition": "the main computer on a network, that controls all the others, or one of the computers on a network that provides a special service",
+    "page": 29,
+    "term": "server",
+    "partOfSpeech": "n",
+    "rawTerm": "server (n)"
+  },
+  {
+    "lessonId": "3D",
+    "definition": "a circuit that connects the main parts of a computer so that signals can be sent from one part of the computer to another, or that links computers on a network to one another",
+    "page": 29,
+    "term": "bus",
+    "partOfSpeech": "n",
+    "rawTerm": "bus (n)"
+  },
+  {
+    "lessonId": "3D",
+    "definition": "a circuit that connects each computer on a network to several others",
+    "page": 29,
+    "term": "mesh",
+    "partOfSpeech": "n",
+    "rawTerm": "mesh (n)"
+  },
+  {
+    "lessonId": "3D",
+    "definition": "a small device that plugs into an electrical connector on a computer and functions as an electronic ‘key’ to unlock access to a piece of software",
+    "page": 29,
+    "term": "dongle",
+    "partOfSpeech": "n",
+    "rawTerm": "dongle (n)"
+  },
+  {
+    "lessonId": "3D",
+    "definition": "(= Virtual Private Network) a secure network that uses the Internet to allow remote offices or travelling users to access a company’s central network",
+    "page": 29,
+    "term": "VPN",
+    "partOfSpeech": "n",
+    "rawTerm": "VPN (n)"
+  },
+  {
+    "lessonId": "3D",
+    "definition": "to protect (information) by putting it into a special code that only some people can read, especially information that is on a computer",
+    "page": 29,
+    "term": "encrypt",
+    "partOfSpeech": "v",
+    "rawTerm": "encrypt (v)"
+  },
+  {
+    "lessonId": "3D",
+    "definition": "(= wireless fidelity) a way of connecting computers or other electronic machines to a network by using radio signals rather than wires",
+    "page": 29,
+    "term": "wi-fi",
+    "partOfSpeech": "n",
+    "rawTerm": "wi-fi (n)"
+  },
+  {
+    "lessonId": "4A",
+    "definition": "an official document with spaces where you write information, especially about yourself",
+    "page": 37,
+    "term": "form",
+    "partOfSpeech": "n",
+    "rawTerm": "form (n)"
+  },
+  {
+    "lessonId": "4A",
+    "definition": "a list of numbers, facts or information arranged in rows across and down a page",
+    "page": 37,
+    "term": "table",
+    "partOfSpeech": "n",
+    "rawTerm": "table (n)"
+  },
+  {
+    "lessonId": "4A",
+    "definition": "to explain (sth) to (sb)",
+    "page": 37,
+    "term": "walk (somebody) through (something)",
+    "partOfSpeech": "phr v",
+    "rawTerm": "walk (somebody) through (something) (phr v)"
+  },
+  {
+    "lessonId": "4A",
+    "definition": "in a computer document, an amount of space made available for a particular type of information",
+    "page": 37,
+    "term": "field",
+    "partOfSpeech": "n",
+    "rawTerm": "field (n)"
+  },
+  {
+    "lessonId": "4A",
+    "definition": "a combination of written information on a computer and instructions that act on the information, for example in the form of a document or a picture",
+    "page": 37,
+    "term": "object",
+    "partOfSpeech": "n",
+    "rawTerm": "object (n)"
+  },
+  {
+    "lessonId": "4A",
+    "definition": "in a table, sth that uniquely identifies each record",
+    "page": 37,
+    "term": "primary key",
+    "partOfSpeech": "n phr",
+    "rawTerm": "primary key (n phr)"
+  },
+  {
+    "lessonId": "4A",
+    "definition": "to ask a question about the data stored in a computer system, in order to retrieve some information",
+    "page": 37,
+    "term": "query the database",
+    "partOfSpeech": "phr",
+    "rawTerm": "query the database (phr)"
+  },
+  {
+    "lessonId": "4A",
+    "definition": "to get back a piece of information that has been stored in the memory of a computer",
+    "page": 37,
+    "term": "retrieve a record",
+    "partOfSpeech": "phr",
+    "rawTerm": "retrieve a record (phr)"
+  },
+  {
+    "lessonId": "4A",
+    "definition": "being the only one of its kind",
+    "page": 37,
+    "term": "unique",
+    "partOfSpeech": "adj",
+    "rawTerm": "unique (adj)"
+  },
+  {
+    "lessonId": "4B",
+    "definition": "(= Network Attached Storage) a system that allows files to be stored and retrieved across a computer network",
+    "page": 38,
+    "term": "NAS",
+    "partOfSpeech": "n",
+    "rawTerm": "NAS (n)"
+  },
+  {
+    "lessonId": "4B",
+    "definition": "fastened or connected (to sth else)",
+    "page": 38,
+    "term": "attached",
+    "partOfSpeech": "adj",
+    "rawTerm": "attached (adj)"
+  },
+  {
+    "lessonId": "4B",
+    "definition": "an area on a computer that you touch in order to tell the computer what to do or to get information",
+    "page": 38,
+    "term": "touch pad",
+    "partOfSpeech": "n phr",
+    "rawTerm": "touch pad (n phr)"
+  },
+  {
+    "lessonId": "4B",
+    "definition": "a thing shaped like a pen, used for writing on a special computer screen",
+    "page": 38,
+    "term": "stylus",
+    "partOfSpeech": "n",
+    "rawTerm": "stylus (n)"
+  },
+  {
+    "lessonId": "4B",
+    "definition": "a device that allows you to draw on its surface, using a stylus rather than a mouse, with the results appearing on your computer screen",
+    "page": 38,
+    "term": "graphics tablet",
+    "partOfSpeech": "n",
+    "rawTerm": "graphics tablet (n)"
+  },
+  {
+    "lessonId": "4B",
+    "definition": "the art of combining pictures, words and decoration in the production of books, magazines, etc.",
+    "page": 38,
+    "term": "graphic design",
+    "partOfSpeech": "n phr",
+    "rawTerm": "graphic design (n phr)"
+  },
+  {
+    "lessonId": "4B",
+    "definition": "a type of computer screen that you touch in order to tell the computer what to do or to get information",
+    "page": 38,
+    "term": "touch screen",
+    "partOfSpeech": "n phr",
+    "rawTerm": "touch screen (n phr)"
+  },
+  {
+    "lessonId": "4B",
+    "definition": "a set of headphones, often with a microphone attached",
+    "page": 38,
+    "term": "headset",
+    "partOfSpeech": "n",
+    "rawTerm": "headset (n)"
+  },
+  {
+    "lessonId": "4B",
+    "definition": "a multifunction printer is designed to have several different uses, e.g. printing, faxing, scanning, etc.",
+    "page": 38,
+    "term": "multifunction printer",
+    "partOfSpeech": "n phr",
+    "rawTerm": "multifunction printer (n phr)"
+  },
+  {
+    "lessonId": "4B",
+    "definition": "a device that puts information into a computer, e.g. a keyboard",
+    "page": 38,
+    "term": "input device",
+    "partOfSpeech": "n phr",
+    "rawTerm": "input device (n phr)"
+  },
+  {
+    "lessonId": "4B",
+    "term": "jam",
+    "definition": "a situation in which a machine does not work because something is stopping a part from moving",
+    "partOfSpeech": "n",
+    "page": 38,
+    "rawTerm": "jam (n)",
+    "extractionNote": "Separate vocabulary entry embedded in the preceding definition cell in the PDF."
+  },
+  {
+    "lessonId": "4C",
+    "definition": "one of the pair of signs put around words to show extra information",
+    "page": 38,
+    "term": "bracket",
+    "partOfSpeech": "n",
+    "rawTerm": "bracket (n)"
+  },
+  {
+    "lessonId": "4C",
+    "definition": "to calculate how many times (one number) contains a smaller number",
+    "page": 38,
+    "term": "divide",
+    "partOfSpeech": "v",
+    "rawTerm": "divide (v)"
+  },
+  {
+    "lessonId": "4C",
+    "definition": "to take (a number or an amount) from a larger number or amount",
+    "page": 39,
+    "term": "subtract",
+    "partOfSpeech": "v",
+    "rawTerm": "subtract (v)"
+  },
+  {
+    "lessonId": "4C",
+    "definition": "used to show that one number or quantity is being subtracted from another",
+    "page": 39,
+    "term": "minus",
+    "partOfSpeech": "prep",
+    "rawTerm": "minus (prep)"
+  },
+  {
+    "lessonId": "4C",
+    "definition": "to do a calculation in which you add (a number) to itself a particular number of times",
+    "page": 39,
+    "term": "multiply",
+    "partOfSpeech": "v",
+    "rawTerm": "multiply (v)"
+  },
+  {
+    "lessonId": "4C",
+    "definition": "multiplied by",
+    "page": 39,
+    "term": "times",
+    "partOfSpeech": "prep",
+    "rawTerm": "times (prep)"
+  },
+  {
+    "lessonId": "4C",
+    "definition": "the total produced when you add two or more numbers or amounts together",
+    "page": 39,
+    "term": "sum",
+    "partOfSpeech": "n",
+    "rawTerm": "sum (n)"
+  },
+  {
+    "lessonId": "4C",
+    "definition": "used to show that one number or quantity is being added to another",
+    "page": 39,
+    "term": "plus",
+    "partOfSpeech": "prep",
+    "rawTerm": "plus (prep)"
+  },
+  {
+    "lessonId": "4C",
+    "definition": "a line of numbers or words written under each other that goes down a page",
+    "page": 39,
+    "term": "column",
+    "partOfSpeech": "n",
+    "rawTerm": "column (n)"
+  },
+  {
+    "lessonId": "4C",
+    "definition": "a line of numbers or words written next to each other that goes across a page",
+    "page": 39,
+    "term": "row",
+    "partOfSpeech": "n",
+    "rawTerm": "row (n)"
+  },
+  {
+    "lessonId": "4C",
+    "definition": "a single page or tab within a spreadsheet document",
+    "page": 39,
+    "term": "worksheet",
+    "partOfSpeech": "n",
+    "rawTerm": "worksheet (n)"
+  },
+  {
+    "lessonId": "4D",
+    "definition": "to organise or move (soldiers, equipment, etc.) so that they are in the right place and ready to be used",
+    "page": 39,
+    "term": "deploy",
+    "partOfSpeech": "v",
+    "rawTerm": "deploy (v)"
+  },
+  {
+    "lessonId": "4D",
+    "definition": "an occasion when a computer or computer system suddenly stops working",
+    "page": 39,
+    "term": "crash",
+    "partOfSpeech": "n",
+    "rawTerm": "crash (n)"
+  },
+  {
+    "lessonId": "4D",
+    "definition": "working correctly again after a period of not working",
+    "page": 39,
+    "term": "up and running again",
+    "partOfSpeech": "phr",
+    "rawTerm": "up and running again (phr)"
+  },
+  {
+    "lessonId": "4D",
+    "definition": "if data has read-only access, you are only allowed to read it, not to change it",
+    "page": 39,
+    "term": "read-only access",
+    "partOfSpeech": "n phr",
+    "rawTerm": "read-only access (n phr)"
+  },
+  {
+    "lessonId": "4D",
+    "definition": "if sb is locked out of a computer, system, etc. they cannot access it",
+    "page": 39,
+    "term": "lock (someone) out of (something)",
+    "partOfSpeech": "phr v",
+    "rawTerm": "lock (someone) out of (something) (phr v)"
+  },
+  {
+    "lessonId": "4D",
+    "definition": "to make sure that (sth) is actually true, correct or acceptable; to investigate",
+    "page": 39,
+    "term": "check (sth) out",
+    "partOfSpeech": "phr v",
+    "rawTerm": "check (sth) out (phr v)"
+  },
+  {
+    "lessonId": "4D",
+    "definition": "the button that you press on a computer when you want to use only capital letters",
+    "page": 40,
+    "term": "Caps Lock",
+    "partOfSpeech": "phr",
+    "rawTerm": "Caps Lock (phr)"
+  },
+  {
+    "lessonId": "4D",
+    "definition": "when sb is officially allowed to do sth",
+    "page": 40,
+    "term": "permission",
+    "partOfSpeech": "n",
+    "rawTerm": "permission (n)"
+  },
+  {
+    "lessonId": "4D",
+    "definition": "an official record of events",
+    "page": 40,
+    "term": "log",
+    "partOfSpeech": "n",
+    "rawTerm": "log (n)"
+  },
+  {
+    "lessonId": "4D",
+    "definition": "to change (a clock, password, machine, etc.) so that it shows a different time, number, etc. or is ready to be used again",
+    "page": 40,
+    "term": "reset",
+    "partOfSpeech": "v",
+    "rawTerm": "reset (v)"
+  },
+  {
+    "lessonId": "5A",
+    "definition": "sth such as a piece of equipment or a decoration that is not necessary, but that makes a machine, car, room, etc. more useful or more attractive",
+    "page": 47,
+    "term": "accessory",
+    "partOfSpeech": "n",
+    "rawTerm": "accessory (n)"
+  },
+  {
+    "lessonId": "5A",
+    "definition": "a particular type of help or work that is provided by a business to customers, but not one that involves producing goods",
+    "page": 47,
+    "term": "service",
+    "partOfSpeech": "n",
+    "rawTerm": "service (n)"
+  },
+  {
+    "lessonId": "5A",
+    "definition": "a device that can take the information that is on a disk, memory card, etc. and put it into its memory",
+    "page": 47,
+    "term": "reader",
+    "partOfSpeech": "n",
+    "rawTerm": "reader (n)"
+  },
+  {
+    "lessonId": "5A",
+    "definition": "a piece of equipment used to put electricity into a battery",
+    "page": 47,
+    "term": "charger",
+    "partOfSpeech": "n",
+    "rawTerm": "charger (n)"
+  },
+  {
+    "lessonId": "5A",
+    "definition": "a piece of electronic equipment for storing data, used in computers, digital cameras, mobile phones, etc.",
+    "page": 47,
+    "term": "card",
+    "partOfSpeech": "n",
+    "rawTerm": "card (n)"
+  },
+  {
+    "lessonId": "5A",
+    "definition": "a written agreement in which a company selling sth promises to repair it if it breaks within a particular period of time that is longer than the basic guarantee",
+    "page": 47,
+    "term": "extended warranty",
+    "partOfSpeech": "n phr",
+    "rawTerm": "extended warranty (n phr)"
+  },
+  {
+    "lessonId": "5A",
+    "definition": "to examine or think about (sth) carefully, in order to understand it",
+    "page": 47,
+    "term": "analyse",
+    "partOfSpeech": "v",
+    "rawTerm": "analyse (v)"
+  },
+  {
+    "lessonId": "5B",
+    "definition": "flat; having only length and depth, not height",
+    "page": 47,
+    "term": "2-D",
+    "partOfSpeech": "adj",
+    "rawTerm": "2-D (adj)"
+  },
+  {
+    "lessonId": "5B",
+    "definition": "having, or seeming to have, length, depth and height",
+    "page": 47,
+    "term": "3-D",
+    "partOfSpeech": "adj",
+    "rawTerm": "3-D (adj)"
+  },
+  {
+    "lessonId": "5B",
+    "definition": "the natural ability, skill or power that makes a machine, person or organisation able to do sth, especially sth difficult",
+    "page": 47,
+    "term": "capability",
+    "partOfSpeech": "n",
+    "rawTerm": "capability (n)"
+  },
+  {
+    "lessonId": "5B",
+    "definition": "the ability of one piece of computer equipment, document, etc. to be used with another one, especially when they are made by different companies",
+    "page": 48,
+    "term": "compatibility",
+    "partOfSpeech": "n",
+    "rawTerm": "compatibility (n)"
+  },
+  {
+    "lessonId": "5B",
+    "definition": "a book or piece of writing that provides information on a particular subject or explains how to do sth",
+    "page": 48,
+    "term": "user guide",
+    "partOfSpeech": "n",
+    "rawTerm": "user guide (n)"
+  },
+  {
+    "lessonId": "5B",
+    "definition": "a group of computer users who are interested in a particular subject and discuss it using email or the Internet",
+    "page": 48,
+    "term": "forum",
+    "partOfSpeech": "n",
+    "rawTerm": "forum (n)"
+  },
+  {
+    "lessonId": "5B",
+    "definition": "a written or spoken explanation at the beginning of a book, speech, etc.",
+    "page": 48,
+    "term": "introduction",
+    "partOfSpeech": "n",
+    "rawTerm": "introduction (n)"
+  },
+  {
+    "lessonId": "5B",
+    "definition": "the main, central or most important part of sth",
+    "page": 48,
+    "term": "body",
+    "partOfSpeech": "n",
+    "rawTerm": "body (n)"
+  },
+  {
+    "lessonId": "5B",
+    "definition": "the end or final part of sth",
+    "page": 48,
+    "term": "conclusion",
+    "partOfSpeech": "n",
+    "rawTerm": "conclusion (n)"
+  },
+  {
+    "lessonId": "5C",
+    "definition": "a way of charging for sth that follows ideas and methods that have existed for a long time, rather than doing anything new or different",
+    "page": 48,
+    "term": "traditional pricing",
+    "partOfSpeech": "n phr",
+    "rawTerm": "traditional pricing (n phr)"
+  },
+  {
+    "lessonId": "5C",
+    "definition": "very large or important, when compared to other things or people of a similar kind",
+    "page": 48,
+    "term": "major",
+    "partOfSpeech": "adj",
+    "rawTerm": "major (adj)"
+  },
+  {
+    "lessonId": "5C",
+    "definition": "small and not very important or serious, especially when compared with other things",
+    "page": 48,
+    "term": "minor",
+    "partOfSpeech": "adj",
+    "rawTerm": "minor (adj)"
+  },
+  {
+    "lessonId": "5C",
+    "definition": "sb who owns or controls sth",
+    "page": 48,
+    "term": "holder",
+    "partOfSpeech": "n",
+    "rawTerm": "holder (n)"
+  },
+  {
+    "lessonId": "5C",
+    "definition": "if a book, record, computer program, etc. comes out, it becomes publicly available",
+    "page": 48,
+    "term": "come out",
+    "partOfSpeech": "phr v",
+    "rawTerm": "come out (phr v)"
+  },
+  {
+    "lessonId": "5C",
+    "definition": "to test (sth) such as a method or a piece of equipment to see whether it is effective or works properly",
+    "page": 48,
+    "term": "try out",
+    "partOfSpeech": "phr v",
+    "rawTerm": "try out (phr v)"
+  },
+  {
+    "lessonId": "5C",
+    "definition": "a short period during which you use or do sth or employ sb to find out whether they are satisfactory for a particular purpose or job",
+    "page": 48,
+    "term": "trial period",
+    "partOfSpeech": "n phr",
+    "rawTerm": "trial period (n phr)"
+  },
+  {
+    "lessonId": "5C",
+    "definition": "a way of charging for sth that means that you pay more for a more complicated version of it, or less for a simpler version",
+    "page": 49,
+    "term": "tiered pricing",
+    "partOfSpeech": "n phr",
+    "rawTerm": "tiered pricing (n phr)"
+  },
+  {
+    "lessonId": "5C",
+    "definition": "one of several levels in an organisation or system",
+    "page": 49,
+    "term": "tier",
+    "partOfSpeech": "n",
+    "rawTerm": "tier (n)"
+  },
+  {
+    "lessonId": "5C",
+    "definition": "a group of similar things that belong together or are related in some way",
+    "page": 49,
+    "term": "set",
+    "partOfSpeech": "n",
+    "rawTerm": "set (n)"
+  },
+  {
+    "lessonId": "5D",
+    "definition": "a system where many websites are held on one web server connected to the Internet",
+    "page": 49,
+    "term": "shared hosting",
+    "partOfSpeech": "n phr",
+    "rawTerm": "shared hosting (n phr)"
+  },
+  {
+    "lessonId": "5D",
+    "definition": "a system where each individual website is held on its own web server connected to the Internet",
+    "page": 49,
+    "term": "dedicated hosting",
+    "partOfSpeech": "n phr",
+    "rawTerm": "dedicated hosting (n phr)"
+  },
+  {
+    "lessonId": "5D",
+    "definition": "a building used to house computer systems and associated components, such as storage systems",
+    "page": 49,
+    "term": "data centre",
+    "partOfSpeech": "n",
+    "rawTerm": "data centre (n)"
+  },
+  {
+    "lessonId": "5D",
+    "definition": "a document that shows exactly what price will be charged for each variety or level of sth",
+    "page": 49,
+    "term": "plan",
+    "partOfSpeech": "n",
+    "rawTerm": "plan (n)"
+  },
+  {
+    "lessonId": "5D",
+    "definition": "a formal written promise to repair or replace a product if it breaks within a specific period of time",
+    "page": 49,
+    "term": "guarantee",
+    "partOfSpeech": "n",
+    "rawTerm": "guarantee (n)"
+  },
+  {
+    "lessonId": "5D",
+    "definition": "the period of time when a computer is working normally and is able to be used",
+    "page": 49,
+    "term": "uptime",
+    "partOfSpeech": "n",
+    "rawTerm": "uptime (n)"
+  },
+  {
+    "lessonId": "5D",
+    "definition": "a display that allows computer users to view and change basic system settings and controls",
+    "page": 49,
+    "term": "control panel",
+    "partOfSpeech": "n",
+    "rawTerm": "control panel (n)"
+  },
+  {
+    "lessonId": "5D",
+    "definition": "without any limit in number",
+    "page": 49,
+    "term": "unlimited",
+    "partOfSpeech": "adj",
+    "rawTerm": "unlimited (adj)"
+  },
+  {
+    "lessonId": "5D",
+    "definition": "the amount of information that you are allowed to access through a telephone wire, computer connection, etc. in any one month",
+    "page": 49,
+    "term": "monthly bandwidth",
+    "partOfSpeech": "n phr",
+    "rawTerm": "monthly bandwidth (n phr)"
+  },
+  {
+    "lessonId": "5D",
+    "definition": "(= Internet Protocol address) a special number that is used to identify a computer, and which the computer needs in order to be able to connect to the Internet",
+    "page": 49,
+    "term": "IP address",
+    "partOfSpeech": "n",
+    "rawTerm": "IP address (n)"
+  },
+  {
+    "lessonId": "5D",
+    "definition": "an amount of money that you pay to do sth or that you pay to a professional person for their work",
+    "page": 49,
+    "term": "fee",
+    "partOfSpeech": "n",
+    "rawTerm": "fee (n)"
+  },
+  {
+    "lessonId": "6A",
+    "definition": "if two or more things integrate, or if you integrate them, they combine or work together in a way that makes sth more effective",
+    "page": 56,
+    "term": "integrate",
+    "partOfSpeech": "v",
+    "rawTerm": "integrate (v)"
+  },
+  {
+    "lessonId": "6A",
+    "definition": "one of several parts that together make up a whole machine, system, etc.",
+    "page": 56,
+    "term": "component",
+    "partOfSpeech": "n",
+    "rawTerm": "component (n)"
+  },
+  {
+    "lessonId": "6A",
+    "definition": "a piece of information that a website leaves in your computer so that the website will recognize you when you use it again",
+    "page": 56,
+    "term": "cookie",
+    "partOfSpeech": "n",
+    "rawTerm": "cookie (n)"
+  },
+  {
+    "lessonId": "6A",
+    "definition": "a set of instructions that tell a computer what to do",
+    "page": 56,
+    "term": "code",
+    "partOfSpeech": "n",
+    "rawTerm": "code (n)"
+  },
+  {
+    "lessonId": "6A",
+    "definition": "dealing with information using a computer",
+    "page": 56,
+    "term": "processing",
+    "partOfSpeech": "n",
+    "rawTerm": "processing (n)"
+  },
+  {
+    "lessonId": "6A",
+    "definition": "the act of bringing goods, letters, etc. to a particular person or place, or the things that are brought",
+    "page": 56,
+    "term": "delivery",
+    "partOfSpeech": "n",
+    "rawTerm": "delivery (n)"
+  },
+  {
+    "lessonId": "6A",
+    "definition": "goods that you have ordered from a company",
+    "page": 56,
+    "term": "order",
+    "partOfSpeech": "n",
+    "rawTerm": "order (n)"
+  },
+  {
+    "lessonId": "6A",
+    "definition": "the profession or work of keeping or checking financial accounts, calculating taxes, etc.",
+    "page": 56,
+    "term": "accounting",
+    "partOfSpeech": "n",
+    "rawTerm": "accounting (n)"
+  },
+  {
+    "lessonId": "6A",
+    "definition": "a business model in which a company has both offline (bricks) and online (clicks) presences",
+    "page": 56,
+    "term": "bricks and clicks",
+    "partOfSpeech": "n phr",
+    "rawTerm": "bricks and clicks (n phr)"
+  },
+  {
+    "lessonId": "6A",
+    "definition": "(= Digital Rights Management) a method that is used by hardware manufacturers, publishers, copyright holders and individuals to limit the use of digital content and devices after they have been Sold",
+    "page": 56,
+    "term": "DRM",
+    "partOfSpeech": "n",
+    "rawTerm": "DRM (n)"
+  },
+  {
+    "lessonId": "6A",
+    "definition": "(= Near Field Communication) a set of standards for smart-phones and similar devices that allows them to communicate with each other by touching them together or bringing them close to each other, usually no more than a few centimetres apart",
+    "page": 57,
+    "term": "NFC",
+    "partOfSpeech": "n",
+    "rawTerm": "NFC (n)"
+  },
+  {
+    "lessonId": "6B",
+    "definition": "a system for blogging in which the content is typically smaller in both actual and overall file sizes than in a normal blog",
+    "page": 57,
+    "term": "microblogging system",
+    "partOfSpeech": "n phr",
+    "rawTerm": "microblogging system (n phr)"
+  },
+  {
+    "lessonId": "6B",
+    "definition": "a service distributing or providing access to digitally stored information",
+    "page": 57,
+    "term": "file sharing service",
+    "partOfSpeech": "n phr",
+    "rawTerm": "file sharing service (n phr)"
+  },
+  {
+    "lessonId": "6B",
+    "definition": "an online service, platform or site that connects people who share interests, activities, backgrounds or real-life connections",
+    "page": 57,
+    "term": "social networking",
+    "partOfSpeech": "n phr",
+    "rawTerm": "social networking (n phr)"
+  },
+  {
+    "lessonId": "6B",
+    "definition": "the state of being free from public attention",
+    "page": 57,
+    "term": "privacy",
+    "partOfSpeech": "n",
+    "rawTerm": "privacy (n)"
+  },
+  {
+    "lessonId": "6B",
+    "definition": "a general tendency in the way a situation is changing or developing",
+    "page": 57,
+    "term": "trend",
+    "partOfSpeech": "n",
+    "rawTerm": "trend (n)"
+  },
+  {
+    "lessonId": "6B",
+    "definition": "a drawing that uses a line or lines to show how two or more sets of measurements are related to each other",
+    "page": 57,
+    "term": "graph",
+    "partOfSpeech": "n",
+    "rawTerm": "graph (n)"
+  },
+  {
+    "lessonId": "6B",
+    "definition": "sb who writes a web page that is made up of information about a particular subject, in which the newest information is always at the top of the page",
+    "page": 57,
+    "term": "blogger",
+    "partOfSpeech": "n",
+    "rawTerm": "blogger (n)"
+  },
+  {
+    "lessonId": "6B",
+    "definition": "a computer system (or set of computer programs) used to track and store electronic documents and/or images of paper documents",
+    "page": 57,
+    "term": "document management system",
+    "partOfSpeech": "n phr",
+    "rawTerm": "document management system (n phr)"
+  },
+  {
+    "lessonId": "6B",
+    "definition": "relating to the translation of spoken words into text",
+    "page": 57,
+    "term": "speech-to-text",
+    "partOfSpeech": "adj",
+    "rawTerm": "speech-to-text (adj)"
+  },
+  {
+    "lessonId": "6B",
+    "definition": "a group of people who work together in a particular part of a large organisation in a foreign country that is across the sea",
+    "page": 58,
+    "term": "overseas department",
+    "partOfSpeech": "n phr",
+    "rawTerm": "overseas department (n phr)"
+  },
+  {
+    "lessonId": "6B",
+    "definition": "the ability of a computer to recognise speech, especially the speech of one particular person",
+    "page": 58,
+    "term": "voice recognition",
+    "partOfSpeech": "n",
+    "rawTerm": "voice recognition (n)"
+  },
+  {
+    "lessonId": "6C",
+    "definition": "a type of service available on the Internet that allows you to quickly exchange written messages with people that you know",
+    "page": 58,
+    "term": "instant messaging",
+    "partOfSpeech": "n phr",
+    "rawTerm": "instant messaging (n phr)"
+  },
+  {
+    "lessonId": "6C",
+    "definition": "a way of doing sth that has been officially agreed and chosen by a political party, business or other organisation",
+    "page": 58,
+    "term": "policy",
+    "partOfSpeech": "n",
+    "rawTerm": "policy (n)"
+  },
+  {
+    "lessonId": "6C",
+    "definition": "a way of doing sth, especially the correct or usual way",
+    "page": 58,
+    "term": "procedure",
+    "partOfSpeech": "n",
+    "rawTerm": "procedure (n)"
+  },
+  {
+    "lessonId": "6C",
+    "definition": "an important or official statement",
+    "page": 58,
+    "term": "announcement",
+    "partOfSpeech": "n",
+    "rawTerm": "announcement (n)"
+  },
+  {
+    "lessonId": "6C",
+    "definition": "a view of messages that are grouped by topic for easy reading",
+    "page": 58,
+    "term": "threaded view",
+    "partOfSpeech": "n phr",
+    "rawTerm": "threaded view (n phr)"
+  },
+  {
+    "lessonId": "6C",
+    "definition": "the process of saving a computer file in a way that uses less space than usual, because you do not use that file often but may need it in the future",
+    "page": 58,
+    "term": "archiving",
+    "partOfSpeech": "n",
+    "rawTerm": "archiving (n) [`a:kiving]"
+  },
+  {
+    "lessonId": "6C",
+    "definition": "attaching a computer code to a computer program or document in order to arrange the data in a particular way",
+    "page": 58,
+    "term": "tagging",
+    "partOfSpeech": "n",
+    "rawTerm": "tagging (n)"
+  },
+  {
+    "lessonId": "6C",
+    "definition": "(= Business to Business) used to refer to business activities between companies, especially using the Internet",
+    "page": 58,
+    "term": "B2B",
+    "partOfSpeech": "adj",
+    "rawTerm": "B2B (adj)"
+  },
+  {
+    "lessonId": "6C",
+    "definition": "(= Business to Consumer) used to refer to business activities between companies and end-users, especially using the Internet",
+    "page": 58,
+    "term": "B2C",
+    "partOfSpeech": "adj",
+    "rawTerm": "B2C (adj)"
+  },
+  {
+    "lessonId": "6C",
+    "definition": "a business that has a physical presence and offers a face-to-face customer experience, as opposed to existing only on the Internet",
+    "page": 58,
+    "term": "bricks and mortar shop",
+    "partOfSpeech": "n phr",
+    "rawTerm": "bricks and mortar shop (n phr)"
+  },
+  {
+    "lessonId": "6D",
+    "definition": "a planned way of doing sth, especially one that a lot of people know about and use",
+    "page": 59,
+    "term": "method",
+    "partOfSpeech": "n",
+    "rawTerm": "method (n)"
+  },
+  {
+    "lessonId": "6D",
+    "definition": "to like (sb or sth) more than sb or sth else, so that you would choose them or it if you could",
+    "page": 59,
+    "term": "prefer",
+    "partOfSpeech": "v",
+    "rawTerm": "prefer (v)"
+  },
+  {
+    "lessonId": "6D",
+    "definition": "a face-to-face meeting, conversation, etc. is one where you are with another person and talking to them",
+    "page": 59,
+    "term": "face-to-face",
+    "partOfSpeech": "adj",
+    "rawTerm": "face-to-face (adj)"
+  },
+  {
+    "lessonId": "6D",
+    "definition": "several pieces of equipment that work together in a system",
+    "page": 59,
+    "term": "set-up",
+    "partOfSpeech": "n",
+    "rawTerm": "set-up (n)"
+  },
+  {
+    "lessonId": "6D",
+    "definition": "a high-definition television or computer shows images very clearly",
+    "page": 59,
+    "term": "high-definition",
+    "partOfSpeech": "adj",
+    "rawTerm": "high-definition (adj)"
+  },
+  {
+    "lessonId": "6D",
+    "definition": "sb who is taking part in an activity or event that happens where they are located",
+    "page": 59,
+    "term": "local participant",
+    "partOfSpeech": "n phr",
+    "rawTerm": "local participant (n phr)"
+  },
+  {
+    "lessonId": "6D",
+    "definition": "far from where an activity or event is happening",
+    "page": 59,
+    "term": "remote",
+    "partOfSpeech": "adj",
+    "rawTerm": "remote (adj)"
+  },
+  {
+    "lessonId": "6D",
+    "definition": "the process of making a computer file smaller by using a special computer program, that makes the file easier to store or send",
+    "page": 59,
+    "term": "data compression",
+    "partOfSpeech": "n",
+    "rawTerm": "data compression (n)"
+  },
+  {
+    "lessonId": "6D",
+    "definition": "(= Multipoint Control Unit) a device used to connect multiple videoconferencing locations",
+    "page": 59,
+    "term": "MCU",
+    "partOfSpeech": "n",
+    "rawTerm": "MCU (n)"
+  },
+  {
+    "lessonId": "6D",
+    "definition": "the buildings and land that a shop, restaurant, company, etc. uses",
+    "page": 59,
+    "term": "premises",
+    "partOfSpeech": "n pl",
+    "rawTerm": "premises (n pl)"
+  },
+  {
+    "lessonId": "6D",
+    "definition": "rooms, equipment or services that are provided for a particular purpose",
+    "page": 59,
+    "term": "facility",
+    "partOfSpeech": "n",
+    "rawTerm": "facility (n)"
+  },
+  {
+    "lessonId": "7A",
+    "definition": "a type of bar chart that illustrates when things are going to happen in a project",
+    "page": 67,
+    "term": "Gantt chart",
+    "partOfSpeech": "n",
+    "rawTerm": "Gantt chart (n)"
+  },
+  {
+    "lessonId": "7A",
+    "definition": "the process of testing software to see whether it works properly, done by the company that is writing the software",
+    "page": 67,
+    "term": "alpha testing",
+    "partOfSpeech": "n phr",
+    "rawTerm": "alpha testing (n phr)"
+  },
+  {
+    "lessonId": "7A",
+    "definition": "a process of testing software in which it is given to customers to use, so that any problems will be found",
+    "page": 67,
+    "term": "beta testing",
+    "partOfSpeech": "n phr",
+    "rawTerm": "beta testing (n phr)"
+  },
+  {
+    "lessonId": "7A",
+    "definition": "advice, criticism, etc. about how successful or useful sth is",
+    "page": 67,
+    "term": "feedback",
+    "partOfSpeech": "n",
+    "rawTerm": "feedback (n)"
+  },
+  {
+    "lessonId": "7A",
+    "definition": "a beta version of a piece of software that could become the final product, and is ready to release unless significant problems are found",
+    "page": 67,
+    "term": "release candidate",
+    "partOfSpeech": "n phr",
+    "rawTerm": "release candidate (n phr)"
+  },
+  {
+    "lessonId": "7A",
+    "definition": "a plan of what sb is going to do or sth that is going to happen, and when",
+    "page": 67,
+    "term": "schedule",
+    "partOfSpeech": "n",
+    "rawTerm": "schedule (n)"
+  },
+  {
+    "lessonId": "7B",
+    "definition": "to officially accept (a plan, proposal, etc.)",
+    "page": 67,
+    "term": "approve",
+    "partOfSpeech": "v",
+    "rawTerm": "approve (v)"
+  },
+  {
+    "lessonId": "7B",
+    "definition": "sb whose job is to write computer programs",
+    "page": 67,
+    "term": "programmer",
+    "partOfSpeech": "n",
+    "rawTerm": "programmer (n)"
+  },
+  {
+    "lessonId": "7B",
+    "definition": "to remove the bugs (mistakes) from (a computer program)",
+    "page": 67,
+    "term": "debug",
+    "partOfSpeech": "v",
+    "rawTerm": "debug (v)"
+  },
+  {
+    "lessonId": "7B",
+    "definition": "to ask (sb) questions during a formal meeting in order to find out whether they are suitable for a job, course of study, etc.",
+    "page": 67,
+    "term": "interview",
+    "partOfSpeech": "v",
+    "rawTerm": "interview (v)"
+  },
+  {
+    "lessonId": "7B",
+    "definition": "all the separate features and pieces of information about sth",
+    "page": 67,
+    "term": "detail",
+    "partOfSpeech": "n",
+    "rawTerm": "detail (n)"
+  },
+  {
+    "lessonId": "7B",
+    "definition": "a detailed instruction about how a car, building, piece of equipment, etc. should be made or what it should do",
+    "page": 67,
+    "term": "specification",
+    "partOfSpeech": "n",
+    "rawTerm": "specification (n)"
+  },
+  {
+    "lessonId": "7B",
+    "definition": "a list of things that you can ask a computer to do, that can appear suddenly on the computer screen while you are using it",
+    "page": 68,
+    "term": "pop-up menu",
+    "partOfSpeech": "n phr",
+    "rawTerm": "pop-up menu (n phr)"
+  },
+  {
+    "lessonId": "7B",
+    "definition": "to find out (how much sth will cost, how long sth will take, etc.) by using numbers",
+    "page": 68,
+    "term": "calculate",
+    "partOfSpeech": "v",
+    "rawTerm": "calculate (v)"
+  },
+  {
+    "lessonId": "7C",
+    "definition": "a row of letters or numbers that make up part of a set of instructions that tell a computer what to do",
+    "page": 68,
+    "term": "line of code",
+    "partOfSpeech": "n phr",
+    "rawTerm": "line of code (n phr)"
+  },
+  {
+    "lessonId": "7C",
+    "definition": "a statement telling sb what they must do or telling a computer or other machine what to do",
+    "page": 68,
+    "term": "instruction",
+    "partOfSpeech": "n",
+    "rawTerm": "instruction (n)"
+  },
+  {
+    "lessonId": "7C",
+    "definition": "a mathematical quantity that can represent several different amounts",
+    "page": 68,
+    "term": "variable",
+    "partOfSpeech": "n",
+    "rawTerm": "variable (n)"
+  },
+  {
+    "lessonId": "7C",
+    "definition": "a machine that can move and do some of the work of a person, and is usually controlled by a computer",
+    "page": 68,
+    "term": "robot",
+    "partOfSpeech": "n",
+    "rawTerm": "robot (n)"
+  },
+  {
+    "lessonId": "7C",
+    "definition": "a mathematical quantity shown by a letter of the alphabet or sign",
+    "page": 68,
+    "term": "value",
+    "partOfSpeech": "n",
+    "rawTerm": "value (n)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "the first page of a website, which often contains links to other pages on that website",
+    "page": 68,
+    "term": "home page",
+    "partOfSpeech": "n",
+    "rawTerm": "home page (n)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "to write to or telephone (sb)",
+    "page": 68,
+    "term": "contact",
+    "partOfSpeech": "v",
+    "rawTerm": "contact (v)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "(= Frequently Asked Questions) especially on a website",
+    "page": 68,
+    "term": "FAQs",
+    "partOfSpeech": "n pl",
+    "rawTerm": "FAQs (n pl)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "to buy (sth)",
+    "page": 68,
+    "term": "purchase",
+    "partOfSpeech": "v",
+    "rawTerm": "purchase (v)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "private feelings, information or opinions are personal or secret and not for other people to know about",
+    "page": 68,
+    "term": "private",
+    "partOfSpeech": "adj",
+    "rawTerm": "private (adj)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "full of energy and new ideas",
+    "page": 68,
+    "term": "dynamic",
+    "partOfSpeech": "adj",
+    "rawTerm": "dynamic (adj)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "available for anyone to use",
+    "page": 69,
+    "term": "public",
+    "partOfSpeech": "adj",
+    "rawTerm": "public (adj)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "the information contained in a website, considered separately from the software that makes the website work",
+    "page": 69,
+    "term": "content",
+    "partOfSpeech": "n",
+    "rawTerm": "content (n)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "website information that is of very high quality and that you often need to pay to access",
+    "page": 69,
+    "term": "premium content",
+    "partOfSpeech": "n phr",
+    "rawTerm": "premium content (n phr)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "two or more different things that exist together or are used or put together",
+    "page": 69,
+    "term": "combination",
+    "partOfSpeech": "n",
+    "rawTerm": "combination (n)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "having many different uses",
+    "page": 69,
+    "term": "versatile",
+    "partOfSpeech": "adj",
+    "rawTerm": "versatile (adj)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "sth that tests strength, skill or ability, especially in a way that is interesting",
+    "page": 69,
+    "term": "challenge",
+    "partOfSpeech": "n",
+    "rawTerm": "challenge (n)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "able to be seen",
+    "page": 69,
+    "term": "viewable",
+    "partOfSpeech": "adj",
+    "rawTerm": "viewable (adj)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "(= Search Engine Optimisation) the process of improving the visibility of a website or a web page in the results produced by a search engine (a computer program that helps you find information on the Internet)",
+    "page": 69,
+    "term": "SEO",
+    "partOfSpeech": "n",
+    "rawTerm": "SEO (n)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "a position in the results produced by a search engine (a computer program that helps you find information on the Internet)",
+    "page": 69,
+    "term": "search ranking",
+    "partOfSpeech": "n phr",
+    "rawTerm": "search ranking (n phr)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "(= PHP: Hypertext Preprocessor) a computer language originally designed to produce web pages that are generated at the time of access by a user or that change as a result of what the user does",
+    "page": 69,
+    "term": "PHP",
+    "partOfSpeech": "n",
+    "rawTerm": "PHP (n)"
+  },
+  {
+    "lessonId": "7D",
+    "definition": "information showing you which way you need to go when you are moving from one place to another, arranged in the form of a simple picture, set of figures, graph, etc., or a piece of paper with this information on it",
+    "page": 69,
+    "term": "navigation chart",
+    "partOfSpeech": "n",
+    "rawTerm": "navigation chart (n)"
+  },
+  {
+    "lessonId": "8A",
+    "definition": "an office where people answer customers’ questions, make sales, etc. by using the telephone rather than by meeting people",
+    "page": 75,
+    "term": "call centre",
+    "partOfSpeech": "n",
+    "rawTerm": "call centre (n)"
+  },
+  {
+    "lessonId": "8A",
+    "definition": "a computer software package that manages and maintains lists of problems reported by users of a website",
+    "page": 75,
+    "term": "issue tracking system",
+    "partOfSpeech": "n phr",
+    "rawTerm": "issue tracking system (n phr)"
+  },
+  {
+    "lessonId": "8A",
+    "definition": "the first, most important or simplest of several levels in an organization or system",
+    "page": 75,
+    "term": "tier 1",
+    "partOfSpeech": "n phr",
+    "rawTerm": "tier 1 (n phr)"
+  },
+  {
+    "lessonId": "8A",
+    "definition": "a file in an issue tracking system that records a reported problem and the steps taken to resolve it",
+    "page": 75,
+    "term": "ticket",
+    "partOfSpeech": "n",
+    "rawTerm": "ticket (n)"
+  },
+  {
+    "lessonId": "8A",
+    "definition": "to increase the seriousness, intensity, etc. of (sth)",
+    "page": 75,
+    "term": "escalate",
+    "partOfSpeech": "v",
+    "rawTerm": "escalate (v)"
+  },
+  {
+    "lessonId": "8A",
+    "definition": "to guess about the possible causes or effects of sth, without knowing all the facts or details",
+    "page": 75,
+    "term": "speculate",
+    "partOfSpeech": "v",
+    "rawTerm": "speculate (v)"
+  },
+  {
+    "lessonId": "8A",
+    "definition": "a set of instructions secretly put onto a computer or computer program, which can destroy information. When a computer that has a virus makes a connection with another computer, for example by email, the virus can make copies of itself and move to the other computer",
+    "page": 75,
+    "term": "virus",
+    "partOfSpeech": "n",
+    "rawTerm": "virus (n)"
+  },
+  {
+    "lessonId": "8A",
+    "definition": "a piece of computer software, or a printed manual, that asks you a series of questions to try to find the cause of a computer problem, and suggests possible solutions",
+    "page": 75,
+    "term": "troubleshooting guide",
+    "partOfSpeech": "n phr",
+    "rawTerm": "troubleshooting guide (n phr)"
+  },
+  {
+    "lessonId": "8B",
+    "definition": "a mistake or fault in the electrical system joining two parts of a machine, computer network, etc.",
+    "page": 76,
+    "term": "connection error",
+    "partOfSpeech": "n phr",
+    "rawTerm": "connection error (n phr)"
+  },
+  {
+    "lessonId": "8B",
+    "definition": "if a computer crashes, or if you crash the computer, it suddenly stops working",
+    "page": 76,
+    "term": "crash",
+    "partOfSpeech": "v",
+    "rawTerm": "crash (v)"
+  },
+  {
+    "lessonId": "8B",
+    "definition": "an occasion when a machine or part of your body stops working properly",
+    "page": 76,
+    "term": "failure",
+    "partOfSpeech": "n",
+    "rawTerm": "failure (n)"
+  },
+  {
+    "lessonId": "8B",
+    "definition": "sth that is wrong with a machine, system, design, etc. that prevents it from working properly",
+    "page": 76,
+    "term": "fault",
+    "partOfSpeech": "n",
+    "rawTerm": "fault (n)"
+  },
+  {
+    "lessonId": "8B",
+    "definition": "if a computer hangs, it stops responding to inputs",
+    "page": 76,
+    "term": "hang",
+    "partOfSpeech": "v",
+    "rawTerm": "hang (v)"
+  },
+  {
+    "lessonId": "8B",
+    "definition": "a set of numbers, letters or symbols that shows what fault has occurred on a computer or gives information about it",
+    "page": 76,
+    "term": "error code",
+    "partOfSpeech": "n",
+    "rawTerm": "error code (n)"
+  },
+  {
+    "lessonId": "8B",
+    "definition": "a way of solving a problem or dealing with a difficult situation",
+    "page": 76,
+    "term": "solution",
+    "partOfSpeech": "n",
+    "rawTerm": "solution (n)"
+  },
+  {
+    "lessonId": "8B",
+    "definition": "a book that gives instructions about how to do sth, especially how to use a machine",
+    "page": 76,
+    "term": "manual",
+    "partOfSpeech": "n",
+    "rawTerm": "manual (n)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "parts of a computer program that include unnecessary features that are not used by end users, or that generally use more computing power than necessary, while offering little or no benefit to its users",
+    "page": 76,
+    "term": "bloatware",
+    "partOfSpeech": "n",
+    "rawTerm": "bloatware (n)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "a written list showing how much you have to pay for services you have received, work that has been done, etc.",
+    "page": 76,
+    "term": "bill",
+    "partOfSpeech": "n",
+    "rawTerm": "bill (n)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "the way in which sth is used, or the amount of it that is used",
+    "page": 76,
+    "term": "usage",
+    "partOfSpeech": "n",
+    "rawTerm": "usage (n)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "a pain in your back",
+    "page": 76,
+    "term": "backache",
+    "partOfSpeech": "n",
+    "rawTerm": "backache (n)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "a sudden shock to your body, caused by electricity",
+    "page": 76,
+    "term": "electric shock",
+    "partOfSpeech": "n phr",
+    "rawTerm": "electric shock (n phr)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "(= Repetitive Strain Injury) pains in your hands, arms, etc. caused by doing the same movements many times, especially by using a computer keyboard or mouse",
+    "page": 77,
+    "term": "RSI",
+    "partOfSpeech": "n",
+    "rawTerm": "RSI (n)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "acts of falling as a result of hitting sth with your foot, or from any other cause",
+    "page": 77,
+    "term": "trips and falls",
+    "partOfSpeech": "n phr",
+    "rawTerm": "trips and falls (n phr)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "a failure of an electrical system, caused by bad wires or a fault in a connection in the wires",
+    "page": 77,
+    "term": "short circuit",
+    "partOfSpeech": "n phr",
+    "rawTerm": "short circuit (n phr)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "if sth is burning, it is producing flames and being damaged or destroyed by fire",
+    "page": 77,
+    "term": "burn",
+    "partOfSpeech": "v",
+    "rawTerm": "burn (v)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "to move (part of your body) so that it is not straight or so that you are not upright",
+    "page": 77,
+    "term": "bend",
+    "partOfSpeech": "v",
+    "rawTerm": "bend (v)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "the part of your body where your hand joins your arm",
+    "page": 77,
+    "term": "wrist",
+    "partOfSpeech": "n",
+    "rawTerm": "wrist (n)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "if you spill a liquid, or if it spills, it accidentally flows over the edge of a container",
+    "page": 77,
+    "term": "spill",
+    "partOfSpeech": "v",
+    "rawTerm": "spill (v)"
+  },
+  {
+    "lessonId": "8C",
+    "definition": "to make (sth) slightly colder, or to become slightly colder",
+    "page": 77,
+    "term": "cool down",
+    "partOfSpeech": "phr v",
+    "rawTerm": "cool down (phr v)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "(= Curriculum Vitae) a short written document that lists your education and previous jobs, that you send to employers when you are looking for a job",
+    "page": 77,
+    "term": "CV",
+    "partOfSpeech": "n",
+    "rawTerm": "CV (n)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "the process of teaching and learning, usually at school, college or university, or a list of where this happened in your case",
+    "page": 77,
+    "term": "education",
+    "partOfSpeech": "n",
+    "rawTerm": "education (n)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "sth that you must do as part of your job or duty",
+    "page": 77,
+    "term": "responsibility",
+    "partOfSpeech": "n",
+    "rawTerm": "responsibility (n)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "an ability to plan and arrange sth so that it is successful or effective",
+    "page": 77,
+    "term": "organisational skill",
+    "partOfSpeech": "n phr",
+    "rawTerm": "organisational skill (n phr)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "facts or details that tell you sth about a person",
+    "page": 77,
+    "term": "personal information",
+    "partOfSpeech": "n phr",
+    "rawTerm": "personal information (n phr)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "an ability belonging or relating to one particular person, rather than to other people or to people in general",
+    "page": 77,
+    "term": "personal skill",
+    "partOfSpeech": "n phr",
+    "rawTerm": "personal skill (n phr)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "a job that you used to do",
+    "page": 78,
+    "term": "position held",
+    "partOfSpeech": "phr",
+    "rawTerm": "position held (phr)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "an area of knowledge that you study at a school or university",
+    "page": 78,
+    "term": "subject",
+    "partOfSpeech": "n",
+    "rawTerm": "subject (n)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "relating to, or caused by, your job",
+    "page": 78,
+    "term": "occupational",
+    "partOfSpeech": "adj",
+    "rawTerm": "occupational (adj)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "if you have a qualification, you have passed an examination or course to show that you have a particular level of skill or knowledge in a subject",
+    "page": 78,
+    "term": "qualification",
+    "partOfSpeech": "n",
+    "rawTerm": "qualification (n)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "to officially give (sb) (sth such as a prize or money) to reward them for sth they have done",
+    "page": 78,
+    "term": "award",
+    "partOfSpeech": "v",
+    "rawTerm": "award (v)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "the experience you have had of working in a particular type of job",
+    "page": 78,
+    "term": "work experience",
+    "partOfSpeech": "n",
+    "rawTerm": "work experience (n)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "if you have a further qualification, you have passed an examination or course to show you have a higher than usual level of skill or knowledge in a subject",
+    "page": 78,
+    "term": "further qualification",
+    "partOfSpeech": "n phr",
+    "rawTerm": "further qualification (n phr)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "the people who work in a company, organisation or military force",
+    "page": 78,
+    "term": "personnel",
+    "partOfSpeech": "n",
+    "rawTerm": "personnel (n)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "if sth is customised, it has been changed to make it more suitable for you, or to make it look special or different from things of a similar type",
+    "page": 78,
+    "term": "customised",
+    "partOfSpeech": "adj",
+    "rawTerm": "customised (adj)"
+  },
+  {
+    "lessonId": "8D",
+    "definition": "the group of people who govern a country or state",
+    "page": 78,
+    "term": "government",
+    "partOfSpeech": "n",
+    "rawTerm": "government (n)"
+  }
+]

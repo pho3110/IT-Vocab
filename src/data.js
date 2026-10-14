@@ -1,193 +1,4144 @@
-// Chọn lọc theo 32 lesson của Workbook of English for Information Technology (2016).
-// Nghĩa tiếng Việt và định nghĩa ngắn được biên soạn cho ứng dụng; không phải đáp án chính thức.
-const sections = [
-  ['Working in IT', 'Công việc trong ngành IT', 'briefcase', [
-    ['IT jobs and duties', 'Công việc và nhiệm vụ', `developer|lập trình viên|A person who creates software.
-project manager|người quản lý dự án|A person who plans and manages a project.
-database administrator|quản trị viên cơ sở dữ liệu|A person who manages and maintains databases.
-install|cài đặt|To set up software or equipment for use.
-maintain|bảo trì|To keep a system in good working condition.`],
-    ['IT organizations', 'Tổ chức và doanh nghiệp IT', `provider|nhà cung cấp dịch vụ|A company or person that provides a service.
-supplier|nhà cung cấp sản phẩm|A company or person that supplies goods.
-manufacturer|nhà sản xuất|A company that makes products.
-client|khách hàng|A person or organisation that uses a service.
-launch|ra mắt|To make a new product available for the first time.`],
-    ['IT workplace rules', 'Quy tắc nơi làm việc', `security|bảo mật|Measures used to protect systems and information.
-password|mật khẩu|A secret sequence used to access an account.
-alphanumeric|gồm chữ và số|Containing both letters and numbers.
-colleague|đồng nghiệp|A person you work with.
-download|tải xuống|To transfer a file from a remote system to your device.`],
-    ['Meetings', 'Cuộc họp', `chairperson|người chủ trì|The person who leads a meeting.
-agenda|chương trình cuộc họp|A list of topics to discuss at a meeting.
-minutes|biên bản cuộc họp|A written record of a meeting.
-teleconference|hội nghị qua điện thoại|A meeting between people using telephone connections.
-videoconference|hội nghị truyền hình|A meeting using live video and audio.`],
-  ]],
-  ['IT systems', 'Hệ thống máy tính', 'monitor', [
-    ['GUI operations', 'Thao tác giao diện', `resize|thay đổi kích thước|To change the size of a window or image.
-scroll bar|thanh cuộn|A control used to move through content.
-icon|biểu tượng|A small graphic representing an app, file or action.
-folder|thư mục|A container used to organise files.
-drag|kéo|To move an item while holding a pointer button.`],
-    ['Multimedia hardware', 'Phần cứng đa phương tiện', `microphone|micro|A device that captures sound.
-projector|máy chiếu|A device that projects images onto a surface.
-speaker|loa|A device that produces sound.
-webcam|camera máy tính|A camera used to capture video on a computer.
-unplug|rút phích cắm|To disconnect a cable from a socket or device.`],
-    ['Operating systems', 'Hệ điều hành', `restart|khởi động lại|To stop and start a system again.
-partition|phân vùng|To divide a storage drive into separate sections.
-boot drive|ổ đĩa khởi động|A drive containing the files needed to start a system.
-user account|tài khoản người dùng|An identity with settings and access permissions.
-open source|mã nguồn mở|Describing software whose source code is available under an open-source licence.`],
-    ['System specifications', 'Thông số hệ thống', `external|bên ngoài|Located outside the main device or system.
-headphones|tai nghe|A device worn over or in the ears to hear audio.
-solid state drive|ổ cứng thể rắn|A storage device that uses flash memory.
-CPU|bộ xử lý trung tâm|The processor that executes instructions.
-RAM|bộ nhớ truy cập ngẫu nhiên|Working memory used by running programs.`],
-  ]],
-  ['Data communications', 'Truyền thông dữ liệu', 'network', [
-    ['Email', 'Thư điện tử', `subject line|dòng tiêu đề|The part of an email that states its topic.
-recipient|người nhận|A person who receives a message.
-signature|chữ ký|Text identifying the sender at the end of an email.
-attachment|tệp đính kèm|A file sent with an email.
-spell checker|công cụ kiểm tra chính tả|A tool that finds possible spelling mistakes.`],
-    ['Internet browsing', 'Duyệt Internet', `browser|trình duyệt|An application used to view websites.
-bookmark|dấu trang|A saved link to a web page.
-link|liên kết|A reference that opens another page or resource.
-refresh|tải lại|To reload content to show its latest version.
-access|truy cập|To reach or use a system or information.`],
-    ['Mobile computing', 'Điện toán di động', `feature|tính năng|A capability or characteristic of a product.
-GPS|hệ thống định vị toàn cầu|A satellite-based system for determining location.
-battery life|thời lượng pin|The time a device can operate on its battery.
-customise|tùy chỉnh|To change something to suit your needs.
-OCR|nhận dạng ký tự quang học|Technology that recognises text in scanned documents or images.`],
-    ['Networks', 'Mạng máy tính', `wired|có dây|Connected using physical cables.
-wireless|không dây|Connected without physical cables.
-LAN|mạng cục bộ|A network covering a limited local area.
-VPN|mạng riêng ảo|A technology that creates a protected connection over another network.
-encrypt|mã hóa|To transform data so it requires a key to read.`],
-  ]],
-  ['Administration', 'Quản trị hệ thống', 'database', [
-    ['Databases', 'Cơ sở dữ liệu', `table|bảng dữ liệu|A collection of data arranged in rows and columns.
-field|trường dữ liệu|A named data item in a record.
-primary key|khóa chính|A field or set of fields that uniquely identifies a record.
-query the database|truy vấn cơ sở dữ liệu|To request information from a database.
-retrieve a record|truy xuất bản ghi|To get a stored record from a database.`],
-    ['Peripherals', 'Thiết bị ngoại vi', `NAS|thiết bị lưu trữ gắn mạng|Storage that can be accessed through a network.
-stylus|bút cảm ứng|A pen-shaped tool used with a touch surface.
-touch screen|màn hình cảm ứng|A display that detects touch input.
-headset|tai nghe có micro|Headphones combined with a microphone.
-input device|thiết bị nhập|Hardware used to send data or commands to a computer.`],
-    ['Spreadsheets and formulae', 'Bảng tính và công thức', `column|cột|A vertical set of cells in a spreadsheet.
-row|hàng|A horizontal set of cells in a spreadsheet.
-worksheet|trang tính|A sheet containing cells in a spreadsheet file.
-multiply|nhân|To calculate the product of numbers.
-sum|tổng|The result of adding numbers together.`],
-    ['Systems administration', 'Quản trị hệ thống', `deploy|triển khai|To put software into an environment where it can be used.
-crash|sự cố dừng chương trình|An unexpected failure that stops a program.
-read-only access|quyền chỉ đọc|Permission to view data without changing it.
-lock someone out|chặn quyền truy cập|To prevent someone from accessing a system.
-up and running again|hoạt động trở lại|Working again after an interruption.`],
-  ]],
-  ['Choice', 'Lựa chọn giải pháp IT', 'sliders', [
-    ['IT costs', 'Chi phí IT', `accessory|phụ kiện|An extra item used with a main product.
-charger|bộ sạc|A device that supplies power to recharge a battery.
-extended warranty|bảo hành mở rộng|Warranty coverage extended beyond the standard period.
-service|dịch vụ|Work or assistance provided to a customer.
-analyse|phân tích|To examine something carefully to understand it.`],
-    ['Making recommendations', 'Đưa ra đề xuất', `capability|khả năng|Something a system or product is able to do.
-compatibility|khả năng tương thích|The ability of systems or products to work together.
-user guide|hướng dẫn sử dụng|Instructions explaining how to use a product.
-forum|diễn đàn|An online space for discussion.
-conclusion|kết luận|The final judgment or summary of a discussion.`],
-    ['Product research', 'Nghiên cứu sản phẩm', `traditional pricing|định giá truyền thống|A conventional pricing approach rather than tier-based pricing.
-tiered pricing|định giá theo bậc|Different prices for different levels of service or usage.
-trial period|thời gian dùng thử|A limited period for trying a product or service.
-try out|dùng thử|To use something to see how well it works.
-come out|được phát hành|To become available to the public.`],
-    ['Web hosting', 'Lưu trữ website', `shared hosting|hosting dùng chung|Hosting where multiple customers share server resources.
-dedicated hosting|hosting máy chủ riêng|Hosting using a server dedicated to one customer.
-uptime|thời gian hoạt động|The amount of time a service is operational.
-monthly bandwidth|dung lượng truyền tải hàng tháng|The data-transfer allowance for a month in a hosting plan.
-IP address|địa chỉ IP|An address used to identify a network interface.`],
-  ]],
-  ['Interactions', 'Tương tác và dịch vụ số', 'messages', [
-    ['E-commerce', 'Thương mại điện tử', `integrate|tích hợp|To combine parts so they work together.
-component|thành phần|One part of a larger system.
-cookie|cookie trình duyệt|A small piece of data stored by a website in a browser.
-order|đơn hàng|A request to buy goods or services.
-DRM|quản lý quyền kỹ thuật số|Technology used to control access to digital content.`],
-    ['Enterprise social media', 'Mạng xã hội doanh nghiệp', `file sharing service|dịch vụ chia sẻ tệp|A service for making files available to other people.
-privacy|quyền riêng tư|Control over access to personal information.
-trend|xu hướng|A general direction of change over time.
-document management system|hệ thống quản lý tài liệu|Software for organising and managing documents.
-voice recognition|nhận dạng giọng nói|Technology that identifies or interprets spoken input.`],
-    ['Training users', 'Đào tạo người dùng', `instant messaging|nhắn tin tức thời|Exchanging text messages in real time.
-policy|chính sách|A set of rules or principles guiding actions.
-procedure|quy trình|A defined sequence of steps for a task.
-archiving|lưu trữ lâu dài|Moving or preserving information for future reference.
-tagging|gắn thẻ|Adding labels to organise or find content.`],
-    ['Video conferencing', 'Hội nghị truyền hình', `face-to-face|trực tiếp|With people physically present together.
-high-definition|độ nét cao|Describing video or images with high resolution.
-remote|từ xa|Located away from the main location.
-data compression|nén dữ liệu|Reducing the size of data for storage or transmission.
-MCU|bộ điều khiển hội nghị đa điểm|A device or system that connects multiple conferencing endpoints.`],
-  ]],
-  ['Development', 'Phát triển phần mềm', 'code', [
-    ['Project management', 'Quản lý dự án', `Gantt chart|biểu đồ Gantt|A chart showing tasks and their planned timing.
-alpha testing|kiểm thử alpha|Early testing usually carried out in a controlled internal environment.
-beta testing|kiểm thử beta|Testing by selected users before a final release.
-feedback|phản hồi|Comments used to evaluate or improve something.
-release candidate|bản ứng viên phát hành|A version that may become the final release if no blocking problems are found.`],
-    ['Requirements analysis', 'Phân tích yêu cầu', `approve|phê duyệt|To formally accept a proposal or result.
-programmer|lập trình viên|A person who writes computer programs.
-debug|gỡ lỗi|To find and fix problems in software.
-interview|phỏng vấn|To ask questions to gather information.
-specification|đặc tả|A detailed description of required behaviour or features.`],
-    ['Software development', 'Phát triển phần mềm', `line of code|dòng mã|One line of instructions in a program.
-instruction|chỉ thị|A command that tells a computer what to do.
-variable|biến|A named reference to a value that may change.
-value|giá trị|The data represented by an expression or variable.
-calculate|tính toán|To work out a result using numbers or rules.`],
-    ['Website design and architecture', 'Thiết kế và kiến trúc website', `home page|trang chủ|The main entry page of a website.
-FAQs|câu hỏi thường gặp|Frequently asked questions and their answers.
-purchase|mua hàng|To buy a product or service.
-private|riêng tư|Available only to authorised people.
-dynamic|động|Changing in response to data or user interaction.`],
-  ]],
-  ['Solutions', 'Giải quyết vấn đề IT', 'tool', [
-    ['Diagnosis', 'Chẩn đoán sự cố', `call centre|trung tâm cuộc gọi|An organisation that handles customer calls.
-issue tracking system|hệ thống theo dõi sự cố|Software used to record and track reported problems.
-ticket|phiếu hỗ trợ|A record of a support request or issue.
-escalate|chuyển lên cấp hỗ trợ cao hơn|To pass an issue to a higher support level.
-troubleshooting guide|hướng dẫn xử lý sự cố|Instructions for identifying and resolving problems.`],
-    ['Investigations', 'Điều tra nguyên nhân', `connection error|lỗi kết nối|A problem that prevents a connection from working.
-failure|sự hỏng hóc|A situation where a system cannot perform its function.
-fault|lỗi kỹ thuật|A defect that causes incorrect operation.
-hang|treo máy hoặc chương trình|To stop responding while still appearing to run.
-error code|mã lỗi|A code identifying a specific error condition.`],
-    ['Solutions', 'Giải pháp và an toàn', `bloatware|phần mềm dư thừa|Unwanted software that uses storage or system resources.
-electric shock|điện giật|An injury or sensation caused by electricity passing through the body.
-short circuit|đoản mạch|An unintended electrical connection with low resistance.
-RSI|chấn thương do thao tác lặp lại|Repetitive strain injury caused by repeated movements.
-cool down|làm nguội|To reduce temperature or allow something to become cooler.`],
-    ['Your future in IT', 'Tương lai nghề nghiệp IT', `CV|sơ yếu lý lịch nghề nghiệp|A document summarising education, skills and work experience.
-education|học vấn|Learning and qualifications gained through study.
-responsibility|trách nhiệm|A duty or task that someone is expected to handle.
-organisational skill|kỹ năng tổ chức|The ability to plan and arrange work effectively.
-personal information|thông tin cá nhân|Details relating to an individual.`],
-  ]],
+// Generated by scripts/build-vocabulary.mjs. See content/ for source extraction and translations.
+export const units = [
+  {
+    "id": 1,
+    "title": "Working in IT",
+    "subtitle": "Công việc trong ngành IT",
+    "icon": "briefcase",
+    "lessons": [
+      {
+        "id": "1A",
+        "title": "IT jobs and duties",
+        "subtitle": "Công việc và nhiệm vụ",
+        "words": [
+          {
+            "id": "1A-3",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "database administrator",
+            "partOfSpeech": "n",
+            "meaning": "quản trị viên cơ sở dữ liệu",
+            "definition": "sb whose job is to look after a computer database that has many users",
+            "source": "workbook",
+            "sourcePage": 6
+          },
+          {
+            "id": "1A-wb-6-2",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "helpdesk supervisor",
+            "partOfSpeech": "n",
+            "meaning": "người giám sát bộ phận hỗ trợ kỹ thuật",
+            "definition": "sb who supervises the department of a company that people call for help, especially with computer problems",
+            "source": "workbook",
+            "sourcePage": 6
+          },
+          {
+            "id": "1A-2",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "project manager",
+            "partOfSpeech": "n",
+            "meaning": "người quản lý dự án",
+            "definition": "sb whose job is to manage a carefully planned piece of work",
+            "source": "workbook",
+            "sourcePage": 6
+          },
+          {
+            "id": "1A-1",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "developer",
+            "partOfSpeech": "n",
+            "meaning": "lập trình viên",
+            "definition": "a person or organisation that works on a new piece of software to make it successful",
+            "source": "workbook",
+            "sourcePage": 6
+          },
+          {
+            "id": "1A-wb-6-5",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "support technician",
+            "partOfSpeech": "n",
+            "meaning": "kỹ thuật viên hỗ trợ",
+            "definition": "sb whose job is to provide help or information that you need to improve a computer system, make it continue working, or use it correctly",
+            "source": "workbook",
+            "sourcePage": 6
+          },
+          {
+            "id": "1A-wb-6-6",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "systems analyst",
+            "partOfSpeech": "n",
+            "meaning": "chuyên viên phân tích hệ thống",
+            "definition": "sb whose job is to study a company’s computer needs and provide them with suitable software and equipment",
+            "source": "workbook",
+            "sourcePage": 6
+          },
+          {
+            "id": "1A-wb-6-7",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "supervise",
+            "partOfSpeech": "v",
+            "meaning": "giám sát",
+            "definition": "to be in charge of (an activity or person) and make sure that things are done in the correct way",
+            "source": "workbook",
+            "sourcePage": 6
+          },
+          {
+            "id": "1A-wb-6-8",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "be responsible",
+            "partOfSpeech": "v phr",
+            "meaning": "chịu trách nhiệm",
+            "definition": "to have a duty to be in charge of or to look after sb or sth",
+            "source": "workbook",
+            "sourcePage": 6
+          },
+          {
+            "id": "1A-4",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "install",
+            "partOfSpeech": "v",
+            "meaning": "cài đặt",
+            "definition": "to put (a piece of equipment) somewhere and connect it so that it is ready to be used, or to add (new software) to a computer so that it is ready to be used",
+            "source": "workbook",
+            "sourcePage": 6
+          },
+          {
+            "id": "1A-wb-6-10",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "diagnose",
+            "partOfSpeech": "v",
+            "meaning": "chẩn đoán",
+            "definition": "to find out what the cause of (a fault) is, after doing tests, examinations, etc.",
+            "source": "workbook",
+            "sourcePage": 6
+          },
+          {
+            "id": "1A-wb-6-11",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "design",
+            "partOfSpeech": "v",
+            "meaning": "thiết kế",
+            "definition": "to make a drawing or plan of (sth that will be made or built)",
+            "source": "workbook",
+            "sourcePage": 6
+          },
+          {
+            "id": "1A-5",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "maintain",
+            "partOfSpeech": "v",
+            "meaning": "bảo trì",
+            "definition": "to keep (a machine, building, etc.) in good condition by checking and repairing it regularly",
+            "source": "workbook",
+            "sourcePage": 7
+          },
+          {
+            "id": "1A-wb-7-13",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "check email",
+            "partOfSpeech": "phr",
+            "meaning": "kiểm tra email",
+            "definition": "to look to see whether you have received messages that are sent from one person to another using computers",
+            "source": "workbook",
+            "sourcePage": 7
+          },
+          {
+            "id": "1A-wb-7-14",
+            "unitId": 1,
+            "lessonId": "1A",
+            "term": "attend meetings",
+            "partOfSpeech": "phr",
+            "meaning": "tham dự các cuộc họp",
+            "definition": "to go to events at which people meet to discuss and decide things",
+            "source": "workbook",
+            "sourcePage": 7
+          }
+        ]
+      },
+      {
+        "id": "1B",
+        "title": "IT organizations",
+        "subtitle": "Tổ chức và doanh nghiệp IT",
+        "words": [
+          {
+            "id": "1B-wb-7-1",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "carry out",
+            "partOfSpeech": "phr v",
+            "meaning": "thực hiện",
+            "definition": "to do (sth that needs to be organised and planned)",
+            "source": "workbook",
+            "sourcePage": 7
+          },
+          {
+            "id": "1B-1",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "provider",
+            "partOfSpeech": "n",
+            "meaning": "nhà cung cấp dịch vụ",
+            "definition": "a company or person that provides a service",
+            "source": "workbook",
+            "sourcePage": 7
+          },
+          {
+            "id": "1B-2",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "supplier",
+            "partOfSpeech": "n",
+            "meaning": "nhà cung cấp sản phẩm",
+            "definition": "a company or person that provides a particular product",
+            "source": "workbook",
+            "sourcePage": 7
+          },
+          {
+            "id": "1B-3",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "manufacturer",
+            "partOfSpeech": "n",
+            "meaning": "nhà sản xuất",
+            "definition": "a company that makes large quantities of goods",
+            "source": "workbook",
+            "sourcePage": 7
+          },
+          {
+            "id": "1B-wb-7-5",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "production facility",
+            "partOfSpeech": "n",
+            "meaning": "cơ sở sản xuất",
+            "definition": "a place or building used for making or growing things to be sold, especially in large quantities",
+            "source": "workbook",
+            "sourcePage": 7
+          },
+          {
+            "id": "1B-wb-7-6",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "product",
+            "partOfSpeech": "n",
+            "meaning": "sản phẩm",
+            "definition": "sth that is grown or made in a factory in large quantities, usually in order to be sold",
+            "source": "workbook",
+            "sourcePage": 7
+          },
+          {
+            "id": "1B-wb-7-7",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "service centre",
+            "partOfSpeech": "n",
+            "meaning": "trung tâm dịch vụ",
+            "definition": "a building from which a particular type of help or work is provided by a business to customers, but not one that involves producing goods",
+            "source": "workbook",
+            "sourcePage": 7
+          },
+          {
+            "id": "1B-wb-7-8",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "supply cloud computing",
+            "partOfSpeech": "phr",
+            "meaning": "cung cấp dịch vụ điện toán đám mây",
+            "definition": "to provide computing facilities and storage capacity as a service to a group of similar customers",
+            "source": "workbook",
+            "sourcePage": 7
+          },
+          {
+            "id": "1B-wb-7-9",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "word processing",
+            "partOfSpeech": "n",
+            "meaning": "soạn thảo và xử lý văn bản",
+            "definition": "the activity of using computer software or a small computer for writing letters and other documents",
+            "source": "workbook",
+            "sourcePage": 7
+          },
+          {
+            "id": "1B-wb-8-10",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "spreadsheet",
+            "partOfSpeech": "n",
+            "meaning": "bảng tính",
+            "definition": "a document produced by a computer program that can show and calculate financial information",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1B-wb-8-11",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "presentation",
+            "partOfSpeech": "n",
+            "meaning": "bài trình chiếu",
+            "definition": "a document produced by a computer program that can show a new product or idea or display information",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1B-wb-8-12",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "database",
+            "partOfSpeech": "n",
+            "meaning": "cơ sở dữ liệu",
+            "definition": "a large amount of data stored in a computer system so that you can find and use it easily, or a file that stores this data",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1B-4",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "client",
+            "partOfSpeech": "n",
+            "meaning": "khách hàng",
+            "definition": "sb who gets services or advice from a professional person, company or organisation; a customer",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1B-wb-8-14",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "operating system",
+            "partOfSpeech": "n phr",
+            "meaning": "hệ điều hành",
+            "definition": "a system in a computer that helps all the programs in it to work together",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1B-5",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "launch",
+            "partOfSpeech": "v",
+            "meaning": "ra mắt",
+            "definition": "to make (a new product, book, etc.) available for sale for the first time",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1B-wb-8-16",
+            "unitId": 1,
+            "lessonId": "1B",
+            "term": "version",
+            "partOfSpeech": "n",
+            "meaning": "phiên bản",
+            "definition": "a copy of sth that has been changed so that it is slightly different",
+            "source": "workbook",
+            "sourcePage": 8
+          }
+        ]
+      },
+      {
+        "id": "1C",
+        "title": "IT workplace rules",
+        "subtitle": "Quy tắc nơi làm việc",
+        "words": [
+          {
+            "id": "1C-1",
+            "unitId": 1,
+            "lessonId": "1C",
+            "term": "security",
+            "partOfSpeech": "n",
+            "meaning": "bảo mật",
+            "definition": "things that are done to keep a person, building or country safe from danger or crime",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1C-wb-8-2",
+            "unitId": 1,
+            "lessonId": "1C",
+            "term": "data",
+            "partOfSpeech": "n",
+            "meaning": "dữ liệu",
+            "definition": "information in a form that can be stored and used, especially on a computer",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1C-2",
+            "unitId": 1,
+            "lessonId": "1C",
+            "term": "password",
+            "partOfSpeech": "n",
+            "meaning": "mật khẩu",
+            "definition": "a secret group of letters or numbers that you must type into a computer before you can use a system or program",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1C-wb-8-4",
+            "unitId": 1,
+            "lessonId": "1C",
+            "term": "network",
+            "partOfSpeech": "n",
+            "meaning": "mạng máy tính",
+            "definition": "a set of computers that are connected to each other so that they can share information",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1C-3",
+            "unitId": 1,
+            "lessonId": "1C",
+            "term": "alphanumeric",
+            "partOfSpeech": "adj",
+            "meaning": "gồm chữ và số",
+            "definition": "using letters and numbers",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1C-wb-8-6",
+            "unitId": 1,
+            "lessonId": "1C",
+            "term": "character",
+            "partOfSpeech": "n",
+            "meaning": "ký tự",
+            "definition": "a letter, mark or sign used in writing, printing or on a computer",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1C-4",
+            "unitId": 1,
+            "lessonId": "1C",
+            "term": "colleague",
+            "partOfSpeech": "n",
+            "meaning": "đồng nghiệp",
+            "definition": "sb you work with, used especially by professional people",
+            "source": "workbook",
+            "sourcePage": 8
+          },
+          {
+            "id": "1C-wb-9-8",
+            "unitId": 1,
+            "lessonId": "1C",
+            "term": "connect",
+            "partOfSpeech": "v",
+            "meaning": "kết nối",
+            "definition": "to join (two or more things) together",
+            "source": "workbook",
+            "sourcePage": 9
+          },
+          {
+            "id": "1C-wb-9-9",
+            "unitId": 1,
+            "lessonId": "1C",
+            "term": "personal",
+            "partOfSpeech": "adj",
+            "meaning": "thuộc về cá nhân",
+            "definition": "belonging or relating to one particular person, rather than to other people, to people in general or to the company you work for",
+            "source": "workbook",
+            "sourcePage": 9
+          },
+          {
+            "id": "1C-5",
+            "unitId": 1,
+            "lessonId": "1C",
+            "term": "download",
+            "partOfSpeech": "v",
+            "meaning": "tải xuống",
+            "definition": "to move (information or programs) from a computer network to an individual computer",
+            "source": "workbook",
+            "sourcePage": 9
+          },
+          {
+            "id": "1C-wb-9-11",
+            "unitId": 1,
+            "lessonId": "1C",
+            "term": "stream",
+            "partOfSpeech": "v",
+            "meaning": "phát trực tuyến",
+            "definition": "if you stream sound or video, you play it on your computer while it is being downloaded from the Internet, rather than saving it as a file and then playing it",
+            "source": "workbook",
+            "sourcePage": 9
+          }
+        ]
+      },
+      {
+        "id": "1D",
+        "title": "Meetings",
+        "subtitle": "Cuộc họp",
+        "words": [
+          {
+            "id": "1D-1",
+            "unitId": 1,
+            "lessonId": "1D",
+            "term": "chairperson",
+            "partOfSpeech": "n",
+            "meaning": "người chủ trì",
+            "definition": "sb who is in charge of a meeting or directs the work of a committee or organisation",
+            "source": "workbook",
+            "sourcePage": 9
+          },
+          {
+            "id": "1D-2",
+            "unitId": 1,
+            "lessonId": "1D",
+            "term": "agenda",
+            "partOfSpeech": "n",
+            "meaning": "chương trình cuộc họp",
+            "definition": "a list of the subjects to be discussed at a meeting",
+            "source": "workbook",
+            "sourcePage": 9
+          },
+          {
+            "id": "1D-3",
+            "unitId": 1,
+            "lessonId": "1D",
+            "term": "minutes",
+            "partOfSpeech": "n pl",
+            "meaning": "biên bản cuộc họp",
+            "definition": "an official written record of what is said and decided at a meeting",
+            "source": "workbook",
+            "sourcePage": 9
+          },
+          {
+            "id": "1D-4",
+            "unitId": 1,
+            "lessonId": "1D",
+            "term": "teleconference",
+            "partOfSpeech": "n",
+            "meaning": "hội nghị qua điện thoại",
+            "definition": "a discussion in which people in different places talk to each other using telephones or video equipment",
+            "source": "workbook",
+            "sourcePage": 9
+          },
+          {
+            "id": "1D-5",
+            "unitId": 1,
+            "lessonId": "1D",
+            "term": "videoconference",
+            "partOfSpeech": "n",
+            "meaning": "hội nghị truyền hình",
+            "definition": "a discussion in which people in different places talk to each other using video equipment",
+            "source": "workbook",
+            "sourcePage": 9
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "IT systems",
+    "subtitle": "Hệ thống máy tính",
+    "icon": "monitor",
+    "lessons": [
+      {
+        "id": "2A",
+        "title": "GUI operations",
+        "subtitle": "Thao tác giao diện",
+        "words": [
+          {
+            "id": "2A-1",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "resize",
+            "partOfSpeech": "v",
+            "meaning": "thay đổi kích thước",
+            "definition": "to change the size of sth",
+            "source": "workbook",
+            "sourcePage": 15
+          },
+          {
+            "id": "2A-2",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "scroll bar",
+            "partOfSpeech": "n phr",
+            "meaning": "thanh cuộn",
+            "definition": "a part on the side of a computer screen that you move using a mouse in order to move up or down",
+            "source": "workbook",
+            "sourcePage": 15
+          },
+          {
+            "id": "2A-wb-15-3",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "menu",
+            "partOfSpeech": "n",
+            "meaning": "trình đơn",
+            "definition": "a list of things on a computer screen that you can ask the computer to do",
+            "source": "workbook",
+            "sourcePage": 15
+          },
+          {
+            "id": "2A-wb-15-4",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "minimise button",
+            "partOfSpeech": "n phr",
+            "meaning": "nút thu nhỏ cửa sổ",
+            "definition": "a small area on a computer screen that you click on in order to make a document or program window very small when you are not using it but still want to keep it open",
+            "source": "workbook",
+            "sourcePage": 15
+          },
+          {
+            "id": "2A-wb-15-5",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "maximise button",
+            "partOfSpeech": "n phr",
+            "meaning": "nút phóng to cửa sổ",
+            "definition": "a small area on a computer screen that you click on in order to make a document or program window as large as possible",
+            "source": "workbook",
+            "sourcePage": 15
+          },
+          {
+            "id": "2A-wb-15-6",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "title bar",
+            "partOfSpeech": "n",
+            "meaning": "thanh tiêu đề",
+            "definition": "the coloured bar at the top of a computer window that shows the name of the program and whether it is being used at that time",
+            "source": "workbook",
+            "sourcePage": 15
+          },
+          {
+            "id": "2A-3",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "icon",
+            "partOfSpeech": "n",
+            "meaning": "biểu tượng",
+            "definition": "a small sign or picture on a computer screen that is used to start a particular operation",
+            "source": "workbook",
+            "sourcePage": 15
+          },
+          {
+            "id": "2A-4",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "folder",
+            "partOfSpeech": "n",
+            "meaning": "thư mục",
+            "definition": "a place where you store a group of related documents together on a computer, or the icon for this",
+            "source": "workbook",
+            "sourcePage": 15
+          },
+          {
+            "id": "2A-wb-15-9",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "filename",
+            "partOfSpeech": "n",
+            "meaning": "tên tệp",
+            "definition": "the name you give to a particular computer file",
+            "source": "workbook",
+            "sourcePage": 15
+          },
+          {
+            "id": "2A-wb-15-10",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "pane",
+            "partOfSpeech": "n",
+            "meaning": "khung trong cửa sổ giao diện",
+            "definition": "one of the separate areas of a computer window where part of a program or set of files is displayed",
+            "source": "workbook",
+            "sourcePage": 15
+          },
+          {
+            "id": "2A-wb-15-11",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "tab",
+            "partOfSpeech": "n",
+            "meaning": "thẻ giao diện",
+            "definition": "one of several areas in a computer window that allows multiple documents to be shown at the same time",
+            "source": "workbook",
+            "sourcePage": 15
+          },
+          {
+            "id": "2A-wb-16-12",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "tick box",
+            "partOfSpeech": "n",
+            "meaning": "ô đánh dấu",
+            "definition": "a box for a mark written next to an answer, sth on a list, etc., to show that it is correct, has been dealt with or is required",
+            "source": "workbook",
+            "sourcePage": 16
+          },
+          {
+            "id": "2A-wb-16-13",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "double click",
+            "partOfSpeech": "v",
+            "meaning": "nhấp đúp",
+            "definition": "to press (a button on a computer mouse) twice in order to send an instruction to the computer",
+            "source": "workbook",
+            "sourcePage": 16
+          },
+          {
+            "id": "2A-wb-16-14",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "click",
+            "partOfSpeech": "v",
+            "meaning": "nhấp chuột",
+            "definition": "to press (a button on a computer mouse) to choose sth from the screen that you want the computer to do",
+            "source": "workbook",
+            "sourcePage": 16
+          },
+          {
+            "id": "2A-wb-16-15",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "right-click",
+            "partOfSpeech": "v",
+            "meaning": "nhấp chuột phải",
+            "definition": "to press the right-hand button on a computer mouse to make the computer do something",
+            "source": "workbook",
+            "sourcePage": 16
+          },
+          {
+            "id": "2A-wb-16-16",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "slide",
+            "partOfSpeech": "v",
+            "meaning": "trượt",
+            "definition": "to move smoothly over a surface while continuing to touch it, or to make sth move in this way",
+            "source": "workbook",
+            "sourcePage": 16
+          },
+          {
+            "id": "2A-5",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "drag",
+            "partOfSpeech": "v",
+            "meaning": "kéo",
+            "definition": "to move (words, pictures, etc.) on a computer screen by pulling them along with the mouse",
+            "source": "workbook",
+            "sourcePage": 16
+          },
+          {
+            "id": "2A-wb-16-18",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "select",
+            "partOfSpeech": "v",
+            "meaning": "chọn",
+            "definition": "to choose (sth or sb)",
+            "source": "workbook",
+            "sourcePage": 16
+          },
+          {
+            "id": "2A-wb-16-19",
+            "unitId": 2,
+            "lessonId": "2A",
+            "term": "plus",
+            "partOfSpeech": "n",
+            "meaning": "dấu cộng",
+            "definition": "the sign (+), showing that you should add two or more numbers together, or that a number is more than zero",
+            "source": "workbook",
+            "sourcePage": 16
+          }
+        ]
+      },
+      {
+        "id": "2B",
+        "title": "Multimedia hardware",
+        "subtitle": "Phần cứng đa phương tiện",
+        "words": [
+          {
+            "id": "2B-wb-16-1",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "graphics",
+            "partOfSpeech": "n pl",
+            "meaning": "đồ họa",
+            "definition": "pictures or images that are designed to represent objects or facts, especially in a computer program",
+            "source": "workbook",
+            "sourcePage": 16
+          },
+          {
+            "id": "2B-wb-16-2",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "image",
+            "partOfSpeech": "n",
+            "meaning": "hình ảnh",
+            "definition": "a picture on the screen of a television, cinema or computer",
+            "source": "workbook",
+            "sourcePage": 16
+          },
+          {
+            "id": "2B-wb-16-3",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "video",
+            "partOfSpeech": "n",
+            "meaning": "bản ghi hình",
+            "definition": "a copy of a film or television programme, or a series of events, recorded as an electronic file",
+            "source": "workbook",
+            "sourcePage": 16
+          },
+          {
+            "id": "2B-1",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "microphone",
+            "partOfSpeech": "n",
+            "meaning": "micro",
+            "definition": "a piece of equipment that you speak into to record your voice or make it louder when you are speaking or performing in public",
+            "source": "workbook",
+            "sourcePage": 16
+          },
+          {
+            "id": "2B-2",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "projector",
+            "partOfSpeech": "n",
+            "meaning": "máy chiếu",
+            "definition": "a piece of equipment that makes a film or picture appear on a screen or flat surface",
+            "source": "workbook",
+            "sourcePage": 17
+          },
+          {
+            "id": "2B-3",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "speaker",
+            "partOfSpeech": "n",
+            "meaning": "loa",
+            "definition": "the part of a radio, sound system, computer, etc. where the sound comes out",
+            "source": "workbook",
+            "sourcePage": 17
+          },
+          {
+            "id": "2B-wb-17-7",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "video camera",
+            "partOfSpeech": "n",
+            "meaning": "máy quay video",
+            "definition": "a special camera that can be used to film events and convert them into electronic files",
+            "source": "workbook",
+            "sourcePage": 17
+          },
+          {
+            "id": "2B-wb-17-8",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "virtual reality goggles",
+            "partOfSpeech": "n pl",
+            "meaning": "kính thực tế ảo",
+            "definition": "a pair of special glasses that allow you to see an environment produced by a computer that looks and seems real",
+            "source": "workbook",
+            "sourcePage": 17
+          },
+          {
+            "id": "2B-4",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "webcam",
+            "partOfSpeech": "n",
+            "meaning": "camera máy tính",
+            "definition": "a video camera that broadcasts what it is filming on a website or on another person’s computer",
+            "source": "workbook",
+            "sourcePage": 17
+          },
+          {
+            "id": "2B-wb-17-10",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "cable",
+            "partOfSpeech": "n",
+            "meaning": "cáp",
+            "definition": "a plastic or rubber tube containing wires that carry telephone messages, electronic signals, television pictures, etc.",
+            "source": "workbook",
+            "sourcePage": 17
+          },
+          {
+            "id": "2B-wb-17-11",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "press",
+            "partOfSpeech": "v",
+            "meaning": "nhấn",
+            "definition": "to push (a button, switch, etc.) to make a machine start or do sth, a bell ring, etc.",
+            "source": "workbook",
+            "sourcePage": 17
+          },
+          {
+            "id": "2B-wb-17-12",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "switch off",
+            "partOfSpeech": "phr v",
+            "meaning": "tắt bằng công tắc",
+            "definition": "to turn off (a machine, light, radio, etc.) using a switch",
+            "source": "workbook",
+            "sourcePage": 17
+          },
+          {
+            "id": "2B-5",
+            "unitId": 2,
+            "lessonId": "2B",
+            "term": "unplug",
+            "partOfSpeech": "v",
+            "meaning": "rút phích cắm",
+            "definition": "to disconnect (a piece of electrical equipment) by pulling its plug out of a socket",
+            "source": "workbook",
+            "sourcePage": 17
+          }
+        ]
+      },
+      {
+        "id": "2C",
+        "title": "Operating systems",
+        "subtitle": "Hệ điều hành",
+        "words": [
+          {
+            "id": "2C-1",
+            "unitId": 2,
+            "lessonId": "2C",
+            "term": "restart",
+            "partOfSpeech": "v",
+            "meaning": "khởi động lại",
+            "definition": "to start sth (a machine, process, etc.) again after it has stopped",
+            "source": "workbook",
+            "sourcePage": 17
+          },
+          {
+            "id": "2C-2",
+            "unitId": 2,
+            "lessonId": "2C",
+            "term": "partition",
+            "partOfSpeech": "v",
+            "meaning": "phân vùng",
+            "definition": "to divide (the storage area of a hard disk) into two or more parts",
+            "source": "workbook",
+            "sourcePage": 17
+          },
+          {
+            "id": "2C-wb-17-3",
+            "unitId": 2,
+            "lessonId": "2C",
+            "term": "BIOS",
+            "partOfSpeech": "n",
+            "meaning": "hệ thống nhập/xuất cơ bản",
+            "definition": "(= Basic Input Output System) a system on PCs that provides a small library of basic input/output functions used to operate and control the keyboard, text display, etc.",
+            "source": "workbook",
+            "sourcePage": 17
+          },
+          {
+            "id": "2C-3",
+            "unitId": 2,
+            "lessonId": "2C",
+            "term": "boot drive",
+            "partOfSpeech": "n",
+            "meaning": "ổ đĩa khởi động",
+            "definition": "the disk in a computer that is used to start the program that makes the computer ready to be used",
+            "source": "workbook",
+            "sourcePage": 17
+          },
+          {
+            "id": "2C-wb-18-5",
+            "unitId": 2,
+            "lessonId": "2C",
+            "term": "product key",
+            "partOfSpeech": "n",
+            "meaning": "khóa bản quyền sản phẩm",
+            "definition": "a unique sequence of numbers and letters that is typed into a computer to prove that the user has a licence to load and use a program",
+            "source": "workbook",
+            "sourcePage": 18
+          },
+          {
+            "id": "2C-4",
+            "unitId": 2,
+            "lessonId": "2C",
+            "term": "user account",
+            "partOfSpeech": "n",
+            "meaning": "tài khoản người dùng",
+            "definition": "a system that records your username and password and gives you access to a computer, your email, etc.",
+            "source": "workbook",
+            "sourcePage": 18
+          },
+          {
+            "id": "2C-wb-18-7",
+            "unitId": 2,
+            "lessonId": "2C",
+            "term": "reboot",
+            "partOfSpeech": "v",
+            "meaning": "khởi động lại máy",
+            "definition": "if you reboot a computer, or if it reboots, you start it up again",
+            "source": "workbook",
+            "sourcePage": 18
+          },
+          {
+            "id": "2C-wb-18-8",
+            "unitId": 2,
+            "lessonId": "2C",
+            "term": "process",
+            "partOfSpeech": "n",
+            "meaning": "quá trình",
+            "definition": "a series of actions that are done in order to achieve a particular result",
+            "source": "workbook",
+            "sourcePage": 18
+          },
+          {
+            "id": "2C-wb-18-9",
+            "unitId": 2,
+            "lessonId": "2C",
+            "term": "back up",
+            "partOfSpeech": "phr v",
+            "meaning": "sao lưu",
+            "definition": "to make a copy of (information stored on a computer)",
+            "source": "workbook",
+            "sourcePage": 18
+          },
+          {
+            "id": "2C-wb-18-10",
+            "unitId": 2,
+            "lessonId": "2C",
+            "term": "licence terms",
+            "partOfSpeech": "n pl",
+            "meaning": "điều khoản cấp phép",
+            "definition": "the conditions, set by the software developer, under which a user can use a computer program",
+            "source": "workbook",
+            "sourcePage": 18
+          },
+          {
+            "id": "2C-5",
+            "unitId": 2,
+            "lessonId": "2C",
+            "term": "open source",
+            "partOfSpeech": "adj",
+            "meaning": "mã nguồn mở",
+            "definition": "open source software is provided free, and includes the language the program is written in, so that the people who use it can make changes to the software",
+            "source": "workbook",
+            "sourcePage": 18
+          },
+          {
+            "id": "2C-wb-18-12",
+            "unitId": 2,
+            "lessonId": "2C",
+            "term": "proprietary",
+            "partOfSpeech": "adj",
+            "meaning": "độc quyền, thuộc quyền sở hữu",
+            "definition": "a proprietary product is one that is sold under a trade name",
+            "source": "workbook",
+            "sourcePage": 18
+          }
+        ]
+      },
+      {
+        "id": "2D",
+        "title": "System specifications",
+        "subtitle": "Thông số hệ thống",
+        "words": [
+          {
+            "id": "2D-1",
+            "unitId": 2,
+            "lessonId": "2D",
+            "term": "external",
+            "partOfSpeech": "adj",
+            "meaning": "bên ngoài",
+            "definition": "not contained within the case of a computer, but attached by a cable or wirelessly",
+            "source": "workbook",
+            "sourcePage": 18
+          },
+          {
+            "id": "2D-2",
+            "unitId": 2,
+            "lessonId": "2D",
+            "term": "headphones",
+            "partOfSpeech": "n pl",
+            "meaning": "tai nghe",
+            "definition": "a piece of equipment that you wear over your ears to listen to the radio, music, etc. without other people hearing it",
+            "source": "workbook",
+            "sourcePage": 18
+          },
+          {
+            "id": "2D-3",
+            "unitId": 2,
+            "lessonId": "2D",
+            "term": "solid state drive",
+            "partOfSpeech": "n phr",
+            "meaning": "ổ cứng thể rắn",
+            "definition": "a computer disk that contains electronic parts, such as silicon chips, rather than moving mechanical parts",
+            "source": "workbook",
+            "sourcePage": 18
+          },
+          {
+            "id": "2D-wb-19-4",
+            "unitId": 2,
+            "lessonId": "2D",
+            "term": "printer",
+            "partOfSpeech": "n",
+            "meaning": "máy in",
+            "definition": "a machine that is connected to a computer and can make a printed record of computer information",
+            "source": "workbook",
+            "sourcePage": 19
+          },
+          {
+            "id": "2D-wb-19-5",
+            "unitId": 2,
+            "lessonId": "2D",
+            "term": "motherboard",
+            "partOfSpeech": "n",
+            "meaning": "bo mạch chủ",
+            "definition": "a board where all the circuits of a computer are placed",
+            "source": "workbook",
+            "sourcePage": 19
+          },
+          {
+            "id": "2D-wb-19-6",
+            "unitId": 2,
+            "lessonId": "2D",
+            "term": "trainee",
+            "partOfSpeech": "n",
+            "meaning": "người đang được đào tạo",
+            "definition": "sb who is being trained for a job",
+            "source": "workbook",
+            "sourcePage": 19
+          },
+          {
+            "id": "2D-wb-19-7",
+            "unitId": 2,
+            "lessonId": "2D",
+            "term": "audio",
+            "partOfSpeech": "n",
+            "meaning": "âm thanh",
+            "definition": "the part of a recording that contains sounds and music but not pictures",
+            "source": "workbook",
+            "sourcePage": 19
+          },
+          {
+            "id": "2D-wb-19-8",
+            "unitId": 2,
+            "lessonId": "2D",
+            "term": "socket",
+            "partOfSpeech": "n",
+            "meaning": "ổ cắm",
+            "definition": "the place on a piece of electrical equipment that you put a plug into",
+            "source": "workbook",
+            "sourcePage": 19
+          },
+          {
+            "id": "2D-4",
+            "unitId": 2,
+            "lessonId": "2D",
+            "term": "CPU",
+            "partOfSpeech": "n",
+            "meaning": "bộ xử lý trung tâm",
+            "definition": "(= Central Processing Unit) the part of a computer that controls what it does",
+            "source": "workbook",
+            "sourcePage": 19
+          },
+          {
+            "id": "2D-wb-19-10",
+            "unitId": 2,
+            "lessonId": "2D",
+            "term": "DIMM slot",
+            "partOfSpeech": "n",
+            "meaning": "khe cắm mô-đun bộ nhớ DIMM",
+            "definition": "the place on a computer where you can insert a DIMM (= Dual Inline Memory Module) to increase its random-access memory",
+            "source": "workbook",
+            "sourcePage": 19
+          },
+          {
+            "id": "2D-wb-19-11",
+            "unitId": 2,
+            "lessonId": "2D",
+            "term": "Ethernet connector",
+            "partOfSpeech": "n",
+            "meaning": "đầu nối Ethernet",
+            "definition": "a type of cable used when a computer is connected to other computer networks",
+            "source": "workbook",
+            "sourcePage": 19
+          },
+          {
+            "id": "2D-5",
+            "unitId": 2,
+            "lessonId": "2D",
+            "term": "RAM",
+            "meaning": "bộ nhớ truy cập ngẫu nhiên",
+            "definition": "Working memory used by running programs.",
+            "partOfSpeech": "n",
+            "source": "supplemental",
+            "sourcePage": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Data communications",
+    "subtitle": "Truyền thông dữ liệu",
+    "icon": "network",
+    "lessons": [
+      {
+        "id": "3A",
+        "title": "Email",
+        "subtitle": "Thư điện tử",
+        "words": [
+          {
+            "id": "3A-1",
+            "unitId": 3,
+            "lessonId": "3A",
+            "term": "subject line",
+            "partOfSpeech": "n",
+            "meaning": "dòng tiêu đề",
+            "definition": "the place in an email where you put the name of thing you are talking about or considering",
+            "source": "workbook",
+            "sourcePage": 26
+          },
+          {
+            "id": "3A-2",
+            "unitId": 3,
+            "lessonId": "3A",
+            "term": "recipient",
+            "partOfSpeech": "n",
+            "meaning": "người nhận",
+            "definition": "sb who receives sth",
+            "source": "workbook",
+            "sourcePage": 26
+          },
+          {
+            "id": "3A-3",
+            "unitId": 3,
+            "lessonId": "3A",
+            "term": "signature",
+            "partOfSpeech": "n",
+            "meaning": "chữ ký",
+            "definition": "your name written in the way you usually write it, for example at the end of an email, a letter, or on a cheque to show that you have written it",
+            "source": "workbook",
+            "sourcePage": 26
+          },
+          {
+            "id": "3A-4",
+            "unitId": 3,
+            "lessonId": "3A",
+            "term": "attachment",
+            "partOfSpeech": "n",
+            "meaning": "tệp đính kèm",
+            "definition": "a document or file that is sent with an email message",
+            "source": "workbook",
+            "sourcePage": 26
+          },
+          {
+            "id": "3A-5",
+            "unitId": 3,
+            "lessonId": "3A",
+            "term": "spell checker",
+            "partOfSpeech": "n",
+            "meaning": "công cụ kiểm tra chính tả",
+            "definition": "a computer program that tells you when you have spelled a word wrongly",
+            "source": "workbook",
+            "sourcePage": 26
+          },
+          {
+            "id": "3A-wb-26-6",
+            "unitId": 3,
+            "lessonId": "3A",
+            "term": "copy",
+            "partOfSpeech": "n",
+            "meaning": "bản sao",
+            "definition": "a duplicate of an email message you are sending to sb else",
+            "source": "workbook",
+            "sourcePage": 26
+          },
+          {
+            "id": "3A-wb-26-7",
+            "unitId": 3,
+            "lessonId": "3A",
+            "term": "delete",
+            "partOfSpeech": "v",
+            "meaning": "xóa",
+            "definition": "to remove (sth that has been written down or stored in a computer)",
+            "source": "workbook",
+            "sourcePage": 26
+          },
+          {
+            "id": "3A-wb-26-8",
+            "unitId": 3,
+            "lessonId": "3A",
+            "term": "guideline",
+            "partOfSpeech": "n",
+            "meaning": "hướng dẫn, nguyên tắc chỉ dẫn",
+            "definition": "a rule or instruction about the best way to do sth",
+            "source": "workbook",
+            "sourcePage": 26
+          }
+        ]
+      },
+      {
+        "id": "3B",
+        "title": "Internet browsing",
+        "subtitle": "Duyệt Internet",
+        "words": [
+          {
+            "id": "3B-1",
+            "unitId": 3,
+            "lessonId": "3B",
+            "term": "browser",
+            "partOfSpeech": "n",
+            "meaning": "trình duyệt",
+            "definition": "a computer program that finds information on the Internet and shows it on your computer screen",
+            "source": "workbook",
+            "sourcePage": 26
+          },
+          {
+            "id": "3B-5",
+            "unitId": 3,
+            "lessonId": "3B",
+            "term": "access",
+            "partOfSpeech": "v",
+            "meaning": "truy cập",
+            "definition": "to find (information), especially on a computer",
+            "source": "workbook",
+            "sourcePage": 26
+          },
+          {
+            "id": "3B-2",
+            "unitId": 3,
+            "lessonId": "3B",
+            "term": "bookmark",
+            "partOfSpeech": "n",
+            "meaning": "dấu trang",
+            "definition": "a way of saving the address of a page on the Internet so that you can find it again",
+            "source": "workbook",
+            "sourcePage": 26
+          },
+          {
+            "id": "3B-wb-26-4",
+            "unitId": 3,
+            "lessonId": "3B",
+            "term": "back button",
+            "partOfSpeech": "n phr",
+            "meaning": "nút quay lại",
+            "definition": "a small area on a web browser or a computer program that you click on in order to go back to the previous page",
+            "source": "workbook",
+            "sourcePage": 26
+          },
+          {
+            "id": "3B-3",
+            "unitId": 3,
+            "lessonId": "3B",
+            "term": "link",
+            "partOfSpeech": "n",
+            "meaning": "liên kết",
+            "definition": "a special word or picture in an Internet document or on a web page, that you click on to move quickly to another part of the same document/web page or to another document/web page",
+            "source": "workbook",
+            "sourcePage": 27
+          },
+          {
+            "id": "3B-4",
+            "unitId": 3,
+            "lessonId": "3B",
+            "term": "refresh",
+            "partOfSpeech": "v",
+            "meaning": "tải lại",
+            "definition": "if you refresh your computer screen while you are connected to the Internet, you make the screen show any new information that has arrived since you first began looking at it",
+            "source": "workbook",
+            "sourcePage": 27
+          },
+          {
+            "id": "3B-wb-27-7",
+            "unitId": 3,
+            "lessonId": "3B",
+            "term": "follow",
+            "partOfSpeech": "v",
+            "meaning": "truy cập theo liên kết",
+            "definition": "to click on (a link) and go to the part of a document or web page that it takes you to",
+            "source": "workbook",
+            "sourcePage": 27
+          },
+          {
+            "id": "3B-wb-27-8",
+            "unitId": 3,
+            "lessonId": "3B",
+            "term": "take part in",
+            "partOfSpeech": "phr v",
+            "meaning": "tham gia",
+            "definition": "to be involved in (an activity, sport, event, etc.) with other people",
+            "source": "workbook",
+            "sourcePage": 27
+          },
+          {
+            "id": "3B-wb-27-9",
+            "unitId": 3,
+            "lessonId": "3B",
+            "term": "post",
+            "partOfSpeech": "v",
+            "meaning": "đăng nội dung",
+            "definition": "to put (a message or computer document) on the Internet so that other people can see it",
+            "source": "workbook",
+            "sourcePage": 27
+          }
+        ]
+      },
+      {
+        "id": "3C",
+        "title": "Mobile computing",
+        "subtitle": "Điện toán di động",
+        "words": [
+          {
+            "id": "3C-1",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "feature",
+            "partOfSpeech": "n",
+            "meaning": "tính năng",
+            "definition": "a part of sth that you notice because it seems important, interesting or typical",
+            "source": "workbook",
+            "sourcePage": 27
+          },
+          {
+            "id": "3C-wb-27-2",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "flowchart",
+            "partOfSpeech": "n",
+            "meaning": "lưu đồ",
+            "definition": "a drawing that uses shapes and lines to show how the different stages in a process are connected to each other",
+            "source": "workbook",
+            "sourcePage": 27
+          },
+          {
+            "id": "3C-wb-27-3",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "invoice",
+            "partOfSpeech": "n",
+            "meaning": "hóa đơn",
+            "definition": "a list of goods that have been supplied or work that has been done, showing how much you owe for them",
+            "source": "workbook",
+            "sourcePage": 27
+          },
+          {
+            "id": "3C-wb-27-4",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "sign",
+            "partOfSpeech": "v",
+            "meaning": "ký tên",
+            "definition": "to write your signature on (sth) to show that you wrote it, agree with it or were present",
+            "source": "workbook",
+            "sourcePage": 27
+          },
+          {
+            "id": "3C-2",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "GPS",
+            "partOfSpeech": "n",
+            "meaning": "hệ thống định vị toàn cầu",
+            "definition": "(= Global Positioning System) a system that uses radio signals from satellites to show your exact position on the Earth on a special piece of equipment",
+            "source": "workbook",
+            "sourcePage": 27
+          },
+          {
+            "id": "3C-wb-28-6",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "electronic version",
+            "partOfSpeech": "n phr",
+            "meaning": "phiên bản điện tử",
+            "definition": "a copy of sth presented in a form that can be read on a computer",
+            "source": "workbook",
+            "sourcePage": 28
+          },
+          {
+            "id": "3C-wb-28-7",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "remotely",
+            "partOfSpeech": "adv",
+            "meaning": "từ xa",
+            "definition": "from far away",
+            "source": "workbook",
+            "sourcePage": 28
+          },
+          {
+            "id": "3C-wb-28-8",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "function",
+            "partOfSpeech": "n",
+            "meaning": "chức năng",
+            "definition": "one of the basic operations performed by a computer",
+            "source": "workbook",
+            "sourcePage": 28
+          },
+          {
+            "id": "3C-3",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "battery life",
+            "partOfSpeech": "n",
+            "meaning": "thời lượng pin",
+            "definition": "the period of time during which an object that provides a supply of electricity for sth such as a radio, car or toy is still good enough to use",
+            "source": "workbook",
+            "sourcePage": 28
+          },
+          {
+            "id": "3C-wb-28-10",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "recharger",
+            "partOfSpeech": "n",
+            "meaning": "thiết bị sạc lại pin",
+            "definition": "a machine that puts a new supply of electricity into a battery",
+            "source": "workbook",
+            "sourcePage": 28
+          },
+          {
+            "id": "3C-4",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "customise",
+            "partOfSpeech": "v",
+            "meaning": "tùy chỉnh",
+            "definition": "to change (sth) to make it more suitable for you, or to make it look special or different from things of a similar type",
+            "source": "workbook",
+            "sourcePage": 28
+          },
+          {
+            "id": "3C-wb-28-12",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "tag",
+            "partOfSpeech": "v",
+            "meaning": "gắn thẻ",
+            "definition": "to attach a computer code to (a word, phrase, image, etc.) in order to arrange the data in a particular way",
+            "source": "workbook",
+            "sourcePage": 28
+          },
+          {
+            "id": "3C-5",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "OCR",
+            "partOfSpeech": "n",
+            "meaning": "nhận dạng ký tự quang học",
+            "definition": "(= Optical Character Recognition) computer software that recognizes numbers and letters of the alphabet that are written on paper, so that information from paper documents can be scanned into a computer",
+            "source": "workbook",
+            "sourcePage": 28
+          },
+          {
+            "id": "3C-wb-28-14",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "report",
+            "partOfSpeech": "v",
+            "meaning": "báo cáo",
+            "definition": "to give people information about (recent events)",
+            "source": "workbook",
+            "sourcePage": 28
+          },
+          {
+            "id": "3C-wb-28-15",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "location",
+            "partOfSpeech": "n",
+            "meaning": "vị trí",
+            "definition": "the position of sth or sb",
+            "source": "workbook",
+            "sourcePage": 28
+          },
+          {
+            "id": "3C-wb-28-16",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "exactly",
+            "partOfSpeech": "adv",
+            "meaning": "chính xác",
+            "definition": "used to emphasise that a number, amount or piece of information is or should be completely correct in every detail",
+            "source": "workbook",
+            "sourcePage": 28
+          },
+          {
+            "id": "3C-wb-28-17",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "record",
+            "partOfSpeech": "n",
+            "meaning": "bản ghi",
+            "definition": "information about sth that is written down or stored on computer, film, etc. so that it can be looked at in the future",
+            "source": "workbook",
+            "sourcePage": 28
+          },
+          {
+            "id": "3C-wb-28-18",
+            "unitId": 3,
+            "lessonId": "3C",
+            "term": "accelerometer",
+            "partOfSpeech": "n",
+            "meaning": "cảm biến gia tốc",
+            "definition": "a device that measures the rate at which the speed of an object increases",
+            "source": "workbook",
+            "sourcePage": 28
+          }
+        ]
+      },
+      {
+        "id": "3D",
+        "title": "Networks",
+        "subtitle": "Mạng máy tính",
+        "words": [
+          {
+            "id": "3D-1",
+            "unitId": 3,
+            "lessonId": "3D",
+            "term": "wired",
+            "partOfSpeech": "adj",
+            "meaning": "có dây",
+            "definition": "connected together using pieces of thin metal in the form of threads",
+            "source": "workbook",
+            "sourcePage": 29
+          },
+          {
+            "id": "3D-2",
+            "unitId": 3,
+            "lessonId": "3D",
+            "term": "wireless",
+            "partOfSpeech": "adj",
+            "meaning": "không dây",
+            "definition": "connected together by using radio signals rather than wires",
+            "source": "workbook",
+            "sourcePage": 29
+          },
+          {
+            "id": "3D-3",
+            "unitId": 3,
+            "lessonId": "3D",
+            "term": "LAN",
+            "partOfSpeech": "n",
+            "meaning": "mạng cục bộ",
+            "definition": "(= Local Area Network) a system that connects computers to each other within a building or organisation so that people can use and work on the same information",
+            "source": "workbook",
+            "sourcePage": 29
+          },
+          {
+            "id": "3D-wb-29-4",
+            "unitId": 3,
+            "lessonId": "3D",
+            "term": "WAN",
+            "partOfSpeech": "n",
+            "meaning": "mạng diện rộng",
+            "definition": "(= Wide Area Network) a system that connects computers to each other over a large area, sometimes between countries, so that people can use and work on the same information",
+            "source": "workbook",
+            "sourcePage": 29
+          },
+          {
+            "id": "3D-wb-29-5",
+            "unitId": 3,
+            "lessonId": "3D",
+            "term": "server",
+            "partOfSpeech": "n",
+            "meaning": "máy chủ",
+            "definition": "the main computer on a network, that controls all the others, or one of the computers on a network that provides a special service",
+            "source": "workbook",
+            "sourcePage": 29
+          },
+          {
+            "id": "3D-wb-29-6",
+            "unitId": 3,
+            "lessonId": "3D",
+            "term": "bus",
+            "partOfSpeech": "n",
+            "meaning": "đường truyền tín hiệu chung",
+            "definition": "a circuit that connects the main parts of a computer so that signals can be sent from one part of the computer to another, or that links computers on a network to one another",
+            "source": "workbook",
+            "sourcePage": 29
+          },
+          {
+            "id": "3D-wb-29-7",
+            "unitId": 3,
+            "lessonId": "3D",
+            "term": "mesh",
+            "partOfSpeech": "n",
+            "meaning": "mạng dạng lưới",
+            "definition": "a circuit that connects each computer on a network to several others",
+            "source": "workbook",
+            "sourcePage": 29
+          },
+          {
+            "id": "3D-wb-29-8",
+            "unitId": 3,
+            "lessonId": "3D",
+            "term": "dongle",
+            "partOfSpeech": "n",
+            "meaning": "thiết bị cắm dùng làm khóa hoặc bộ kết nối",
+            "definition": "a small device that plugs into an electrical connector on a computer and functions as an electronic ‘key’ to unlock access to a piece of software",
+            "source": "workbook",
+            "sourcePage": 29
+          },
+          {
+            "id": "3D-4",
+            "unitId": 3,
+            "lessonId": "3D",
+            "term": "VPN",
+            "partOfSpeech": "n",
+            "meaning": "mạng riêng ảo",
+            "definition": "(= Virtual Private Network) a secure network that uses the Internet to allow remote offices or travelling users to access a company’s central network",
+            "source": "workbook",
+            "sourcePage": 29
+          },
+          {
+            "id": "3D-5",
+            "unitId": 3,
+            "lessonId": "3D",
+            "term": "encrypt",
+            "partOfSpeech": "v",
+            "meaning": "mã hóa",
+            "definition": "to protect (information) by putting it into a special code that only some people can read, especially information that is on a computer",
+            "source": "workbook",
+            "sourcePage": 29
+          },
+          {
+            "id": "3D-wb-29-11",
+            "unitId": 3,
+            "lessonId": "3D",
+            "term": "wi-fi",
+            "partOfSpeech": "n",
+            "meaning": "mạng không dây Wi-Fi",
+            "definition": "(= wireless fidelity) a way of connecting computers or other electronic machines to a network by using radio signals rather than wires",
+            "source": "workbook",
+            "sourcePage": 29
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Administration",
+    "subtitle": "Quản trị hệ thống",
+    "icon": "database",
+    "lessons": [
+      {
+        "id": "4A",
+        "title": "Databases",
+        "subtitle": "Cơ sở dữ liệu",
+        "words": [
+          {
+            "id": "4A-wb-37-1",
+            "unitId": 4,
+            "lessonId": "4A",
+            "term": "form",
+            "partOfSpeech": "n",
+            "meaning": "biểu mẫu",
+            "definition": "an official document with spaces where you write information, especially about yourself",
+            "source": "workbook",
+            "sourcePage": 37
+          },
+          {
+            "id": "4A-1",
+            "unitId": 4,
+            "lessonId": "4A",
+            "term": "table",
+            "partOfSpeech": "n",
+            "meaning": "bảng dữ liệu",
+            "definition": "a list of numbers, facts or information arranged in rows across and down a page",
+            "source": "workbook",
+            "sourcePage": 37
+          },
+          {
+            "id": "4A-wb-37-3",
+            "unitId": 4,
+            "lessonId": "4A",
+            "term": "walk (somebody) through (something)",
+            "partOfSpeech": "phr v",
+            "meaning": "hướng dẫn ai từng bước làm việc gì",
+            "definition": "to explain (sth) to (sb)",
+            "source": "workbook",
+            "sourcePage": 37
+          },
+          {
+            "id": "4A-2",
+            "unitId": 4,
+            "lessonId": "4A",
+            "term": "field",
+            "partOfSpeech": "n",
+            "meaning": "trường dữ liệu",
+            "definition": "in a computer document, an amount of space made available for a particular type of information",
+            "source": "workbook",
+            "sourcePage": 37
+          },
+          {
+            "id": "4A-wb-37-5",
+            "unitId": 4,
+            "lessonId": "4A",
+            "term": "object",
+            "partOfSpeech": "n",
+            "meaning": "đối tượng",
+            "definition": "a combination of written information on a computer and instructions that act on the information, for example in the form of a document or a picture",
+            "source": "workbook",
+            "sourcePage": 37
+          },
+          {
+            "id": "4A-3",
+            "unitId": 4,
+            "lessonId": "4A",
+            "term": "primary key",
+            "partOfSpeech": "n phr",
+            "meaning": "khóa chính",
+            "definition": "in a table, sth that uniquely identifies each record",
+            "source": "workbook",
+            "sourcePage": 37
+          },
+          {
+            "id": "4A-4",
+            "unitId": 4,
+            "lessonId": "4A",
+            "term": "query the database",
+            "partOfSpeech": "phr",
+            "meaning": "truy vấn cơ sở dữ liệu",
+            "definition": "to ask a question about the data stored in a computer system, in order to retrieve some information",
+            "source": "workbook",
+            "sourcePage": 37
+          },
+          {
+            "id": "4A-5",
+            "unitId": 4,
+            "lessonId": "4A",
+            "term": "retrieve a record",
+            "partOfSpeech": "phr",
+            "meaning": "truy xuất bản ghi",
+            "definition": "to get back a piece of information that has been stored in the memory of a computer",
+            "source": "workbook",
+            "sourcePage": 37
+          },
+          {
+            "id": "4A-wb-37-9",
+            "unitId": 4,
+            "lessonId": "4A",
+            "term": "unique",
+            "partOfSpeech": "adj",
+            "meaning": "duy nhất",
+            "definition": "being the only one of its kind",
+            "source": "workbook",
+            "sourcePage": 37
+          }
+        ]
+      },
+      {
+        "id": "4B",
+        "title": "Peripherals",
+        "subtitle": "Thiết bị ngoại vi",
+        "words": [
+          {
+            "id": "4B-1",
+            "unitId": 4,
+            "lessonId": "4B",
+            "term": "NAS",
+            "partOfSpeech": "n",
+            "meaning": "thiết bị lưu trữ gắn mạng",
+            "definition": "(= Network Attached Storage) a system that allows files to be stored and retrieved across a computer network",
+            "source": "workbook",
+            "sourcePage": 38
+          },
+          {
+            "id": "4B-wb-38-2",
+            "unitId": 4,
+            "lessonId": "4B",
+            "term": "attached",
+            "partOfSpeech": "adj",
+            "meaning": "được gắn hoặc kết nối",
+            "definition": "fastened or connected (to sth else)",
+            "source": "workbook",
+            "sourcePage": 38
+          },
+          {
+            "id": "4B-wb-38-3",
+            "unitId": 4,
+            "lessonId": "4B",
+            "term": "touch pad",
+            "partOfSpeech": "n phr",
+            "meaning": "bàn di chuột cảm ứng",
+            "definition": "an area on a computer that you touch in order to tell the computer what to do or to get information",
+            "source": "workbook",
+            "sourcePage": 38
+          },
+          {
+            "id": "4B-2",
+            "unitId": 4,
+            "lessonId": "4B",
+            "term": "stylus",
+            "partOfSpeech": "n",
+            "meaning": "bút cảm ứng",
+            "definition": "a thing shaped like a pen, used for writing on a special computer screen",
+            "source": "workbook",
+            "sourcePage": 38
+          },
+          {
+            "id": "4B-wb-38-5",
+            "unitId": 4,
+            "lessonId": "4B",
+            "term": "graphics tablet",
+            "partOfSpeech": "n",
+            "meaning": "bảng vẽ điện tử",
+            "definition": "a device that allows you to draw on its surface, using a stylus rather than a mouse, with the results appearing on your computer screen",
+            "source": "workbook",
+            "sourcePage": 38
+          },
+          {
+            "id": "4B-wb-38-6",
+            "unitId": 4,
+            "lessonId": "4B",
+            "term": "graphic design",
+            "partOfSpeech": "n phr",
+            "meaning": "thiết kế đồ họa",
+            "definition": "the art of combining pictures, words and decoration in the production of books, magazines, etc.",
+            "source": "workbook",
+            "sourcePage": 38
+          },
+          {
+            "id": "4B-3",
+            "unitId": 4,
+            "lessonId": "4B",
+            "term": "touch screen",
+            "partOfSpeech": "n phr",
+            "meaning": "màn hình cảm ứng",
+            "definition": "a type of computer screen that you touch in order to tell the computer what to do or to get information",
+            "source": "workbook",
+            "sourcePage": 38
+          },
+          {
+            "id": "4B-4",
+            "unitId": 4,
+            "lessonId": "4B",
+            "term": "headset",
+            "partOfSpeech": "n",
+            "meaning": "tai nghe có micro",
+            "definition": "a set of headphones, often with a microphone attached",
+            "source": "workbook",
+            "sourcePage": 38
+          },
+          {
+            "id": "4B-wb-38-9",
+            "unitId": 4,
+            "lessonId": "4B",
+            "term": "multifunction printer",
+            "partOfSpeech": "n phr",
+            "meaning": "máy in đa chức năng",
+            "definition": "a multifunction printer is designed to have several different uses, e.g. printing, faxing, scanning, etc.",
+            "source": "workbook",
+            "sourcePage": 38
+          },
+          {
+            "id": "4B-5",
+            "unitId": 4,
+            "lessonId": "4B",
+            "term": "input device",
+            "partOfSpeech": "n phr",
+            "meaning": "thiết bị nhập",
+            "definition": "a device that puts information into a computer, e.g. a keyboard",
+            "source": "workbook",
+            "sourcePage": 38
+          },
+          {
+            "id": "4B-wb-38-11",
+            "unitId": 4,
+            "lessonId": "4B",
+            "term": "jam",
+            "partOfSpeech": "n",
+            "meaning": "tình trạng kẹt máy hoặc kẹt giấy",
+            "definition": "a situation in which a machine does not work because something is stopping a part from moving",
+            "source": "workbook",
+            "sourcePage": 38
+          }
+        ]
+      },
+      {
+        "id": "4C",
+        "title": "Spreadsheets and formulae",
+        "subtitle": "Bảng tính và công thức",
+        "words": [
+          {
+            "id": "4C-wb-38-1",
+            "unitId": 4,
+            "lessonId": "4C",
+            "term": "bracket",
+            "partOfSpeech": "n",
+            "meaning": "dấu ngoặc",
+            "definition": "one of the pair of signs put around words to show extra information",
+            "source": "workbook",
+            "sourcePage": 38
+          },
+          {
+            "id": "4C-wb-38-2",
+            "unitId": 4,
+            "lessonId": "4C",
+            "term": "divide",
+            "partOfSpeech": "v",
+            "meaning": "chia",
+            "definition": "to calculate how many times (one number) contains a smaller number",
+            "source": "workbook",
+            "sourcePage": 38
+          },
+          {
+            "id": "4C-wb-39-3",
+            "unitId": 4,
+            "lessonId": "4C",
+            "term": "subtract",
+            "partOfSpeech": "v",
+            "meaning": "trừ",
+            "definition": "to take (a number or an amount) from a larger number or amount",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4C-wb-39-4",
+            "unitId": 4,
+            "lessonId": "4C",
+            "term": "minus",
+            "partOfSpeech": "prep",
+            "meaning": "trừ đi",
+            "definition": "used to show that one number or quantity is being subtracted from another",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4C-4",
+            "unitId": 4,
+            "lessonId": "4C",
+            "term": "multiply",
+            "partOfSpeech": "v",
+            "meaning": "nhân",
+            "definition": "to do a calculation in which you add (a number) to itself a particular number of times",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4C-wb-39-6",
+            "unitId": 4,
+            "lessonId": "4C",
+            "term": "times",
+            "partOfSpeech": "prep",
+            "meaning": "nhân với",
+            "definition": "multiplied by",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4C-5",
+            "unitId": 4,
+            "lessonId": "4C",
+            "term": "sum",
+            "partOfSpeech": "n",
+            "meaning": "tổng",
+            "definition": "the total produced when you add two or more numbers or amounts together",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4C-wb-39-8",
+            "unitId": 4,
+            "lessonId": "4C",
+            "term": "plus",
+            "partOfSpeech": "prep",
+            "meaning": "cộng với",
+            "definition": "used to show that one number or quantity is being added to another",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4C-1",
+            "unitId": 4,
+            "lessonId": "4C",
+            "term": "column",
+            "partOfSpeech": "n",
+            "meaning": "cột",
+            "definition": "a line of numbers or words written under each other that goes down a page",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4C-2",
+            "unitId": 4,
+            "lessonId": "4C",
+            "term": "row",
+            "partOfSpeech": "n",
+            "meaning": "hàng",
+            "definition": "a line of numbers or words written next to each other that goes across a page",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4C-3",
+            "unitId": 4,
+            "lessonId": "4C",
+            "term": "worksheet",
+            "partOfSpeech": "n",
+            "meaning": "trang tính",
+            "definition": "a single page or tab within a spreadsheet document",
+            "source": "workbook",
+            "sourcePage": 39
+          }
+        ]
+      },
+      {
+        "id": "4D",
+        "title": "Systems administration",
+        "subtitle": "Quản trị hệ thống",
+        "words": [
+          {
+            "id": "4D-1",
+            "unitId": 4,
+            "lessonId": "4D",
+            "term": "deploy",
+            "partOfSpeech": "v",
+            "meaning": "triển khai",
+            "definition": "to organise or move (soldiers, equipment, etc.) so that they are in the right place and ready to be used",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4D-2",
+            "unitId": 4,
+            "lessonId": "4D",
+            "term": "crash",
+            "partOfSpeech": "n",
+            "meaning": "sự cố dừng chương trình",
+            "definition": "an occasion when a computer or computer system suddenly stops working",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4D-5",
+            "unitId": 4,
+            "lessonId": "4D",
+            "term": "up and running again",
+            "partOfSpeech": "phr",
+            "meaning": "hoạt động trở lại",
+            "definition": "working correctly again after a period of not working",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4D-3",
+            "unitId": 4,
+            "lessonId": "4D",
+            "term": "read-only access",
+            "partOfSpeech": "n phr",
+            "meaning": "quyền chỉ đọc",
+            "definition": "if data has read-only access, you are only allowed to read it, not to change it",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4D-4",
+            "unitId": 4,
+            "lessonId": "4D",
+            "term": "lock (someone) out of (something)",
+            "partOfSpeech": "phr v",
+            "meaning": "chặn ai truy cập hệ thống",
+            "definition": "if sb is locked out of a computer, system, etc. they cannot access it",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4D-wb-39-6",
+            "unitId": 4,
+            "lessonId": "4D",
+            "term": "check (sth) out",
+            "partOfSpeech": "phr v",
+            "meaning": "kiểm tra, tìm hiểu điều gì",
+            "definition": "to make sure that (sth) is actually true, correct or acceptable; to investigate",
+            "source": "workbook",
+            "sourcePage": 39
+          },
+          {
+            "id": "4D-wb-40-7",
+            "unitId": 4,
+            "lessonId": "4D",
+            "term": "Caps Lock",
+            "partOfSpeech": "phr",
+            "meaning": "phím khóa chữ hoa",
+            "definition": "the button that you press on a computer when you want to use only capital letters",
+            "source": "workbook",
+            "sourcePage": 40
+          },
+          {
+            "id": "4D-wb-40-8",
+            "unitId": 4,
+            "lessonId": "4D",
+            "term": "permission",
+            "partOfSpeech": "n",
+            "meaning": "quyền, sự cho phép",
+            "definition": "when sb is officially allowed to do sth",
+            "source": "workbook",
+            "sourcePage": 40
+          },
+          {
+            "id": "4D-wb-40-9",
+            "unitId": 4,
+            "lessonId": "4D",
+            "term": "log",
+            "partOfSpeech": "n",
+            "meaning": "nhật ký ghi sự kiện",
+            "definition": "an official record of events",
+            "source": "workbook",
+            "sourcePage": 40
+          },
+          {
+            "id": "4D-wb-40-10",
+            "unitId": 4,
+            "lessonId": "4D",
+            "term": "reset",
+            "partOfSpeech": "v",
+            "meaning": "đặt lại",
+            "definition": "to change (a clock, password, machine, etc.) so that it shows a different time, number, etc. or is ready to be used again",
+            "source": "workbook",
+            "sourcePage": 40
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Choice",
+    "subtitle": "Lựa chọn giải pháp IT",
+    "icon": "sliders",
+    "lessons": [
+      {
+        "id": "5A",
+        "title": "IT costs",
+        "subtitle": "Chi phí IT",
+        "words": [
+          {
+            "id": "5A-1",
+            "unitId": 5,
+            "lessonId": "5A",
+            "term": "accessory",
+            "partOfSpeech": "n",
+            "meaning": "phụ kiện",
+            "definition": "sth such as a piece of equipment or a decoration that is not necessary, but that makes a machine, car, room, etc. more useful or more attractive",
+            "source": "workbook",
+            "sourcePage": 47
+          },
+          {
+            "id": "5A-4",
+            "unitId": 5,
+            "lessonId": "5A",
+            "term": "service",
+            "partOfSpeech": "n",
+            "meaning": "dịch vụ",
+            "definition": "a particular type of help or work that is provided by a business to customers, but not one that involves producing goods",
+            "source": "workbook",
+            "sourcePage": 47
+          },
+          {
+            "id": "5A-wb-47-3",
+            "unitId": 5,
+            "lessonId": "5A",
+            "term": "reader",
+            "partOfSpeech": "n",
+            "meaning": "thiết bị đọc dữ liệu",
+            "definition": "a device that can take the information that is on a disk, memory card, etc. and put it into its memory",
+            "source": "workbook",
+            "sourcePage": 47
+          },
+          {
+            "id": "5A-2",
+            "unitId": 5,
+            "lessonId": "5A",
+            "term": "charger",
+            "partOfSpeech": "n",
+            "meaning": "bộ sạc",
+            "definition": "a piece of equipment used to put electricity into a battery",
+            "source": "workbook",
+            "sourcePage": 47
+          },
+          {
+            "id": "5A-wb-47-5",
+            "unitId": 5,
+            "lessonId": "5A",
+            "term": "card",
+            "partOfSpeech": "n",
+            "meaning": "thẻ lưu trữ dữ liệu",
+            "definition": "a piece of electronic equipment for storing data, used in computers, digital cameras, mobile phones, etc.",
+            "source": "workbook",
+            "sourcePage": 47
+          },
+          {
+            "id": "5A-3",
+            "unitId": 5,
+            "lessonId": "5A",
+            "term": "extended warranty",
+            "partOfSpeech": "n phr",
+            "meaning": "bảo hành mở rộng",
+            "definition": "a written agreement in which a company selling sth promises to repair it if it breaks within a particular period of time that is longer than the basic guarantee",
+            "source": "workbook",
+            "sourcePage": 47
+          },
+          {
+            "id": "5A-5",
+            "unitId": 5,
+            "lessonId": "5A",
+            "term": "analyse",
+            "partOfSpeech": "v",
+            "meaning": "phân tích",
+            "definition": "to examine or think about (sth) carefully, in order to understand it",
+            "source": "workbook",
+            "sourcePage": 47
+          }
+        ]
+      },
+      {
+        "id": "5B",
+        "title": "Making recommendations",
+        "subtitle": "Đưa ra đề xuất",
+        "words": [
+          {
+            "id": "5B-wb-47-1",
+            "unitId": 5,
+            "lessonId": "5B",
+            "term": "2-D",
+            "partOfSpeech": "adj",
+            "meaning": "hai chiều",
+            "definition": "flat; having only length and depth, not height",
+            "source": "workbook",
+            "sourcePage": 47
+          },
+          {
+            "id": "5B-wb-47-2",
+            "unitId": 5,
+            "lessonId": "5B",
+            "term": "3-D",
+            "partOfSpeech": "adj",
+            "meaning": "ba chiều",
+            "definition": "having, or seeming to have, length, depth and height",
+            "source": "workbook",
+            "sourcePage": 47
+          },
+          {
+            "id": "5B-1",
+            "unitId": 5,
+            "lessonId": "5B",
+            "term": "capability",
+            "partOfSpeech": "n",
+            "meaning": "khả năng",
+            "definition": "the natural ability, skill or power that makes a machine, person or organisation able to do sth, especially sth difficult",
+            "source": "workbook",
+            "sourcePage": 47
+          },
+          {
+            "id": "5B-2",
+            "unitId": 5,
+            "lessonId": "5B",
+            "term": "compatibility",
+            "partOfSpeech": "n",
+            "meaning": "khả năng tương thích",
+            "definition": "the ability of one piece of computer equipment, document, etc. to be used with another one, especially when they are made by different companies",
+            "source": "workbook",
+            "sourcePage": 48
+          },
+          {
+            "id": "5B-3",
+            "unitId": 5,
+            "lessonId": "5B",
+            "term": "user guide",
+            "partOfSpeech": "n",
+            "meaning": "hướng dẫn sử dụng",
+            "definition": "a book or piece of writing that provides information on a particular subject or explains how to do sth",
+            "source": "workbook",
+            "sourcePage": 48
+          },
+          {
+            "id": "5B-4",
+            "unitId": 5,
+            "lessonId": "5B",
+            "term": "forum",
+            "partOfSpeech": "n",
+            "meaning": "diễn đàn",
+            "definition": "a group of computer users who are interested in a particular subject and discuss it using email or the Internet",
+            "source": "workbook",
+            "sourcePage": 48
+          },
+          {
+            "id": "5B-wb-48-7",
+            "unitId": 5,
+            "lessonId": "5B",
+            "term": "introduction",
+            "partOfSpeech": "n",
+            "meaning": "phần mở đầu",
+            "definition": "a written or spoken explanation at the beginning of a book, speech, etc.",
+            "source": "workbook",
+            "sourcePage": 48
+          },
+          {
+            "id": "5B-wb-48-8",
+            "unitId": 5,
+            "lessonId": "5B",
+            "term": "body",
+            "partOfSpeech": "n",
+            "meaning": "phần nội dung chính",
+            "definition": "the main, central or most important part of sth",
+            "source": "workbook",
+            "sourcePage": 48
+          },
+          {
+            "id": "5B-5",
+            "unitId": 5,
+            "lessonId": "5B",
+            "term": "conclusion",
+            "partOfSpeech": "n",
+            "meaning": "kết luận",
+            "definition": "the end or final part of sth",
+            "source": "workbook",
+            "sourcePage": 48
+          }
+        ]
+      },
+      {
+        "id": "5C",
+        "title": "Product research",
+        "subtitle": "Nghiên cứu sản phẩm",
+        "words": [
+          {
+            "id": "5C-1",
+            "unitId": 5,
+            "lessonId": "5C",
+            "term": "traditional pricing",
+            "partOfSpeech": "n phr",
+            "meaning": "định giá truyền thống",
+            "definition": "a way of charging for sth that follows ideas and methods that have existed for a long time, rather than doing anything new or different",
+            "source": "workbook",
+            "sourcePage": 48
+          },
+          {
+            "id": "5C-wb-48-2",
+            "unitId": 5,
+            "lessonId": "5C",
+            "term": "major",
+            "partOfSpeech": "adj",
+            "meaning": "lớn, quan trọng",
+            "definition": "very large or important, when compared to other things or people of a similar kind",
+            "source": "workbook",
+            "sourcePage": 48
+          },
+          {
+            "id": "5C-wb-48-3",
+            "unitId": 5,
+            "lessonId": "5C",
+            "term": "minor",
+            "partOfSpeech": "adj",
+            "meaning": "nhỏ, không quan trọng",
+            "definition": "small and not very important or serious, especially when compared with other things",
+            "source": "workbook",
+            "sourcePage": 48
+          },
+          {
+            "id": "5C-wb-48-4",
+            "unitId": 5,
+            "lessonId": "5C",
+            "term": "holder",
+            "partOfSpeech": "n",
+            "meaning": "người sở hữu",
+            "definition": "sb who owns or controls sth",
+            "source": "workbook",
+            "sourcePage": 48
+          },
+          {
+            "id": "5C-5",
+            "unitId": 5,
+            "lessonId": "5C",
+            "term": "come out",
+            "partOfSpeech": "phr v",
+            "meaning": "được phát hành",
+            "definition": "if a book, record, computer program, etc. comes out, it becomes publicly available",
+            "source": "workbook",
+            "sourcePage": 48
+          },
+          {
+            "id": "5C-4",
+            "unitId": 5,
+            "lessonId": "5C",
+            "term": "try out",
+            "partOfSpeech": "phr v",
+            "meaning": "dùng thử",
+            "definition": "to test (sth) such as a method or a piece of equipment to see whether it is effective or works properly",
+            "source": "workbook",
+            "sourcePage": 48
+          },
+          {
+            "id": "5C-3",
+            "unitId": 5,
+            "lessonId": "5C",
+            "term": "trial period",
+            "partOfSpeech": "n phr",
+            "meaning": "thời gian dùng thử",
+            "definition": "a short period during which you use or do sth or employ sb to find out whether they are satisfactory for a particular purpose or job",
+            "source": "workbook",
+            "sourcePage": 48
+          },
+          {
+            "id": "5C-2",
+            "unitId": 5,
+            "lessonId": "5C",
+            "term": "tiered pricing",
+            "partOfSpeech": "n phr",
+            "meaning": "định giá theo bậc",
+            "definition": "a way of charging for sth that means that you pay more for a more complicated version of it, or less for a simpler version",
+            "source": "workbook",
+            "sourcePage": 49
+          },
+          {
+            "id": "5C-wb-49-9",
+            "unitId": 5,
+            "lessonId": "5C",
+            "term": "tier",
+            "partOfSpeech": "n",
+            "meaning": "bậc, cấp",
+            "definition": "one of several levels in an organisation or system",
+            "source": "workbook",
+            "sourcePage": 49
+          },
+          {
+            "id": "5C-wb-49-10",
+            "unitId": 5,
+            "lessonId": "5C",
+            "term": "set",
+            "partOfSpeech": "n",
+            "meaning": "bộ, tập hợp",
+            "definition": "a group of similar things that belong together or are related in some way",
+            "source": "workbook",
+            "sourcePage": 49
+          }
+        ]
+      },
+      {
+        "id": "5D",
+        "title": "Web hosting",
+        "subtitle": "Lưu trữ website",
+        "words": [
+          {
+            "id": "5D-1",
+            "unitId": 5,
+            "lessonId": "5D",
+            "term": "shared hosting",
+            "partOfSpeech": "n phr",
+            "meaning": "hosting dùng chung",
+            "definition": "a system where many websites are held on one web server connected to the Internet",
+            "source": "workbook",
+            "sourcePage": 49
+          },
+          {
+            "id": "5D-2",
+            "unitId": 5,
+            "lessonId": "5D",
+            "term": "dedicated hosting",
+            "partOfSpeech": "n phr",
+            "meaning": "hosting máy chủ riêng",
+            "definition": "a system where each individual website is held on its own web server connected to the Internet",
+            "source": "workbook",
+            "sourcePage": 49
+          },
+          {
+            "id": "5D-wb-49-3",
+            "unitId": 5,
+            "lessonId": "5D",
+            "term": "data centre",
+            "partOfSpeech": "n",
+            "meaning": "trung tâm dữ liệu",
+            "definition": "a building used to house computer systems and associated components, such as storage systems",
+            "source": "workbook",
+            "sourcePage": 49
+          },
+          {
+            "id": "5D-wb-49-4",
+            "unitId": 5,
+            "lessonId": "5D",
+            "term": "plan",
+            "partOfSpeech": "n",
+            "meaning": "gói dịch vụ",
+            "definition": "a document that shows exactly what price will be charged for each variety or level of sth",
+            "source": "workbook",
+            "sourcePage": 49
+          },
+          {
+            "id": "5D-wb-49-5",
+            "unitId": 5,
+            "lessonId": "5D",
+            "term": "guarantee",
+            "partOfSpeech": "n",
+            "meaning": "cam kết bảo hành",
+            "definition": "a formal written promise to repair or replace a product if it breaks within a specific period of time",
+            "source": "workbook",
+            "sourcePage": 49
+          },
+          {
+            "id": "5D-3",
+            "unitId": 5,
+            "lessonId": "5D",
+            "term": "uptime",
+            "partOfSpeech": "n",
+            "meaning": "thời gian hoạt động",
+            "definition": "the period of time when a computer is working normally and is able to be used",
+            "source": "workbook",
+            "sourcePage": 49
+          },
+          {
+            "id": "5D-wb-49-7",
+            "unitId": 5,
+            "lessonId": "5D",
+            "term": "control panel",
+            "partOfSpeech": "n",
+            "meaning": "bảng điều khiển",
+            "definition": "a display that allows computer users to view and change basic system settings and controls",
+            "source": "workbook",
+            "sourcePage": 49
+          },
+          {
+            "id": "5D-wb-49-8",
+            "unitId": 5,
+            "lessonId": "5D",
+            "term": "unlimited",
+            "partOfSpeech": "adj",
+            "meaning": "không giới hạn",
+            "definition": "without any limit in number",
+            "source": "workbook",
+            "sourcePage": 49
+          },
+          {
+            "id": "5D-4",
+            "unitId": 5,
+            "lessonId": "5D",
+            "term": "monthly bandwidth",
+            "partOfSpeech": "n phr",
+            "meaning": "dung lượng truyền tải hàng tháng",
+            "definition": "the amount of information that you are allowed to access through a telephone wire, computer connection, etc. in any one month",
+            "source": "workbook",
+            "sourcePage": 49
+          },
+          {
+            "id": "5D-5",
+            "unitId": 5,
+            "lessonId": "5D",
+            "term": "IP address",
+            "partOfSpeech": "n",
+            "meaning": "địa chỉ IP",
+            "definition": "(= Internet Protocol address) a special number that is used to identify a computer, and which the computer needs in order to be able to connect to the Internet",
+            "source": "workbook",
+            "sourcePage": 49
+          },
+          {
+            "id": "5D-wb-49-11",
+            "unitId": 5,
+            "lessonId": "5D",
+            "term": "fee",
+            "partOfSpeech": "n",
+            "meaning": "phí",
+            "definition": "an amount of money that you pay to do sth or that you pay to a professional person for their work",
+            "source": "workbook",
+            "sourcePage": 49
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Interactions",
+    "subtitle": "Tương tác và dịch vụ số",
+    "icon": "messages",
+    "lessons": [
+      {
+        "id": "6A",
+        "title": "E-commerce",
+        "subtitle": "Thương mại điện tử",
+        "words": [
+          {
+            "id": "6A-1",
+            "unitId": 6,
+            "lessonId": "6A",
+            "term": "integrate",
+            "partOfSpeech": "v",
+            "meaning": "tích hợp",
+            "definition": "if two or more things integrate, or if you integrate them, they combine or work together in a way that makes sth more effective",
+            "source": "workbook",
+            "sourcePage": 56
+          },
+          {
+            "id": "6A-2",
+            "unitId": 6,
+            "lessonId": "6A",
+            "term": "component",
+            "partOfSpeech": "n",
+            "meaning": "thành phần",
+            "definition": "one of several parts that together make up a whole machine, system, etc.",
+            "source": "workbook",
+            "sourcePage": 56
+          },
+          {
+            "id": "6A-3",
+            "unitId": 6,
+            "lessonId": "6A",
+            "term": "cookie",
+            "partOfSpeech": "n",
+            "meaning": "cookie trình duyệt",
+            "definition": "a piece of information that a website leaves in your computer so that the website will recognize you when you use it again",
+            "source": "workbook",
+            "sourcePage": 56
+          },
+          {
+            "id": "6A-wb-56-4",
+            "unitId": 6,
+            "lessonId": "6A",
+            "term": "code",
+            "partOfSpeech": "n",
+            "meaning": "mã lệnh",
+            "definition": "a set of instructions that tell a computer what to do",
+            "source": "workbook",
+            "sourcePage": 56
+          },
+          {
+            "id": "6A-wb-56-5",
+            "unitId": 6,
+            "lessonId": "6A",
+            "term": "processing",
+            "partOfSpeech": "n",
+            "meaning": "xử lý dữ liệu",
+            "definition": "dealing with information using a computer",
+            "source": "workbook",
+            "sourcePage": 56
+          },
+          {
+            "id": "6A-wb-56-6",
+            "unitId": 6,
+            "lessonId": "6A",
+            "term": "delivery",
+            "partOfSpeech": "n",
+            "meaning": "giao hàng",
+            "definition": "the act of bringing goods, letters, etc. to a particular person or place, or the things that are brought",
+            "source": "workbook",
+            "sourcePage": 56
+          },
+          {
+            "id": "6A-4",
+            "unitId": 6,
+            "lessonId": "6A",
+            "term": "order",
+            "partOfSpeech": "n",
+            "meaning": "đơn hàng",
+            "definition": "goods that you have ordered from a company",
+            "source": "workbook",
+            "sourcePage": 56
+          },
+          {
+            "id": "6A-wb-56-8",
+            "unitId": 6,
+            "lessonId": "6A",
+            "term": "accounting",
+            "partOfSpeech": "n",
+            "meaning": "kế toán",
+            "definition": "the profession or work of keeping or checking financial accounts, calculating taxes, etc.",
+            "source": "workbook",
+            "sourcePage": 56
+          },
+          {
+            "id": "6A-wb-56-9",
+            "unitId": 6,
+            "lessonId": "6A",
+            "term": "bricks and clicks",
+            "partOfSpeech": "n phr",
+            "meaning": "mô hình kinh doanh kết hợp cửa hàng và trực tuyến",
+            "definition": "a business model in which a company has both offline (bricks) and online (clicks) presences",
+            "source": "workbook",
+            "sourcePage": 56
+          },
+          {
+            "id": "6A-5",
+            "unitId": 6,
+            "lessonId": "6A",
+            "term": "DRM",
+            "partOfSpeech": "n",
+            "meaning": "quản lý quyền kỹ thuật số",
+            "definition": "(= Digital Rights Management) a method that is used by hardware manufacturers, publishers, copyright holders and individuals to limit the use of digital content and devices after they have been Sold",
+            "source": "workbook",
+            "sourcePage": 56
+          },
+          {
+            "id": "6A-wb-57-11",
+            "unitId": 6,
+            "lessonId": "6A",
+            "term": "NFC",
+            "partOfSpeech": "n",
+            "meaning": "giao tiếp trường gần",
+            "definition": "(= Near Field Communication) a set of standards for smart-phones and similar devices that allows them to communicate with each other by touching them together or bringing them close to each other, usually no more than a few centimetres apart",
+            "source": "workbook",
+            "sourcePage": 57
+          }
+        ]
+      },
+      {
+        "id": "6B",
+        "title": "Enterprise social media",
+        "subtitle": "Mạng xã hội doanh nghiệp",
+        "words": [
+          {
+            "id": "6B-wb-57-1",
+            "unitId": 6,
+            "lessonId": "6B",
+            "term": "microblogging system",
+            "partOfSpeech": "n phr",
+            "meaning": "hệ thống tiểu blog",
+            "definition": "a system for blogging in which the content is typically smaller in both actual and overall file sizes than in a normal blog",
+            "source": "workbook",
+            "sourcePage": 57
+          },
+          {
+            "id": "6B-1",
+            "unitId": 6,
+            "lessonId": "6B",
+            "term": "file sharing service",
+            "partOfSpeech": "n phr",
+            "meaning": "dịch vụ chia sẻ tệp",
+            "definition": "a service distributing or providing access to digitally stored information",
+            "source": "workbook",
+            "sourcePage": 57
+          },
+          {
+            "id": "6B-wb-57-3",
+            "unitId": 6,
+            "lessonId": "6B",
+            "term": "social networking",
+            "partOfSpeech": "n phr",
+            "meaning": "kết nối qua mạng xã hội",
+            "definition": "an online service, platform or site that connects people who share interests, activities, backgrounds or real-life connections",
+            "source": "workbook",
+            "sourcePage": 57
+          },
+          {
+            "id": "6B-2",
+            "unitId": 6,
+            "lessonId": "6B",
+            "term": "privacy",
+            "partOfSpeech": "n",
+            "meaning": "quyền riêng tư",
+            "definition": "the state of being free from public attention",
+            "source": "workbook",
+            "sourcePage": 57
+          },
+          {
+            "id": "6B-3",
+            "unitId": 6,
+            "lessonId": "6B",
+            "term": "trend",
+            "partOfSpeech": "n",
+            "meaning": "xu hướng",
+            "definition": "a general tendency in the way a situation is changing or developing",
+            "source": "workbook",
+            "sourcePage": 57
+          },
+          {
+            "id": "6B-wb-57-6",
+            "unitId": 6,
+            "lessonId": "6B",
+            "term": "graph",
+            "partOfSpeech": "n",
+            "meaning": "biểu đồ",
+            "definition": "a drawing that uses a line or lines to show how two or more sets of measurements are related to each other",
+            "source": "workbook",
+            "sourcePage": 57
+          },
+          {
+            "id": "6B-wb-57-7",
+            "unitId": 6,
+            "lessonId": "6B",
+            "term": "blogger",
+            "partOfSpeech": "n",
+            "meaning": "người viết blog",
+            "definition": "sb who writes a web page that is made up of information about a particular subject, in which the newest information is always at the top of the page",
+            "source": "workbook",
+            "sourcePage": 57
+          },
+          {
+            "id": "6B-4",
+            "unitId": 6,
+            "lessonId": "6B",
+            "term": "document management system",
+            "partOfSpeech": "n phr",
+            "meaning": "hệ thống quản lý tài liệu",
+            "definition": "a computer system (or set of computer programs) used to track and store electronic documents and/or images of paper documents",
+            "source": "workbook",
+            "sourcePage": 57
+          },
+          {
+            "id": "6B-wb-57-9",
+            "unitId": 6,
+            "lessonId": "6B",
+            "term": "speech-to-text",
+            "partOfSpeech": "adj",
+            "meaning": "chuyển giọng nói thành văn bản",
+            "definition": "relating to the translation of spoken words into text",
+            "source": "workbook",
+            "sourcePage": 57
+          },
+          {
+            "id": "6B-wb-58-10",
+            "unitId": 6,
+            "lessonId": "6B",
+            "term": "overseas department",
+            "partOfSpeech": "n phr",
+            "meaning": "bộ phận ở nước ngoài",
+            "definition": "a group of people who work together in a particular part of a large organisation in a foreign country that is across the sea",
+            "source": "workbook",
+            "sourcePage": 58
+          },
+          {
+            "id": "6B-5",
+            "unitId": 6,
+            "lessonId": "6B",
+            "term": "voice recognition",
+            "partOfSpeech": "n",
+            "meaning": "nhận dạng giọng nói",
+            "definition": "the ability of a computer to recognise speech, especially the speech of one particular person",
+            "source": "workbook",
+            "sourcePage": 58
+          }
+        ]
+      },
+      {
+        "id": "6C",
+        "title": "Training users",
+        "subtitle": "Đào tạo người dùng",
+        "words": [
+          {
+            "id": "6C-1",
+            "unitId": 6,
+            "lessonId": "6C",
+            "term": "instant messaging",
+            "partOfSpeech": "n phr",
+            "meaning": "nhắn tin tức thời",
+            "definition": "a type of service available on the Internet that allows you to quickly exchange written messages with people that you know",
+            "source": "workbook",
+            "sourcePage": 58
+          },
+          {
+            "id": "6C-2",
+            "unitId": 6,
+            "lessonId": "6C",
+            "term": "policy",
+            "partOfSpeech": "n",
+            "meaning": "chính sách",
+            "definition": "a way of doing sth that has been officially agreed and chosen by a political party, business or other organisation",
+            "source": "workbook",
+            "sourcePage": 58
+          },
+          {
+            "id": "6C-3",
+            "unitId": 6,
+            "lessonId": "6C",
+            "term": "procedure",
+            "partOfSpeech": "n",
+            "meaning": "quy trình",
+            "definition": "a way of doing sth, especially the correct or usual way",
+            "source": "workbook",
+            "sourcePage": 58
+          },
+          {
+            "id": "6C-wb-58-4",
+            "unitId": 6,
+            "lessonId": "6C",
+            "term": "announcement",
+            "partOfSpeech": "n",
+            "meaning": "thông báo",
+            "definition": "an important or official statement",
+            "source": "workbook",
+            "sourcePage": 58
+          },
+          {
+            "id": "6C-wb-58-5",
+            "unitId": 6,
+            "lessonId": "6C",
+            "term": "threaded view",
+            "partOfSpeech": "n phr",
+            "meaning": "chế độ xem tin nhắn theo chuỗi chủ đề",
+            "definition": "a view of messages that are grouped by topic for easy reading",
+            "source": "workbook",
+            "sourcePage": 58
+          },
+          {
+            "id": "6C-4",
+            "unitId": 6,
+            "lessonId": "6C",
+            "term": "archiving",
+            "partOfSpeech": "n",
+            "meaning": "lưu trữ lâu dài",
+            "definition": "the process of saving a computer file in a way that uses less space than usual, because you do not use that file often but may need it in the future",
+            "source": "workbook",
+            "sourcePage": 58
+          },
+          {
+            "id": "6C-5",
+            "unitId": 6,
+            "lessonId": "6C",
+            "term": "tagging",
+            "partOfSpeech": "n",
+            "meaning": "gắn thẻ",
+            "definition": "attaching a computer code to a computer program or document in order to arrange the data in a particular way",
+            "source": "workbook",
+            "sourcePage": 58
+          },
+          {
+            "id": "6C-wb-58-8",
+            "unitId": 6,
+            "lessonId": "6C",
+            "term": "B2B",
+            "partOfSpeech": "adj",
+            "meaning": "giữa doanh nghiệp với doanh nghiệp",
+            "definition": "(= Business to Business) used to refer to business activities between companies, especially using the Internet",
+            "source": "workbook",
+            "sourcePage": 58
+          },
+          {
+            "id": "6C-wb-58-9",
+            "unitId": 6,
+            "lessonId": "6C",
+            "term": "B2C",
+            "partOfSpeech": "adj",
+            "meaning": "giữa doanh nghiệp với người tiêu dùng",
+            "definition": "(= Business to Consumer) used to refer to business activities between companies and end-users, especially using the Internet",
+            "source": "workbook",
+            "sourcePage": 58
+          },
+          {
+            "id": "6C-wb-58-10",
+            "unitId": 6,
+            "lessonId": "6C",
+            "term": "bricks and mortar shop",
+            "partOfSpeech": "n phr",
+            "meaning": "cửa hàng có địa điểm thực tế",
+            "definition": "a business that has a physical presence and offers a face-to-face customer experience, as opposed to existing only on the Internet",
+            "source": "workbook",
+            "sourcePage": 58
+          }
+        ]
+      },
+      {
+        "id": "6D",
+        "title": "Video conferencing",
+        "subtitle": "Hội nghị truyền hình",
+        "words": [
+          {
+            "id": "6D-wb-59-1",
+            "unitId": 6,
+            "lessonId": "6D",
+            "term": "method",
+            "partOfSpeech": "n",
+            "meaning": "phương pháp",
+            "definition": "a planned way of doing sth, especially one that a lot of people know about and use",
+            "source": "workbook",
+            "sourcePage": 59
+          },
+          {
+            "id": "6D-wb-59-2",
+            "unitId": 6,
+            "lessonId": "6D",
+            "term": "prefer",
+            "partOfSpeech": "v",
+            "meaning": "thích hơn",
+            "definition": "to like (sb or sth) more than sb or sth else, so that you would choose them or it if you could",
+            "source": "workbook",
+            "sourcePage": 59
+          },
+          {
+            "id": "6D-1",
+            "unitId": 6,
+            "lessonId": "6D",
+            "term": "face-to-face",
+            "partOfSpeech": "adj",
+            "meaning": "trực tiếp",
+            "definition": "a face-to-face meeting, conversation, etc. is one where you are with another person and talking to them",
+            "source": "workbook",
+            "sourcePage": 59
+          },
+          {
+            "id": "6D-wb-59-4",
+            "unitId": 6,
+            "lessonId": "6D",
+            "term": "set-up",
+            "partOfSpeech": "n",
+            "meaning": "hệ thống thiết bị được bố trí",
+            "definition": "several pieces of equipment that work together in a system",
+            "source": "workbook",
+            "sourcePage": 59
+          },
+          {
+            "id": "6D-2",
+            "unitId": 6,
+            "lessonId": "6D",
+            "term": "high-definition",
+            "partOfSpeech": "adj",
+            "meaning": "độ nét cao",
+            "definition": "a high-definition television or computer shows images very clearly",
+            "source": "workbook",
+            "sourcePage": 59
+          },
+          {
+            "id": "6D-wb-59-6",
+            "unitId": 6,
+            "lessonId": "6D",
+            "term": "local participant",
+            "partOfSpeech": "n phr",
+            "meaning": "người tham gia tại chỗ",
+            "definition": "sb who is taking part in an activity or event that happens where they are located",
+            "source": "workbook",
+            "sourcePage": 59
+          },
+          {
+            "id": "6D-3",
+            "unitId": 6,
+            "lessonId": "6D",
+            "term": "remote",
+            "partOfSpeech": "adj",
+            "meaning": "từ xa",
+            "definition": "far from where an activity or event is happening",
+            "source": "workbook",
+            "sourcePage": 59
+          },
+          {
+            "id": "6D-4",
+            "unitId": 6,
+            "lessonId": "6D",
+            "term": "data compression",
+            "partOfSpeech": "n",
+            "meaning": "nén dữ liệu",
+            "definition": "the process of making a computer file smaller by using a special computer program, that makes the file easier to store or send",
+            "source": "workbook",
+            "sourcePage": 59
+          },
+          {
+            "id": "6D-5",
+            "unitId": 6,
+            "lessonId": "6D",
+            "term": "MCU",
+            "partOfSpeech": "n",
+            "meaning": "bộ điều khiển hội nghị đa điểm",
+            "definition": "(= Multipoint Control Unit) a device used to connect multiple videoconferencing locations",
+            "source": "workbook",
+            "sourcePage": 59
+          },
+          {
+            "id": "6D-wb-59-10",
+            "unitId": 6,
+            "lessonId": "6D",
+            "term": "premises",
+            "partOfSpeech": "n pl",
+            "meaning": "cơ sở, khuôn viên doanh nghiệp",
+            "definition": "the buildings and land that a shop, restaurant, company, etc. uses",
+            "source": "workbook",
+            "sourcePage": 59
+          },
+          {
+            "id": "6D-wb-59-11",
+            "unitId": 6,
+            "lessonId": "6D",
+            "term": "facility",
+            "partOfSpeech": "n",
+            "meaning": "cơ sở vật chất hoặc phương tiện phục vụ",
+            "definition": "rooms, equipment or services that are provided for a particular purpose",
+            "source": "workbook",
+            "sourcePage": 59
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Development",
+    "subtitle": "Phát triển phần mềm",
+    "icon": "code",
+    "lessons": [
+      {
+        "id": "7A",
+        "title": "Project management",
+        "subtitle": "Quản lý dự án",
+        "words": [
+          {
+            "id": "7A-1",
+            "unitId": 7,
+            "lessonId": "7A",
+            "term": "Gantt chart",
+            "partOfSpeech": "n",
+            "meaning": "biểu đồ Gantt",
+            "definition": "a type of bar chart that illustrates when things are going to happen in a project",
+            "source": "workbook",
+            "sourcePage": 67
+          },
+          {
+            "id": "7A-2",
+            "unitId": 7,
+            "lessonId": "7A",
+            "term": "alpha testing",
+            "partOfSpeech": "n phr",
+            "meaning": "kiểm thử alpha",
+            "definition": "the process of testing software to see whether it works properly, done by the company that is writing the software",
+            "source": "workbook",
+            "sourcePage": 67
+          },
+          {
+            "id": "7A-3",
+            "unitId": 7,
+            "lessonId": "7A",
+            "term": "beta testing",
+            "partOfSpeech": "n phr",
+            "meaning": "kiểm thử beta",
+            "definition": "a process of testing software in which it is given to customers to use, so that any problems will be found",
+            "source": "workbook",
+            "sourcePage": 67
+          },
+          {
+            "id": "7A-4",
+            "unitId": 7,
+            "lessonId": "7A",
+            "term": "feedback",
+            "partOfSpeech": "n",
+            "meaning": "phản hồi",
+            "definition": "advice, criticism, etc. about how successful or useful sth is",
+            "source": "workbook",
+            "sourcePage": 67
+          },
+          {
+            "id": "7A-5",
+            "unitId": 7,
+            "lessonId": "7A",
+            "term": "release candidate",
+            "partOfSpeech": "n phr",
+            "meaning": "bản ứng viên phát hành",
+            "definition": "a beta version of a piece of software that could become the final product, and is ready to release unless significant problems are found",
+            "source": "workbook",
+            "sourcePage": 67
+          },
+          {
+            "id": "7A-wb-67-6",
+            "unitId": 7,
+            "lessonId": "7A",
+            "term": "schedule",
+            "partOfSpeech": "n",
+            "meaning": "lịch trình",
+            "definition": "a plan of what sb is going to do or sth that is going to happen, and when",
+            "source": "workbook",
+            "sourcePage": 67
+          }
+        ]
+      },
+      {
+        "id": "7B",
+        "title": "Requirements analysis",
+        "subtitle": "Phân tích yêu cầu",
+        "words": [
+          {
+            "id": "7B-1",
+            "unitId": 7,
+            "lessonId": "7B",
+            "term": "approve",
+            "partOfSpeech": "v",
+            "meaning": "phê duyệt",
+            "definition": "to officially accept (a plan, proposal, etc.)",
+            "source": "workbook",
+            "sourcePage": 67
+          },
+          {
+            "id": "7B-2",
+            "unitId": 7,
+            "lessonId": "7B",
+            "term": "programmer",
+            "partOfSpeech": "n",
+            "meaning": "lập trình viên",
+            "definition": "sb whose job is to write computer programs",
+            "source": "workbook",
+            "sourcePage": 67
+          },
+          {
+            "id": "7B-3",
+            "unitId": 7,
+            "lessonId": "7B",
+            "term": "debug",
+            "partOfSpeech": "v",
+            "meaning": "gỡ lỗi",
+            "definition": "to remove the bugs (mistakes) from (a computer program)",
+            "source": "workbook",
+            "sourcePage": 67
+          },
+          {
+            "id": "7B-4",
+            "unitId": 7,
+            "lessonId": "7B",
+            "term": "interview",
+            "partOfSpeech": "v",
+            "meaning": "phỏng vấn",
+            "definition": "to ask (sb) questions during a formal meeting in order to find out whether they are suitable for a job, course of study, etc.",
+            "source": "workbook",
+            "sourcePage": 67
+          },
+          {
+            "id": "7B-wb-67-5",
+            "unitId": 7,
+            "lessonId": "7B",
+            "term": "detail",
+            "partOfSpeech": "n",
+            "meaning": "chi tiết",
+            "definition": "all the separate features and pieces of information about sth",
+            "source": "workbook",
+            "sourcePage": 67
+          },
+          {
+            "id": "7B-5",
+            "unitId": 7,
+            "lessonId": "7B",
+            "term": "specification",
+            "partOfSpeech": "n",
+            "meaning": "đặc tả",
+            "definition": "a detailed instruction about how a car, building, piece of equipment, etc. should be made or what it should do",
+            "source": "workbook",
+            "sourcePage": 67
+          },
+          {
+            "id": "7B-wb-68-7",
+            "unitId": 7,
+            "lessonId": "7B",
+            "term": "pop-up menu",
+            "partOfSpeech": "n phr",
+            "meaning": "trình đơn bật lên",
+            "definition": "a list of things that you can ask a computer to do, that can appear suddenly on the computer screen while you are using it",
+            "source": "workbook",
+            "sourcePage": 68
+          },
+          {
+            "id": "7C-5",
+            "unitId": 7,
+            "lessonId": "7B",
+            "term": "calculate",
+            "partOfSpeech": "v",
+            "meaning": "tính toán",
+            "definition": "to find out (how much sth will cost, how long sth will take, etc.) by using numbers",
+            "source": "workbook",
+            "sourcePage": 68
+          }
+        ]
+      },
+      {
+        "id": "7C",
+        "title": "Software development",
+        "subtitle": "Phát triển phần mềm",
+        "words": [
+          {
+            "id": "7C-1",
+            "unitId": 7,
+            "lessonId": "7C",
+            "term": "line of code",
+            "partOfSpeech": "n phr",
+            "meaning": "dòng mã",
+            "definition": "a row of letters or numbers that make up part of a set of instructions that tell a computer what to do",
+            "source": "workbook",
+            "sourcePage": 68
+          },
+          {
+            "id": "7C-2",
+            "unitId": 7,
+            "lessonId": "7C",
+            "term": "instruction",
+            "partOfSpeech": "n",
+            "meaning": "chỉ thị",
+            "definition": "a statement telling sb what they must do or telling a computer or other machine what to do",
+            "source": "workbook",
+            "sourcePage": 68
+          },
+          {
+            "id": "7C-3",
+            "unitId": 7,
+            "lessonId": "7C",
+            "term": "variable",
+            "partOfSpeech": "n",
+            "meaning": "biến",
+            "definition": "a mathematical quantity that can represent several different amounts",
+            "source": "workbook",
+            "sourcePage": 68
+          },
+          {
+            "id": "7C-wb-68-4",
+            "unitId": 7,
+            "lessonId": "7C",
+            "term": "robot",
+            "partOfSpeech": "n",
+            "meaning": "rô-bốt",
+            "definition": "a machine that can move and do some of the work of a person, and is usually controlled by a computer",
+            "source": "workbook",
+            "sourcePage": 68
+          },
+          {
+            "id": "7C-4",
+            "unitId": 7,
+            "lessonId": "7C",
+            "term": "value",
+            "partOfSpeech": "n",
+            "meaning": "giá trị",
+            "definition": "a mathematical quantity shown by a letter of the alphabet or sign",
+            "source": "workbook",
+            "sourcePage": 68
+          }
+        ]
+      },
+      {
+        "id": "7D",
+        "title": "Website design and architecture",
+        "subtitle": "Thiết kế và kiến trúc website",
+        "words": [
+          {
+            "id": "7D-1",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "home page",
+            "partOfSpeech": "n",
+            "meaning": "trang chủ",
+            "definition": "the first page of a website, which often contains links to other pages on that website",
+            "source": "workbook",
+            "sourcePage": 68
+          },
+          {
+            "id": "7D-wb-68-2",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "contact",
+            "partOfSpeech": "v",
+            "meaning": "liên hệ",
+            "definition": "to write to or telephone (sb)",
+            "source": "workbook",
+            "sourcePage": 68
+          },
+          {
+            "id": "7D-2",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "FAQs",
+            "partOfSpeech": "n pl",
+            "meaning": "câu hỏi thường gặp",
+            "definition": "(= Frequently Asked Questions) especially on a website",
+            "source": "workbook",
+            "sourcePage": 68
+          },
+          {
+            "id": "7D-3",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "purchase",
+            "partOfSpeech": "v",
+            "meaning": "mua hàng",
+            "definition": "to buy (sth)",
+            "source": "workbook",
+            "sourcePage": 68
+          },
+          {
+            "id": "7D-4",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "private",
+            "partOfSpeech": "adj",
+            "meaning": "riêng tư",
+            "definition": "private feelings, information or opinions are personal or secret and not for other people to know about",
+            "source": "workbook",
+            "sourcePage": 68
+          },
+          {
+            "id": "7D-5",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "dynamic",
+            "partOfSpeech": "adj",
+            "meaning": "năng động, đầy ý tưởng mới",
+            "definition": "full of energy and new ideas",
+            "source": "workbook",
+            "sourcePage": 68
+          },
+          {
+            "id": "7D-wb-69-7",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "public",
+            "partOfSpeech": "adj",
+            "meaning": "công khai",
+            "definition": "available for anyone to use",
+            "source": "workbook",
+            "sourcePage": 69
+          },
+          {
+            "id": "7D-wb-69-8",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "content",
+            "partOfSpeech": "n",
+            "meaning": "nội dung",
+            "definition": "the information contained in a website, considered separately from the software that makes the website work",
+            "source": "workbook",
+            "sourcePage": 69
+          },
+          {
+            "id": "7D-wb-69-9",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "premium content",
+            "partOfSpeech": "n phr",
+            "meaning": "nội dung cao cấp",
+            "definition": "website information that is of very high quality and that you often need to pay to access",
+            "source": "workbook",
+            "sourcePage": 69
+          },
+          {
+            "id": "7D-wb-69-10",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "combination",
+            "partOfSpeech": "n",
+            "meaning": "sự kết hợp",
+            "definition": "two or more different things that exist together or are used or put together",
+            "source": "workbook",
+            "sourcePage": 69
+          },
+          {
+            "id": "7D-wb-69-11",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "versatile",
+            "partOfSpeech": "adj",
+            "meaning": "đa năng",
+            "definition": "having many different uses",
+            "source": "workbook",
+            "sourcePage": 69
+          },
+          {
+            "id": "7D-wb-69-12",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "challenge",
+            "partOfSpeech": "n",
+            "meaning": "thử thách",
+            "definition": "sth that tests strength, skill or ability, especially in a way that is interesting",
+            "source": "workbook",
+            "sourcePage": 69
+          },
+          {
+            "id": "7D-wb-69-13",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "viewable",
+            "partOfSpeech": "adj",
+            "meaning": "có thể xem được",
+            "definition": "able to be seen",
+            "source": "workbook",
+            "sourcePage": 69
+          },
+          {
+            "id": "7D-wb-69-14",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "SEO",
+            "partOfSpeech": "n",
+            "meaning": "tối ưu hóa công cụ tìm kiếm",
+            "definition": "(= Search Engine Optimisation) the process of improving the visibility of a website or a web page in the results produced by a search engine (a computer program that helps you find information on the Internet)",
+            "source": "workbook",
+            "sourcePage": 69
+          },
+          {
+            "id": "7D-wb-69-15",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "search ranking",
+            "partOfSpeech": "n phr",
+            "meaning": "thứ hạng tìm kiếm",
+            "definition": "a position in the results produced by a search engine (a computer program that helps you find information on the Internet)",
+            "source": "workbook",
+            "sourcePage": 69
+          },
+          {
+            "id": "7D-wb-69-16",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "PHP",
+            "partOfSpeech": "n",
+            "meaning": "ngôn ngữ PHP",
+            "definition": "(= PHP: Hypertext Preprocessor) a computer language originally designed to produce web pages that are generated at the time of access by a user or that change as a result of what the user does",
+            "source": "workbook",
+            "sourcePage": 69
+          },
+          {
+            "id": "7D-wb-69-17",
+            "unitId": 7,
+            "lessonId": "7D",
+            "term": "navigation chart",
+            "partOfSpeech": "n",
+            "meaning": "sơ đồ điều hướng",
+            "definition": "information showing you which way you need to go when you are moving from one place to another, arranged in the form of a simple picture, set of figures, graph, etc., or a piece of paper with this information on it",
+            "source": "workbook",
+            "sourcePage": 69
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Solutions",
+    "subtitle": "Giải quyết vấn đề IT",
+    "icon": "tool",
+    "lessons": [
+      {
+        "id": "8A",
+        "title": "Diagnosis",
+        "subtitle": "Chẩn đoán sự cố",
+        "words": [
+          {
+            "id": "8A-1",
+            "unitId": 8,
+            "lessonId": "8A",
+            "term": "call centre",
+            "partOfSpeech": "n",
+            "meaning": "trung tâm cuộc gọi",
+            "definition": "an office where people answer customers’ questions, make sales, etc. by using the telephone rather than by meeting people",
+            "source": "workbook",
+            "sourcePage": 75
+          },
+          {
+            "id": "8A-2",
+            "unitId": 8,
+            "lessonId": "8A",
+            "term": "issue tracking system",
+            "partOfSpeech": "n phr",
+            "meaning": "hệ thống theo dõi sự cố",
+            "definition": "a computer software package that manages and maintains lists of problems reported by users of a website",
+            "source": "workbook",
+            "sourcePage": 75
+          },
+          {
+            "id": "8A-wb-75-3",
+            "unitId": 8,
+            "lessonId": "8A",
+            "term": "tier 1",
+            "partOfSpeech": "n phr",
+            "meaning": "cấp hỗ trợ thứ nhất",
+            "definition": "the first, most important or simplest of several levels in an organization or system",
+            "source": "workbook",
+            "sourcePage": 75
+          },
+          {
+            "id": "8A-3",
+            "unitId": 8,
+            "lessonId": "8A",
+            "term": "ticket",
+            "partOfSpeech": "n",
+            "meaning": "phiếu hỗ trợ",
+            "definition": "a file in an issue tracking system that records a reported problem and the steps taken to resolve it",
+            "source": "workbook",
+            "sourcePage": 75
+          },
+          {
+            "id": "8A-4",
+            "unitId": 8,
+            "lessonId": "8A",
+            "term": "escalate",
+            "partOfSpeech": "v",
+            "meaning": "chuyển lên cấp hỗ trợ cao hơn",
+            "definition": "to increase the seriousness, intensity, etc. of (sth)",
+            "source": "workbook",
+            "sourcePage": 75
+          },
+          {
+            "id": "8A-wb-75-6",
+            "unitId": 8,
+            "lessonId": "8A",
+            "term": "speculate",
+            "partOfSpeech": "v",
+            "meaning": "phỏng đoán",
+            "definition": "to guess about the possible causes or effects of sth, without knowing all the facts or details",
+            "source": "workbook",
+            "sourcePage": 75
+          },
+          {
+            "id": "8A-wb-75-7",
+            "unitId": 8,
+            "lessonId": "8A",
+            "term": "virus",
+            "partOfSpeech": "n",
+            "meaning": "vi-rút máy tính",
+            "definition": "a set of instructions secretly put onto a computer or computer program, which can destroy information. When a computer that has a virus makes a connection with another computer, for example by email, the virus can make copies of itself and move to the other computer",
+            "source": "workbook",
+            "sourcePage": 75
+          },
+          {
+            "id": "8A-5",
+            "unitId": 8,
+            "lessonId": "8A",
+            "term": "troubleshooting guide",
+            "partOfSpeech": "n phr",
+            "meaning": "hướng dẫn xử lý sự cố",
+            "definition": "a piece of computer software, or a printed manual, that asks you a series of questions to try to find the cause of a computer problem, and suggests possible solutions",
+            "source": "workbook",
+            "sourcePage": 75
+          }
+        ]
+      },
+      {
+        "id": "8B",
+        "title": "Investigations",
+        "subtitle": "Điều tra nguyên nhân",
+        "words": [
+          {
+            "id": "8B-1",
+            "unitId": 8,
+            "lessonId": "8B",
+            "term": "connection error",
+            "partOfSpeech": "n phr",
+            "meaning": "lỗi kết nối",
+            "definition": "a mistake or fault in the electrical system joining two parts of a machine, computer network, etc.",
+            "source": "workbook",
+            "sourcePage": 76
+          },
+          {
+            "id": "8B-wb-76-2",
+            "unitId": 8,
+            "lessonId": "8B",
+            "term": "crash",
+            "partOfSpeech": "v",
+            "meaning": "đột ngột ngừng hoạt động",
+            "definition": "if a computer crashes, or if you crash the computer, it suddenly stops working",
+            "source": "workbook",
+            "sourcePage": 76
+          },
+          {
+            "id": "8B-2",
+            "unitId": 8,
+            "lessonId": "8B",
+            "term": "failure",
+            "partOfSpeech": "n",
+            "meaning": "sự hỏng hóc",
+            "definition": "an occasion when a machine or part of your body stops working properly",
+            "source": "workbook",
+            "sourcePage": 76
+          },
+          {
+            "id": "8B-3",
+            "unitId": 8,
+            "lessonId": "8B",
+            "term": "fault",
+            "partOfSpeech": "n",
+            "meaning": "lỗi kỹ thuật",
+            "definition": "sth that is wrong with a machine, system, design, etc. that prevents it from working properly",
+            "source": "workbook",
+            "sourcePage": 76
+          },
+          {
+            "id": "8B-4",
+            "unitId": 8,
+            "lessonId": "8B",
+            "term": "hang",
+            "partOfSpeech": "v",
+            "meaning": "treo máy hoặc chương trình",
+            "definition": "if a computer hangs, it stops responding to inputs",
+            "source": "workbook",
+            "sourcePage": 76
+          },
+          {
+            "id": "8B-5",
+            "unitId": 8,
+            "lessonId": "8B",
+            "term": "error code",
+            "partOfSpeech": "n",
+            "meaning": "mã lỗi",
+            "definition": "a set of numbers, letters or symbols that shows what fault has occurred on a computer or gives information about it",
+            "source": "workbook",
+            "sourcePage": 76
+          },
+          {
+            "id": "8B-wb-76-7",
+            "unitId": 8,
+            "lessonId": "8B",
+            "term": "solution",
+            "partOfSpeech": "n",
+            "meaning": "giải pháp",
+            "definition": "a way of solving a problem or dealing with a difficult situation",
+            "source": "workbook",
+            "sourcePage": 76
+          },
+          {
+            "id": "8B-wb-76-8",
+            "unitId": 8,
+            "lessonId": "8B",
+            "term": "manual",
+            "partOfSpeech": "n",
+            "meaning": "sách hướng dẫn",
+            "definition": "a book that gives instructions about how to do sth, especially how to use a machine",
+            "source": "workbook",
+            "sourcePage": 76
+          }
+        ]
+      },
+      {
+        "id": "8C",
+        "title": "Solutions",
+        "subtitle": "Giải pháp và an toàn",
+        "words": [
+          {
+            "id": "8C-1",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "bloatware",
+            "partOfSpeech": "n",
+            "meaning": "phần mềm dư thừa",
+            "definition": "parts of a computer program that include unnecessary features that are not used by end users, or that generally use more computing power than necessary, while offering little or no benefit to its users",
+            "source": "workbook",
+            "sourcePage": 76
+          },
+          {
+            "id": "8C-wb-76-2",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "bill",
+            "partOfSpeech": "n",
+            "meaning": "hóa đơn thanh toán",
+            "definition": "a written list showing how much you have to pay for services you have received, work that has been done, etc.",
+            "source": "workbook",
+            "sourcePage": 76
+          },
+          {
+            "id": "8C-wb-76-3",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "usage",
+            "partOfSpeech": "n",
+            "meaning": "cách sử dụng hoặc lượng sử dụng",
+            "definition": "the way in which sth is used, or the amount of it that is used",
+            "source": "workbook",
+            "sourcePage": 76
+          },
+          {
+            "id": "8C-wb-76-4",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "backache",
+            "partOfSpeech": "n",
+            "meaning": "đau lưng",
+            "definition": "a pain in your back",
+            "source": "workbook",
+            "sourcePage": 76
+          },
+          {
+            "id": "8C-2",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "electric shock",
+            "partOfSpeech": "n phr",
+            "meaning": "điện giật",
+            "definition": "a sudden shock to your body, caused by electricity",
+            "source": "workbook",
+            "sourcePage": 76
+          },
+          {
+            "id": "8C-4",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "RSI",
+            "partOfSpeech": "n",
+            "meaning": "chấn thương do thao tác lặp lại",
+            "definition": "(= Repetitive Strain Injury) pains in your hands, arms, etc. caused by doing the same movements many times, especially by using a computer keyboard or mouse",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8C-wb-77-7",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "trips and falls",
+            "partOfSpeech": "n phr",
+            "meaning": "vấp và ngã",
+            "definition": "acts of falling as a result of hitting sth with your foot, or from any other cause",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8C-3",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "short circuit",
+            "partOfSpeech": "n phr",
+            "meaning": "đoản mạch",
+            "definition": "a failure of an electrical system, caused by bad wires or a fault in a connection in the wires",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8C-wb-77-9",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "burn",
+            "partOfSpeech": "v",
+            "meaning": "cháy",
+            "definition": "if sth is burning, it is producing flames and being damaged or destroyed by fire",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8C-wb-77-10",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "bend",
+            "partOfSpeech": "v",
+            "meaning": "uốn, gập",
+            "definition": "to move (part of your body) so that it is not straight or so that you are not upright",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8C-wb-77-11",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "wrist",
+            "partOfSpeech": "n",
+            "meaning": "cổ tay",
+            "definition": "the part of your body where your hand joins your arm",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8C-wb-77-12",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "spill",
+            "partOfSpeech": "v",
+            "meaning": "làm đổ chất lỏng",
+            "definition": "if you spill a liquid, or if it spills, it accidentally flows over the edge of a container",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8C-5",
+            "unitId": 8,
+            "lessonId": "8C",
+            "term": "cool down",
+            "partOfSpeech": "phr v",
+            "meaning": "làm nguội",
+            "definition": "to make (sth) slightly colder, or to become slightly colder",
+            "source": "workbook",
+            "sourcePage": 77
+          }
+        ]
+      },
+      {
+        "id": "8D",
+        "title": "Your future in IT",
+        "subtitle": "Tương lai nghề nghiệp IT",
+        "words": [
+          {
+            "id": "8D-1",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "CV",
+            "partOfSpeech": "n",
+            "meaning": "sơ yếu lý lịch nghề nghiệp",
+            "definition": "(= Curriculum Vitae) a short written document that lists your education and previous jobs, that you send to employers when you are looking for a job",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8D-2",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "education",
+            "partOfSpeech": "n",
+            "meaning": "học vấn",
+            "definition": "the process of teaching and learning, usually at school, college or university, or a list of where this happened in your case",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8D-3",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "responsibility",
+            "partOfSpeech": "n",
+            "meaning": "trách nhiệm",
+            "definition": "sth that you must do as part of your job or duty",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8D-4",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "organisational skill",
+            "partOfSpeech": "n phr",
+            "meaning": "kỹ năng tổ chức",
+            "definition": "an ability to plan and arrange sth so that it is successful or effective",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8D-5",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "personal information",
+            "partOfSpeech": "n phr",
+            "meaning": "thông tin cá nhân",
+            "definition": "facts or details that tell you sth about a person",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8D-wb-77-6",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "personal skill",
+            "partOfSpeech": "n phr",
+            "meaning": "kỹ năng cá nhân",
+            "definition": "an ability belonging or relating to one particular person, rather than to other people or to people in general",
+            "source": "workbook",
+            "sourcePage": 77
+          },
+          {
+            "id": "8D-wb-78-7",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "position held",
+            "partOfSpeech": "phr",
+            "meaning": "vị trí công việc từng đảm nhiệm",
+            "definition": "a job that you used to do",
+            "source": "workbook",
+            "sourcePage": 78
+          },
+          {
+            "id": "8D-wb-78-8",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "subject",
+            "partOfSpeech": "n",
+            "meaning": "môn học",
+            "definition": "an area of knowledge that you study at a school or university",
+            "source": "workbook",
+            "sourcePage": 78
+          },
+          {
+            "id": "8D-wb-78-9",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "occupational",
+            "partOfSpeech": "adj",
+            "meaning": "thuộc về nghề nghiệp",
+            "definition": "relating to, or caused by, your job",
+            "source": "workbook",
+            "sourcePage": 78
+          },
+          {
+            "id": "8D-wb-78-10",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "qualification",
+            "partOfSpeech": "n",
+            "meaning": "bằng cấp hoặc chứng chỉ",
+            "definition": "if you have a qualification, you have passed an examination or course to show that you have a particular level of skill or knowledge in a subject",
+            "source": "workbook",
+            "sourcePage": 78
+          },
+          {
+            "id": "8D-wb-78-11",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "award",
+            "partOfSpeech": "v",
+            "meaning": "trao tặng",
+            "definition": "to officially give (sb) (sth such as a prize or money) to reward them for sth they have done",
+            "source": "workbook",
+            "sourcePage": 78
+          },
+          {
+            "id": "8D-wb-78-12",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "work experience",
+            "partOfSpeech": "n",
+            "meaning": "kinh nghiệm làm việc",
+            "definition": "the experience you have had of working in a particular type of job",
+            "source": "workbook",
+            "sourcePage": 78
+          },
+          {
+            "id": "8D-wb-78-13",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "further qualification",
+            "partOfSpeech": "n phr",
+            "meaning": "bằng cấp hoặc chứng chỉ nâng cao",
+            "definition": "if you have a further qualification, you have passed an examination or course to show you have a higher than usual level of skill or knowledge in a subject",
+            "source": "workbook",
+            "sourcePage": 78
+          },
+          {
+            "id": "8D-wb-78-14",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "personnel",
+            "partOfSpeech": "n",
+            "meaning": "nhân sự",
+            "definition": "the people who work in a company, organisation or military force",
+            "source": "workbook",
+            "sourcePage": 78
+          },
+          {
+            "id": "8D-wb-78-15",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "customised",
+            "partOfSpeech": "adj",
+            "meaning": "được tùy chỉnh",
+            "definition": "if sth is customised, it has been changed to make it more suitable for you, or to make it look special or different from things of a similar type",
+            "source": "workbook",
+            "sourcePage": 78
+          },
+          {
+            "id": "8D-wb-78-16",
+            "unitId": 8,
+            "lessonId": "8D",
+            "term": "government",
+            "partOfSpeech": "n",
+            "meaning": "chính phủ",
+            "definition": "the group of people who govern a country or state",
+            "source": "workbook",
+            "sourcePage": 78
+          }
+        ]
+      }
+    ]
+  }
 ];
-
-export const units = sections.map(([title, subtitle, icon, lessons], i) => ({
-  id: i + 1, title, subtitle, icon,
-  lessons: lessons.map(([title, subtitle, raw], j) => ({
-    id: `${i + 1}${'ABCD'[j]}`, title, subtitle,
-    words: raw.split('\n').map((line, k) => {
-      const [term, meaning, definition] = line.split('|');
-      return { id: `${i + 1}${'ABCD'[j]}-${k + 1}`, unitId: i + 1, lessonId: `${i + 1}${'ABCD'[j]}`, term, meaning, definition };
-    }),
-  })),
-}));
 export const words = units.flatMap(unit => unit.lessons.flatMap(lesson => lesson.words));
+export const workbookWords = words.filter(word => word.source === "workbook");
 export const wordById = Object.fromEntries(words.map(word => [word.id, word]));

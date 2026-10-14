@@ -1,0 +1,192 @@
+1A|helpdesk supervisor|người giám sát bộ phận hỗ trợ kỹ thuật
+1A|support technician|kỹ thuật viên hỗ trợ
+1A|systems analyst|chuyên viên phân tích hệ thống
+1A|supervise|giám sát
+1A|be responsible|chịu trách nhiệm
+1A|diagnose|chẩn đoán
+1A|design|thiết kế
+1A|check email|kiểm tra email
+1A|attend meetings|tham dự các cuộc họp
+1B|carry out|thực hiện
+1B|production facility|cơ sở sản xuất
+1B|product|sản phẩm
+1B|service centre|trung tâm dịch vụ
+1B|supply cloud computing|cung cấp dịch vụ điện toán đám mây
+1B|word processing|soạn thảo và xử lý văn bản
+1B|spreadsheet|bảng tính
+1B|presentation|bài trình chiếu
+1B|database|cơ sở dữ liệu
+1B|operating system|hệ điều hành
+1B|version|phiên bản
+1C|data|dữ liệu
+1C|network|mạng máy tính
+1C|character|ký tự
+1C|connect|kết nối
+1C|personal|thuộc về cá nhân
+1C|stream|phát trực tuyến
+2A|menu|trình đơn
+2A|minimise button|nút thu nhỏ cửa sổ
+2A|maximise button|nút phóng to cửa sổ
+2A|title bar|thanh tiêu đề
+2A|filename|tên tệp
+2A|pane|khung trong cửa sổ giao diện
+2A|tab|thẻ giao diện
+2A|tick box|ô đánh dấu
+2A|double click|nhấp đúp
+2A|click|nhấp chuột
+2A|right-click|nhấp chuột phải
+2A|slide|trượt
+2A|select|chọn
+2A|plus|dấu cộng
+2B|graphics|đồ họa
+2B|image|hình ảnh
+2B|video|bản ghi hình
+2B|video camera|máy quay video
+2B|virtual reality goggles|kính thực tế ảo
+2B|cable|cáp
+2B|press|nhấn
+2B|switch off|tắt bằng công tắc
+2C|BIOS|hệ thống nhập/xuất cơ bản
+2C|product key|khóa bản quyền sản phẩm
+2C|reboot|khởi động lại máy
+2C|process|quá trình
+2C|back up|sao lưu
+2C|licence terms|điều khoản cấp phép
+2C|proprietary|độc quyền, thuộc quyền sở hữu
+2D|printer|máy in
+2D|motherboard|bo mạch chủ
+2D|trainee|người đang được đào tạo
+2D|audio|âm thanh
+2D|socket|ổ cắm
+2D|DIMM slot|khe cắm mô-đun bộ nhớ DIMM
+2D|Ethernet connector|đầu nối Ethernet
+3A|copy|bản sao
+3A|delete|xóa
+3A|guideline|hướng dẫn, nguyên tắc chỉ dẫn
+3B|back button|nút quay lại
+3B|follow|truy cập theo liên kết
+3B|take part in|tham gia
+3B|post|đăng nội dung
+3C|flowchart|lưu đồ
+3C|invoice|hóa đơn
+3C|sign|ký tên
+3C|electronic version|phiên bản điện tử
+3C|remotely|từ xa
+3C|function|chức năng
+3C|recharger|thiết bị sạc lại pin
+3C|tag|gắn thẻ
+3C|report|báo cáo
+3C|location|vị trí
+3C|exactly|chính xác
+3C|record|bản ghi
+3C|accelerometer|cảm biến gia tốc
+3D|WAN|mạng diện rộng
+3D|server|máy chủ
+3D|bus|đường truyền tín hiệu chung
+3D|mesh|mạng dạng lưới
+3D|dongle|thiết bị cắm dùng làm khóa hoặc bộ kết nối
+3D|wi-fi|mạng không dây Wi-Fi
+4A|form|biểu mẫu
+4A|walk (somebody) through (something)|hướng dẫn ai từng bước làm việc gì
+4A|object|đối tượng
+4A|unique|duy nhất
+4B|attached|được gắn hoặc kết nối
+4B|touch pad|bàn di chuột cảm ứng
+4B|graphics tablet|bảng vẽ điện tử
+4B|graphic design|thiết kế đồ họa
+4B|multifunction printer|máy in đa chức năng
+4B|jam|tình trạng kẹt máy hoặc kẹt giấy
+4C|bracket|dấu ngoặc
+4C|divide|chia
+4C|subtract|trừ
+4C|minus|trừ đi
+4C|times|nhân với
+4C|plus|cộng với
+4D|lock (someone) out of (something)|chặn ai truy cập hệ thống
+4D|check (sth) out|kiểm tra, tìm hiểu điều gì
+4D|Caps Lock|phím khóa chữ hoa
+4D|permission|quyền, sự cho phép
+4D|log|nhật ký ghi sự kiện
+4D|reset|đặt lại
+5A|reader|thiết bị đọc dữ liệu
+5A|card|thẻ lưu trữ dữ liệu
+5B|2-D|hai chiều
+5B|3-D|ba chiều
+5B|introduction|phần mở đầu
+5B|body|phần nội dung chính
+5C|major|lớn, quan trọng
+5C|minor|nhỏ, không quan trọng
+5C|holder|người sở hữu
+5C|tier|bậc, cấp
+5C|set|bộ, tập hợp
+5D|data centre|trung tâm dữ liệu
+5D|plan|gói dịch vụ
+5D|guarantee|cam kết bảo hành
+5D|control panel|bảng điều khiển
+5D|unlimited|không giới hạn
+5D|fee|phí
+6A|code|mã lệnh
+6A|processing|xử lý dữ liệu
+6A|delivery|giao hàng
+6A|accounting|kế toán
+6A|bricks and clicks|mô hình kinh doanh kết hợp cửa hàng và trực tuyến
+6A|NFC|giao tiếp trường gần
+6B|microblogging system|hệ thống tiểu blog
+6B|social networking|kết nối qua mạng xã hội
+6B|graph|biểu đồ
+6B|blogger|người viết blog
+6B|speech-to-text|chuyển giọng nói thành văn bản
+6B|overseas department|bộ phận ở nước ngoài
+6C|announcement|thông báo
+6C|threaded view|chế độ xem tin nhắn theo chuỗi chủ đề
+6C|B2B|giữa doanh nghiệp với doanh nghiệp
+6C|B2C|giữa doanh nghiệp với người tiêu dùng
+6C|bricks and mortar shop|cửa hàng có địa điểm thực tế
+6D|method|phương pháp
+6D|prefer|thích hơn
+6D|set-up|hệ thống thiết bị được bố trí
+6D|local participant|người tham gia tại chỗ
+6D|premises|cơ sở, khuôn viên doanh nghiệp
+6D|facility|cơ sở vật chất hoặc phương tiện phục vụ
+7A|schedule|lịch trình
+7B|detail|chi tiết
+7B|pop-up menu|trình đơn bật lên
+7C|robot|rô-bốt
+7D|contact|liên hệ
+7D|dynamic|năng động, đầy ý tưởng mới
+7D|public|công khai
+7D|content|nội dung
+7D|premium content|nội dung cao cấp
+7D|combination|sự kết hợp
+7D|versatile|đa năng
+7D|challenge|thử thách
+7D|viewable|có thể xem được
+7D|SEO|tối ưu hóa công cụ tìm kiếm
+7D|search ranking|thứ hạng tìm kiếm
+7D|PHP|ngôn ngữ PHP
+7D|navigation chart|sơ đồ điều hướng
+8A|tier 1|cấp hỗ trợ thứ nhất
+8A|speculate|phỏng đoán
+8A|virus|vi-rút máy tính
+8B|crash|đột ngột ngừng hoạt động
+8B|solution|giải pháp
+8B|manual|sách hướng dẫn
+8C|bill|hóa đơn thanh toán
+8C|usage|cách sử dụng hoặc lượng sử dụng
+8C|backache|đau lưng
+8C|trips and falls|vấp và ngã
+8C|burn|cháy
+8C|bend|uốn, gập
+8C|wrist|cổ tay
+8C|spill|làm đổ chất lỏng
+8D|personal skill|kỹ năng cá nhân
+8D|position held|vị trí công việc từng đảm nhiệm
+8D|subject|môn học
+8D|occupational|thuộc về nghề nghiệp
+8D|qualification|bằng cấp hoặc chứng chỉ
+8D|award|trao tặng
+8D|work experience|kinh nghiệm làm việc
+8D|further qualification|bằng cấp hoặc chứng chỉ nâng cao
+8D|personnel|nhân sự
+8D|customised|được tùy chỉnh
+8D|government|chính phủ

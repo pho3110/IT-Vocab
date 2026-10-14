@@ -1,6 +1,8 @@
 # IT Words — React app học từ vựng tiếng Anh IT
 
-Ứng dụng React dành cho điện thoại và máy tính: **8 unit · 32 lesson · 160 từ chọn lọc** theo cấu trúc *Workbook of English for Information Technology* (2016) bạn cung cấp. Nghĩa tiếng Việt và định nghĩa ngắn được biên soạn cho ứng dụng, không phải đáp án chính thức hay toàn bộ nội dung workbook.
+Ứng dụng React dành cho điện thoại và máy tính: **8 unit · 32 lesson · 349 mục từ/cụm từ đầy đủ trong các bảng từ vựng của workbook** *Workbook of English for Information Technology* (2016) bạn cung cấp. Giữ định nghĩa tiếng Anh của PDF, bổ sung bản dịch tiếng Việt, loại từ và số trang nguồn. Bản dịch không phải đáp án chính thức.
+
+App có tổng **350 thẻ**: 349 mục từ workbook và một thẻ RAM bổ trợ giữ từ bản cũ để không mất tiến độ. “Đầy đủ” ở đây là các mục trong bảng WORD / DEFINITION của 32 lesson; chưa chuyển bài tập, bài đọc, bài nghe hoặc toàn bộ các từ xuất hiện trong văn bản thành flashcard.
 
 ## Chạy dự án
 
@@ -47,7 +49,8 @@ Safari, Chrome và ứng dụng đã cài có thể dùng bộ lưu trữ khác 
 ## Cấu trúc để tự học
 
 ```text
-src/data.js          Bộ từ: unit → lesson → words (ID ổn định)
+src/data.js          Bộ từ được tạo từ dữ liệu nguồn, ID cũ được giữ nguyên
+content/             Bản trích xuất PDF, bản dịch, báo cáo đủ mục và ID bản cũ
 src/study.js         Lịch ôn, kiểm tra bản sao, tìm kiếm và đáp án quiz
 src/App.jsx          Giao diện, điều hướng, phiên học và lưu tiến độ
 src/styles.css       Giao diện desktop/mobile, không dùng thư viện CSS
@@ -55,7 +58,19 @@ scripts/build-pwa.mjs Tạo PNG icon và service worker từ asset thực tế c
 test/                Kiểm tra dữ liệu, lịch ôn, backup, quiz và cache offline
 ```
 
-Khi thêm từ, giữ nguyên ID hiện có để bảo toàn tiến độ. Mỗi dòng dữ liệu có dạng `từ|nghĩa tiếng Việt|định nghĩa tiếng Anh`; không dùng ký tự `|` trong nội dung. Khi chỉnh CSS hoặc nội dung, chạy build lại để cập nhật cache version.
+Khi thêm từ, giữ nguyên ID hiện có để bảo toàn tiến độ. Sửa bản dịch trong `content/translations.txt`, mỗi dòng có dạng `lesson|từ|nghĩa tiếng Việt`; không dùng ký tự `|` trong nội dung. Các bản dịch đã có ở bản đầu nằm trong `content/legacy-words.json`; thêm dòng override trong `translations.txt` để cập nhật chúng.
+
+Tạo lại dữ liệu (PDF chỉ cần cho bước trích xuất, không được đưa lên GitHub):
+
+```powershell
+node scripts/extract-workbook.mjs "D:\Tiếng Anh Chuyên Ngành\Workbook for Students.pdf"
+node scripts/build-vocabulary.mjs
+npm run build
+```
+
+Các chỗ PDF ghép nhầm cột được sửa có kiểm tra: `supply cloud computing`, `virtual reality goggles`, `Ethernet connector`; tách riêng `remotely` và `jam`. Định nghĩa qua trang được nối lại. Báo cáo số lượng từng lesson và các sửa chữa nằm trong `content/coverage.json`. `calculate` được đưa về Lesson 7B đúng như PDF nhưng giữ ID `7C-5` để bảo toàn tiến độ. Phân biệt `crash (n)` ở 4D và `crash (v)` ở 8B, `plus (n)` ở 2A và `plus (prep)` ở 4C.
+
+Mỗi khi chỉnh CSS hoặc nội dung, chạy build lại để cập nhật cache version. App đã cài cần mở khi có mạng, chờ thông báo phiên bản mới và bấm Cập nhật để có bộ từ đầy đủ; sau đó vẫn học offline.
 
 ## Kiểm tra
 
