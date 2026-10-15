@@ -21,6 +21,20 @@ try {
   await page.getByRole('button', { name: /UNIT 01/ }).click();
   await page.getByRole('button', { name: 'Học flashcard', exact: true }).first().click();
   await expect(page.getByRole('button', { name: 'Đã nhớ', exact: true })).toBeDisabled();
+  const flashcard = page.locator('.flashcard');
+  const cardHeight = await flashcard.evaluate(el => el.offsetHeight);
+  await flashcard.focus();
+  await page.keyboard.press('Enter');
+  await expect(flashcard).toHaveAttribute('aria-pressed', 'true');
+  await expect.poll(() => page.locator('.flashcard-inner').evaluate(el => Number(new DOMMatrix(getComputedStyle(el).transform).m11.toFixed(4)))).toBe(-1);
+  expect(await flashcard.evaluate(el => el.offsetHeight)).toBe(cardHeight);
+  await page.screenshot({ path: 'qa/mobile-flashcard-back.png', fullPage: true });
+  await page.keyboard.press('Space');
+  await expect(flashcard).toHaveAttribute('aria-pressed', 'false');
+  await expect.poll(() => page.locator('.flashcard-inner').evaluate(el => Number(new DOMMatrix(getComputedStyle(el).transform).m11.toFixed(4)))).toBe(1);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(page.locator('.flashcard-inner')).toHaveCSS('transition-duration', '0s');
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
   for (let i = 0; i < firstLessonLength; i++) {
     await page.getByRole('button', { name: 'Lật thẻ để xem nghĩa', exact: true }).click();
     await expect(page.getByRole('button', { name: 'Đã nhớ', exact: true })).toBeEnabled();
