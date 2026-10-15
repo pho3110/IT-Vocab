@@ -11,6 +11,7 @@ try {
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('http://localhost:4173/');
   await expect(page.getByRole('heading', { name: /Chào bạn/ })).toBeVisible();
+  await expect(page.getByText(/HALLOWEEN STUDY CLUB/)).toBeVisible();
   await expect(page.getByRole('button', { name: /Sẵn sàng offline/ })).toBeVisible({ timeout: 20000 });
   await mkdir('qa', { recursive: true });
   await page.screenshot({ path: 'qa/mobile-home.png', fullPage: true });
@@ -36,10 +37,28 @@ try {
   }
   await expect(page.getByRole('heading', { name: 'Thêm một bước tiến!' })).toBeVisible();
   await page.getByRole('button', { name: 'Từ điển của bạn', exact: true }).click();
+  await expect(page.locator('.word-row')).toHaveCount(24);
+  const libraryNodes = await page.locator('*').count();
+  await page.getByRole('button', { name: 'Xem thêm 24 từ', exact: true }).click();
+  await expect(page.locator('.word-row')).toHaveCount(48);
+  await page.getByRole('searchbox').fill('government');
+  await expect(page.locator('.word-row')).toHaveCount(1);
+  await expect(page.getByRole('heading', { name: 'government (n)', exact: true })).toBeVisible();
+  await page.getByRole('searchbox').fill('');
+  await expect(page.locator('.word-row')).toHaveCount(24);
   await page.getByRole('searchbox').fill('ma hoa');
   await expect(page.locator('.word-row')).toHaveCount(1);
   await expect(page.getByRole('heading', { name: 'encrypt (v)', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Lưu từ encrypt', exact: true }).click();
+  await page.getByRole('button', { name: 'Đã lưu (1)', exact: true }).click();
+  await expect(page.locator('.word-row')).toHaveCount(1);
+  await page.getByRole('button', { name: 'Đã lưu (1)', exact: true }).click();
+  await page.getByRole('searchbox').fill('');
+  for (const width of [320, 390, 768]) {
+    await page.setViewportSize({ width, height: 844 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole('button', { name: 'Cài đặt & offline', exact: true }).click();
   const before = await page.evaluate(() => localStorage.getItem('it-words-progress-v1'));
   expect(JSON.parse(before).favorites).toContain('3D-5');
@@ -52,6 +71,9 @@ try {
   await page.reload();
   await expect(page.getByRole('heading', { name: /Chào bạn/ })).toBeVisible();
   await expect(page.getByRole('button', { name: /Đang offline/ })).toBeVisible();
+  await page.getByRole('button', { name: 'Từ điển của bạn', exact: true }).click();
+  await page.getByRole('searchbox').fill('government');
+  await expect(page.getByRole('heading', { name: 'government (n)', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Các unit', exact: true }).click();
   await page.getByRole('button', { name: /UNIT 07/ }).click();
   await page.getByRole('button', { name: 'Học flashcard', exact: true }).first().click();
@@ -64,6 +86,14 @@ try {
   const desktopPage = await desktop.newPage();
   await desktopPage.goto('http://localhost:4173/');
   await desktopPage.screenshot({ path: 'qa/desktop-home.png', fullPage: true });
+  // Isolate CDP performance emulation from the separate offline context.
+  const cdp = await desktop.newCDPSession(desktopPage);
+  await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+  await desktopPage.setViewportSize({ width: 390, height: 844 });
+  await desktopPage.getByRole('button', { name: 'Từ điển của bạn', exact: true }).click();
+  await desktopPage.getByRole('searchbox').fill('attachment');
+  await expect(desktopPage.getByRole('heading', { name: 'attachment (n)', exact: true })).toBeVisible();
+  await cdp.detach();
   await desktop.close();
-  console.log('Browser QA passed: mobile layout, flashcards, quiz, search, favorites, invalid backup, reload persistence, real service-worker offline reload and learning.');
+  console.log(`Browser QA passed: Halloween theme; 320/390/768px layouts; dictionary 24/48-row loading and global search, including at 4x CPU slowdown; favorites; flashcards; quiz; backup; progress persistence; real offline search and learning. Initial dictionary: 24 rows, ${libraryNodes} DOM elements (previously 350 rows / 4285 elements).`);
 } finally { await browser.close(); }

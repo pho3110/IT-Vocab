@@ -20,7 +20,7 @@ function icon(size) {
     const u = x / size * 192, v = y / size * 192;
     const ink = (u >= 48 && u < 67 && v >= 51 && v < 141) || (u >= 81 && u < 145 && v >= 51 && v < 70) || (u >= 103 && u < 122 && v >= 70 && v < 141);
     const offset = y * (size * 3 + 1) + 1 + x * 3;
-    raw.set(ink ? [255, 230, 120] : [109, 67, 219], offset);
+    raw.set(ink ? [255, 164, 91] : [23, 19, 31], offset);
   }
   const header = Buffer.alloc(13); header.writeUInt32BE(size, 0); header.writeUInt32BE(size, 4); header[8] = 8; header[9] = 2;
   return Buffer.concat([Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), chunk('IHDR', header), chunk('IDAT', deflateSync(raw)), chunk('IEND', Buffer.alloc(0))]);

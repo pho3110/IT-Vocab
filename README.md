@@ -17,7 +17,8 @@ Mở địa chỉ Vite in ra (thường là `http://localhost:5173`). Nếu Powe
 
 ## Tính năng
 
-- Giao diện game học tập: tím/vàng, robot minh họa bằng SVG, thẻ lớn và nút có hiệu ứng nhấn. Nhiệm vụ ôn 10 lượt/ngày hiển thị đúng tiến độ thực tế; không cần tải hình ảnh ngoài.
+- Giao diện Halloween: nền tối, cam/tím, bí ngô và ma nhỏ minh họa bằng SVG. Nhiệm vụ ôn 10 lượt/ngày hiển thị đúng tiến độ thực tế; không cần tải hình ảnh ngoài.
+- Tối ưu điện thoại: từ điển hiện 24 từ/lượt và có nút Xem thêm; tìm kiếm vẫn quét toàn bộ 350 thẻ. Chỉ mục tìm kiếm được chuẩn hóa một lần, hàng từ vựng được memo hóa, cập nhật thời gian dừng khi ẩn trang hoặc đang học. Không dùng blur hay hoạt ảnh trang trí liên tục; ô tìm kiếm 16px tránh tự phóng to trên iPhone.
 - Tổng quan, tiến độ theo unit và lesson; giao diện responsive và thanh điều hướng trên điện thoại.
 - Flashcard: thử nhớ → lật thẻ → chọn Đã nhớ / Chưa nhớ.
 - Quiz bốn lựa chọn, giải thích đáp án, kết quả và luyện lại từ sai.
@@ -55,7 +56,7 @@ content/             Bản trích xuất PDF, bản dịch, báo cáo đủ mụ
 src/study.js         Lịch ôn, kiểm tra bản sao, tìm kiếm và đáp án quiz
 src/App.jsx          Giao diện, điều hướng, phiên học và lưu tiến độ
 src/styles.css       Giao diện desktop/mobile, không dùng thư viện CSS
-src/game.css         Phong cách game học tập, màu sắc và giao diện thẻ/nút
+src/halloween.css    Chủ đề Halloween, giao diện thẻ/nút và tối ưu hiển thị mobile
 scripts/build-pwa.mjs Tạo PNG icon và service worker từ asset thực tế của bản build
 test/                Kiểm tra dữ liệu, lịch ôn, backup, quiz và cache offline
 ```
@@ -84,6 +85,8 @@ npm test
 Để chạy kiểm tra trình duyệt trên Windows có Microsoft Edge, giữ `npm run preview -- --port 4173 --strictPort` chạy ở terminal khác rồi chạy `node scripts/browser-check.mjs`. Ảnh kiểm tra được lưu trong thư mục `qa/` (bỏ qua trong Git).
 
 Test kiểm tra dữ liệu, lịch ôn, backup sai định dạng, đáp án quiz và mô phỏng service worker khi mất mạng. Kiểm tra thực tế trên Android/iPhone vẫn cần thực hiện theo các bước trên, bao gồm: tải lại không mất tiến độ; hoàn thành quiz; học lại từ sai; xuất/nhập backup; mở app offline; cập nhật phiên bản không mất dữ liệu.
+
+Kiểm tra Edge mô phỏng điện thoại: màn hình 320/390/768px không tràn ngang, tìm kiếm dưới mô phỏng CPU chậm 4 lần, Xem thêm 24 → 48 từ, tìm từ ở cuối bộ từ, và tìm kiếm offline. Màn hình từ điển ban đầu giảm từ 350 hàng / 4.285 phần tử DOM xuống 24 hàng / 377 phần tử. Đây là số đo độ lớn giao diện trong kiểm tra trình duyệt, không phải cam kết tốc độ khung hình trên mọi điện thoại.
 
 ## Gợi ý bài tập tiếp theo
 

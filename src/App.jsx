@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { units, words, workbookWords, wordById } from './data.js';
 import { STORAGE_KEY, emptyProgress, dayKey, normalize, shuffle, isDue, isLearned, recordAnswer, validateProgress, quizOptions } from './study.js';
 
@@ -27,6 +27,7 @@ const paths = {
 };
 function Icon({ name, size = 20, ...props }) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}><path d={paths[name] || paths.book} /></svg>; }
 const ids = new Set(words.map(w => w.id));
+const searchIndex = words.map(word => ({ word, text: normalize(`${word.term} ${word.meaning} ${word.definition}`) }));
 function readStored() {
   try { const raw = localStorage.getItem(STORAGE_KEY); return { progress: raw ? validateProgress(JSON.parse(raw), ids) : emptyProgress(), warning: '' }; }
   catch { return { progress: emptyProgress(), warning: 'Không đọc được dữ liệu đã lưu. Dữ liệu cũ chưa bị ghi đè; hãy nhập bản sao hoặc cho phép lưu lại trong Cài đặt.' }; }
@@ -39,8 +40,6 @@ export default function App() {
   const [warning, setWarning] = useState(initial.warning);
   const [page, setPage] = useState('home');
   const [unitId, setUnitId] = useState(null);
-  const [query, setQuery] = useState('');
-  const [onlyFavorites, setOnlyFavorites] = useState(false);
   const [session, setSession] = useState(null);
   const [toast, setToast] = useState('');
   const [online, setOnline] = useState(navigator.onLine);
@@ -58,7 +57,16 @@ export default function App() {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }
     catch { setWarning('Trình duyệt không lưu được tiến độ. Hãy xuất bản sao trước khi đóng ứng dụng.'); }
   }, [progress, canSave]);
-  useEffect(() => { const timer = setInterval(() => setNow(Date.now()), 30000); return () => clearInterval(timer); }, []);
+  useEffect(() => {
+    // Avoid waking the app while the phone is locked or a study session is open.
+    let timer;
+    const sync = () => {
+      clearInterval(timer);
+      if (!document.hidden && !session) { setNow(Date.now()); timer = setInterval(() => setNow(Date.now()), 60000); }
+    };
+    sync(); document.addEventListener('visibilitychange', sync);
+    return () => { clearInterval(timer); document.removeEventListener('visibilitychange', sync); };
+  }, [session]);
   useEffect(() => { if (!toast) return; const timer = setTimeout(() => setToast(''), 4500); return () => clearTimeout(timer); }, [toast]);
   useEffect(() => { heading.current?.focus(); window.scrollTo({ top: 0 }); }, [page, unitId, session?.startedAt]);
   useEffect(() => {
@@ -83,14 +91,16 @@ export default function App() {
     return () => { disposed = true; window.removeEventListener('online', up); window.removeEventListener('offline', down); window.removeEventListener('beforeinstallprompt', install); window.removeEventListener('appinstalled', installed); };
   }, []);
 
-  const learned = words.filter(w => isLearned(w, progress)).length;
-  const due = words.filter(w => isDue(w, progress, now));
-  const reviewed = words.filter(w => progress.cards[w.id]).length;
+  const { learned, due, reviewed } = useMemo(() => ({
+    learned: words.filter(w => isLearned(w, progress)).length,
+    due: words.filter(w => isDue(w, progress, now)),
+    reviewed: words.filter(w => progress.cards[w.id]).length,
+  }), [progress.cards, now]);
   const today = progress.daily[dayKey()] ?? 0;
   const unit = units.find(u => u.id === unitId);
   const percent = list => Math.round(list.filter(w => isLearned(w, progress)).length / list.length * 100);
   function navigate(next) { setSession(null); setPage(next); setUnitId(null); setResetting(false); }
-  function favorite(id) { setProgress(p => ({ ...p, favorites: p.favorites.includes(id) ? p.favorites.filter(x => x !== id) : [...p.favorites, id] })); }
+  const favorite = useCallback(id => { setProgress(p => ({ ...p, favorites: p.favorites.includes(id) ? p.favorites.filter(x => x !== id) : [...p.favorites, id] })); }, []);
   function start(list, mode, label) {
     if (!list.length) { setToast('Chưa có từ nào trong danh sách này.'); return; }
     setSession({ startedAt: Date.now(), words: shuffle(list), mode, label });
@@ -134,7 +144,7 @@ export default function App() {
         {session ? <StudySession key={session.startedAt} session={session} progress={progress} onAnswer={answer} onFavorite={favorite} onExit={() => setSession(null)} onRestart={(list, mode) => start(list, mode, session.label)} heading={heading} /> : <>
           {page === 'home' && <>
             <div className="page-title"><div><span className="eyebrow">SẴN SÀNG CHO MỘT BƯỚC TIẾN MỚI?</span><h1 ref={heading} tabIndex={-1}>Chào bạn, cùng học nhé <span className="wave">✦</span></h1><p>Mỗi từ mới là một bước gần hơn đến mục tiêu của bạn.</p></div><span className="date-pill">{new Intl.DateTimeFormat('vi-VN', { day: 'numeric', month: 'long' }).format(new Date(now))}</span></div>
-            <section className="hero game-hero"><div className="hero-text"><span className="hero-tag">✦ HỌC VUI · NHỚ LÂU · TIẾN XA</span><h2>Nâng cấp vốn từ.<br /><em>Chinh phục IT!</em></h2><p>8 unit, 32 bài học. Một hành trình của riêng bạn.<br />Bắt đầu nhỏ, khám phá thật nhiều.</p><button className="btn light" onClick={() => { setPage('units'); setUnitId(units.find(u => percent(u.lessons.flatMap(l => l.words)) < 100)?.id ?? 1); }}>Bắt đầu khám phá <Icon name="arrow" size={20} /></button><span className="hero-footnote">Không cần mạng. Không ngại bắt đầu.</span></div><div className="game-art" aria-hidden="true"><span className="speech-bubble">Let's level up! <span>✦</span></span><GameBuddy /><span className="floating-token token-code">&lt;/&gt;</span><span className="floating-token token-star">✦</span><span className="floating-token token-check"><Icon name="check" size={23} /></span><span className="buddy-shadow" /></div></section>
+            <section className="hero game-hero"><div className="hero-text"><span className="hero-tag">☾ HALLOWEEN STUDY CLUB · THÁNG 10</span><h2>Săn từ mới.<br /><em>Đánh bay nỗi sợ!</em></h2><p>349 mục từ IT đang chờ bạn khám phá.<br />Một chút can đảm, thêm nhiều kiến thức.</p><button className="btn light" onClick={() => { setPage('units'); setUnitId(units.find(u => percent(u.lessons.flatMap(l => l.words)) < 100)?.id ?? 1); }}>Bắt đầu khám phá <Icon name="arrow" size={20} /></button><span className="hero-footnote">Học cả khi offline, cùng bạn bí ngô.</span></div><div className="game-art" aria-hidden="true"><span className="speech-bubble">Trick or… learn! <span>✦</span></span><HalloweenBuddy /><span className="floating-token token-code">&lt;/&gt;</span><span className="floating-token token-star">☾</span><span className="floating-token token-check"><Icon name="check" size={23} /></span><span className="buddy-shadow" /></div></section>
             <section className={`daily-quest ${today >= 10 ? 'quest-complete' : ''}`} aria-label="Mục tiêu học hôm nay"><div className="quest-symbol" aria-hidden="true">{today >= 10 ? '🏆' : '⚡'}</div><div className="quest-copy"><h2>{today >= 10 ? 'Bạn đã hoàn thành mục tiêu hôm nay!' : 'Nhiệm vụ hôm nay: ôn 10 lượt'}</h2><p>{today >= 10 ? 'Một bước tiến đáng nhớ. Muốn học thêm? Cứ tiếp tục nhé.' : 'Chỉ một phiên ngắn để giữ nhịp học mỗi ngày.'}</p><div className="quest-progress" role="progressbar" aria-label="Lượt ôn hôm nay" aria-valuemin={0} aria-valuemax={10} aria-valuenow={Math.min(today, 10)}><span style={{ width: `${Math.min(today / 10 * 100, 100)}%` }} /></div></div><span className="quest-score">{Math.min(today, 10)}<small>/10</small></span><button className="btn primary" disabled={!due.length} onClick={() => start(due.slice(0, 10), 'flashcard', 'Nhiệm vụ hôm nay')}>{today >= 10 ? 'Học thêm' : 'Chơi thôi'}<Icon name="arrow" size={18} /></button></section>
             <div className="stats-grid">{[['book', 'Từ đã gặp', reviewed, `trong ${words.length} từ vựng`, 'mint'], ['check', 'Đã ghi nhớ', learned, 'nhớ đúng ít nhất 2 lần liên tiếp', 'peach'], ['repeat', 'Cần ôn hôm nay', due.length, 'gồm từ mới và từ đến hạn', 'lavender'], ['chart', 'Lượt ôn hôm nay', today, 'mục tiêu 10 lượt mỗi ngày', 'yellow']].map(([icon, label, value, caption, color]) => <div className="stat" key={label}><span className={`stat-icon ${color}`}><Icon name={icon} /></span><span className="stat-label">{label}</span><strong>{value}<small>{label === 'Từ đã gặp' ? `/${words.length}` : ''}</small></strong><span className="stat-caption">{caption}</span></div>)}</div>
             <SectionHeading title="Chọn chặng tiếp theo" subtitle="Mở một unit, khám phá một thế giới mới." action="Cả hành trình" onClick={() => navigate('units')} />
@@ -149,7 +159,7 @@ export default function App() {
             <div className="lesson-list">{unit.lessons.map(l => <section className="lesson" key={l.id}><div className="lesson-heading"><span className="lesson-id">{l.id}</span><div><h2>{l.title}</h2><p>{l.subtitle} · {l.words.length} từ</p></div><span className="lesson-percent">{percent(l.words)}% ghi nhớ</span></div><div className="word-chips">{l.words.map(w => <span key={w.id}>{w.term}</span>)}</div><div className="lesson-actions"><button className="btn primary" onClick={() => start(l.words, 'flashcard', `${l.id} · ${l.title}`)}><Icon name="book" size={17} /> Học flashcard</button><button className="btn secondary" onClick={() => start(l.words, 'quiz', `${l.id} · ${l.title}`)}>Làm quiz <Icon name="arrow" size={17} /></button></div></section>)}</div>
           </>}
           {page === 'review' && <><PageTitle heading={heading} eyebrow="MAKE IT STICK" title="Ôn một chút, nhớ lâu hơn" description="Từ chưa nhớ sẽ trở lại sau 10 phút. Từ nhớ đúng được ôn sau 1, 3, 7, 14 rồi 30 ngày." /><div className="review-options">{[[due, 'repeat', 'Ôn hôm nay', 'Từ mới và từ đến hạn, tối đa 10 từ mỗi phiên.'], [words.filter(w => progress.cards[w.id]?.streak === 0), 'tool', 'Từ cần luyện thêm', 'Những từ bạn chưa nhớ ở lần trả lời gần nhất.'], [words.filter(w => progress.favorites.includes(w.id)), 'star', 'Từ đã lưu', 'Bộ từ bạn đánh dấu để học riêng.']].map(([list, icon, title, desc]) => <section className="review-option" key={title}><span className="stat-icon mint"><Icon name={icon} /></span><h2>{title}</h2><p>{desc}</p><strong>{list.length}<small> từ</small></strong><button className="btn primary" disabled={!list.length} onClick={() => start(list.slice(0, 10), 'flashcard', title)}>Học flashcard</button><button className="btn secondary" disabled={!list.length} onClick={() => start(list.slice(0, 10), 'quiz', title)}>Làm quiz</button></section>)}</div><div className="notice">“Đã ghi nhớ” nghĩa là trả lời đúng ít nhất 2 lần liên tiếp. Quiz và flashcard cùng cập nhật tiến độ.</div></>}
-          {page === 'library' && <><PageTitle heading={heading} eyebrow="YOUR WORD COLLECTION" title="Từ điển của bạn" description="Tìm một từ, hiểu ý nghĩa, lưu lại để ôn sau." /><div className="library-controls"><label className="search-box"><Icon name="search" /><span className="sr-only">Tìm từ hoặc nghĩa</span><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Tìm từ tiếng Anh hoặc nghĩa tiếng Việt…" type="search" /></label><button className={`btn ${onlyFavorites ? 'primary' : 'secondary'}`} aria-pressed={onlyFavorites} onClick={() => setOnlyFavorites(!onlyFavorites)}><Icon name="star" size={17} /> Đã lưu ({progress.favorites.length})</button></div><WordLibrary query={query} onlyFavorites={onlyFavorites} progress={progress} onFavorite={favorite} /></>}
+          {page === 'library' && <><PageTitle heading={heading} eyebrow="YOUR WORD COLLECTION" title="Từ điển của bạn" description="Tìm một từ, hiểu ý nghĩa, lưu lại để ôn sau." /><WordLibrary progress={progress} onFavorite={favorite} /></>}
           {page === 'settings' && <><PageTitle heading={heading} eyebrow="MAKE YOURSELF AT HOME" title="Học ở bất cứ đâu" description="Không cần tài khoản. Bộ từ và tiến độ nằm trên thiết bị của bạn." />
             <section className="settings-card"><span className="stat-icon mint"><Icon name="wifi" /></span><h2>Cài ứng dụng & học offline</h2><p>{offlineReady ? 'Ứng dụng đã được lưu để mở và học offline trên trình duyệt này.' : import.meta.env.DEV ? 'Bạn đang chạy bản phát triển. Chạy npm run build rồi npm run preview để kiểm tra offline trên máy tính.' : 'Đang chuẩn bị bộ nhớ offline. Lần đầu cần truy cập bằng HTTPS và có kết nối mạng.'}</p>{pwaError && <p className="error-text" role="alert">{pwaError}</p>}{installPrompt && <button className="btn primary" onClick={installApp}><Icon name="download" size={17} /> Cài IT Words</button>}<ol><li><strong>Android:</strong> mở đường dẫn HTTPS bằng Chrome → menu ⋮ → Cài ứng dụng / Thêm vào màn hình chính.</li><li><strong>iPhone:</strong> mở bằng Safari → Chia sẻ → Thêm vào Màn hình chính.</li><li>Mở ứng dụng đã cài khi có mạng, đợi “Sẵn sàng offline”, rồi thử bật chế độ máy bay và mở lại.</li></ol><p className="fine-print">Truy cập bằng IP nội bộ qua HTTP chỉ dùng để xem thử giao diện; không bật được offline trên điện thoại. Dữ liệu giữa Safari, Chrome và ứng dụng đã cài có thể khác nhau.</p></section>
             <section className="settings-card"><h2>Bản sao tiến độ</h2><p>Lưu một bản sao để chuyển thiết bị hoặc khôi phục sau khi xóa dữ liệu trình duyệt. Nhập bản sao sẽ thay thế tiến độ hiện tại.</p><div className="button-row"><button className="btn primary" onClick={exportBackup}><Icon name="download" size={17} /> Xuất bản sao</button><button className="btn secondary" onClick={() => fileInput.current.click()}><Icon name="upload" size={17} /> Nhập bản sao</button></div><input ref={fileInput} type="file" accept=".json,application/json" onChange={importBackup} hidden /><p className="fine-print">Xóa dữ liệu trang hoặc dùng chế độ riêng tư có thể làm mất tiến độ. Trình duyệt cũng có thể thu hồi dữ liệu lưu trữ; nên xuất bản sao định kỳ.</p>{!canSave && <button className="btn secondary" onClick={() => { setCanSave(true); setWarning(''); }}>Cho phép lưu tiến độ mới</button>}</section>
@@ -170,24 +180,43 @@ function UnitCard({ unit, percent, onClick }) {
   return <button className={`unit-card unit-world-${unit.id}`} onClick={onClick}><div className="unit-card-top"><span className={`unit-icon color-${unit.id}`}><Icon name={unit.icon} size={28} /></span><span className="unit-number">UNIT {String(unit.id).padStart(2, '0')}</span><span className="unit-open"><Icon name={percent === 100 ? 'check' : 'arrow'} size={20} /></span></div><h3>{unit.title}</h3><p>{unit.subtitle}</p><div className="unit-meta"><span>4 bài học · {unit.lessons.flatMap(l => l.words).length} từ</span><span>{percent}% ghi nhớ</span></div><div className="progress-track"><span style={{ width: `${percent}%` }} /></div><span className="unit-cta">{percent === 100 ? 'Ôn để nhớ lâu hơn' : percent > 0 ? 'Tiếp tục chinh phục' : 'Khám phá ngay'}<Icon name="arrow" size={16} /></span></button>;
 }
 
-function GameBuddy() {
+function HalloweenBuddy() {
   return <svg className="game-buddy" viewBox="0 0 260 280" fill="none" aria-hidden="true">
-    <path d="M80 194 60 227q-6 12 7 18l25 7 18-42M175 198l26 29q9 10-4 18l-24 9-18-44" fill="#6D43DB" stroke="#43258E" strokeWidth="5" strokeLinejoin="round" />
-    <path d="M61 155 34 136q-14-10-24 3-9 12 3 23l38 27M201 153l29-28q11-11 21 1 10 12-1 22l-38 34" fill="#9A7AF0" stroke="#43258E" strokeWidth="5" strokeLinecap="round" />
-    <rect x="66" y="146" width="129" height="74" rx="27" fill="#8C65EA" stroke="#43258E" strokeWidth="5" />
-    <path d="M83 181h27m-13-13v26" stroke="#FFF1A6" strokeWidth="6" strokeLinecap="round" /><circle cx="157" cy="176" r="6" fill="#FFF1A6" /><circle cx="171" cy="188" r="6" fill="#FFAC9A" />
-    <path d="M130 49V30" stroke="#43258E" strokeWidth="6" /><circle cx="130" cy="22" r="12" fill="#FFB05C" stroke="#43258E" strokeWidth="5" />
-    <rect x="40" y="57" width="181" height="108" rx="38" fill="#A389F4" stroke="#43258E" strokeWidth="5" /><rect x="55" y="73" width="151" height="77" rx="28" fill="#F9F6FF" />
-    <path d="M83 107q9-13 18 0M157 107q9-13 18 0" stroke="#43258E" strokeWidth="7" strokeLinecap="round" />
-    <path d="M111 122q19 20 38 0" fill="#FF9F8F" stroke="#43258E" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-    <ellipse cx="76" cy="121" rx="10" ry="5" fill="#FFC5BB" /><ellipse cx="184" cy="121" rx="10" ry="5" fill="#FFC5BB" />
-    <path d="m194 49 5-12m13 19 12-3M51 49l-7-10" stroke="#FFF" strokeWidth="5" strokeLinecap="round" />
+    <circle cx="196" cy="53" r="35" fill="#F3DDA7" /><circle cx="209" cy="44" r="31" fill="#282036" />
+    <path d="m20 68 18 4-1-18 14 17 11-13-1 21 17 7-24 3-8 15-6-15-19-1 10-10z" fill="#A58AD6" />
+    <path d="M43 201q-12-64 5-93 16-26 45-12 29-14 45 12 17 29 5 93l-16-10-17 11-17-11-17 11-17-11z" fill="#F9F0E8" stroke="#C8B6D6" strokeWidth="3" />
+    <ellipse cx="71" cy="129" rx="5" ry="8" fill="#43334F" /><ellipse cx="101" cy="129" rx="5" ry="8" fill="#43334F" /><path d="M81 147q8 8 16 0" stroke="#9F7DB3" strokeWidth="3" strokeLinecap="round" />
+    <path d="M151 118q-9-19 2-31l12 5q-11 9-4 24" fill="#8FA36A" stroke="#43533D" strokeWidth="3" />
+    <path d="M152 118c-59-29-93 13-86 61 6 45 47 66 87 55 42 11 83-10 89-55 7-48-28-90-90-61z" fill="#F79A48" stroke="#9D5237" strokeWidth="4" />
+    <path d="M151 119q-25 52 0 114M171 122q35 52 6 108M128 121q-33 51-10 108" stroke="#D77939" strokeWidth="3" />
+    <path d="m99 161 18-18 9 23zm82 5 9-23 18 18z" fill="#3D293B" stroke="#3D293B" strokeWidth="3" strokeLinejoin="round" />
+    <path d="m131 182 22-7 23 7-9 6 12 3q-25 36-49 0l12-3z" fill="#3D293B" /><path d="m149 191 7-3 5 5-6 7z" fill="#FFD99A" />
+    <path d="M111 241h90l-15 16-31-5-31 5z" fill="#7652A0" stroke="#4E3768" strokeWidth="3" />
+    <path d="m220 95 4-9m-1 12 10-2M184 23l2-8" stroke="#D5B3EF" strokeWidth="3" strokeLinecap="round" />
   </svg>;
 }
-function WordLibrary({ query, onlyFavorites, progress, onFavorite }) {
-  const list = words.filter(w => (!onlyFavorites || progress.favorites.includes(w.id)) && normalize(`${w.term} ${w.meaning} ${w.definition}`).includes(normalize(query.trim())));
-  return <><p className="result-count">{list.length} từ vựng</p>{!list.length ? <div className="empty-state"><Icon name="search" size={36} /><h2>Chưa tìm thấy từ</h2><p>Thử từ khóa khác hoặc tắt bộ lọc “Đã lưu”.</p></div> : <div className="word-list">{list.map(w => <article className="word-row" key={w.id}><div><WordSource word={w} /><h2>{w.term} <small className="part-of-speech">({w.partOfSpeech})</small></h2><p className="word-definition">{w.definition}</p></div><div className="word-translation"><strong>{w.meaning}</strong><span className={`word-status ${isLearned(w, progress) ? 'learned' : ''}`}>{isLearned(w, progress) ? 'Đã ghi nhớ' : progress.cards[w.id] ? 'Đang học' : 'Từ mới'}</span></div><button className={`favorite-button ${progress.favorites.includes(w.id) ? 'saved' : ''}`} aria-label={`${progress.favorites.includes(w.id) ? 'Bỏ lưu' : 'Lưu'} từ ${w.term}`} aria-pressed={progress.favorites.includes(w.id)} onClick={() => onFavorite(w.id)}><Icon name="star" /></button></article>)}</div>}</>;
-}
+const PAGE_SIZE = 24;
+const WordLibrary = memo(function WordLibrary({ progress, onFavorite }) {
+  const [query, setQuery] = useState('');
+  const [onlyFavorites, setOnlyFavorites] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const favorites = useMemo(() => new Set(progress.favorites), [progress.favorites]);
+  const list = useMemo(() => {
+    const needle = normalize(query.trim());
+    return searchIndex.filter(({ word, text }) => (!onlyFavorites || favorites.has(word.id)) && text.includes(needle)).map(({ word }) => word);
+  }, [query, onlyFavorites, favorites]);
+  return <>
+    <div className="library-controls"><label className="search-box"><Icon name="search" /><span className="sr-only">Tìm từ hoặc nghĩa</span><input value={query} onChange={e => { setQuery(e.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="Tìm từ tiếng Anh hoặc nghĩa tiếng Việt…" type="search" autoComplete="off" /></label><button className={`btn ${onlyFavorites ? 'primary' : 'secondary'}`} aria-pressed={onlyFavorites} onClick={() => { setOnlyFavorites(!onlyFavorites); setVisibleCount(PAGE_SIZE); }}><Icon name="star" size={17} /> Đã lưu ({progress.favorites.length})</button></div>
+    <p className="result-count" aria-live="polite">{list.length} từ vựng{list.length > visibleCount ? ` · Đang hiện ${visibleCount} từ` : ''}</p>
+    {!list.length ? <div className="empty-state"><Icon name="search" size={36} /><h2>Chưa tìm thấy từ</h2><p>Thử từ khóa khác hoặc tắt bộ lọc “Đã lưu”.</p></div> : <>
+      <div className="word-list">{list.slice(0, visibleCount).map(w => <WordRow key={w.id} word={w} saved={favorites.has(w.id)} learned={isLearned(w, progress)} reviewed={!!progress.cards[w.id]} onFavorite={onFavorite} />)}</div>
+      {list.length > visibleCount && <div className="load-more"><button className="btn secondary" onClick={() => setVisibleCount(count => count + PAGE_SIZE)}>Xem thêm {Math.min(PAGE_SIZE, list.length - visibleCount)} từ <Icon name="arrow" size={17} /></button></div>}
+    </>}
+  </>;
+});
+const WordRow = memo(function WordRow({ word: w, saved, learned, reviewed, onFavorite }) {
+  return <article className="word-row"><div><WordSource word={w} /><h2>{w.term} <small className="part-of-speech">({w.partOfSpeech})</small></h2><p className="word-definition">{w.definition}</p></div><div className="word-translation"><strong>{w.meaning}</strong><span className={`word-status ${learned ? 'learned' : ''}`}>{learned ? 'Đã ghi nhớ' : reviewed ? 'Đang học' : 'Từ mới'}</span></div><button className={`favorite-button ${saved ? 'saved' : ''}`} aria-label={`${saved ? 'Bỏ lưu' : 'Lưu'} từ ${w.term}`} aria-pressed={saved} onClick={() => onFavorite(w.id)}><Icon name="star" /></button></article>;
+});
 
 function WordSource({ word, card = false }) {
   return <span className={card ? 'card-label' : 'word-lesson'}>UNIT {word.unitId} · LESSON {word.lessonId} · {word.sourcePage ? `TRANG ${word.sourcePage}` : 'BỔ TRỢ'}</span>;
