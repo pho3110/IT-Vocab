@@ -39,14 +39,34 @@ try {
     await page.getByRole('button', { name: 'Lật thẻ để xem nghĩa', exact: true }).click();
     await expect(page.getByRole('button', { name: 'Đã nhớ', exact: true })).toBeEnabled();
     await page.getByRole('button', { name: i === 0 ? 'Chưa nhớ' : 'Đã nhớ', exact: true }).click();
+    if (i === 3) await expect(page.locator('.streak-badge')).toContainText('3 từ đúng liên tiếp');
+    if (i === 5) await expect(page.locator('.streak-badge')).toContainText('5 từ đúng liên tiếp');
   }
   await expect(page.getByRole('heading', { name: 'Thêm một bước tiến!' })).toBeVisible();
+  await expect(page.locator('.celebration-pumpkin')).toBeVisible();
+  await page.screenshot({ path: 'qa/mobile-celebration.png', fullPage: true, animations: 'disabled' });
+  await expect(page.locator('.celebration-stars')).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Luyện lại 1 từ chưa nhớ' })).toBeVisible();
   await page.getByRole('button', { name: 'Về bài học', exact: true }).click();
   await page.getByRole('button', { name: 'Làm quiz', exact: true }).first().click();
   for (let i = 0; i < firstLessonLength; i++) {
-    await page.locator('.quiz-option').first().click();
+    const term = await page.locator('.quiz-card h2').evaluate(el => el.firstChild.textContent.trim());
+    const meaning = units[0].lessons[0].words.find(word => word.term === term).meaning;
+    const options = page.locator('.quiz-option');
+    const labels = await options.locator('span:nth-child(2)').allTextContents();
+    await options.nth(labels.findIndex(label => i === 3 ? label !== meaning : label === meaning)).click();
     await expect(page.locator('.quiz-option.correct')).toHaveCount(1);
+    if (i === 2) {
+      await expect(page.locator('.streak-badge')).toContainText('3 từ đúng liên tiếp');
+      await page.screenshot({ path: 'qa/mobile-quiz-streak.png', fullPage: true, animations: 'disabled' });
+    }
+    if (i === 3) {
+      await expect(page.locator('.streak-badge')).toHaveCount(0);
+      await expect(page.locator('.quiz-option.incorrect')).toHaveCount(1);
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+      await expect(page.locator('.quiz-option.incorrect')).toHaveCSS('animation-name', 'none');
+      await page.emulateMedia({ reducedMotion: 'no-preference' });
+    }
     await page.getByRole('button', { name: i === firstLessonLength - 1 ? 'Xem kết quả' : 'Từ tiếp theo', exact: true }).click();
   }
   await expect(page.getByRole('heading', { name: 'Thêm một bước tiến!' })).toBeVisible();

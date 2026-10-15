@@ -319,6 +319,37 @@ h1 { font-size: 30px; font-weight: 800; }
   .unit-card:hover { transform: translateY(-3px); }
   .unit-card:hover .unit-open { transform: translateX(3px); }
 }
+@keyframes answer-pop {
+  0%, 100% { transform: scale(1); }
+  45% { transform: scale(1.025); }
+}
+@keyframes answer-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+}
+@keyframes pumpkin-cheer {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  35% { transform: translateY(-10px) rotate(-9deg); }
+  70% { transform: translateY(-4px) rotate(8deg); }
+}
+@keyframes star-burst {
+  0% { opacity: 0; transform: translate(0, 0) scale(.4); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--burst-x), var(--burst-y)) rotate(var(--burst-turn)) scale(.6); }
+}
+.quiz-option.correct { animation: answer-pop 280ms ease-out; }
+.quiz-option.correct>svg { animation: little-pop 280ms ease-out; }
+.quiz-option.incorrect { animation: answer-shake 260ms ease-out; }
+.streak-slot { min-height: 44px; display: flex; align-items: center; justify-content: center; margin: -12px 0 12px; }
+.streak-badge { padding: 8px 12px; border-radius: 12px; border: 1px solid #79503d; background: #3e2a2b; color: #ffd09a; font-size: 12px; line-height: 1.5; text-align: center; animation: little-pop 280ms ease-out; }
+.session-celebration { width: 180px; height: 110px; margin: 0 auto 16px; position: relative; display: grid; place-items: center; pointer-events: none; }
+.celebration-pumpkin { display: block; font-size: 60px; animation: pumpkin-cheer 650ms ease-out; }
+.celebration-stars { position: absolute; inset: 50% auto auto 50%; }
+.celebration-stars>span { position: absolute; left: -7px; top: -10px; color: #ffce8b; font-size: 18px; opacity: 0; animation: star-burst 900ms ease-out both; }
+.celebration-stars>span:nth-child(even) { color: #cda6f2; }
 @media(prefers-reduced-motion:reduce) {
+  .celebration-stars { display: none; }
   *, *:before, *:after { transition: none!important; animation: none!important; }
 }

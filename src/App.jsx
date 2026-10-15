@@ -229,6 +229,18 @@ function WordSource({ word, card = false }) {
   return <span className={card ? 'card-label' : 'word-lesson'}>UNIT {word.unitId} · LESSON {word.lessonId} · {word.sourcePage ? `TRANG ${word.sourcePage}` : 'BỔ TRỢ'}</span>;
 }
 
+function SessionCelebration() {
+  const [burst, setBurst] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => setBurst(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+  return <div className="session-celebration" aria-hidden="true">
+    <span className="celebration-pumpkin">🎃</span>
+    {burst && <span className="celebration-stars">{Array.from({ length: 8 }, (_, i) => <span key={i} style={{ '--burst-x': `${Math.cos(i * Math.PI / 4) * 78}px`, '--burst-y': `${Math.sin(i * Math.PI / 4) * 56}px`, '--burst-turn': `${i * 45}deg` }}>✦</span>)}</span>}
+  </div>;
+}
+
 function StudySession({ session, progress, onAnswer, onFavorite, onExit, onRestart, heading }) {
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -258,9 +270,12 @@ function StudySession({ session, progress, onAnswer, onFavorite, onExit, onResta
     onAnswer(word.id, correct); setResults(r => [...r, { id: word.id, correct }]);
   }
   const wrong = results.filter(r => !r.correct).map(r => wordById[r.id]);
+  const streak = results.reduce((count, result) => result.correct ? count + 1 : 0, 0);
+  const streakMilestone = streak >= 5 ? Math.floor(streak / 5) * 5 : streak >= 3 ? 3 : 0;
   return <div className="study-page"><button className="back-link" onClick={() => finished ? onExit() : setLeaving(true)}>← Trở về bài học</button>{leaving && <div className="notice warning"><span>Kết thúc phiên học? Các câu đã trả lời được lưu.</span><button onClick={onExit}>Kết thúc</button><button onClick={() => setLeaving(false)}>Học tiếp</button></div>}<PageTitle heading={heading} eyebrow={session.mode === 'quiz' ? 'QUICK QUIZ' : 'FLASHCARDS'} title={session.label} description={session.mode === 'quiz' ? 'Chọn nghĩa tiếng Việt đúng của từ.' : 'Thử nhớ nghĩa trước khi lật thẻ.'} />
-    {finished ? <section className="session-result"><span className="result-medal">✦</span><h2>Thêm một bước tiến!</h2><p>Bạn nhớ đúng <strong>{results.filter(r => r.correct).length}/{results.length}</strong> từ trong phiên này.</p><div className="result-track"><span style={{ width: `${results.filter(r => r.correct).length / results.length * 100}%` }} /></div><p className="fine-print">Từ đã học được lên lịch ôn lại tự động.</p><div className="button-row">{!!wrong.length && <button className="btn primary" onClick={() => onRestart(wrong, session.mode)}>Luyện lại {wrong.length} từ chưa nhớ</button>}<button className="btn secondary" onClick={() => onRestart(session.words, session.mode)}>Học lại</button><button className="btn secondary" onClick={onExit}>Về bài học</button></div>{!!wrong.length && <div className="wrong-list">{wrong.map(w => <div key={w.id}><strong>{w.term}</strong><span>{w.meaning}</span></div>)}</div>}</section> : <>
+    {finished ? <section className="session-result"><SessionCelebration /><h2>Thêm một bước tiến!</h2><p>Bạn nhớ đúng <strong>{results.filter(r => r.correct).length}/{results.length}</strong> từ trong phiên này.</p><div className="result-track"><span style={{ width: `${results.filter(r => r.correct).length / results.length * 100}%` }} /></div><p className="fine-print">Từ đã học được lên lịch ôn lại tự động.</p><div className="button-row">{!!wrong.length && <button className="btn primary" onClick={() => onRestart(wrong, session.mode)}>Luyện lại {wrong.length} từ chưa nhớ</button>}<button className="btn secondary" onClick={() => onRestart(session.words, session.mode)}>Học lại</button><button className="btn secondary" onClick={onExit}>Về bài học</button></div>{!!wrong.length && <div className="wrong-list">{wrong.map(w => <div key={w.id}><strong>{w.term}</strong><span>{w.meaning}</span></div>)}</div>}</section> : <>
       <div className="session-progress"><span>Từ {index + 1} / {session.words.length}</span><span>{Math.round(index / session.words.length * 100)}% hoàn thành</span></div><div className="progress-track session-track"><span style={{ width: `${index / session.words.length * 100}%` }} /></div>
+      <div className="streak-slot" role="status" aria-live="polite" aria-atomic="true">{streak >= 3 && <span className="streak-badge" key={streakMilestone}><span aria-hidden="true">🔥</span> {streak >= 5 ? 'Tuyệt lắm!' : 'Đang vào guồng!'} · {streak} từ đúng liên tiếp</span>}</div>
       <div className="study-card-wrapper" key={word.id}><button className={`favorite-button card-favorite ${progress.favorites.includes(word.id) ? 'saved' : ''}`} aria-label={`${progress.favorites.includes(word.id) ? 'Bỏ lưu' : 'Lưu'} từ ${word.term}`} aria-pressed={progress.favorites.includes(word.id)} onClick={() => onFavorite(word.id)}><Icon name="star" /></button>
         {session.mode === 'flashcard' ? <button ref={card} className={`flashcard ${flipped ? 'flipped' : ''}`} aria-label={flipped ? 'Ẩn nghĩa và xem lại từ' : 'Lật thẻ để xem nghĩa'} aria-pressed={flipped} onClick={() => setFlipped(value => !value)}>
           <span className="flashcard-inner">
@@ -280,7 +295,7 @@ function StudySession({ session, progress, onAnswer, onFavorite, onExit, onResta
           </span>
         </button> : <div className="quiz-card" ref={card} tabIndex={-1}><WordSource word={word} card /><h2>{word.term} <small className="part-of-speech">({word.partOfSpeech})</small></h2><p>Chọn nghĩa đúng bên dưới</p></div>}
       </div>
-      {session.mode === 'flashcard' ? <><div className="rating-buttons"><button className="btn secondary" disabled={!flipped} onClick={() => mark(false)}><Icon name="repeat" />Chưa nhớ</button><button className="btn primary" disabled={!flipped} onClick={() => mark(true)}><Icon name="check" />Đã nhớ</button></div><p className="study-tip">{flipped ? 'Đánh giá đúng khả năng nhớ để lần ôn sau hiệu quả hơn.' : 'Lật thẻ trước khi đánh giá. Bạn có thể dùng Enter hoặc Space.'}</p></> : <><div className="quiz-options">{options.map((option, i) => <button key={option} disabled={selected !== null} className={`quiz-option ${selected !== null && option === word.meaning ? 'correct' : ''} ${selected === option && option !== word.meaning ? 'incorrect' : ''}`} onClick={() => choose(option)}><span className="option-letter">{'ABCD'[i]}</span><span>{option}</span>{selected !== null && option === word.meaning && <Icon name="check" />}{selected === option && option !== word.meaning && <Icon name="x" />}</button>)}</div>{selected !== null && <div className="quiz-feedback" role="status"><strong>{selected === word.meaning ? 'Chính xác!' : `Đáp án đúng: ${word.meaning}`}</strong><p>{word.definition}</p><button className="btn primary" onClick={next}>{index === session.words.length - 1 ? 'Xem kết quả' : 'Từ tiếp theo'}<Icon name="arrow" size={17} /></button></div>}</>}
+      {session.mode === 'flashcard' ? <><div className="rating-buttons"><button className="btn secondary" disabled={!flipped} onClick={() => mark(false)}><Icon name="repeat" />Chưa nhớ</button><button className="btn primary" disabled={!flipped} onClick={() => mark(true)}><Icon name="check" />Đã nhớ</button></div><p className="study-tip">{flipped ? 'Đánh giá đúng khả năng nhớ để lần ôn sau hiệu quả hơn.' : 'Lật thẻ trước khi đánh giá. Bạn có thể dùng Enter hoặc Space.'}</p></> : <><div className="quiz-options" key={word.id}>{options.map((option, i) => <button key={option} disabled={selected !== null} className={`quiz-option ${selected !== null && option === word.meaning ? 'correct' : ''} ${selected === option && option !== word.meaning ? 'incorrect' : ''}`} onClick={() => choose(option)}><span className="option-letter">{'ABCD'[i]}</span><span>{option}</span>{selected !== null && option === word.meaning && <Icon name="check" />}{selected === option && option !== word.meaning && <Icon name="x" />}</button>)}</div>{selected !== null && <div className="quiz-feedback" role="status"><strong>{selected === word.meaning ? 'Chính xác!' : `Đáp án đúng: ${word.meaning}`}</strong><p>{word.definition}</p><button className="btn primary" onClick={next}>{index === session.words.length - 1 ? 'Xem kết quả' : 'Từ tiếp theo'}<Icon name="arrow" size={17} /></button></div>}</>}
     </>}
   </div>;
 }

@@ -22,6 +22,7 @@ Mở địa chỉ Vite in ra (thường là `http://localhost:5173`). Nếu Powe
 - Tổng quan, tiến độ theo unit và lesson; giao diện responsive và thanh điều hướng trên điện thoại.
 - Flashcard: thử nhớ → lật thẻ → chọn Đã nhớ / Chưa nhớ.
 - Quiz bốn lựa chọn, giải thích đáp án, kết quả và luyện lại từ sai.
+- Phản hồi học tập: đáp án đúng bật nhẹ, sai rung một lần; huy hiệu chuỗi đúng từ 3/5 từ trong phiên (sai sẽ đặt lại). Cuối phiên có bí ngô và 8 ngôi sao chạy ngắn rồi được gỡ bỏ. Hiệu ứng dùng CSS, hoạt động offline, tôn trọng chế độ giảm chuyển động.
 - Lịch ôn đơn giản: nhớ đúng sau 1, 3, 7, 14, 30 ngày; chưa nhớ sau 10 phút. Nhớ đúng 2 lần liên tiếp được tính là đã ghi nhớ.
 - Tìm kiếm tiếng Anh hoặc tiếng Việt không dấu; đánh dấu từ yêu thích.
 - Tiến độ lưu trong localStorage; xuất/nhập JSON, kiểm tra dữ liệu nhập và xác nhận trước khi đặt lại.
