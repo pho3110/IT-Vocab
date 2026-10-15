@@ -178,7 +178,7 @@ h1 { font-size: 30px; font-weight: 800; }
 .result-track>span { background: #c69ce9; }
 .wrong-list, .wrong-list>div { border-color: #4b3458; }
 .wrong-list span { color: #d1b6dd; }
-/* Keep scrolling cheap: no blur, floating animations or painted drop shadows. */
+/* Keep scrolling cheap: no blur or painted drop shadows. */
 .sidebar, .art-chip { backdrop-filter: none; }
 .game-buddy { filter: none; }
 .unit-card, .lesson, .review-option, .settings-card { content-visibility: auto; contain-intrinsic-size: auto 240px; }
@@ -257,6 +257,41 @@ h1 { font-size: 30px; font-weight: 800; }
 @media(hover:none) {
   .unit-card:hover, .btn:hover:not(:disabled) { transform: none; }
   .favorite-button:hover { background: transparent; }
+}
+/* Brief compositor-friendly motion; no permanent animation loops or layers. */
+@keyframes soft-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes reveal-card {
+  from { opacity: .65; transform: perspective(900px) rotateY(-8deg); }
+  to { opacity: 1; transform: perspective(900px) rotateY(0); }
+}
+@keyframes little-pop {
+  0% { transform: scale(.88); }
+  60% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+@keyframes ghost-greeting {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+}
+.content { animation: soft-enter 220ms ease-out; }
+.study-card-wrapper { animation: soft-enter 200ms ease-out; }
+.flashcard.flipped { animation: reveal-card 240ms ease-out; }
+.flash-answer, .quiz-feedback, .session-result, .toast { animation: soft-enter 200ms ease-out; }
+.game-buddy { animation: ghost-greeting 1800ms ease-in-out 2; }
+.favorite-button.saved svg, .result-medal { animation: little-pop 260ms ease-out; }
+.nav-item, .favorite-button, .quiz-option, .unit-card {
+  transition: transform 140ms ease-out, background-color 160ms, border-color 160ms;
+}
+.unit-open { transition: transform 160ms ease-out; }
+.flashcard { transition: background-color 180ms, border-color 180ms; }
+.btn:active:not(:disabled), .nav-item:active, .favorite-button:active,
+.quiz-option:active:not(:disabled), .unit-card:active { transform: scale(.98); }
+@media(hover:hover) and (pointer:fine) {
+  .unit-card:hover { transform: translateY(-3px); }
+  .unit-card:hover .unit-open { transform: translateX(3px); }
 }
 @media(prefers-reduced-motion:reduce) {
   *, *:before, *:after { transition: none!important; animation: none!important; }
