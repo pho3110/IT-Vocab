@@ -53,8 +53,11 @@ try {
   await page.getByRole('button', { name: 'Từ điển của bạn', exact: true }).click();
   await expect(page.locator('.word-row')).toHaveCount(24);
   const libraryNodes = await page.locator('*').count();
-  await page.getByRole('button', { name: 'Xem thêm 24 từ', exact: true }).click();
-  await expect(page.locator('.word-row')).toHaveCount(48);
+  await page.getByRole('button', { name: 'Trang sau', exact: true }).click();
+  await expect(page.locator('.word-row')).toHaveCount(24);
+  await expect(page.locator('.result-count')).toContainText('25–48');
+  await page.getByRole('button', { name: 'Trang trước', exact: true }).click();
+  await expect(page.locator('.result-count')).toContainText('1–24');
   await page.getByRole('searchbox').fill('government');
   await expect(page.locator('.word-row')).toHaveCount(1);
   await expect(page.getByRole('heading', { name: 'government (n)', exact: true })).toBeVisible();
@@ -78,6 +81,16 @@ try {
   expect(JSON.parse(before).favorites).toContain('3D-5');
   await page.locator('input[type=file]').setInputFiles({ name: 'bad.json', mimeType: 'application/json', buffer: Buffer.from('{}') });
   await expect(page.getByRole('status')).toContainText('không đúng định dạng');
+  // The entrance animation must preserve the toast's horizontal centering.
+  const toastCenterError = await page.locator('.toast').evaluate(el => {
+    const animations = el.getAnimations();
+    for (const animation of animations) { animation.pause(); animation.currentTime = 100; }
+    const rect = el.getBoundingClientRect();
+    const error = Math.abs(rect.left + rect.width / 2 - innerWidth / 2);
+    for (const animation of animations) animation.play();
+    return error;
+  });
+  expect(toastCenterError).toBeLessThan(1);
   expect(JSON.parse(await page.evaluate(() => localStorage.getItem('it-words-progress-v1')))).toEqual(JSON.parse(before));
   await page.reload();
   expect(JSON.parse(await page.evaluate(() => localStorage.getItem('it-words-progress-v1')))).toEqual(JSON.parse(before));
@@ -109,5 +122,5 @@ try {
   await expect(desktopPage.getByRole('heading', { name: 'attachment (n)', exact: true })).toBeVisible();
   await cdp.detach();
   await desktop.close();
-  console.log(`Browser QA passed: Halloween theme; 320/390/768px layouts; dictionary 24/48-row loading and global search, including at 4x CPU slowdown; favorites; flashcards; quiz; backup; progress persistence; real offline search and learning. Initial dictionary: 24 rows, ${libraryNodes} DOM elements (previously 350 rows / 4285 elements).`);
+  console.log(`Browser QA passed: Halloween theme; 320/390/768px layouts; dictionary 24-row pagination and global search, including at 4x CPU slowdown; favorites; flashcards; quiz; backup; progress persistence; real offline search and learning. Initial dictionary: 24 rows, ${libraryNodes} DOM elements (previously 350 rows / 4285 elements).`);
 } finally { await browser.close(); }

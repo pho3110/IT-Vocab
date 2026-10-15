@@ -18,7 +18,7 @@ Mở địa chỉ Vite in ra (thường là `http://localhost:5173`). Nếu Powe
 ## Tính năng
 
 - Giao diện Halloween: nền tối, cam/tím, bí ngô và ma nhỏ minh họa bằng SVG. Nhiệm vụ ôn 10 lượt/ngày hiển thị đúng tiến độ thực tế; không cần tải hình ảnh ngoài.
-- Tối ưu điện thoại: từ điển hiện 24 từ/lượt và có nút Xem thêm; tìm kiếm vẫn quét toàn bộ 350 thẻ. Chỉ mục tìm kiếm được chuẩn hóa một lần, hàng từ vựng được memo hóa, cập nhật thời gian dừng khi ẩn trang hoặc đang học. Không dùng blur hay hoạt ảnh trang trí liên tục; ô tìm kiếm 16px tránh tự phóng to trên iPhone.
+- Tối ưu điện thoại: từ điển chia trang, tối đa 24 từ trên màn hình với nút Trang trước / Trang sau; tìm kiếm vẫn quét toàn bộ 350 thẻ. Chỉ mục tìm kiếm được chuẩn hóa một lần, hàng từ vựng được memo hóa, cập nhật thời gian dừng khi ẩn trang hoặc đang học. Không dùng blur hay hoạt ảnh trang trí liên tục; ô tìm kiếm 16px tránh tự phóng to trên iPhone.
 - Tổng quan, tiến độ theo unit và lesson; giao diện responsive và thanh điều hướng trên điện thoại.
 - Flashcard: thử nhớ → lật thẻ → chọn Đã nhớ / Chưa nhớ.
 - Quiz bốn lựa chọn, giải thích đáp án, kết quả và luyện lại từ sai.
@@ -86,7 +86,9 @@ npm test
 
 Test kiểm tra dữ liệu, lịch ôn, backup sai định dạng, đáp án quiz và mô phỏng service worker khi mất mạng. Kiểm tra thực tế trên Android/iPhone vẫn cần thực hiện theo các bước trên, bao gồm: tải lại không mất tiến độ; hoàn thành quiz; học lại từ sai; xuất/nhập backup; mở app offline; cập nhật phiên bản không mất dữ liệu.
 
-Kiểm tra Edge mô phỏng điện thoại: màn hình 320/390/768px không tràn ngang, tìm kiếm dưới mô phỏng CPU chậm 4 lần, Xem thêm 24 → 48 từ, tìm từ ở cuối bộ từ, và tìm kiếm offline. Màn hình từ điển ban đầu giảm từ 350 hàng / 4.285 phần tử DOM xuống 24 hàng / 377 phần tử. Đây là số đo độ lớn giao diện trong kiểm tra trình duyệt, không phải cam kết tốc độ khung hình trên mọi điện thoại.
+Kiểm tra Edge mô phỏng điện thoại: màn hình 320/390/768px không tràn ngang, tìm kiếm dưới mô phỏng CPU chậm 4 lần, chuyển trang trước/sau, tìm từ ở cuối bộ từ, và tìm kiếm offline. Từ điển giữ tối đa 24 hàng thay vì tăng dần lên 350 hàng sau nhiều lần xem thêm.
+
+Khi đang chạy `npm run preview`, chạy `node scripts/performance-check.mjs` để đo tìm kiếm, cuộn và lật thẻ 10 lần dưới CPU chậm 4 lần; đồng thời kiểm tra đủ 350 thẻ qua các trang. Báo cáo lưu tại `qa/performance-report.json`. Chỉ số khung hình của Edge headless và thời gian xử lý input đến hai khung hình tiếp theo là phép đo chẩn đoán cục bộ, không phải FPS/INP thực tế hay cam kết mượt trên mọi điện thoại. Cần thử trên Android/iPhone thật để đánh giá cảm ứng, GPU và Safari.
 
 ## Gợi ý bài tập tiếp theo
 

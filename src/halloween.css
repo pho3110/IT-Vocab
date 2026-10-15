@@ -137,7 +137,9 @@ h1 { font-size: 30px; font-weight: 800; }
 .favorite-button.saved { color: #ffd08b; }
 .favorite-button.saved svg { fill: #765034; }
 .result-count { color: #bda6cc; min-height: 18px; }
-.load-more { display: flex; justify-content: center; padding-top: 20px; }
+.word-pagination { display: flex; justify-content: center; align-items: center; gap: 12px; padding-top: 20px; }
+.word-pagination>span { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.word-pagination .btn { padding-inline: 12px; }
 .empty-state { background: #231b2e; border-color: #72518b; color: #d4b5ea; }
 .settings-card { border-radius: 17px; }
 .settings-card h2 { color: #f1d8f7; }
@@ -263,6 +265,10 @@ h1 { font-size: 30px; font-weight: 800; }
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
+@keyframes toast-enter {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
 @keyframes little-pop {
   0% { transform: scale(.88); }
   60% { transform: scale(1.1); }
@@ -274,7 +280,8 @@ h1 { font-size: 30px; font-weight: 800; }
 }
 .content { animation: soft-enter 220ms ease-out; }
 .study-card-wrapper { animation: soft-enter 200ms ease-out; }
-.quiz-feedback, .session-result, .toast { animation: soft-enter 200ms ease-out; }
+.quiz-feedback, .session-result { animation: soft-enter 200ms ease-out; }
+.toast { animation: toast-enter 200ms ease-out; }
 .game-buddy { animation: ghost-greeting 1800ms ease-in-out 2; }
 .favorite-button.saved svg, .result-medal { animation: little-pop 260ms ease-out; }
 .nav-item, .favorite-button, .quiz-option, .unit-card {

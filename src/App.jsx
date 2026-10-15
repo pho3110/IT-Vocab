@@ -200,17 +200,24 @@ const WordLibrary = memo(function WordLibrary({ progress, onFavorite }) {
   const [query, setQuery] = useState('');
   const [onlyFavorites, setOnlyFavorites] = useState(false);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const controls = useRef(null);
   const favorites = useMemo(() => new Set(progress.favorites), [progress.favorites]);
   const list = useMemo(() => {
     const needle = normalize(query.trim());
     return searchIndex.filter(({ word, text }) => (!onlyFavorites || favorites.has(word.id)) && text.includes(needle)).map(({ word }) => word);
   }, [query, onlyFavorites, favorites]);
+  const pageStart = Math.min(visibleCount - PAGE_SIZE, Math.max(0, Math.ceil(list.length / PAGE_SIZE) - 1) * PAGE_SIZE);
+  const pageEnd = Math.min(pageStart + PAGE_SIZE, list.length);
+  function changePage(start) {
+    setVisibleCount(start + PAGE_SIZE);
+    controls.current?.scrollIntoView({ block: 'start', behavior: 'instant' });
+  }
   return <>
-    <div className="library-controls"><label className="search-box"><Icon name="search" /><span className="sr-only">Tìm từ hoặc nghĩa</span><input value={query} onChange={e => { setQuery(e.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="Tìm từ tiếng Anh hoặc nghĩa tiếng Việt…" type="search" autoComplete="off" /></label><button className={`btn ${onlyFavorites ? 'primary' : 'secondary'}`} aria-pressed={onlyFavorites} onClick={() => { setOnlyFavorites(!onlyFavorites); setVisibleCount(PAGE_SIZE); }}><Icon name="star" size={17} /> Đã lưu ({progress.favorites.length})</button></div>
-    <p className="result-count" aria-live="polite">{list.length} từ vựng{list.length > visibleCount ? ` · Đang hiện ${visibleCount} từ` : ''}</p>
+    <div className="library-controls" ref={controls}><label className="search-box"><Icon name="search" /><span className="sr-only">Tìm từ hoặc nghĩa</span><input value={query} onChange={e => { setQuery(e.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="Tìm từ tiếng Anh hoặc nghĩa tiếng Việt…" type="search" autoComplete="off" /></label><button className={`btn ${onlyFavorites ? 'primary' : 'secondary'}`} aria-pressed={onlyFavorites} onClick={() => { setOnlyFavorites(!onlyFavorites); setVisibleCount(PAGE_SIZE); }}><Icon name="star" size={17} /> Đã lưu ({progress.favorites.length})</button></div>
+    <p className="result-count" aria-live="polite">{list.length} từ vựng{list.length > PAGE_SIZE ? ` · Đang hiện ${pageStart + 1}–${pageEnd}` : ''}</p>
     {!list.length ? <div className="empty-state"><Icon name="search" size={36} /><h2>Chưa tìm thấy từ</h2><p>Thử từ khóa khác hoặc tắt bộ lọc “Đã lưu”.</p></div> : <>
-      <div className="word-list">{list.slice(0, visibleCount).map(w => <WordRow key={w.id} word={w} saved={favorites.has(w.id)} learned={isLearned(w, progress)} reviewed={!!progress.cards[w.id]} onFavorite={onFavorite} />)}</div>
-      {list.length > visibleCount && <div className="load-more"><button className="btn secondary" onClick={() => setVisibleCount(count => count + PAGE_SIZE)}>Xem thêm {Math.min(PAGE_SIZE, list.length - visibleCount)} từ <Icon name="arrow" size={17} /></button></div>}
+      <div className="word-list">{list.slice(pageStart, pageEnd).map(w => <WordRow key={w.id} word={w} saved={favorites.has(w.id)} learned={isLearned(w, progress)} reviewed={!!progress.cards[w.id]} onFavorite={onFavorite} />)}</div>
+      {list.length > PAGE_SIZE && <nav className="word-pagination" aria-label="Trang từ vựng"><button className="btn secondary" disabled={pageStart === 0} onClick={() => changePage(pageStart - PAGE_SIZE)}>Trang trước</button><span>{pageStart / PAGE_SIZE + 1} / {Math.ceil(list.length / PAGE_SIZE)}</span><button className="btn secondary" disabled={pageEnd === list.length} onClick={() => changePage(pageStart + PAGE_SIZE)}>Trang sau <Icon name="arrow" size={17} /></button></nav>}
     </>}
   </>;
 });
