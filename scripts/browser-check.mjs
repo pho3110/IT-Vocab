@@ -21,11 +21,6 @@ try {
   await page.getByRole('button', { name: /UNIT 01/ }).click();
   await page.getByRole('button', { name: 'Học flashcard', exact: true }).first().click();
   await expect(page.getByRole('button', { name: 'Đã nhớ', exact: true })).toBeDisabled();
-  const mastery = page.locator('.mastery-button');
-  await mastery.click();
-  await expect(mastery).toHaveAttribute('aria-pressed', 'true');
-  await mastery.click();
-  await expect(mastery).toHaveAttribute('aria-pressed', 'false');
   const flashcard = page.locator('.flashcard');
   const cardHeight = await flashcard.evaluate(el => el.offsetHeight);
   await flashcard.focus();
@@ -86,11 +81,6 @@ try {
   await page.getByRole('searchbox').fill('government');
   await expect(page.locator('.word-row')).toHaveCount(1);
   await expect(page.getByRole('heading', { name: 'government (n)', exact: true })).toBeVisible();
-  const beforeMastery = JSON.parse(await page.evaluate(() => localStorage.getItem('it-words-progress-v1')));
-  await page.locator('.mastery-button').click();
-  await expect(page.locator('.mastery-button')).toHaveAttribute('aria-pressed', 'true');
-  const afterMastery = JSON.parse(await page.evaluate(() => localStorage.getItem('it-words-progress-v1')));
-  expect(afterMastery.daily).toEqual(beforeMastery.daily);
   await page.getByRole('searchbox').fill('');
   await expect(page.locator('.word-row')).toHaveCount(24);
   await page.getByRole('searchbox').fill('ma hoa');
@@ -131,9 +121,6 @@ try {
   await page.getByRole('button', { name: 'Từ điển của bạn', exact: true }).click();
   await page.getByRole('searchbox').fill('government');
   await expect(page.getByRole('heading', { name: 'government (n)', exact: true })).toBeVisible();
-  await expect(page.locator('.mastery-button')).toHaveAttribute('aria-pressed', 'true');
-  await page.locator('.mastery-button').click();
-  await expect(page.locator('.mastery-button')).toHaveAttribute('aria-pressed', 'false');
   await page.getByRole('button', { name: 'Các unit', exact: true }).click();
   await page.getByRole('button', { name: /UNIT 07/ }).click();
   await page.getByRole('button', { name: 'Học flashcard', exact: true }).first().click();

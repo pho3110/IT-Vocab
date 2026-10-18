@@ -10,15 +10,6 @@ export const shuffle = (items, random = Math.random) => {
 };
 export const isDue = (word, progress, now = Date.now()) => !progress.cards[word.id] || progress.cards[word.id].dueAt <= now;
 export const isLearned = (word, progress) => (progress.cards[word.id]?.streak ?? 0) >= 2;
-export function setLearned(progress, id, learned, now = Date.now()) {
-  const old = progress.cards[id];
-  return { ...progress, cards: { ...progress.cards, [id]: {
-    streak: learned ? Math.max(2, old?.streak ?? 0) : 0,
-    reviews: old?.reviews ?? 0,
-    dueAt: learned ? now + 3 * DAY : now,
-    lastReviewed: old?.lastReviewed ?? 0,
-  } } };
-}
 export function recordAnswer(progress, id, remembered, now = Date.now()) {
   const old = progress.cards[id];
   const streak = remembered ? (old?.streak ?? 0) + 1 : 0;

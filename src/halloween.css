@@ -352,10 +352,7 @@ h1 { font-size: 30px; font-weight: 800; }
 .speak-button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 8px 12px; border: 1px solid #76568a; border-radius: 12px; background: #30243d; color: #efd6ff; font-size: 13px; cursor: pointer; }
 .speak-button.speaking { color: #ffce8b; border-color: #c18c62; background: #45302c; }
 .word-translation .speak-button { display: flex; margin-bottom: 9px; }
-.study-audio { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 0 0 14px; }
-.mastery-button { min-height: 44px; padding: 8px 12px; border: 1px solid #76568a; border-radius: 12px; background: #30243d; color: #efd6ff; font: inherit; font-size: 13px; }
-.mastery-button.mastered { background: #303f2e; border-color: #8fae71; color: #d4e8bc; }
-.word-translation .mastery-button { display: block; margin-bottom: 10px; }
+.study-audio { display: flex; justify-content: center; margin: 0 0 14px; }
 .speech-settings { display: grid; gap: 14px; margin: 18px 0; }
 .speech-settings label { display: grid; gap: 8px; font-size: 13px; color: #d4bbdd; min-width: 0; }
 .speech-settings select { width: 100%; min-width: 0; min-height: 44px; padding: 10px; border: 1px solid #76568a; border-radius: 10px; color: #f5e9de; background: #231d2d; font: inherit; font-size: 16px; }
