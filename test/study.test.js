@@ -2,7 +2,25 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { units, words, workbookWords, wordById } from '../src/data.js';
 import { readFileSync } from 'node:fs';
-import { DAY, emptyProgress, recordAnswer, isDue, isLearned, validateProgress, quizOptions, normalize, dayKey } from '../src/study.js';
+import { DAY, emptyProgress, recordAnswer, setLearned, isDue, isLearned, validateProgress, quizOptions, normalize, dayKey } from '../src/study.js';
+
+test('manual mastery updates review schedule without inventing practice or losing backups', () => {
+  const word = words[0], now = 1700000000000, original = emptyProgress();
+  let p = setLearned(original, word.id, true, now);
+  assert.ok(isLearned(word, p)); assert.ok(!isDue(word, p, now));
+  assert.equal(p.cards[word.id].dueAt, now + 3 * DAY);
+  assert.equal(p.cards[word.id].reviews, 0); assert.equal(p.cards[word.id].lastReviewed, 0);
+  assert.deepEqual(p.daily, {}); assert.deepEqual(original, emptyProgress());
+  p = validateProgress(JSON.parse(JSON.stringify(p)), new Set([word.id]));
+  assert.ok(isLearned(word, p));
+  p = recordAnswer(p, word.id, false, now + DAY);
+  assert.ok(!isLearned(word, p));
+  const reviews = p.cards[word.id].reviews, daily = { ...p.daily };
+  p = setLearned(p, word.id, true, now + DAY);
+  p = setLearned(p, word.id, false, now + DAY);
+  assert.ok(!isLearned(word, p)); assert.ok(isDue(word, p, now + DAY));
+  assert.equal(p.cards[word.id].reviews, reviews); assert.deepEqual(p.daily, daily);
+});
 
 const validIds = new Set(words.map(w => w.id));
 test('8 units, 32 lessons and 349 workbook entries plus one preserved supplemental card', () => {
