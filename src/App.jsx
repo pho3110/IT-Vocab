@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { units, words, workbookWords, wordById } from './data.js';
-import { SpeakButton, SpeechReset, SpeechSettings, useReadWord } from './speech.jsx';
+import { SpeechReset, SpeechSettings, useReadWord } from './speech.jsx';
 import { STORAGE_KEY, emptyProgress, dayKey, normalize, shuffle, isDue, isLearned, recordAnswer, validateProgress, quizOptions } from './study.js';
 
 const paths = {
@@ -225,7 +225,7 @@ const WordLibrary = memo(function WordLibrary({ progress, onFavorite }) {
   </>;
 });
 const WordRow = memo(function WordRow({ word: w, saved, learned, reviewed, onFavorite }) {
-  return <article className="word-row"><div><WordSource word={w} /><h2>{w.term} <small className="part-of-speech">({w.partOfSpeech})</small></h2><p className="word-definition">{w.definition}</p></div><div className="word-translation"><SpeakButton word={w} /><strong>{w.meaning}</strong><span className={`word-status ${learned ? 'learned' : ''}`}>{learned ? 'Đã ghi nhớ' : reviewed ? 'Đang học' : 'Từ mới'}</span></div><button className={`favorite-button ${saved ? 'saved' : ''}`} aria-label={`${saved ? 'Bỏ lưu' : 'Lưu'} từ ${w.term}`} aria-pressed={saved} onClick={() => onFavorite(w.id)}><Icon name="star" /></button></article>;
+  return <article className="word-row"><div><WordSource word={w} /><h2>{w.term} <small className="part-of-speech">({w.partOfSpeech})</small></h2><p className="word-definition">{w.definition}</p></div><div className="word-translation"><strong>{w.meaning}</strong><span className={`word-status ${learned ? 'learned' : ''}`}>{learned ? 'Đã ghi nhớ' : reviewed ? 'Đang học' : 'Từ mới'}</span></div><button className={`favorite-button ${saved ? 'saved' : ''}`} aria-label={`${saved ? 'Bỏ lưu' : 'Lưu'} từ ${w.term}`} aria-pressed={saved} onClick={() => onFavorite(w.id)}><Icon name="star" /></button></article>;
 });
 
 function WordSource({ word, card = false }) {
@@ -281,9 +281,9 @@ function StudySession({ session, progress, onAnswer, onFavorite, onExit, onResta
     {finished ? <section className="session-result"><SessionCelebration /><h2>Thêm một bước tiến!</h2><p>Bạn nhớ đúng <strong>{results.filter(r => r.correct).length}/{results.length}</strong> từ trong phiên này.</p><div className="result-track"><span style={{ width: `${results.filter(r => r.correct).length / results.length * 100}%` }} /></div><p className="fine-print">Từ đã học được lên lịch ôn lại tự động.</p><div className="button-row">{!!wrong.length && <button className="btn primary" onClick={() => onRestart(wrong, session.mode)}>Luyện lại {wrong.length} từ chưa nhớ</button>}<button className="btn secondary" onClick={() => onRestart(session.words, session.mode)}>Học lại</button><button className="btn secondary" onClick={onExit}>Về bài học</button></div>{!!wrong.length && <div className="wrong-list">{wrong.map(w => <div key={w.id}><strong>{w.term}</strong><span>{w.meaning}</span></div>)}</div>}</section> : <>
       <div className="session-progress"><span>Từ {index + 1} / {session.words.length}</span><span>{Math.round(index / session.words.length * 100)}% hoàn thành</span></div><div className="progress-track session-track"><span style={{ width: `${index / session.words.length * 100}%` }} /></div>
       <div className="streak-slot" role="status" aria-live="polite" aria-atomic="true">{streak >= 3 && <span className="streak-badge" key={streakMilestone}><span aria-hidden="true">🔥</span> {streak >= 5 ? 'Tuyệt lắm!' : 'Đang vào guồng!'} · {streak} từ đúng liên tiếp</span>}</div>
-      <div className="study-audio"><SpeechReset value={word.id} /><SpeakButton word={word} /></div>
+      <SpeechReset value={word.id} />
       <div className="study-card-wrapper" key={word.id}><button className={`favorite-button card-favorite ${progress.favorites.includes(word.id) ? 'saved' : ''}`} aria-label={`${progress.favorites.includes(word.id) ? 'Bỏ lưu' : 'Lưu'} từ ${word.term}`} aria-pressed={progress.favorites.includes(word.id)} onClick={() => onFavorite(word.id)}><Icon name="star" /></button>
-        {session.mode === 'flashcard' ? <button ref={card} className={`flashcard ${flipped ? 'flipped' : ''}`} aria-label={flipped ? 'Ẩn nghĩa và xem lại từ' : 'Lật thẻ để xem nghĩa'} aria-pressed={flipped} onClick={() => setFlipped(value => !value)}>
+        {session.mode === 'flashcard' ? <button ref={card} className={`flashcard ${flipped ? 'flipped' : ''}`} aria-label={flipped ? 'Ẩn nghĩa và xem lại từ' : 'Lật thẻ để xem nghĩa'} aria-pressed={flipped} onClick={() => { setFlipped(value => !value); readWord(word); }}>
           <span className="flashcard-inner">
             <span className="flashcard-face flashcard-front" aria-hidden={flipped}>
               <WordSource word={word} card />
