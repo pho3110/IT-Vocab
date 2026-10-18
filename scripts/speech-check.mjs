@@ -1,4 +1,5 @@
 import { chromium, expect } from '@playwright/test';
+import { units } from '../src/data.js';
 
 // Mock the OS voice engine: verifies app behavior, not audible voice quality.
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
@@ -45,7 +46,32 @@ try {
   expect(await page.evaluate(() => window.spoken.at(-1).rate)).toBe(.7);
   await page.evaluate(() => window.lastUtterance.onend());
   await expect(page.locator('.speak-button')).toHaveAttribute('aria-pressed', 'false');
+  await page.getByRole('button', { name: 'Các unit', exact: true }).click();
+  await page.getByRole('button', { name: /UNIT 01/ }).click();
+  await page.getByRole('button', { name: 'Làm quiz', exact: true }).first().click();
+  async function answerQuiz(correct) {
+    const term = await page.locator('.quiz-card h2').evaluate(el => el.firstChild.textContent.trim());
+    const meaning = units[0].lessons[0].words.find(word => word.term === term).meaning;
+    const choices = page.locator('.quiz-option');
+    const labels = await choices.locator('span:nth-child(2)').allTextContents();
+    const before = await page.evaluate(() => window.spoken.length);
+    await choices.nth(labels.findIndex(label => correct ? label === meaning : label !== meaning)).click();
+    expect(await page.evaluate(() => window.spoken.length)).toBe(before + (correct ? 1 : 0));
+    if (correct) {
+      expect(await page.evaluate(() => window.spoken.at(-1))).toEqual({ text: term, rate: .7, voice: 'local-en' });
+      await expect(page.locator('.speak-button')).toHaveAttribute('aria-pressed', 'true');
+    }
+  }
+  // Already listening manually: a correct answer must restart, not toggle off.
+  await page.locator('.speak-button').click();
+  await answerQuiz(true);
+  await page.getByRole('button', { name: 'Từ tiếp theo', exact: true }).click();
+  await expect(page.locator('.speak-button')).toHaveAttribute('aria-pressed', 'false');
+  await answerQuiz(false);
+  await page.getByRole('button', { name: 'Từ tiếp theo', exact: true }).click();
   await context.setOffline(true);
+  await answerQuiz(true);
+  await page.getByRole('button', { name: 'Cài đặt & offline', exact: true }).click();
   await page.locator('.speak-button').click();
   await expect(page.locator('.speak-button')).toHaveAttribute('aria-pressed', 'true');
   await page.getByLabel('Giọng đọc', { exact: true }).selectOption('remote-en');

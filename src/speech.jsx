@@ -31,8 +31,8 @@ export function SpeechProvider({ children }) {
       stop();
     };
   }, [stop]);
-  const speak = useCallback((id, term) => {
-    if (current.current?.id === id) { stop(); return; }
+  const speak = useCallback((id, term, restart = false) => {
+    if (!restart && current.current?.id === id) { stop(); return; }
     stop(); setError('');
     if (!supported()) { setError('Trình duyệt này chưa hỗ trợ đọc từ. Hãy thử trình duyệt khác trên thiết bị.'); return; }
     const available = englishVoices();
@@ -64,6 +64,11 @@ export function SpeechReset({ value }) {
   return null;
 }
 
+export function useReadWord() {
+  const { speak } = useContext(SpeechContext);
+  return useCallback(word => speak(word.id, word.term, true), [speak]);
+}
+
 export function SpeakButton({ word }) {
   const { active, speak } = useContext(SpeechContext);
   const playing = active === word.id;
@@ -72,7 +77,7 @@ export function SpeakButton({ word }) {
 
 export function SpeechSettings() {
   const { voices, voiceId, setVoiceId, rate, setRate, stop } = useContext(SpeechContext);
-  return <section className="settings-card"><h2>Nghe phát âm tiếng Anh</h2><p>Chạm nút 🔊 ở từ điển, flashcard hoặc quiz để nghe từ và cụm từ. Chạm lần nữa để dừng.</p>
+  return <section className="settings-card"><h2>Nghe phát âm tiếng Anh</h2><p>Quiz tự đọc từ tiếng Anh khi bạn chọn đúng đáp án. Bạn cũng có thể chạm nút 🔊 ở từ điển, flashcard hoặc quiz để nghe; chạm lần nữa để dừng.</p>
     <div className="speech-settings">
       <label>Giọng đọc<select aria-label="Giọng đọc" value={voiceId} onChange={e => { stop(); setVoiceId(e.target.value); }}><option value="">Tự động · ưu tiên giọng trên thiết bị</option>{voices.map(v => <option key={v.voiceURI} value={v.voiceURI}>{v.name} ({v.lang}) · {v.localService ? 'Trên thiết bị' : 'Cần mạng'}</option>)}</select></label>
       <label>Tốc độ<select aria-label="Tốc độ" value={rate} onChange={e => { stop(); setRate(Number(e.target.value)); }}><option value={.7}>Chậm</option><option value={.85}>Vừa phải</option><option value={1}>Bình thường</option></select></label>

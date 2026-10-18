@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { units, words, workbookWords, wordById } from './data.js';
-import { SpeakButton, SpeechReset, SpeechSettings } from './speech.jsx';
+import { SpeakButton, SpeechReset, SpeechSettings, useReadWord } from './speech.jsx';
 import { STORAGE_KEY, emptyProgress, dayKey, normalize, shuffle, isDue, isLearned, recordAnswer, validateProgress, quizOptions } from './study.js';
 
 const paths = {
@@ -245,6 +245,7 @@ function SessionCelebration() {
 }
 
 function StudySession({ session, progress, onAnswer, onFavorite, onExit, onRestart, heading }) {
+  const readWord = useReadWord();
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [selected, setSelected] = useState(null);
@@ -270,6 +271,7 @@ function StudySession({ session, progress, onAnswer, onFavorite, onExit, onResta
     if (answerLock.current) return;
     answerLock.current = true;
     setSelected(option); const correct = option === word.meaning;
+    if (correct) readWord(word);
     onAnswer(word.id, correct); setResults(r => [...r, { id: word.id, correct }]);
   }
   const wrong = results.filter(r => !r.correct).map(r => wordById[r.id]);

@@ -21,7 +21,7 @@ Mở địa chỉ Vite in ra (thường là `http://localhost:5173`). Nếu Powe
 - Tối ưu điện thoại: từ điển chia trang, tối đa 24 từ trên màn hình với nút Trang trước / Trang sau; tìm kiếm vẫn quét toàn bộ 350 thẻ. Chỉ mục tìm kiếm được chuẩn hóa một lần, hàng từ vựng được memo hóa, cập nhật thời gian dừng khi ẩn trang hoặc đang học. Không dùng blur hay hoạt ảnh trang trí liên tục; ô tìm kiếm 16px tránh tự phóng to trên iPhone.
 - Tổng quan, tiến độ theo unit và lesson; giao diện responsive và thanh điều hướng trên điện thoại.
 - Flashcard: thử nhớ → lật thẻ → chọn Đã nhớ / Chưa nhớ.
-- Phát âm từ/cụm từ bằng giọng tiếng Anh của thiết bị/trình duyệt: nút Nghe/Dừng trong flashcard, quiz và từ điển. Chọn giọng và tốc độ trong Cài đặt; ưu tiên giọng cục bộ. Không tự phát, dừng khi chuyển từ/trang hoặc ẩn ứng dụng. Offline cần cài sẵn giọng tiếng Anh trên thiết bị; bộ nhớ offline của web không chứa tệp âm thanh. Giọng trực tuyến có thể gửi nội dung từ được chọn đến dịch vụ giọng nói của trình duyệt. Kiểm tra luồng bằng `node scripts/speech-check.mjs` (giả lập bộ đọc); cần nghe thử trên điện thoại thật để xác nhận chất lượng âm thanh.
+- Phát âm từ/cụm từ bằng giọng tiếng Anh của thiết bị/trình duyệt: nút Nghe/Dừng trong flashcard, quiz và từ điển. Chọn giọng và tốc độ trong Cài đặt; ưu tiên giọng cục bộ. Quiz tự đọc từ tiếng Anh khi chọn đúng đáp án; chọn sai không tự đọc. Dừng khi chuyển từ/trang hoặc ẩn ứng dụng. Offline cần cài sẵn giọng tiếng Anh trên thiết bị; bộ nhớ offline của web không chứa tệp âm thanh. Giọng trực tuyến có thể gửi nội dung từ được chọn đến dịch vụ giọng nói của trình duyệt. Kiểm tra luồng bằng `node scripts/speech-check.mjs` (giả lập bộ đọc); cần nghe thử trên điện thoại thật để xác nhận chất lượng âm thanh.
 - Quiz bốn lựa chọn, giải thích đáp án, kết quả và luyện lại từ sai.
 - Phản hồi học tập: đáp án đúng bật nhẹ, sai rung một lần; huy hiệu chuỗi đúng từ 3/5 từ trong phiên (sai sẽ đặt lại). Cuối phiên có bí ngô và 8 ngôi sao chạy ngắn rồi được gỡ bỏ. Hiệu ứng dùng CSS, hoạt động offline, tôn trọng chế độ giảm chuyển động.
 - Lịch ôn đơn giản: nhớ đúng sau 1, 3, 7, 14, 30 ngày; chưa nhớ sau 10 phút. Nhớ đúng 2 lần liên tiếp được tính là đã ghi nhớ.
@@ -94,4 +94,4 @@ Khi đang chạy `npm run preview`, chạy `node scripts/performance-check.mjs` 
 
 ## Gợi ý bài tập tiếp theo
 
-Tách App thành các component riêng, thêm ví dụ sử dụng từng từ, form tự thêm từ, và lịch ôn theo ngày. Bản hiện tại chưa có phát âm, nhập PDF tự động hoặc bài nghe/đọc từ workbook.
+Tách App thành các component riêng, thêm ví dụ sử dụng từng từ, form tự thêm từ, và lịch ôn theo ngày. Bản hiện tại đã có phát âm bằng giọng thiết bị/trình duyệt; chưa có nhập PDF tự động hoặc bài nghe/đọc từ workbook.
