@@ -20,7 +20,8 @@ try {
   await page.getByRole('button', { name: 'Các unit', exact: true }).click();
   await page.getByRole('button', { name: /UNIT 01/ }).click();
   await page.getByRole('button', { name: 'Học flashcard', exact: true }).first().click();
-  await expect(page.getByRole('button', { name: 'Đã nhớ', exact: true })).toBeDisabled();
+  await expect(page.getByRole('button', { name: 'Đã nhớ', exact: true })).toBeEnabled();
+  await expect(page.getByRole('button', { name: 'Chưa nhớ', exact: true })).toBeEnabled();
   const flashcard = page.locator('.flashcard');
   const cardHeight = await flashcard.evaluate(el => el.offsetHeight);
   await flashcard.focus();
@@ -36,7 +37,8 @@ try {
   await expect(page.locator('.flashcard-inner')).toHaveCSS('transition-duration', '0s');
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   for (let i = 0; i < firstLessonLength; i++) {
-    await page.getByRole('button', { name: 'Lật thẻ để xem nghĩa', exact: true }).click();
+    // Both ratings work on the front face; remaining cards exercise flipping.
+    if (i > 1) await page.getByRole('button', { name: 'Lật thẻ để xem nghĩa', exact: true }).click();
     await expect(page.getByRole('button', { name: 'Đã nhớ', exact: true })).toBeEnabled();
     await page.getByRole('button', { name: i === 0 ? 'Chưa nhớ' : 'Đã nhớ', exact: true }).click();
     if (i === 3) await expect(page.locator('.streak-badge')).toContainText('3 từ đúng liên tiếp');
