@@ -1,0 +1,89 @@
+:root {
+  --glass-edge: #d6edff35;
+  --glass-panel: linear-gradient(140deg,#ffffff0e,#ffffff03 48%,#9acbff09),#101b2bd9;
+  --glass-inset: inset 0 1px 0 #ffffff36,inset 1px 0 0 #ffffff0c,inset 0 -1px 0 #a8d6ff12;
+}
+/* The same material across every route, with solid content behind long text. */
+.stat,.unit-card,.lesson,.review-option,.settings-card,.word-list,.quiz-card,
+.session-result,.daily-quest,.review-banner,.unit-summary {
+  background: var(--glass-panel);
+  border-color: var(--glass-edge);
+  box-shadow: var(--glass-inset),0 12px 32px #00000016;
+}
+.hero.glass-hero {
+  background: radial-gradient(ellipse at 0 0,#6ccaff0c,transparent 70%),linear-gradient(140deg,#263951a1,#111f35aa 55%,#20375b8a);
+  border-color:#d6edff4a;box-shadow:inset 0 1px 1px #ffffff50,inset 1px 0 0 #ffffff10,0 16px 38px #00000022;
+}
+.btn.primary,.btn.light {
+  background:linear-gradient(160deg,#53caff69,#0784da8c 70%),#055089a6;
+  border-color:#98dfff6b;
+  box-shadow:inset 0 1px 1px #e3f8ff77,inset 0 -1px 1px #0d5e9366,0 5px 16px #0084cd1a;
+}
+.btn.primary:hover:not(:disabled),.btn.light:hover:not(:disabled){background:linear-gradient(160deg,#68d4ff7d,#148ce59c 70%),#055089a6}
+.btn.secondary {
+  background:linear-gradient(155deg,#ffffff18,#b1d5ff06 65%,#ffffff0b),#17273a66;
+  border-color:#d5eaff37;box-shadow:var(--glass-inset),0 3px 10px #00000012;
+}
+.btn.secondary:hover:not(:disabled){background-color:#2d456466}
+.btn.danger{background:linear-gradient(150deg,#ff8d9e24,#d14a634d),#862d40d9;border-color:#ffacb94f;box-shadow:var(--glass-inset)}
+.btn,.unit-card,.stat,.word-row,.search-box,.quiz-option,.quiz-card,.favorite-button,.text-button,.back-link,.connection,.sidebar>.settings,
+.exam-options label {
+  position:relative;isolation:isolate;
+}
+/* Reflection is a thin overlay, not another blur layer on top of glass. */
+.btn::after,.unit-card::after,.stat::after,.word-row::after,.search-box::after,
+.quiz-option::after,.quiz-card::after,.favorite-button::after,.text-button::after,
+.back-link::after,.connection::after,.sidebar>.settings::after,.exam-options label::after {
+  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;opacity:0;
+  background:radial-gradient(circle 110px at var(--glass-x,50%) var(--glass-y,50%),#d9f2ff22,transparent 75%);
+  box-shadow:inset 0 1px 0 #ffffff2b;
+  transition:opacity 280ms ease;
+}
+[data-glass-active="true"]::after{opacity:.55}
+[data-glass-active="true"][data-glass-input="touch"]::after{opacity:1}
+[data-glass-pressed="true"]::after{opacity:1}
+.unit-card[data-glass-active="true"],.quiz-option[data-glass-active="true"],.exam-options label[data-glass-active="true"]{border-color:#c7e9ff60}
+.btn[data-glass-pressed="true"]:not(:disabled){transform:scale(.965);transition-duration:110ms}
+.unit-card[data-glass-pressed="true"]{transform:scale(.985);transition-duration:110ms}
+.quiz-option{background:linear-gradient(145deg,#ffffff0d,#aacfff04),#1222388c;box-shadow:var(--glass-inset)}
+.exam-options label{background:linear-gradient(145deg,#ffffff09,#aacfff03),#12223870;box-shadow:inset 0 1px 0 #ffffff17;transition:border-color 160ms ease,background-color 160ms ease}
+.exam-options label.selected{background:linear-gradient(145deg,#2fbaff20,#1387e40d),#16354fbd;border-color:#63caff9c}
+.exam-options label.correct{background:#174d3aaa;border-color:#70d2a3}
+.exam-options label.incorrect{background:#642d37aa;border-color:#d98191}
+.quiz-option.correct{background:#174d3aaa}.quiz-option.incorrect{background:#642d37aa}
+.search-box,.translation-question textarea,.exam-practice textarea,.speech-settings select,.exam-matching select {
+  background:linear-gradient(150deg,#ffffff0c,#b5d6ff04),#0d1d30c9;
+  border-color:#bedcfc37;box-shadow:inset 0 1px 1px #00000022,inset 0 1px 0 #ffffff16;
+  transition:border-color 180ms ease,box-shadow 200ms ease;
+}
+.search-box:focus-within,.translation-question textarea:focus,.exam-practice textarea:focus,.speech-settings select:focus,.exam-matching select:focus {
+  border-color:#68caff90;box-shadow:inset 0 1px 0 #ffffff20,0 0 0 3px #219ded1a;
+}
+.translation-question textarea:focus-visible{outline-color:#55bfff}
+.flashcard-face {
+  background:radial-gradient(ellipse at 0 0,#9fdaff12,transparent 65%),linear-gradient(150deg,#20334bf7,#0d1b2ef7);
+  border-color:#c5e7ff50;box-shadow:inset 0 1px 1px #ffffff55,inset 1px 0 0 #ffffff10,0 18px 45px #00000025;
+}
+.flashcard-back{background:radial-gradient(ellipse at 100% 0,#86d2ff17,transparent 65%),linear-gradient(150deg,#183b56f7,#101f35f7)}
+.translation-reference,.translation-feedback,.exam-feedback,.quiz-feedback {
+  background:linear-gradient(145deg,#ffffff07,transparent 70%),#123553b0;
+  border-color:#74c7ff30;box-shadow:inset 0 1px 0 #ffffff19;
+}
+.exam-passage{background:#091728d9;border-color:#a9c9ef20;box-shadow:inset 0 1px 0 #ffffff0b}
+.exam-matching-table{background:#0c1c2daa;border-color:#bedcfc30;box-shadow:inset 0 1px 0 #ffffff1c}
+.exam-matching-table th{background:#ffffff08}.exam-matching-table td{border-color:#bedcfc20}
+.notice,.toast{background:linear-gradient(145deg,#ffffff0c,transparent 70%),#12283eeb;border-color:#bedcfc35;box-shadow:var(--glass-inset),0 8px 26px #00000018}
+.notice.warning{background:linear-gradient(145deg,#ffe1aa09,transparent 70%),#3e301edb;border-color:#e7bf7a50}
+.danger-zone{border-color:#e898a738}
+@media(prefers-reduced-motion:reduce){
+  [data-glass-pressed="true"],.btn[data-glass-pressed="true"]:not(:disabled),.unit-card[data-glass-pressed="true"]{transform:none!important}
+}
+@media(prefers-reduced-transparency:reduce){
+  .stat,.unit-card,.lesson,.review-option,.settings-card,.word-list,.quiz-card,.session-result,.daily-quest,.review-banner,.unit-summary{background:#101d30}
+  .btn.secondary,.search-box,.translation-question textarea,.exam-practice textarea,.exam-matching select{background:#1b3049}
+  [data-glass-active]::after{display:none}
+}
+@media(prefers-contrast:more){
+  .stat,.unit-card,.lesson,.review-option,.settings-card,.word-list,.quiz-card,.session-result,.daily-quest,.review-banner,.unit-summary{border-color:#8ca9c9}
+  .btn.secondary,.exam-options label{border-color:#bcd9f4;background-color:#0b1a2c}
+}
