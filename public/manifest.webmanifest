@@ -2,7 +2,7 @@
   "id": "./", "name": "IT Words — Từ vựng chuyên ngành IT", "short_name": "IT Words",
   "description": "Flashcard và quiz tiếng Anh IT, học offline theo 8 unit.",
   "lang": "vi", "start_url": "./", "scope": "./", "display": "standalone",
-  "background_color": "#eef3fc", "theme_color": "#eef3fc",
+  "background_color": "#020713", "theme_color": "#020713",
   "icons": [
     { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }

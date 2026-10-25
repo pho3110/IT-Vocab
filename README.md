@@ -27,7 +27,7 @@ Mở địa chỉ Vite in ra (thường là `http://localhost:5173`). Nếu Powe
 
 ## Tính năng
 
-- Giao diện lấy cảm hứng từ iPhone Liquid Glass: nền sáng xanh/tím, bề mặt kính, nút dạng viên và thanh điều hướng nổi. Dùng font hệ thống, không tải tài nguyên ngoài. Thanh điều hướng có nền đặc dự phòng và hỗ trợ giảm độ trong suốt/chuyển động theo thiết bị.
+- Giao diện Liquid Glass theo ảnh tham khảo: nền xanh đen, kính tối trong suốt, viền sáng, 5 tab trong thanh viên thuốc và nút Cài đặt tròn tách riêng; tab được chọn có màu cyan. Dùng font hệ thống, không tải tài nguyên ngoài. Thanh điều hướng có nền đặc dự phòng và hỗ trợ giảm độ trong suốt/chuyển động theo thiết bị.
 - Tối ưu điện thoại: từ điển chia trang, tối đa 24 từ trên màn hình với nút Trang trước / Trang sau; tìm kiếm vẫn quét toàn bộ 350 thẻ. Chỉ mục tìm kiếm được chuẩn hóa một lần, hàng từ vựng được memo hóa, cập nhật thời gian dừng khi ẩn trang hoặc đang học. Không dùng blur hay hoạt ảnh trang trí liên tục; ô tìm kiếm 16px tránh tự phóng to trên iPhone.
 - Tổng quan, tiến độ theo unit và lesson; giao diện responsive và thanh điều hướng trên điện thoại.
 - Flashcard: bấm Đã nhớ / Chưa nhớ ngay ở mặt trước, hoặc lật thẻ để xem nghĩa và nghe phát âm rồi đánh giá.
@@ -69,6 +69,7 @@ src/study.js         Lịch ôn, kiểm tra bản sao, tìm kiếm và đáp án
 src/App.jsx          Giao diện, điều hướng, phiên học và lưu tiến độ
 src/styles.css       Giao diện desktop/mobile, không dùng thư viện CSS
 src/liquid-glass.css Chủ đề kính sáng, giao diện thẻ/nút và thanh điều hướng nổi trên mobile
+src/reference-glass.css Kính tối và thanh điều hướng theo ảnh tham khảo của người dùng
 scripts/build-pwa.mjs Tạo PNG icon và service worker từ asset thực tế của bản build
 test/                Kiểm tra dữ liệu, lịch ôn, backup, quiz và cache offline
 ```
