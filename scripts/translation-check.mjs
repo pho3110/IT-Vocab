@@ -9,6 +9,10 @@ try {
   await page.getByRole('button', { name: 'Luyện dịch', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Luyện dịch IT' })).toBeVisible();
   await expect(page.locator('textarea')).toHaveCount(5);
+  await expect(page.locator('.translation-source').first()).toHaveText('Skype is an online service which allows to carry out video calls between Skype users over the Internet.');
+  await expect(page.locator('.translation-provenance').first()).toContainText('Handout 01 · Câu 24');
+  await expect(page.locator('.translation-source-note').first()).toContainText('an online service');
+  await expect(page.locator('.translation-provenance').nth(1)).toContainText('dựng lại');
   await expect(page.getByRole('button', { name: 'Chấm bài / 10' })).toBeDisabled();
   await page.locator('textarea').first().fill('Bản dịch nháp của tôi');
   await page.reload();

@@ -1,0 +1,30 @@
+{
+  "source": "Handout 01 - Translation.docx",
+  "matches": {
+    "test-1-31": {
+      "handoutNumber": 24,
+      "match": "partial",
+      "note": "Đáp án cũ có thêm ý “dịch vụ và công cụ trực tuyến tuyệt vời”; câu trong handout chỉ nói “an online service”. Không cần thêm ý này khi dịch câu nguồn."
+    },
+    "test-2-35": {
+      "handoutNumber": 39,
+      "match": "equivalent",
+      "note": "Nội dung câu nguồn tương ứng với đáp án tiếng Việt trong tài liệu trước."
+    },
+    "test-4-34": {
+      "handoutNumber": 35,
+      "match": "partial",
+      "note": "Handout giữ ý thuê bao trao đổi email hoặc tham gia diễn đàn, nhưng không có ý “cung cấp một cơ sở hạ tầng” trong đáp án cũ. Không cần thêm ý này khi dịch câu nguồn."
+    },
+    "test-5-33": {
+      "handoutNumber": 29,
+      "match": "partial",
+      "note": "Handout ghi rõ “computer networks” (các mạng máy tính) và “standard Internet protocol suite (TCP/IP)” (bộ giao thức Internet chuẩn TCP/IP); đáp án cũ diễn đạt khái quát là máy tính và giao thức mạng tương thích. Khi luyện, ưu tiên dịch đúng câu tiếng Anh này."
+    },
+    "test-5-34": {
+      "handoutNumber": 18,
+      "match": "equivalent",
+      "note": "Nội dung câu nguồn tương ứng với đáp án tiếng Việt trong tài liệu trước."
+    }
+  }
+}

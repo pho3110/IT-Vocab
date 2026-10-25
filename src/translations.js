@@ -1,6 +1,8 @@
 import keys from '../content/translation-key.json' with { type: 'json' };
+import handoutParagraphs from '../content/translation-handout-paragraphs.json' with { type: 'json' };
+import handoutMatches from '../content/translation-handout-matches.json' with { type: 'json' };
 
-// Reconstructed for practice from the Vietnamese answer key, not original exam text.
+// Fallbacks only: matched questions below use the supplied handout verbatim.
 const english = [
   [
     'Skype is a great online service and tool that allows Skype users to make video calls over the Internet.',
@@ -40,8 +42,22 @@ const english = [
 ];
 
 export const translationTests = keys.map((test, index) => ({ ...test,
-  questions: test.questions.map((question, i) => ({ ...question, english: english[index][i] })),
+  questions: test.questions.map((question, i) => {
+    const match = handoutMatches.matches[question.id];
+    // Four heading paragraphs precede alternating question numbers and sentences.
+    const sourceIndex = match ? handoutParagraphs.indexOf(String(match.handoutNumber)) + 1 : -1;
+    if (match && sourceIndex < 1) throw new Error(`Missing handout sentence for ${question.id}`);
+    return { ...question,
+      english: match ? handoutParagraphs[sourceIndex] : english[index][i],
+      source: match ? { ...match, file: handoutMatches.source, kind: 'handout' } : { kind: question.incomplete ? 'missing' : 'reconstructed' },
+    };
+  }),
 }));
+
+export const translationSourceCounts = translationTests.flatMap(test => test.questions).reduce((counts, question) => {
+  counts[question.source.kind] += 1;
+  return counts;
+}, { handout: 0, reconstructed: 0, missing: 0 });
 
 export function validateGrade(data, questions) {
   const expected = questions.filter(q => !q.incomplete);

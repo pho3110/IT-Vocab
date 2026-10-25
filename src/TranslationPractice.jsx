@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { translationTests, validateGrade } from './translations.js';
+import { translationTests, translationSourceCounts, validateGrade } from './translations.js';
 import './translations.css';
 
 const storageKey = 'it-words-translations-v1';
@@ -42,7 +42,7 @@ export default function TranslationPractice() {
   }
   return <div className="translation-practice">
     <div className="page-title"><div><span className="eyebrow">TRANSLATION LAB</span><h1>Luyện dịch IT</h1><p>5 đề · 25 mục · 24 câu đủ nội dung để luyện dịch Anh → Việt.</p></div></div>
-    <div className="notice">Câu tiếng Anh được dựng lại từ đáp án tiếng Việt trong tài liệu IT 2016, không phải đề gốc. Đề 04 câu 35 thiếu nội dung nên không tính điểm. Điểm AI chỉ để tham khảo khi tự học.</div>
+    <div className="notice">{translationSourceCounts.handout} câu dùng nguyên văn Handout 01, đã đối chiếu với đáp án IT 2016; 3 câu trong số này gần khớp và có chú thích khác biệt. {translationSourceCounts.reconstructed} câu chưa tìm thấy trong handout vẫn là câu dựng lại. Đề 04 câu 35 thiếu nội dung nên không tính điểm. Điểm AI chỉ để tham khảo khi tự học.</div>
     <div className="translation-tabs" role="group" aria-label="Chọn đề dịch">{translationTests.map(t => <button key={t.id} className={`btn ${t.id === selected ? 'primary' : 'secondary'}`} aria-pressed={t.id === selected} disabled={busy} onClick={() => { setSelected(t.id); setGrade(null); setError(''); }}>{t.title}</button>)}</div>
     <section className="settings-card"><h2>{test.title} · Dịch sang tiếng Việt</h2><p>Đúng ý: 6 điểm · Thuật ngữ IT: 2 điểm · Diễn đạt: 2 điểm. Chấp nhận cách dịch tương đương, không yêu cầu giống hệt đáp án.</p><p>Bản nháp tự lưu trên thiết bị này. Khi bấm chấm, nội dung bài dịch được gửi đến dịch vụ AI và cần kết nối mạng.</p></section>
     {saveError && <p className="notice warning" role="alert">{saveError}</p>}
@@ -51,7 +51,9 @@ export default function TranslationPractice() {
       return <section className="settings-card translation-question" key={q.id}>
         <h2>Câu {q.number}{q.incomplete ? ' · Thiếu dữ liệu' : ''}</h2>
         {q.incomplete ? <p>Tài liệu chỉ ghi: “{q.reference}”. Cần bổ sung đề gốc để luyện và chấm câu này.</p> : <>
+          <p className="translation-provenance">{q.source.kind === 'handout' ? `Handout 01 · Câu ${q.source.handoutNumber} · ${q.source.match === 'partial' ? 'Gần khớp đáp án cũ' : 'Khớp nội dung đáp án cũ'}` : 'Câu tiếng Anh dựng lại · Chưa tìm thấy trong Handout 01'}</p>
           <p className="translation-source" lang="en">{q.english}</p>
+          {q.source.match === 'partial' && <p className="translation-source-note">{q.source.note}</p>}
           <label htmlFor={q.id}>Bản dịch của bạn</label>
           <textarea id={q.id} rows={4} maxLength={4000} value={typeof drafts[q.id] === 'string' ? drafts[q.id] : ''} disabled={busy} placeholder="Nhập bản dịch tiếng Việt…" onChange={event => { setDrafts(d => ({ ...d, [q.id]: event.target.value })); setGrade(null); }} />
           <button className="text-button" aria-expanded={!!revealed[q.id]} onClick={() => setRevealed(r => ({ ...r, [q.id]: !r[q.id] }))}>{revealed[q.id] ? 'Ẩn đáp án' : 'Xem đáp án tài liệu'}</button>

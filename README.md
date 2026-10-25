@@ -2,7 +2,7 @@
 
 ## Luyện dịch IT (đang chờ kết nối dịch vụ AI)
 
-Mục **Luyện dịch** có 5 đề, 25 đáp án tiếng Việt được trích từ tài liệu answer key IT 2016 người dùng cung cấp. Câu tiếng Anh được dựng lại để luyện tập theo yêu cầu của người dùng, không phải nguyên văn đề thi. Đề 04 câu 35 thiếu nội dung và bị loại khỏi chấm điểm; còn 24 câu luyện. Bản nháp lưu riêng trong localStorage (`it-words-translations-v1`), chưa nằm trong bản sao tiến độ từ vựng.
+Mục **Luyện dịch** có 5 đề, 25 đáp án tiếng Việt được trích từ tài liệu answer key IT 2016 người dùng cung cấp. Đã đối chiếu 50 câu trong `Handout 01 - Translation.docx` và thay 5 câu tiếng Anh tương ứng bằng nguyên văn handout: 2 câu khớp nội dung và 3 câu gần khớp có chú thích khác biệt. 19 câu chưa tìm thấy trong handout vẫn là bản dựng lại được gắn nhãn riêng. Xem [bảng đối chiếu](content/translation-crosscheck.md). Đề 04 câu 35 thiếu nội dung và bị loại khỏi chấm điểm; còn 24 câu luyện. Bản nháp lưu riêng trong localStorage (`it-words-translations-v1`), chưa nằm trong bản sao tiến độ từ vựng.
 
 Giao diện chấm dùng thang 10: đúng ý 6, thuật ngữ IT 2, diễn đạt 2; điểm đề là trung bình các câu đủ dữ liệu. **Chưa có dịch vụ AI hoạt động**: đang chờ kết nối OpenAI Developers để cấu hình khóa ở máy chủ và triển khai API. Bản static hiện tại chỉ cho luyện, lưu nháp và xem đáp án; khi chấm sẽ báo dịch vụ chưa cấu hình.
 
