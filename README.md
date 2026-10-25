@@ -1,6 +1,16 @@
 # IT Words — React app học từ vựng tiếng Anh IT
 
-## Luyện dịch IT (đang chờ kết nối dịch vụ AI)
+## Đề thi tổng hợp · Đọc, Viết, Nói
+
+Mục **Đề thi** tạo đề trộn 60 phút từ nội dung đã chuyển sang văn bản của các ảnh trong `formde/`: 20 câu từ vựng/ngữ pháp, 2 bài đọc kèm 10 câu hỏi, 5 câu dịch, 1 email và 3 câu hỏi nói. Ngân hàng gồm 117 câu ngôn ngữ hợp lệ, 10 bài đọc/50 câu hỏi, 80 câu dịch (30 câu từ Unit 2–7 và 50 câu Handout 01), 6 đề email và 22 nhóm câu hỏi nói. Bỏ toàn bộ phần Nghe. Xem [nguồn, phần thiếu và các câu loại](content/exam-source-notes.md).
+
+Trộn câu và phương án nhưng luôn giữ nguyên bài đọc với nhóm câu hỏi tương ứng. Bài làm và thời điểm hết hạn lưu trong localStorage (`it-words-mixed-exam-v1`); tải lại trang vẫn tiếp tục đồng hồ, hết giờ tự nộp. Có tải bài làm JSON và xác nhận trước khi thay đề mới. Sau khi nộp, chấm 30 câu khách quan theo thang 10; Viết/Nói có bản dịch, email mẫu, gợi ý và tiêu chí tự đối chiếu, chưa chấm AI hoặc đưa ra điểm tổng ba kỹ năng.
+
+Phần Nói có ghi âm qua micro tối đa 3 phút/câu, nghe lại, tải và xóa bản ghi. Bản ghi lưu cục bộ bằng IndexedDB (`it-words-exam-audio`), không gửi ra ngoài; hỗ trợ MIME theo trình duyệt. Cần trình duyệt hỗ trợ và HTTPS/localhost; nếu không có micro hoặc bị từ chối quyền thì vẫn luyện nói và ghi dàn ý được. Bản tải bài làm JSON không bao gồm âm thanh, hãy tải riêng bản ghi cần giữ. Tạo đề mới giữ bản ghi cũ trong bộ nhớ trình duyệt, vì vậy nên tải/xóa bản ghi cần thiết trước khi đổi đề.
+
+Tài liệu gốc `/formde/` vẫn bị `.gitignore` loại bỏ; chỉ dữ liệu đã biên soạn dùng cho ứng dụng được đưa vào mã nguồn. Chạy kiểm tra luồng bằng `node scripts/exam-check.mjs` khi preview ở cổng 4173; phần micro kiểm tra bằng thiết bị âm thanh giả lập của trình duyệt, cần thử thêm trên điện thoại thật.
+
+## Luyện dịch Handout 01
 
 Mục **Luyện dịch** dùng toàn bộ **50 câu tiếng Anh nguyên văn** trong `Handout 01 - Translation.docx`, theo đúng số thứ tự 1–50, với 50 bản dịch tiếng Việt tham khảo do trợ lý biên soạn trong `content/handout01-vietnamese.json`. Các câu tiếng Anh có lỗi ngữ pháp/gõ được giữ nguyên; các trường hợp diễn giải có chú thích, kể cả hai câu 30–31 gần trùng nhau. Bộ 5 đề cũ đã được thay hoàn toàn.
 
@@ -29,9 +39,9 @@ Mở địa chỉ Vite in ra (thường là `http://localhost:5173`). Nếu Powe
 
 ## Tính năng
 
-- Giao diện Liquid Glass theo ảnh tham khảo: nền xanh đen, kính tối trong suốt, viền sáng, 5 tab trong thanh viên thuốc và nút Cài đặt tròn tách riêng; tab được chọn có màu cyan. Dùng font hệ thống, không tải tài nguyên ngoài. Thanh điều hướng có nền đặc dự phòng và hỗ trợ giảm độ trong suốt/chuyển động theo thiết bị.
+- Giao diện Liquid Glass theo ảnh tham khảo: nền xanh đen, kính tối trong suốt, viền sáng, 6 tab trong thanh viên thuốc và nút Cài đặt tròn tách riêng; tab được chọn có màu cyan. Dùng font hệ thống, không tải tài nguyên ngoài. Thanh điều hướng có nền đặc dự phòng và hỗ trợ giảm độ trong suốt/chuyển động theo thiết bị.
 - Thanh điều hướng có một lớp kính trượt theo nút khi rê chuột hoặc dùng bàn phím. Trên điện thoại, nhấn giữ và kéo ngang để kính bám theo ngón tay liên tục; thả vào tab để chuyển trang, thả ra ngoài hoặc bị hủy thao tác để trả kính về tab hiện tại. Chỉ vùng thanh điều hướng chặn cuộn khi kéo; nội dung trang vẫn cuộn bình thường. Lớp kính co giãn nhẹ lúc chuyển tab; chế độ giảm chuyển động tắt hiệu ứng phụ. Kiểm tra bằng `node scripts/liquid-nav-check.mjs` khi preview chạy ở cổng 4173 (có mô phỏng chuỗi sự kiện chạm/kéo/thả thực của trình duyệt).
-- Tối ưu điện thoại: từ điển chia trang, tối đa 24 từ trên màn hình với nút Trang trước / Trang sau; tìm kiếm vẫn quét toàn bộ 350 thẻ. Chỉ mục tìm kiếm được chuẩn hóa một lần, hàng từ vựng được memo hóa, cập nhật thời gian dừng khi ẩn trang hoặc đang học. Không dùng blur hay hoạt ảnh trang trí liên tục; ô tìm kiếm 16px tránh tự phóng to trên iPhone.
+- Tối ưu điện thoại: từ điển chia trang, tối đa 24 từ trên màn hình với nút Trang trước / Trang sau; tìm kiếm vẫn quét toàn bộ 350 thẻ. Chỉ mục tìm kiếm được chuẩn hóa một lần, hàng từ vựng được memo hóa, cập nhật thời gian dừng khi ẩn trang hoặc đang học. Hiệu ứng blur giới hạn ở thanh điều hướng và lớp kính trượt, không có hoạt ảnh trang trí liên tục; ô tìm kiếm 16px tránh tự phóng to trên iPhone.
 - Tổng quan, tiến độ theo unit và lesson; giao diện responsive và thanh điều hướng trên điện thoại.
 - Flashcard: bấm Đã nhớ / Chưa nhớ ngay ở mặt trước, hoặc lật thẻ để xem nghĩa và nghe phát âm rồi đánh giá.
 - Phát âm từ/cụm từ bằng giọng tiếng Anh của thiết bị/trình duyệt: tự đọc từ tiếng Anh mỗi lần lật flashcard ở cả hai chiều, không có nút Nghe riêng. Chọn giọng và tốc độ trong Cài đặt; ưu tiên giọng cục bộ. Quiz tự đọc từ tiếng Anh khi chọn đúng đáp án; chọn sai không tự đọc. Dừng khi chuyển từ/trang hoặc ẩn ứng dụng. Offline cần cài sẵn giọng tiếng Anh trên thiết bị; bộ nhớ offline của web không chứa tệp âm thanh. Giọng trực tuyến có thể gửi nội dung từ được chọn đến dịch vụ giọng nói của trình duyệt. Kiểm tra luồng bằng `node scripts/speech-check.mjs` (giả lập bộ đọc); cần nghe thử trên điện thoại thật để xác nhận chất lượng âm thanh.

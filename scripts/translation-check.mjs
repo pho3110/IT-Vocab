@@ -13,7 +13,7 @@ try {
   await page.getByRole('button', { name: 'Luyện dịch', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Luyện dịch IT' })).toBeVisible();
   await expect(page.getByText(/50 câu nguyên văn Handout 01/)).toBeVisible();
-  await expect(page.getByRole('button', { name: /^Đề / })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /^Đề \d/ })).toHaveCount(0);
   await expect(page.locator('textarea')).toHaveCount(10);
   await expect(page.locator('textarea').first()).toHaveValue('');
   await expect(page.getByRole('button', { name: 'Chấm bài / 10' })).toBeDisabled();

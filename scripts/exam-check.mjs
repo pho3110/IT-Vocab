@@ -1,0 +1,98 @@
+import { chromium, expect } from '@playwright/test';
+import { mkdir } from 'node:fs/promises';
+import { createExam, EXAM_STORAGE_KEY, EXAM_DURATION, BANK_VERSION } from '../src/exam.js';
+
+const browser = await chromium.launch({ channel: 'msedge', headless: true, args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream'] });
+try {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, permissions: ['microphone'] });
+  const page = await context.newPage();
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('http://localhost:4173/');
+  await page.getByRole('button', { name: 'Đề thi', exact: true }).tap();
+  await expect(page.getByRole('heading', { name: 'Đề thi tổng hợp' })).toBeVisible();
+  await page.getByRole('button', { name: 'Tạo đề trộn & bắt đầu' }).click();
+  const snapshot = JSON.parse(await page.evaluate(key => localStorage.getItem(key), EXAM_STORAGE_KEY));
+  const exam = createExam(snapshot.seed, snapshot.startedAt);
+  await expect(page.getByRole('timer')).toContainText('59:');
+  await expect(page.locator('.exam-question')).toHaveCount(30);
+  await expect(page.locator('.exam-passage')).toHaveCount(2);
+  await expect(page.locator('.exam-feedback')).toHaveCount(0);
+  await page.locator('.exam-question').first().getByRole('radio', { name: `A. ${exam.language[0].options[0]}`, exact: true }).check();
+  const skills = page.getByRole('group', { name: 'Kỹ năng trong đề thi' });
+  await skills.getByRole('button', { name: 'Viết', exact: true }).click();
+  await expect(page.locator('.exam-written')).toHaveCount(5);
+  await page.locator('.exam-written textarea').first().fill('Bản dịch thử của tôi');
+  await page.locator('#exam-email').fill('Dear colleague, this is my saved email.');
+  await expect(page.getByText(/7 từ · Mục tiêu/)).toBeVisible();
+  await skills.getByRole('button', { name: 'Nói', exact: true }).click();
+  await page.locator('#exam-speaking-notes').fill('My speaking outline');
+  await page.getByRole('button', { name: 'Ghi âm câu trả lời', exact: true }).click();
+  await expect(page.getByRole('button', { name: /Dừng ghi âm/ })).toBeVisible();
+  await expect(skills.getByRole('button', { name: 'Đọc', exact: true })).toBeDisabled();
+  await page.waitForTimeout(1300);
+  await page.getByRole('button', { name: /Dừng ghi âm/ }).click();
+  await expect(page.getByRole('link', { name: 'Tải bản ghi' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Ghi âm lại câu trả lời' })).toBeEnabled();
+  await page.getByRole('button', { name: 'Câu nói 2', exact: true }).click();
+  await page.getByRole('button', { name: 'Câu nói 1', exact: true }).click();
+  await expect(page.getByRole('link', { name: 'Tải bản ghi' })).toBeVisible();
+  await page.reload();
+  await page.getByRole('button', { name: 'Đề thi', exact: true }).click();
+  await skills.getByRole('button', { name: 'Viết', exact: true }).click();
+  await expect(page.locator('.exam-written textarea').first()).toHaveValue('Bản dịch thử của tôi');
+  await expect(page.locator('#exam-email')).toHaveValue('Dear colleague, this is my saved email.');
+  await skills.getByRole('button', { name: 'Nói', exact: true }).click();
+  await expect(page.locator('#exam-speaking-notes')).toHaveValue('My speaking outline');
+  await expect(page.getByRole('link', { name: 'Tải bản ghi' })).toBeVisible();
+  await page.getByRole('button', { name: 'Xóa bản ghi' }).click();
+  await expect(page.getByRole('link', { name: 'Tải bản ghi' })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Nộp bài', exact: true }).click();
+  await page.getByRole('button', { name: 'Xác nhận', exact: true }).click();
+  await expect(page.locator('.exam-result')).toContainText('chưa phải điểm tổng');
+  await expect(page.locator('.exam-feedback')).toContainText('Gợi ý trả lời');
+  await skills.getByRole('button', { name: 'Viết', exact: true }).click();
+  await expect(page.locator('.exam-feedback')).toHaveCount(6);
+  await expect(page.locator('#exam-email')).toBeDisabled();
+  await skills.getByRole('button', { name: 'Đọc', exact: true }).click();
+  await expect(page.locator('.exam-feedback')).toHaveCount(30);
+  await expect(page.getByRole('radio').first()).toBeDisabled();
+  await page.getByRole('button', { name: 'Trộn đề mới' }).click();
+  await page.getByRole('button', { name: 'Hủy', exact: true }).click();
+  expect(JSON.parse(await page.evaluate(key => localStorage.getItem(key), EXAM_STORAGE_KEY)).seed).toBe(snapshot.seed);
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 844 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
+  }
+  // Load an exam with one second remaining to verify automatic submission.
+  await page.evaluate(({ key, version, duration }) => localStorage.setItem(key, JSON.stringify({ version, seed: 123, startedAt: Date.now() - duration + 1000, answers: {}, submitted: false })), { key: EXAM_STORAGE_KEY, version: BANK_VERSION, duration: EXAM_DURATION });
+  await page.reload();
+  await page.getByRole('button', { name: 'Đề thi', exact: true }).click();
+  await expect(page.locator('.exam-result')).toContainText('0/10', { timeout: 5000 });
+  await expect(page.getByRole('button', { name: 'Sẵn sàng offline' })).toBeVisible();
+  await context.setOffline(true);
+  await page.reload();
+  await page.getByRole('button', { name: 'Đề thi', exact: true }).click();
+  await expect(page.locator('.exam-result')).toContainText('0/10');
+  await page.getByRole('button', { name: 'Trộn đề mới' }).click();
+  await page.getByRole('button', { name: 'Xác nhận', exact: true }).click();
+  await expect(page.locator('.exam-question')).toHaveCount(30);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await mkdir('qa', { recursive: true });
+  await page.screenshot({ path: 'qa/exam-mobile.png' });
+  // A denied microphone must leave written notes and navigation usable.
+  const denied = await context.newPage();
+  await denied.addInitScript(() => {
+    navigator.mediaDevices.getUserMedia = async () => { throw new DOMException('Denied for test', 'NotAllowedError'); };
+  });
+  await denied.goto('http://localhost:4173/');
+  await denied.getByRole('button', { name: 'Đề thi', exact: true }).click();
+  await denied.getByRole('group', { name: 'Kỹ năng trong đề thi' }).getByRole('button', { name: 'Nói', exact: true }).click();
+  await denied.getByRole('button', { name: 'Ghi âm câu trả lời', exact: true }).click();
+  await expect(denied.getByRole('alert')).toContainText('Chưa có quyền dùng micro');
+  await expect(denied.getByRole('group', { name: 'Kỹ năng trong đề thi' }).getByRole('button', { name: 'Đọc', exact: true })).toBeEnabled();
+  await denied.close();
+  expect(errors).toEqual([]);
+  console.log('Exam UI passed: mixed exam, choices, writing drafts, microphone recording/storage/delete, submit/review, timer expiry, offline generation, responsive widths.');
+  await context.close();
+} finally { await browser.close(); }
