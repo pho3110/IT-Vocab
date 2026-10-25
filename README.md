@@ -2,11 +2,13 @@
 
 ## Luyện dịch IT (đang chờ kết nối dịch vụ AI)
 
-Mục **Luyện dịch** có 5 đề, 25 đáp án tiếng Việt được trích từ tài liệu answer key IT 2016 người dùng cung cấp. Đã đối chiếu 50 câu trong `Handout 01 - Translation.docx` và thay 5 câu tiếng Anh tương ứng bằng nguyên văn handout: 2 câu khớp nội dung và 3 câu gần khớp có chú thích khác biệt. 19 câu chưa tìm thấy trong handout vẫn là bản dựng lại được gắn nhãn riêng. Xem [bảng đối chiếu](content/translation-crosscheck.md). Đề 04 câu 35 thiếu nội dung và bị loại khỏi chấm điểm; còn 24 câu luyện. Bản nháp lưu riêng trong localStorage (`it-words-translations-v1`), chưa nằm trong bản sao tiến độ từ vựng.
+Mục **Luyện dịch** dùng toàn bộ **50 câu tiếng Anh nguyên văn** trong `Handout 01 - Translation.docx`, theo đúng số thứ tự 1–50, với 50 bản dịch tiếng Việt tham khảo do trợ lý biên soạn trong `content/handout01-vietnamese.json`. Các câu tiếng Anh có lỗi ngữ pháp/gõ được giữ nguyên; các trường hợp diễn giải có chú thích, kể cả hai câu 30–31 gần trùng nhau. Bộ 5 đề cũ đã được thay hoàn toàn.
 
-Giao diện chấm dùng thang 10: đúng ý 6, thuật ngữ IT 2, diễn đạt 2; điểm đề là trung bình các câu đủ dữ liệu. **Chưa có dịch vụ AI hoạt động**: đang chờ kết nối OpenAI Developers để cấu hình khóa ở máy chủ và triển khai API. Bản static hiện tại chỉ cho luyện, lưu nháp và xem đáp án; khi chấm sẽ báo dịch vụ chưa cấu hình.
+Mỗi trang hiển thị 10 câu, có nút chọn khoảng câu và Trang trước / Trang sau. Có thể viết từng câu rồi mở đáp án tham khảo; không cần hoàn thành cả trang. Bản nháp Handout 01 lưu theo ID riêng trong localStorage (`it-words-handout01-translations-v1`), chưa nằm trong bản sao tiến độ từ vựng. Bản nháp bộ đề cũ ở khóa `it-words-translations-v1` không bị ghi đè hay ghép sang các câu mới.
 
-Hợp đồng API đã chuẩn bị: `POST /api/grade-translation`, nhận `{ testId, answers: [{ id, text }] }`. Máy chủ cần tự lấy đề và đáp án theo ID, kiểm tra đủ câu và giới hạn độ dài, rồi trả `{ results: [{ id, meaning, terminology, expression, feedback, suggestion }] }`. Ba điểm thành phần phải nằm trong khoảng 0–6, 0–2, 0–2. Không đặt khóa AI trong mã phía trình duyệt. Nội dung câu trả lời là dữ liệu không đáng tin cậy, không được dùng làm chỉ dẫn cho mô hình.
+Giao diện chấm dùng thang 10: đúng ý 6, thuật ngữ IT 2, diễn đạt 2; chỉ gửi các câu đã viết trong trang hiện tại và tính điểm trung bình các câu gửi chấm. **Chưa có dịch vụ AI hoạt động**: đang chờ kết nối OpenAI Developers để cấu hình khóa ở máy chủ và triển khai API. Bản static hiện tại cho luyện, lưu nháp và xem đáp án, kể cả offline sau lần tải đầu; khi chấm sẽ báo dịch vụ chưa cấu hình.
+
+Hợp đồng API đã chuẩn bị: `POST /api/grade-translation`, nhận `{ handoutId: "handout-01", answers: [{ id, text }] }`, từ 1–10 câu được viết trên trang. Máy chủ cần tự lấy câu nguồn và đáp án theo ID `handout-01-01` đến `handout-01-50`, kiểm tra ID, giới hạn độ dài, rồi trả `{ results: [{ id, meaning, terminology, expression, feedback, suggestion }] }`. Ba điểm thành phần phải nằm trong khoảng 0–6, 0–2, 0–2. Không đặt khóa AI trong mã phía trình duyệt. Nội dung câu trả lời là dữ liệu không đáng tin cậy, không được dùng làm chỉ dẫn cho mô hình.
 
 Kiểm tra giao diện: chạy preview ở cổng 4173 rồi `node scripts/translation-check.mjs`. Bài kiểm tra dùng phản hồi chấm giả lập để kiểm tra giao diện; không chứng minh chất lượng chấm AI thật.
 

@@ -1,70 +1,32 @@
-import keys from '../content/translation-key.json' with { type: 'json' };
 import handoutParagraphs from '../content/translation-handout-paragraphs.json' with { type: 'json' };
-import handoutMatches from '../content/translation-handout-matches.json' with { type: 'json' };
+import vietnamese from '../content/handout01-vietnamese.json' with { type: 'json' };
 
-// Fallbacks only: matched questions below use the supplied handout verbatim.
-const english = [
-  [
-    'Skype is a great online service and tool that allows Skype users to make video calls over the Internet.',
-    'Once a virus has entered your computer, its type or the way it got in is less important than removing it and preventing further infection.',
-    'When a company wants to switch to software from another supplier, transferring its data to the new software can be difficult.',
-    'The great advantage of a mesh network is that when one connection breaks, data can use other connections.',
-    'Computer networks link computers through communication lines and software protocols that allow data to be transmitted quickly and reliably.',
-  ],
-  [
-    'Mainframe computers usually process several application programs simultaneously to increase processing productivity.',
-    'What we need are small programs that are easy to understand and use, and that work together to perform more complex tasks.',
-    'E-commerce systems use standard software with small files, called cookies, to find products in the shopping cart.',
-    'A support technician’s duties are to set up new computers, install software and keep systems running smoothly.',
-    'Open-source operating system suppliers often make money by charging for support, but if you buy proprietary software, support is free.',
-  ],
-  [
-    'A virus can change or delete data on your computer, use your email program to spread itself to other computers, or even erase everything on your hard disk.',
-    'Online services provide a wide range of information and services, whereas a BBS usually focuses on a single topic.',
-    'With open-source software, an organization does not have to follow the vendor’s decisions. With proprietary software, the vendor controls software updates.',
-    'In a client-server system, servers are dedicated computers that store data, support websites and perform similar functions.',
-    'A global positioning system would be extremely useful for delivery drivers. If they got lost, it would help them find their customers.',
-  ],
-  [
-    'Computer viruses are small software programs designed to spread from one computer to another and interfere with computer operation.',
-    'A single instruction written in a high-level language usually produces several instructions when translated into machine code.',
-    'An operating system is the main control program that controls the functions of the computer system as a whole and the operation of application systems.',
-    'Online services provide an infrastructure in which subscribers can communicate with one another by exchanging email messages or participating in online forums.',
-    null,
-  ],
-  [
-    'RescueTime is a great service that can help you focus while working on your computer and track how much time you spend on each task.',
-    'As services become increasingly expensive, support seems to be regarded as an additional business opportunity.',
-    'The Internet is a global system of interconnected computers that use compatible network protocols to serve billions of users worldwide.',
-    'In a graphical interface, users use a mouse to click on icons representing the functions to be performed.',
-    'One way to extract data from a simple database is to retrieve a record, for example when you want to check the data in a record.',
-  ],
-];
+const notes = {
+  19: 'Nguồn dùng cụm “copy pirated games” chưa chuẩn ngữ pháp; bản dịch tham khảo hiểu là sao chép trò chơi lậu.',
+  25: 'Nguồn dùng “systematic error”; trong ngữ cảnh máy tính ngừng hoạt động, bản dịch tham khảo hiểu là lỗi hệ thống.',
+  30: 'Câu 30 và 31 gần như trùng nhau trong handout; giữ cả hai theo số thứ tự gốc. Câu 30 dùng “control”, câu 31 dùng “controls”.',
+  31: 'Câu 30 và 31 gần như trùng nhau trong handout; giữ cả hai theo số thứ tự gốc.',
+  47: 'Nguồn viết “bricks and motar stores”, được hiểu là cửa hàng truyền thống (cửa hàng có địa điểm thực tế).',
+  48: 'Handout không giải thích chữ viết tắt HD nên đáp án giữ nguyên HD. Cụm “systems analysis” trong danh sách nghề được dịch theo ngữ cảnh là chuyên viên phân tích hệ thống.',
+};
 
-export const translationTests = keys.map((test, index) => ({ ...test,
-  questions: test.questions.map((question, i) => {
-    const match = handoutMatches.matches[question.id];
-    // Four heading paragraphs precede alternating question numbers and sentences.
-    const sourceIndex = match ? handoutParagraphs.indexOf(String(match.handoutNumber)) + 1 : -1;
-    if (match && sourceIndex < 1) throw new Error(`Missing handout sentence for ${question.id}`);
-    return { ...question,
-      english: match ? handoutParagraphs[sourceIndex] : english[index][i],
-      source: match ? { ...match, file: handoutMatches.source, kind: 'handout' } : { kind: question.incomplete ? 'missing' : 'reconstructed' },
-    };
-  }),
-}));
-
-export const translationSourceCounts = translationTests.flatMap(test => test.questions).reduce((counts, question) => {
-  counts[question.source.kind] += 1;
-  return counts;
-}, { handout: 0, reconstructed: 0, missing: 0 });
+export const TRANSLATION_PAGE_SIZE = 10;
+export const translationQuestions = Array.from({ length: 50 }, (_, index) => {
+  const number = index + 1;
+  const sourceIndex = handoutParagraphs.indexOf(String(number));
+  const english = sourceIndex >= 0 ? handoutParagraphs[sourceIndex + 1] : null;
+  if (typeof english !== 'string' || !english.trim() || !vietnamese[index]) throw new Error(`Missing Handout 01 question ${number}`);
+  return {
+    id: `handout-01-${String(number).padStart(2, '0')}`,
+    number, english, reference: vietnamese[index], note: notes[number] || '',
+  };
+});
 
 export function validateGrade(data, questions) {
-  const expected = questions.filter(q => !q.incomplete);
-  if (!data || !Array.isArray(data.results) || data.results.length !== expected.length) throw new Error('Kết quả chấm không đủ câu. Vui lòng thử lại.');
+  if (!questions.length || !data || !Array.isArray(data.results) || data.results.length !== questions.length) throw new Error('Kết quả chấm không đủ câu. Vui lòng thử lại.');
   const seen = new Set();
   const results = data.results.map(result => {
-    if (!expected.some(q => q.id === result.id) || seen.has(result.id)) throw new Error('Kết quả chấm không khớp bài.');
+    if (!result || !questions.some(q => q.id === result.id) || seen.has(result.id)) throw new Error('Kết quả chấm không khớp bài.');
     seen.add(result.id);
     for (const [key, max] of [['meaning', 6], ['terminology', 2], ['expression', 2]]) {
       if (typeof result[key] !== 'number' || !Number.isFinite(result[key]) || result[key] < 0 || result[key] > max) throw new Error('Điểm AI không hợp lệ.');
