@@ -55,6 +55,41 @@ try {
   await touch.getByRole('button', { name: 'Luyện dịch', exact: true }).tap();
   await expect(touch.getByRole('button', { name: 'Luyện dịch', exact: true })).toHaveAttribute('aria-current', 'page');
   await expect(touch.getByRole('heading', { name: 'Luyện dịch IT' })).toBeVisible();
+  const touchNav = touch.getByRole('navigation', { name: 'Điều hướng chính' });
+  const touchLens = touchNav.locator('.liquid-nav-lens');
+  const touchHome = touchNav.getByRole('button', { name: 'Tổng quan', exact: true });
+  const touchLibrary = touchNav.getByRole('button', { name: 'Từ điển của bạn', exact: true });
+  await touchHome.tap();
+  const cdp = await touch.context().newCDPSession(touch);
+  const [start, end] = await Promise.all([touchHome.boundingBox(), touchLibrary.boundingBox()]);
+  const startX = start.x + start.width / 2, y = start.y + start.height / 2;
+  const endX = end.x + end.width / 2;
+  const finger = (x, fingerY = y) => [{ x, y: fingerY, id: 1 }];
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: finger(startX) });
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: finger(startX + 20) });
+  await expect.poll(async () => Math.abs((await touchLens.boundingBox()).x - (start.x + 20))).toBeLessThan(2);
+  await expect(touchHome).toHaveAttribute('aria-current', 'page');
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: finger(endX) });
+  await expect.poll(async () => Math.abs((await touchLens.boundingBox()).x - end.x)).toBeLessThan(2);
+  // Moving back in the same gesture must also track the finger continuously.
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: finger(startX + 30) });
+  await expect.poll(async () => Math.abs((await touchLens.boundingBox()).x - (start.x + 30))).toBeLessThan(2);
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: finger(endX) });
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await expect(touchLibrary).toHaveAttribute('aria-current', 'page');
+  // An OS cancellation restores the selected tab without navigation.
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: finger(startX) });
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: finger(startX + 25) });
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchCancel', touchPoints: [] });
+  await expect(touchLibrary).toHaveAttribute('aria-current', 'page');
+  await expect.poll(async () => Math.abs((await touchLens.boundingBox()).x - end.x)).toBeLessThan(2);
+  // Releasing outside the capsule is a cancelled selection as well.
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: finger(startX) });
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: finger(startX, y - 110) });
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await expect(touchLibrary).toHaveAttribute('aria-current', 'page');
+  await expect(touchNav).toHaveAttribute('data-dragging', 'false');
+  await cdp.detach();
   expect(errors).toEqual([]);
-  console.log('Liquid nav passed: animated hover and return, keyboard, touch, settings, responsive resize, reduced motion.');
+  console.log('Liquid nav passed: hover, keyboard, touch tap, continuous touch drag both directions, release selection, cancellation, outside release, resize, reduced motion.');
 } finally { await browser.close(); }
