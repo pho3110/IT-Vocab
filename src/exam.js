@@ -5,7 +5,6 @@ import { speakingQuestions } from '../content/exam-speaking.js';
 import { translationQuestions } from './translations.js';
 
 export const EXAM_STORAGE_KEY = 'it-words-mixed-exam-v1';
-export const EXAM_DURATION = 60 * 60 * 1000;
 export const BANK_VERSION = 1;
 // This item admits two plausible options; do not penalise a learner for the source ambiguity.
 export const usableLanguage = languageQuestions.filter(q => q.id !== 'u5-language-17');
@@ -59,10 +58,16 @@ export function createExam(seed, startedAt = Date.now()) {
     if (unique.has(text)) return false;
     unique.add(text); return true;
   }), 5, random);
+  // Build a shared A–F column without changing the original seed sequence.
+  // Existing drafts retain the same questions, reading texts and writing tasks.
+  const matchingRandom = randomFrom((seed ^ 0x41f06c2b) >>> 0);
+  const matchingAnswers = language.slice(0, 5).map(q => q.answer);
+  const distractor = shuffled(usableLanguage.filter(q => q.kind === 'matching' && !matchingAnswers.includes(q.answer)), matchingRandom)[0].answer;
+  const matchingOptions = shuffled([...matchingAnswers, distractor], matchingRandom);
   return {
-    seed: seed >>> 0, startedAt, deadline: startedAt + EXAM_DURATION,
+    seed: seed >>> 0, startedAt,
     id: `exam-${seed >>> 0}-${startedAt}`, code: (seed >>> 0).toString(16).toUpperCase().padStart(8, '0'),
-    language, reading, translations, email: shuffled(emailTasks, random)[0],
+    language: language.map(q => q.kind === 'matching' ? { ...q, options: matchingOptions } : q), reading, translations, email: shuffled(emailTasks, random)[0],
     speaking: shuffled(speakingQuestions, random).slice(0, 3),
   };
 }
@@ -88,5 +93,5 @@ export function restoreExam(raw) {
     if (!ids.has(id) || typeof value !== 'string' || value.length > 16000) throw new Error('Câu trả lời đề thi không hợp lệ.');
     answers[id] = value;
   }
-  return { exam, answers, submitted: data.submitted || Date.now() >= exam.deadline };
+  return { exam, answers, submitted: data.submitted };
 }

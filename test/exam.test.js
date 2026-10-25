@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { BANK_VERSION, bankCounts, createExam, objectiveQuestions, examAnswerIds, gradeObjective, restoreExam, countWords, usableLanguage, EXAM_DURATION } from '../src/exam.js';
+import { BANK_VERSION, bankCounts, createExam, objectiveQuestions, examAnswerIds, gradeObjective, restoreExam, countWords, usableLanguage } from '../src/exam.js';
 import { readingPassages } from '../content/exam-reading.js';
 import { emailTasks, examTranslations } from '../content/exam-writing.js';
 import { speakingQuestions } from '../content/exam-speaking.js';
@@ -51,7 +51,16 @@ test('mixed exams are reproducible, balanced, unique and keep questions attached
     assert.equal(exam.speaking.length, 3);
     assert.equal(examAnswerIds(exam).length, 39);
     assert.equal(new Set(examAnswerIds(exam)).size, 39);
-    assert.equal(exam.deadline - exam.startedAt, EXAM_DURATION);
+    assert.equal(exam.deadline, undefined);
+    const matching = exam.language.slice(0, 5);
+    assert.equal(matching[0].options.length, 6);
+    assert.equal(new Set(matching[0].options).size, 6);
+    assert.equal(new Set(matching.map(q => q.answer)).size, 5);
+    for (const q of matching) {
+      assert.ok(q.term);
+      assert.deepEqual(q.options, matching[0].options);
+      assert.ok(q.options.includes(q.answer));
+    }
     const correct = Object.fromEntries(objectiveQuestions(exam).map(q => [q.id, q.answer]));
     assert.deepEqual(gradeObjective(exam, correct), { correct: 30, total: 30, score: 10 });
     assert.deepEqual(gradeObjective(exam, {}), { correct: 0, total: 30, score: 0 });
@@ -65,7 +74,8 @@ test('draft restore reproduces an exam without trusting imported question text o
   const answers = { [exam.language[0].id]: exam.language[0].answer, [exam.email.id]: 'My email draft' };
   const draft = { version: BANK_VERSION, seed, startedAt, answers, submitted: false };
   assert.deepEqual(restoreExam(JSON.stringify(draft)), { exam, answers, submitted: false });
-  assert.equal(restoreExam(JSON.stringify({ ...draft, startedAt: startedAt - EXAM_DURATION - 1000 })).submitted, true);
+  assert.equal(restoreExam(JSON.stringify({ ...draft, startedAt: startedAt - 7 * 86400000 })).submitted, false);
+  assert.equal(restoreExam(JSON.stringify({ ...draft, submitted: true })).submitted, true);
   for (const changed of [{ version: 999 }, { seed: -1 }, { seed: 2 ** 32 }, { startedAt: 'bad' }, { submitted: 1 }, { answers: [] }, { answers: { unknown: 'text' } }, { answers: { [exam.email.id]: 'x'.repeat(16001) } }]) {
     assert.throws(() => restoreExam(JSON.stringify({ ...draft, ...changed })));
   }

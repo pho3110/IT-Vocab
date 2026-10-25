@@ -121,7 +121,7 @@ const choices = {
 
 export const languageQuestions = Object.entries(matches).flatMap(([unit, rows]) => rows.map(([term, answer], index) => ({
   id: `u${unit}-language-${index + 1}`, unit: Number(unit), number: index + 1, kind: 'matching',
-  prompt: `Choose the correct definition: ${term}`, options: definitions[unit], answer: definitions[unit][answer],
+  term, prompt: `Choose the correct definition: ${term}`, options: definitions[unit], answer: definitions[unit][answer],
   explanation: `${term}: ${definitions[unit][answer]}.`, source: `Unit ${unit} · Part 1A · Câu ${index + 1}`,
 }))).concat(Object.entries(choices).flatMap(([unit, rows]) => rows.map(([number, prompt, options, answer]) => ({
   id: `u${unit}-language-${number}`, unit: Number(unit), number, kind: 'choice', prompt, options, answer: options[answer],

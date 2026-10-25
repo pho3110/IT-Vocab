@@ -22,7 +22,7 @@
 
 Ngân hàng còn 10 bài đọc với 50 câu hỏi; 30 câu dịch từ Unit 2–7 và 50 câu Handout 01; 6 đề email; 22 nhóm câu Nói. Câu 30–31 trong Handout gần trùng, giữ nguyên bộ luyện dịch nhưng chỉ lấy câu 30 vào ngân hàng tạo đề để tránh đề trộn lặp ý này.
 
-Mỗi đề có 5 mục nối từ đổi thành chọn định nghĩa + 15 câu trắc nghiệm ngôn ngữ từ sáu unit; 1 bài đọc trắc nghiệm và 1 bài đọc đúng/sai từ hai unit khác nhau; 5 câu dịch từ các nhóm nguồn khác nhau; 1 đề email; 3 nhóm câu hỏi Nói. Câu hỏi và phương án được trộn bằng mã seed; bài đọc không bị tách khỏi câu hỏi tương ứng.
+Mỗi đề có 5 mục nối từ trong bảng hai cột (1–5 và A–F, gồm một định nghĩa thừa) + 15 câu trắc nghiệm ngôn ngữ từ sáu unit; 1 bài đọc trắc nghiệm và 1 bài đọc đúng/sai từ hai unit khác nhau; 5 câu dịch từ các nhóm nguồn khác nhau; 1 đề email; 3 nhóm câu hỏi Nói. Câu hỏi và phương án được trộn bằng mã seed; bài đọc không bị tách khỏi câu hỏi tương ứng. Cột A–F dùng chung cho cả năm từ, được tạo từ năm định nghĩa đúng và một định nghĩa của từ không được chọn. Đề không giới hạn thời gian và chỉ nộp khi người học chọn nộp bài.
 
 Chuẩn hóa xuống dòng, dấu chỗ trống và khoảng trắng để nhập liệu trên điện thoại; không dùng ảnh gốc trong giao diện. Một số hướng dẫn email được trình bày gọn dưới dạng bước nhưng giữ yêu cầu gốc. Bài email dùng menu hệ điều hành theo tài liệu, không phải hướng dẫn cập nhật cho mọi phiên bản hệ điều hành.
 
