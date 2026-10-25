@@ -30,6 +30,7 @@ Mở địa chỉ Vite in ra (thường là `http://localhost:5173`). Nếu Powe
 ## Tính năng
 
 - Giao diện Liquid Glass theo ảnh tham khảo: nền xanh đen, kính tối trong suốt, viền sáng, 5 tab trong thanh viên thuốc và nút Cài đặt tròn tách riêng; tab được chọn có màu cyan. Dùng font hệ thống, không tải tài nguyên ngoài. Thanh điều hướng có nền đặc dự phòng và hỗ trợ giảm độ trong suốt/chuyển động theo thiết bị.
+- Thanh điều hướng có một lớp kính trượt theo nút khi rê chuột hoặc dùng bàn phím, trở về tab hiện tại khi rời thanh và chuyển theo tab khi chạm. Lớp kính co giãn nhẹ trong lúc di chuyển; chế độ giảm chuyển động tắt hiệu ứng. Kiểm tra bằng `node scripts/liquid-nav-check.mjs` khi preview chạy ở cổng 4173.
 - Tối ưu điện thoại: từ điển chia trang, tối đa 24 từ trên màn hình với nút Trang trước / Trang sau; tìm kiếm vẫn quét toàn bộ 350 thẻ. Chỉ mục tìm kiếm được chuẩn hóa một lần, hàng từ vựng được memo hóa, cập nhật thời gian dừng khi ẩn trang hoặc đang học. Không dùng blur hay hoạt ảnh trang trí liên tục; ô tìm kiếm 16px tránh tự phóng to trên iPhone.
 - Tổng quan, tiến độ theo unit và lesson; giao diện responsive và thanh điều hướng trên điện thoại.
 - Flashcard: bấm Đã nhớ / Chưa nhớ ngay ở mặt trước, hoặc lật thẻ để xem nghĩa và nghe phát âm rồi đánh giá.

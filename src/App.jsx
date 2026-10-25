@@ -2,6 +2,7 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { units, words, workbookWords, wordById } from './data.js';
 import { SpeechReset, SpeechSettings, useReadWord } from './speech.jsx';
 import TranslationPractice from './TranslationPractice.jsx';
+import LiquidNav from './LiquidNav.jsx';
 import { STORAGE_KEY, emptyProgress, dayKey, normalize, shuffle, isDue, isLearned, recordAnswer, validateProgress, quizOptions } from './study.js';
 
 const paths = {
@@ -133,7 +134,13 @@ export default function App() {
     <aside className="sidebar">
       <a className="brand" href="#" onClick={e => { e.preventDefault(); navigate('home'); }}><span className="brand-mark">it<span>↗</span></span><span>IT Words<span className="brand-sub">ENGLISH FOR YOUR FUTURE</span></span></a>
       <div className="nav-caption">KHÔNG GIAN HỌC TẬP</div>
-      <nav aria-label="Điều hướng chính">{[['home', 'grid', 'Tổng quan'], ['units', 'book', 'Các unit'], ['review', 'repeat', 'Ôn tập'], ['library', 'search', 'Từ điển của bạn'], ['translation', 'messages', 'Luyện dịch']].map(([key, icon, label]) => <button aria-label={label} key={key} className={`nav-item ${page === key ? 'active' : ''}`} onClick={() => navigate(key)}><Icon name={icon} /><span>{key === 'library' ? 'Từ điển' : label}</span>{key === 'review' && <span className="nav-count">{due.length}</span>}</button>)}</nav>
+      <LiquidNav active={page} onNavigate={navigate} items={[
+        { key: 'home', label: 'Tổng quan', icon: <Icon name="grid" /> },
+        { key: 'units', label: 'Các unit', icon: <Icon name="book" /> },
+        { key: 'review', label: 'Ôn tập', icon: <Icon name="repeat" />, count: due.length },
+        { key: 'library', label: 'Từ điển của bạn', shortLabel: 'Từ điển', icon: <Icon name="search" /> },
+        { key: 'translation', label: 'Luyện dịch', icon: <Icon name="messages" /> },
+      ]} />
       <div className="sidebar-note"><span className="note-symbol">✦</span><strong>Mỗi ngày một chút.</strong><p>Một từ mới hôm nay,<br />một cơ hội mới ngày mai.</p><div className="tiny-progress"><span style={{ width: `${Math.min(today / 10 * 100, 100)}%` }} /></div><small>{Math.min(today, 10)}/10 lượt ôn hôm nay</small></div>
       <button aria-label="Cài đặt & offline" className={`nav-item settings ${page === 'settings' ? 'active' : ''}`} onClick={() => navigate('settings')}><Icon name="settings" /><span>Cài đặt & offline</span></button>
       <span className="sidebar-footer">Made for curious IT minds.</span>
