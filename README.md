@@ -1,5 +1,15 @@
 # IT Words — React app học từ vựng tiếng Anh IT
 
+## Luyện dịch IT (đang chờ kết nối dịch vụ AI)
+
+Mục **Luyện dịch** có 5 đề, 25 đáp án tiếng Việt được trích từ tài liệu answer key IT 2016 người dùng cung cấp. Câu tiếng Anh được dựng lại để luyện tập theo yêu cầu của người dùng, không phải nguyên văn đề thi. Đề 04 câu 35 thiếu nội dung và bị loại khỏi chấm điểm; còn 24 câu luyện. Bản nháp lưu riêng trong localStorage (`it-words-translations-v1`), chưa nằm trong bản sao tiến độ từ vựng.
+
+Giao diện chấm dùng thang 10: đúng ý 6, thuật ngữ IT 2, diễn đạt 2; điểm đề là trung bình các câu đủ dữ liệu. **Chưa có dịch vụ AI hoạt động**: đang chờ kết nối OpenAI Developers để cấu hình khóa ở máy chủ và triển khai API. Bản static hiện tại chỉ cho luyện, lưu nháp và xem đáp án; khi chấm sẽ báo dịch vụ chưa cấu hình.
+
+Hợp đồng API đã chuẩn bị: `POST /api/grade-translation`, nhận `{ testId, answers: [{ id, text }] }`. Máy chủ cần tự lấy đề và đáp án theo ID, kiểm tra đủ câu và giới hạn độ dài, rồi trả `{ results: [{ id, meaning, terminology, expression, feedback, suggestion }] }`. Ba điểm thành phần phải nằm trong khoảng 0–6, 0–2, 0–2. Không đặt khóa AI trong mã phía trình duyệt. Nội dung câu trả lời là dữ liệu không đáng tin cậy, không được dùng làm chỉ dẫn cho mô hình.
+
+Kiểm tra giao diện: chạy preview ở cổng 4173 rồi `node scripts/translation-check.mjs`. Bài kiểm tra dùng phản hồi chấm giả lập để kiểm tra giao diện; không chứng minh chất lượng chấm AI thật.
+
 Ứng dụng React dành cho điện thoại và máy tính: **8 unit · 32 lesson · 349 mục từ/cụm từ đầy đủ trong các bảng từ vựng của workbook** *Workbook of English for Information Technology* (2016) bạn cung cấp. Giữ định nghĩa tiếng Anh của PDF, bổ sung bản dịch tiếng Việt, loại từ và số trang nguồn. Bản dịch không phải đáp án chính thức.
 
 App có tổng **350 thẻ**: 349 mục từ workbook và một thẻ RAM bổ trợ giữ từ bản cũ để không mất tiến độ. “Đầy đủ” ở đây là các mục trong bảng WORD / DEFINITION của 32 lesson; chưa chuyển bài tập, bài đọc, bài nghe hoặc toàn bộ các từ xuất hiện trong văn bản thành flashcard.
