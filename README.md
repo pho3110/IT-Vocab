@@ -27,13 +27,13 @@ Mở địa chỉ Vite in ra (thường là `http://localhost:5173`). Nếu Powe
 
 ## Tính năng
 
-- Giao diện Halloween: nền tối, cam/tím, bí ngô và ma nhỏ minh họa bằng SVG. Nhiệm vụ ôn 10 lượt/ngày hiển thị đúng tiến độ thực tế; không cần tải hình ảnh ngoài.
+- Giao diện lấy cảm hứng từ iPhone Liquid Glass: nền sáng xanh/tím, bề mặt kính, nút dạng viên và thanh điều hướng nổi. Dùng font hệ thống, không tải tài nguyên ngoài. Thanh điều hướng có nền đặc dự phòng và hỗ trợ giảm độ trong suốt/chuyển động theo thiết bị.
 - Tối ưu điện thoại: từ điển chia trang, tối đa 24 từ trên màn hình với nút Trang trước / Trang sau; tìm kiếm vẫn quét toàn bộ 350 thẻ. Chỉ mục tìm kiếm được chuẩn hóa một lần, hàng từ vựng được memo hóa, cập nhật thời gian dừng khi ẩn trang hoặc đang học. Không dùng blur hay hoạt ảnh trang trí liên tục; ô tìm kiếm 16px tránh tự phóng to trên iPhone.
 - Tổng quan, tiến độ theo unit và lesson; giao diện responsive và thanh điều hướng trên điện thoại.
 - Flashcard: bấm Đã nhớ / Chưa nhớ ngay ở mặt trước, hoặc lật thẻ để xem nghĩa và nghe phát âm rồi đánh giá.
 - Phát âm từ/cụm từ bằng giọng tiếng Anh của thiết bị/trình duyệt: tự đọc từ tiếng Anh mỗi lần lật flashcard ở cả hai chiều, không có nút Nghe riêng. Chọn giọng và tốc độ trong Cài đặt; ưu tiên giọng cục bộ. Quiz tự đọc từ tiếng Anh khi chọn đúng đáp án; chọn sai không tự đọc. Dừng khi chuyển từ/trang hoặc ẩn ứng dụng. Offline cần cài sẵn giọng tiếng Anh trên thiết bị; bộ nhớ offline của web không chứa tệp âm thanh. Giọng trực tuyến có thể gửi nội dung từ được chọn đến dịch vụ giọng nói của trình duyệt. Kiểm tra luồng bằng `node scripts/speech-check.mjs` (giả lập bộ đọc); cần nghe thử trên điện thoại thật để xác nhận chất lượng âm thanh.
 - Quiz bốn lựa chọn, giải thích đáp án, kết quả và luyện lại từ sai.
-- Phản hồi học tập: đáp án đúng bật nhẹ, sai rung một lần; huy hiệu chuỗi đúng từ 3/5 từ trong phiên (sai sẽ đặt lại). Cuối phiên có bí ngô và 8 ngôi sao chạy ngắn rồi được gỡ bỏ. Hiệu ứng dùng CSS, hoạt động offline, tôn trọng chế độ giảm chuyển động.
+- Phản hồi học tập: đáp án đúng bật nhẹ, sai rung một lần; huy hiệu chuỗi đúng từ 3/5 từ trong phiên (sai sẽ đặt lại). Cuối phiên có biểu tượng ngôi sao và 8 tia sáng chạy ngắn rồi được gỡ bỏ. Hiệu ứng dùng CSS, hoạt động offline, tôn trọng chế độ giảm chuyển động.
 - Lịch ôn đơn giản: nhớ đúng sau 1, 3, 7, 14, 30 ngày; chưa nhớ sau 10 phút. Nhớ đúng 2 lần liên tiếp được tính là đã ghi nhớ.
 - Tìm kiếm tiếng Anh hoặc tiếng Việt không dấu; đánh dấu từ yêu thích.
 - Tiến độ lưu trong localStorage; xuất/nhập JSON, kiểm tra dữ liệu nhập và xác nhận trước khi đặt lại.
@@ -68,7 +68,7 @@ content/             Bản trích xuất PDF, bản dịch, báo cáo đủ mụ
 src/study.js         Lịch ôn, kiểm tra bản sao, tìm kiếm và đáp án quiz
 src/App.jsx          Giao diện, điều hướng, phiên học và lưu tiến độ
 src/styles.css       Giao diện desktop/mobile, không dùng thư viện CSS
-src/halloween.css    Chủ đề Halloween, giao diện thẻ/nút và tối ưu hiển thị mobile
+src/liquid-glass.css Chủ đề kính sáng, giao diện thẻ/nút và thanh điều hướng nổi trên mobile
 scripts/build-pwa.mjs Tạo PNG icon và service worker từ asset thực tế của bản build
 test/                Kiểm tra dữ liệu, lịch ôn, backup, quiz và cache offline
 ```

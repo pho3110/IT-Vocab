@@ -147,7 +147,7 @@ export default function App() {
         {session ? <StudySession key={session.startedAt} session={session} progress={progress} onAnswer={answer} onFavorite={favorite} onExit={() => setSession(null)} onRestart={(list, mode) => start(list, mode, session.label)} heading={heading} /> : <>
           {page === 'home' && <>
             <div className="page-title"><div><span className="eyebrow">SẴN SÀNG CHO MỘT BƯỚC TIẾN MỚI?</span><h1 ref={heading} tabIndex={-1}>Chào bạn, cùng học nhé <span className="wave">✦</span></h1><p>Mỗi từ mới là một bước gần hơn đến mục tiêu của bạn.</p></div><span className="date-pill">{new Intl.DateTimeFormat('vi-VN', { day: 'numeric', month: 'long' }).format(new Date(now))}</span></div>
-            <section className="hero game-hero"><div className="hero-text"><span className="hero-tag">☾ HALLOWEEN STUDY CLUB · THÁNG 10</span><h2>Săn từ mới.<br /><em>Đánh bay nỗi sợ!</em></h2><p>349 mục từ IT đang chờ bạn khám phá.<br />Một chút can đảm, thêm nhiều kiến thức.</p><button className="btn light" onClick={() => { setPage('units'); setUnitId(units.find(u => percent(u.lessons.flatMap(l => l.words)) < 100)?.id ?? 1); }}>Bắt đầu khám phá <Icon name="arrow" size={20} /></button><span className="hero-footnote">Học cả khi offline, cùng bạn bí ngô.</span></div><div className="game-art" aria-hidden="true"><span className="speech-bubble">Trick or… learn! <span>✦</span></span><HalloweenBuddy /><span className="floating-token token-code">&lt;/&gt;</span><span className="floating-token token-star">☾</span><span className="floating-token token-check"><Icon name="check" size={23} /></span><span className="buddy-shadow" /></div></section>
+            <section className="hero glass-hero"><div className="hero-text"><span className="hero-tag">MỘT CHÚT MỖI NGÀY, MỘT BƯỚC TIẾN XA</span><h2>Học từ mới.<br /><em>Mở tương lai.</em></h2><p>349 mục từ IT, chia thành những bài học nhỏ.<br />Học theo nhịp của bạn, ở bất cứ đâu.</p><button className="btn light" onClick={() => { setPage('units'); setUnitId(units.find(u => percent(u.lessons.flatMap(l => l.words)) < 100)?.id ?? 1); }}>Bắt đầu khám phá <Icon name="arrow" size={20} /></button><span className="hero-footnote">Flashcard · Quiz · Luyện dịch · Học offline</span></div><div className="hero-art" aria-hidden="true"><span className="orbit" /><span className="orbit orbit-two" /><div className="art-card"><span className="card-overline">MỖI TỪ LÀ MỘT KHỞI ĐẦU</span><div className="art-word">connect<span>↗</span></div><span className="art-meaning">kết nối · /kəˈnekt/</span><div className="art-line" /><div className="art-bottom">ENGLISH FOR IT<span>01 / 349</span></div></div><span className="art-chip chip-a">&lt;hello, future /&gt;</span><span className="art-chip chip-b">✓ Thêm một từ mới</span></div></section>
             <section className={`daily-quest ${today >= 10 ? 'quest-complete' : ''}`} aria-label="Mục tiêu học hôm nay"><div className="quest-symbol" aria-hidden="true">{today >= 10 ? '🏆' : '⚡'}</div><div className="quest-copy"><h2>{today >= 10 ? 'Bạn đã hoàn thành mục tiêu hôm nay!' : 'Nhiệm vụ hôm nay: ôn 10 lượt'}</h2><p>{today >= 10 ? 'Một bước tiến đáng nhớ. Muốn học thêm? Cứ tiếp tục nhé.' : 'Chỉ một phiên ngắn để giữ nhịp học mỗi ngày.'}</p><div className="quest-progress" role="progressbar" aria-label="Lượt ôn hôm nay" aria-valuemin={0} aria-valuemax={10} aria-valuenow={Math.min(today, 10)}><span style={{ width: `${Math.min(today / 10 * 100, 100)}%` }} /></div></div><span className="quest-score">{Math.min(today, 10)}<small>/10</small></span><button className="btn primary" disabled={!due.length} onClick={() => start(due.slice(0, 10), 'flashcard', 'Nhiệm vụ hôm nay')}>{today >= 10 ? 'Học thêm' : 'Chơi thôi'}<Icon name="arrow" size={18} /></button></section>
             <div className="stats-grid">{[['book', 'Từ đã gặp', reviewed, `trong ${words.length} từ vựng`, 'mint'], ['check', 'Đã ghi nhớ', learned, 'nhớ đúng ít nhất 2 lần liên tiếp', 'peach'], ['repeat', 'Cần ôn hôm nay', due.length, 'gồm từ mới và từ đến hạn', 'lavender'], ['chart', 'Lượt ôn hôm nay', today, 'mục tiêu 10 lượt mỗi ngày', 'yellow']].map(([icon, label, value, caption, color]) => <div className="stat" key={label}><span className={`stat-icon ${color}`}><Icon name={icon} /></span><span className="stat-label">{label}</span><strong>{value}<small>{label === 'Từ đã gặp' ? `/${words.length}` : ''}</small></strong><span className="stat-caption">{caption}</span></div>)}</div>
             <SectionHeading title="Chọn chặng tiếp theo" subtitle="Mở một unit, khám phá một thế giới mới." action="Cả hành trình" onClick={() => navigate('units')} />
@@ -184,21 +184,6 @@ function UnitCard({ unit, percent, onClick }) {
   return <button className={`unit-card unit-world-${unit.id}`} onClick={onClick}><div className="unit-card-top"><span className={`unit-icon color-${unit.id}`}><Icon name={unit.icon} size={28} /></span><span className="unit-number">UNIT {String(unit.id).padStart(2, '0')}</span><span className="unit-open"><Icon name={percent === 100 ? 'check' : 'arrow'} size={20} /></span></div><h3>{unit.title}</h3><p>{unit.subtitle}</p><div className="unit-meta"><span>4 bài học · {unit.lessons.flatMap(l => l.words).length} từ</span><span>{percent}% ghi nhớ</span></div><div className="progress-track"><span style={{ width: `${percent}%` }} /></div><span className="unit-cta">{percent === 100 ? 'Ôn để nhớ lâu hơn' : percent > 0 ? 'Tiếp tục chinh phục' : 'Khám phá ngay'}<Icon name="arrow" size={16} /></span></button>;
 }
 
-function HalloweenBuddy() {
-  return <svg className="game-buddy" viewBox="0 0 260 280" fill="none" aria-hidden="true">
-    <circle cx="196" cy="53" r="35" fill="#F3DDA7" /><circle cx="209" cy="44" r="31" fill="#282036" />
-    <path d="m20 68 18 4-1-18 14 17 11-13-1 21 17 7-24 3-8 15-6-15-19-1 10-10z" fill="#A58AD6" />
-    <path d="M43 201q-12-64 5-93 16-26 45-12 29-14 45 12 17 29 5 93l-16-10-17 11-17-11-17 11-17-11z" fill="#F9F0E8" stroke="#C8B6D6" strokeWidth="3" />
-    <ellipse cx="71" cy="129" rx="5" ry="8" fill="#43334F" /><ellipse cx="101" cy="129" rx="5" ry="8" fill="#43334F" /><path d="M81 147q8 8 16 0" stroke="#9F7DB3" strokeWidth="3" strokeLinecap="round" />
-    <path d="M151 118q-9-19 2-31l12 5q-11 9-4 24" fill="#8FA36A" stroke="#43533D" strokeWidth="3" />
-    <path d="M152 118c-59-29-93 13-86 61 6 45 47 66 87 55 42 11 83-10 89-55 7-48-28-90-90-61z" fill="#F79A48" stroke="#9D5237" strokeWidth="4" />
-    <path d="M151 119q-25 52 0 114M171 122q35 52 6 108M128 121q-33 51-10 108" stroke="#D77939" strokeWidth="3" />
-    <path d="m99 161 18-18 9 23zm82 5 9-23 18 18z" fill="#3D293B" stroke="#3D293B" strokeWidth="3" strokeLinejoin="round" />
-    <path d="m131 182 22-7 23 7-9 6 12 3q-25 36-49 0l12-3z" fill="#3D293B" /><path d="m149 191 7-3 5 5-6 7z" fill="#FFD99A" />
-    <path d="M111 241h90l-15 16-31-5-31 5z" fill="#7652A0" stroke="#4E3768" strokeWidth="3" />
-    <path d="m220 95 4-9m-1 12 10-2M184 23l2-8" stroke="#D5B3EF" strokeWidth="3" strokeLinecap="round" />
-  </svg>;
-}
 const PAGE_SIZE = 24;
 const WordLibrary = memo(function WordLibrary({ progress, onFavorite }) {
   const [query, setQuery] = useState('');
@@ -241,7 +226,7 @@ function SessionCelebration() {
     return () => clearTimeout(timer);
   }, []);
   return <div className="session-celebration" aria-hidden="true">
-    <span className="celebration-pumpkin">🎃</span>
+    <span className="celebration-symbol">✦</span>
     {burst && <span className="celebration-stars">{Array.from({ length: 8 }, (_, i) => <span key={i} style={{ '--burst-x': `${Math.cos(i * Math.PI / 4) * 78}px`, '--burst-y': `${Math.sin(i * Math.PI / 4) * 56}px`, '--burst-turn': `${i * 45}deg` }}>✦</span>)}</span>}
   </div>;
 }

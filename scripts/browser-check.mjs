@@ -11,7 +11,7 @@ try {
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('http://localhost:4173/');
   await expect(page.getByRole('heading', { name: /Chào bạn/ })).toBeVisible();
-  await expect(page.getByText(/HALLOWEEN STUDY CLUB/)).toBeVisible();
+  await expect(page.getByText(/MỘT CHÚT MỖI NGÀY/)).toBeVisible();
   await expect(page.getByRole('button', { name: /Sẵn sàng offline/ })).toBeVisible({ timeout: 20000 });
   await mkdir('qa', { recursive: true });
   await page.screenshot({ path: 'qa/mobile-home.png', fullPage: true });
@@ -45,7 +45,7 @@ try {
     if (i === 5) await expect(page.locator('.streak-badge')).toContainText('5 từ đúng liên tiếp');
   }
   await expect(page.getByRole('heading', { name: 'Thêm một bước tiến!' })).toBeVisible();
-  await expect(page.locator('.celebration-pumpkin')).toBeVisible();
+  await expect(page.locator('.celebration-symbol')).toBeVisible();
   await page.screenshot({ path: 'qa/mobile-celebration.png', fullPage: true, animations: 'disabled' });
   await expect(page.locator('.celebration-stars')).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Luyện lại 1 từ chưa nhớ' })).toBeVisible();
@@ -104,7 +104,7 @@ try {
   await page.locator('input[type=file]').setInputFiles({ name: 'bad.json', mimeType: 'application/json', buffer: Buffer.from('{}') });
   await expect(page.getByRole('status')).toContainText('không đúng định dạng');
   // The entrance animation must preserve the toast's horizontal centering.
-  const toastCenterError = await page.locator('.toast').evaluate(el => {
+  const toastCenterError = await page.locator('.toast[role="status"]').evaluate(el => {
     const animations = el.getAnimations();
     for (const animation of animations) { animation.pause(); animation.currentTime = 100; }
     const rect = el.getBoundingClientRect();
@@ -144,5 +144,5 @@ try {
   await expect(desktopPage.getByRole('heading', { name: 'attachment (n)', exact: true })).toBeVisible();
   await cdp.detach();
   await desktop.close();
-  console.log(`Browser QA passed: Halloween theme; 320/390/768px layouts; dictionary 24-row pagination and global search, including at 4x CPU slowdown; favorites; flashcards; quiz; backup; progress persistence; real offline search and learning. Initial dictionary: 24 rows, ${libraryNodes} DOM elements (previously 350 rows / 4285 elements).`);
+  console.log(`Browser QA passed: Liquid Glass theme; 320/390/768px layouts; dictionary 24-row pagination and global search, including at 4x CPU slowdown; favorites; flashcards; quiz; backup; progress persistence; real offline search and learning. Initial dictionary: 24 rows, ${libraryNodes} DOM elements (previously 350 rows / 4285 elements).`);
 } finally { await browser.close(); }
