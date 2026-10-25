@@ -13,14 +13,42 @@
 }
 .liquid-nav-lens[data-visible="true"] { opacity: 1; }
 .liquid-nav-surface {
+  position: relative; overflow: hidden;
   display: block; width: 100%; height: 100%; border-radius: inherit;
-  border: 1px solid #ffffff2d;
-  background: radial-gradient(ellipse at 25% 0, #d7eeff22, transparent 70%),
-    linear-gradient(155deg, #ffffff12, #a6c7ff09 55%, #ffffff0d);
-  box-shadow: inset 0 1px 1px #ffffff62, inset 1px 0 1px #ffffff20,
-    inset 0 -1px 1px #c1ddff18, 0 3px 12px #0000001a;
+  border: 1px solid #d5edff40;
+  background: radial-gradient(ellipse at 30% 0, #ebf6ff2e, transparent 70%),
+    linear-gradient(155deg, #ffffff14, #a6c7ff0a 55%, #ffffff13);
+  box-shadow: inset 0 1px 1px #ffffff8c, inset 1px 0 1px #ffffff30,
+    inset -1px 0 1px #b2dfff1f, inset 0 -1px 1px #c1ddff35, 0 4px 14px #00000024;
   /* The stationary capsule already blurs the background. A second moving
      backdrop forces costly resampling on mobile Safari. Keep this lens glossy. */
+}
+.liquid-nav-lift {
+  display: block; width: 100%; height: 100%; border-radius: inherit;
+  transition: transform 320ms cubic-bezier(.2,.85,.25,1.12);
+}
+.liquid-nav[data-interacting="true"][data-input="pointer"] .liquid-nav-lift { transform: scale(1.025,1.035); }
+.liquid-nav[data-pressed="true"][data-input="touch"] .liquid-nav-lift { transform: translate3d(0,-1px,0) scale(1.055,1.1); }
+.liquid-nav-illumination {
+  position: absolute; inset: 0; border-radius: inherit; overflow: hidden;
+  pointer-events: none; z-index: 0; opacity: 0; transition: opacity 300ms ease;
+}
+.liquid-nav-illumination > span {
+  position: absolute; left: 0; top: -20px; width: 180px; height: 110px;
+  background: radial-gradient(ellipse, #a9ddff42 0, #9cc7ff14 44%, transparent 72%);
+  transform: translate3d(var(--light-x,0px),0,0); opacity: var(--light-strength,.3);
+}
+.liquid-nav[data-interacting="true"] .liquid-nav-illumination { opacity: 1; }
+.liquid-nav-glint {
+  position: absolute; top: -40%; left: 0; height: 180%; width: 60px;
+  background: linear-gradient(100deg, transparent, #eaf8ff0b 24%, #ffffff32 48%, #ddf6ff12 66%, transparent);
+  transform: translate3d(var(--glint-x,0px),0,0) rotate(20deg);
+  pointer-events: none; opacity: .22; transition: opacity 250ms ease;
+}
+.liquid-nav[data-interacting="true"] .liquid-nav-glint { opacity: .7; }
+.liquid-nav-surface::after {
+  content: ''; position: absolute; inset: 2px; border-radius: inherit;
+  border-top: 1px solid #ffffff18; border-bottom: 1px solid #96d5ff24; pointer-events: none;
 }
 .sidebar .liquid-nav .nav-item,
 .sidebar .liquid-nav .nav-item:hover,
@@ -34,12 +62,25 @@
 .sidebar .liquid-nav .nav-item > span { transition: transform 200ms ease; }
 .sidebar .liquid-nav .nav-item:active > svg { transform: scale(.91); }
 .liquid-nav[data-pressed="true"] .liquid-nav-surface { background-color: #ffffff08; }
+.sidebar .liquid-nav[data-dragging="true"] .nav-item.active { color: #f5f6fc; }
+.sidebar .liquid-nav[data-interacting="true"] .nav-item[data-glass-preview="true"] { color: #62caff; }
+.sidebar .liquid-nav[data-interacting="true"] .nav-item[data-glass-preview="true"] > svg { transform: translate3d(0,-1px,0) scale(1.09); }
+.sidebar .liquid-nav[data-interacting="true"] .nav-item[data-glass-preview="true"] > span { transform: scale(1.025); }
 @media(prefers-reduced-motion:reduce) {
   .liquid-nav-lens[data-ready="true"],
   .sidebar .liquid-nav .nav-item,
   .sidebar .liquid-nav .nav-item > svg,
   .sidebar .liquid-nav .nav-item > span { transition: none; }
+  .liquid-nav-lift, .liquid-nav-glint, .liquid-nav-illumination { transition: none; }
+  .liquid-nav-lift, .liquid-nav-surface { transform: none!important; }
+  .sidebar .liquid-nav[data-interacting="true"] .nav-item > svg,
+  .sidebar .liquid-nav[data-interacting="true"] .nav-item > span { transform: none!important; }
 }
 @media(prefers-reduced-transparency:reduce) {
   .liquid-nav-surface { background: #2b3a50; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .liquid-nav-glint, .liquid-nav-illumination { display: none; }
+}
+@media(prefers-contrast:more) {
+  .liquid-nav-surface { border-color: #d5edff; background-color: #23374f; }
+  .sidebar .liquid-nav .nav-item { color: white; }
 }

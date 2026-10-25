@@ -17,3 +17,9 @@ export function springFrames(from, to, velocity = 0, reducedMotion = false) {
     return { offset, x: index === 36 ? to : x };
   });
 }
+
+export function glassDeformation(velocity, directTouch = true, reducedMotion = false) {
+  if (reducedMotion) return { scaleX: 1, scaleY: 1, skew: 0 };
+  const speed = Math.min(1, Math.abs(velocity) / 1600) * (directTouch ? 1 : .3);
+  return { scaleX: 1 + speed * .16, scaleY: 1 - speed * .075, skew: Math.sign(velocity) * speed * -3 };
+}

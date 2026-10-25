@@ -53,6 +53,7 @@ try {
   await aligned(library);
   await expect(lens).toHaveCSS('transition-duration', '0s');
   expect(await lens.locator('.liquid-nav-surface').evaluate(el => el.getAnimations().length)).toBe(0);
+  await expect(library.locator('svg')).toHaveCSS('transform', 'none');
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.setViewportSize({ width: 390, height: 850 });
   await mkdir('qa', { recursive: true });
@@ -73,11 +74,24 @@ try {
   const endX = end.x + end.width / 2;
   const finger = (x, fingerY = y) => [{ x, y: fingerY, id: 1 }];
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: finger(startX) });
+  await expect(touchNav).toHaveAttribute('data-input', 'touch');
+  await expect(touchNav).toHaveAttribute('data-interacting', 'true');
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: finger(startX + 20) });
   await expect.poll(async () => Math.abs((await touchLens.boundingBox()).x - (start.x + 20))).toBeLessThan(2);
+  await expect.poll(() => touchLens.locator('.liquid-nav-surface').evaluate(el => {
+    const value = getComputedStyle(el).transform;
+    return value === 'none' ? 1 : new DOMMatrixReadOnly(value).m11;
+  })).toBeGreaterThan(1.0001);
   await expect(touchHome).toHaveAttribute('aria-current', 'page');
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: finger(endX) });
   await expect.poll(async () => Math.abs((await touchLens.boundingBox()).x - end.x)).toBeLessThan(2);
+  await expect(touchLibrary).toHaveAttribute('data-glass-preview', 'true');
+  await expect(touchHome).toHaveAttribute('aria-current', 'page');
+  await expect.poll(() => touchLens.locator('.liquid-nav-lift').evaluate(el => {
+    const value = getComputedStyle(el).transform;
+    return value === 'none' ? 1 : new DOMMatrixReadOnly(value).m22;
+  })).toBeGreaterThan(1.04);
+  await touch.screenshot({ path: 'qa/liquid-glass-touch.png' });
   // Moving back in the same gesture must also track the finger continuously.
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: finger(startX + 30) });
   await expect.poll(async () => Math.abs((await touchLens.boundingBox()).x - (start.x + 30))).toBeLessThan(2);
@@ -96,6 +110,7 @@ try {
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
   await expect(touchLibrary).toHaveAttribute('aria-current', 'page');
   await expect(touchNav).toHaveAttribute('data-dragging', 'false');
+  await expect(touchNav).toHaveAttribute('data-interacting', 'false');
   await cdp.detach();
   expect(errors).toEqual([]);
   console.log('Liquid nav passed: hover, keyboard, touch tap, continuous touch drag both directions, release selection, cancellation, outside release, resize, reduced motion.');
