@@ -43,6 +43,7 @@ export default function App() {
   const [canSave, setCanSave] = useState(!initial.warning);
   const [warning, setWarning] = useState(initial.warning);
   const [page, setPage] = useState('home');
+  const [motionDirection, setMotionDirection] = useState('forward');
   const [unitId, setUnitId] = useState(null);
   const [session, setSession] = useState(null);
   const [toast, setToast] = useState('');
@@ -103,7 +104,11 @@ export default function App() {
   const today = progress.daily[dayKey()] ?? 0;
   const unit = units.find(u => u.id === unitId);
   const percent = list => Math.round(list.filter(w => isLearned(w, progress)).length / list.length * 100);
-  function navigate(next) { setSession(null); setPage(next); setUnitId(null); setResetting(false); }
+  function navigate(next) {
+    const order = ['home', 'units', 'review', 'library', 'translation', 'exam', 'settings'];
+    setMotionDirection(order.indexOf(next) < order.indexOf(page) ? 'back' : 'forward');
+    setSession(null); setPage(next); setUnitId(null); setResetting(false);
+  }
   const favorite = useCallback(id => { setProgress(p => ({ ...p, favorites: p.favorites.includes(id) ? p.favorites.filter(x => x !== id) : [...p.favorites, id] })); }, []);
   function start(list, mode, label) {
     if (!list.length) { setToast('Chưa có từ nào trong danh sách này.'); return; }
@@ -150,7 +155,7 @@ export default function App() {
 
     <main>
       <header className="topbar"><span className="breadcrumb">Không gian học tập <span>/</span> {session ? 'Phiên học' : unit ? `Unit ${unit.id}` : ({ home: 'Tổng quan', units: 'Các unit', review: 'Ôn tập', library: 'Từ điển', settings: 'Cài đặt', translation: 'Luyện dịch', exam: 'Đề thi' })[page]}</span><button className={`connection ${!online ? 'offline' : ''}`} onClick={() => navigate('settings')}><span className="status-dot" />{!online ? 'Đang offline' : offlineReady ? 'Sẵn sàng offline' : 'Đang online'}<Icon name="wifi" size={15} /></button><span className="avatar" aria-label="Người học">IT</span></header>
-      <div className="content" key={`${page}-${unitId ?? ''}-${session?.startedAt ?? ''}`}>
+      <div className="content" data-motion={motionDirection} key={`${page}-${unitId ?? ''}-${session?.startedAt ?? ''}`}>
         {warning && <div className="notice warning" role="alert">{warning}</div>}
         {updateWorker && !session && <div className="notice">Có phiên bản mới. Tiến độ đã lưu sẽ được giữ.<button onClick={updateApp}>Cập nhật</button></div>}
         {session ? <StudySession key={session.startedAt} session={session} progress={progress} onAnswer={answer} onFavorite={favorite} onExit={() => setSession(null)} onRestart={(list, mode) => start(list, mode, session.label)} heading={heading} /> : <>

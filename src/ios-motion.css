@@ -1,0 +1,73 @@
+:root {
+  --motion-press: 120ms;
+  --motion-release: 300ms;
+  --motion-page: 380ms;
+  --ease-ios: cubic-bezier(.2,.8,.2,1);
+  --ease-ios-spring: cubic-bezier(.2,.85,.25,1.12);
+}
+/* One static backdrop layer; avoid repainting a fixed CSS background on scroll. */
+body { isolation: isolate; background: #020713; background-attachment: scroll; }
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse at 7% 89%, #006dcc77, transparent 48%),
+    radial-gradient(ellipse at 62% 110%, #02accb55, transparent 48%),
+    radial-gradient(ellipse at 100% 6%, #00347588, transparent 51%), #020713;
+  transform: translateZ(0);
+}
+.app { min-height: 100svh; }
+.content { animation: none; --page-offset: 10px; }
+.content[data-motion="back"] { --page-offset: -10px; }
+@keyframes ios-page-arrive {
+  from { opacity: .65; transform: translate3d(var(--page-offset), 7px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes ios-surface-arrive {
+  from { opacity: .75; transform: translate3d(0, 9px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+/* Animate small surfaces, not the whole long dictionary/exam/translation page. */
+.content > .page-title,
+.translation-practice > .page-title,
+.exam-practice > .page-title,
+.study-page > .page-title { animation: ios-page-arrive var(--motion-page) var(--ease-ios) backwards; }
+.content > .hero,
+.content > .library-controls,
+.content > .unit-summary,
+.exam-practice > .exam-toolbar,
+.translation-practice > .translation-tabs,
+.exam-practice > .exam-tabs { animation: ios-surface-arrive 420ms var(--ease-ios) backwards; }
+.content > .daily-quest { animation: ios-surface-arrive 450ms var(--ease-ios) backwards; }
+.study-card-wrapper, .quiz-feedback, .session-result { animation: ios-surface-arrive 320ms var(--ease-ios) backwards; }
+.btn, .favorite-button, .sidebar > .settings {
+  transition: transform var(--motion-release) var(--ease-ios-spring),
+    background-color 180ms ease, border-color 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:active:not(:disabled), .favorite-button:active, .sidebar > .settings:active {
+  transform: scale(.96); transition-duration: var(--motion-press);
+}
+.unit-card { transition: transform 330ms var(--ease-ios-spring), border-color 180ms ease; }
+.unit-card:active { transform: scale(.98); transition-duration: var(--motion-press); }
+.quiz-option { transition: transform 260ms var(--ease-ios), background-color 180ms ease, border-color 180ms ease; }
+.quiz-option:active:not(:disabled) { transform: scale(.98); }
+.sidebar .liquid-nav .nav-item > svg,
+.sidebar .liquid-nav .nav-item > span { transition: transform 300ms var(--ease-ios-spring), color 180ms ease; }
+.sidebar .liquid-nav .nav-item:active > svg { transform: scale(.9); transition-duration: var(--motion-press); }
+.flashcard-inner {
+  -webkit-transform-style: preserve-3d;
+  transition: transform 520ms cubic-bezier(.22,.75,.2,1);
+}
+.flashcard-face { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+@keyframes ios-toast-arrive {
+  from { opacity: .4; transform: translate3d(-50%, 8px, 0) scale(.98); }
+  to { opacity: 1; transform: translate3d(-50%, 0, 0) scale(1); }
+}
+.toast { animation: ios-toast-arrive 320ms var(--ease-ios) backwards; }
+@media(hover:none) {
+  .btn:hover:not(:disabled), .unit-card:hover { transform: none; }
+  .btn:active:not(:disabled) { transform: scale(.96); }
+  .unit-card:active { transform: scale(.98); }
+}
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after { animation: none!important; transition: none!important; scroll-behavior: auto!important; }
+}

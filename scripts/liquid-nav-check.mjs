@@ -27,6 +27,13 @@ try {
   await aligned(library);
   await page.mouse.move(20, 20);
   await aligned(home);
+  // Reversing direction mid-spring must settle at the last hovered tab.
+  for (const name of ['Ôn tập', 'Từ điển của bạn', 'Các unit', 'Đề thi', 'Luyện dịch', 'Tổng quan']) {
+    await nav.getByRole('button', { name, exact: true }).hover();
+  }
+  await aligned(home);
+  await expect.poll(() => lens.evaluate(el => el.getAnimations({ subtree: true }).filter(a => a.playState === 'running').length)).toBe(0);
+  expect(await page.locator('.content').evaluate(el => getComputedStyle(el).opacity)).toBe('1');
   await library.focus();
   await aligned(library);
   await page.keyboard.press('Enter');

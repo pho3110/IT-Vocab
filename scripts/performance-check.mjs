@@ -15,7 +15,7 @@ try {
     new PerformanceObserver(list => window.auditTasks.push(...list.getEntries().map(e => ({ start: e.startTime, duration: e.duration })))).observe({ type: 'longtask', buffered: true });
   });
   await page.goto('http://localhost:4173/');
-  await expect(page.locator('.game-buddy')).toBeVisible();
+  await expect(page.locator('.glass-hero')).toBeVisible();
   const report = { environment: 'Headless Edge, 390x844, CPU slowdown 4x, localhost; not real-device or network-speed measurement' };
   async function sample(name, action) {
     await page.evaluate(() => {
@@ -32,7 +32,7 @@ try {
       return { frames: frames.length, frameIntervalP95Ms: +(frames[Math.floor(frames.length * .95)] || 0).toFixed(1), framesOver50Ms: frames.filter(n => n > 50).length, longTasks: tasks.length, longestTaskMs: +Math.max(0, ...tasks.map(t => t.duration)).toFixed(1) };
     });
   }
-  await page.locator('.game-buddy').evaluate(async el => { await Promise.all(el.getAnimations().map(a => a.finished)); });
+  await page.locator('.glass-hero').evaluate(async el => { await Promise.all(el.getAnimations().map(a => a.finished)); });
   await page.getByRole('button', { name: 'Từ điển của bạn', exact: true }).click();
   report.initialDictionaryRows = await page.locator('.word-row').count();
   const input = page.getByRole('searchbox');

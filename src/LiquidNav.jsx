@@ -1,11 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import './liquid-nav.css';
+import { springFrames } from './motion.js';
 
 export default function LiquidNav({ items, active, onNavigate }) {
   const nav = useRef(null);
   const lens = useRef(null);
-  const previous = useRef(null);
   const animation = useRef(null);
+  const slide = useRef(null);
+  const slideDestination = useRef(null);
   const drag = useRef(null);
   const frame = useRef(null);
   const settle = useRef(null);
@@ -17,24 +19,36 @@ export default function LiquidNav({ items, active, onNavigate }) {
   useLayoutEffect(() => {
     const container = nav.current;
     const indicator = lens.current;
-    const button = [...container.querySelectorAll('button[data-page]')].find(el => el.dataset.page === target);
-    if (!button) {
-      indicator.dataset.visible = 'false';
-      return;
-    }
-    function position() {
+    const buttonFor = key => [...container.querySelectorAll('button[data-page]')].find(el => el.dataset.page === key);
+    function position(override, velocity = 0) {
       if (drag.current) return;
+      const button = buttonFor(typeof override === 'string' ? override : target);
+      if (!button) { indicator.dataset.visible = 'false'; return; }
       const bounds = container.getBoundingClientRect();
       const rect = button.getBoundingClientRect();
       const x = rect.left - bounds.left - container.clientLeft;
       const y = rect.top - bounds.top - container.clientTop;
+      const currentTransform = getComputedStyle(indicator).transform;
+      const currentX = currentTransform === 'none' ? x : new DOMMatrixReadOnly(currentTransform).m41;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const distance = Math.abs(x - currentX);
+      const wasReady = indicator.dataset.ready === 'true' && indicator.dataset.visible === 'true';
+      if (slide.current?.playState === 'running' && Math.abs(slideDestination.current - x) < .1
+        && Math.abs(parseFloat(indicator.style.width || '0') - rect.width) < .5
+        && Math.abs(parseFloat(indicator.style.height || '0') - rect.height) < .5) return;
+      slide.current?.cancel();
       indicator.style.width = `${rect.width}px`;
       indicator.style.height = `${rect.height}px`;
       indicator.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       indicator.dataset.visible = 'true';
       // Animate only a small decorative surface; no work on every pointer move.
-      const distance = previous.current === null ? 0 : Math.abs(x - previous.current);
-      if (distance > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (wasReady && distance > .1 && !reduced) {
+        slide.current = indicator.animate(springFrames(currentX, x, velocity).map(point => ({
+          offset: point.offset, transform: `translate3d(${Math.max(2, Math.min(container.clientWidth - rect.width - 2, point.x))}px, ${y}px, 0)`,
+        })), { duration: 540, easing: 'linear' });
+        slideDestination.current = x;
+      }
+      if (wasReady && distance > 1 && !reduced) {
         animation.current?.cancel();
         const stretch = 1 + Math.min(distance / Math.max(rect.width, 1) * .08, .22);
         animation.current = indicator.firstElementChild.animate([
@@ -44,24 +58,39 @@ export default function LiquidNav({ items, active, onNavigate }) {
           { transform: 'scale(1, 1)' },
         ], { duration: 500, easing: 'cubic-bezier(.22,.75,.25,1)' });
       }
-      previous.current = x;
       // The first measured position should appear in place, without sliding in.
       indicator.dataset.ready = 'true';
     }
     settle.current = position;
     position();
-    const observer = new ResizeObserver(position);
+    const observer = new ResizeObserver(() => {
+      // Initial observation must not restart the spring one frame after a tap.
+      const current = buttonFor(target);
+      if (!current) return;
+      const rect = current.getBoundingClientRect();
+      if (Math.abs(rect.width - parseFloat(indicator.style.width || '0')) > .5 || Math.abs(rect.height - parseFloat(indicator.style.height || '0')) > .5) position();
+    });
     observer.observe(container);
-    observer.observe(button);
-    return () => { observer.disconnect(); animation.current?.cancel(); };
+    const button = buttonFor(target);
+    if (button) observer.observe(button);
+    return () => observer.disconnect();
   }, [target]);
 
-  useEffect(() => () => { cancelAnimationFrame(frame.current); }, []);
+  useEffect(() => {
+    const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    const reduce = () => { if (preference.matches) { slide.current?.cancel(); animation.current?.cancel(); } };
+    preference.addEventListener('change', reduce);
+    return () => { cancelAnimationFrame(frame.current); slide.current?.cancel(); animation.current?.cancel(); preference.removeEventListener('change', reduce); };
+  }, []);
 
   function moveFinger(event) {
     const gesture = drag.current;
     if (!gesture || gesture.pointerId !== event.pointerId) return;
     gesture.clientX = event.clientX;
+    const now = performance.now();
+    const elapsed = now - gesture.lastTime;
+    if (elapsed > 0) gesture.velocity = (event.clientX - gesture.lastClientX) / elapsed * 1000;
+    gesture.lastClientX = event.clientX; gesture.lastTime = now;
     // Keep the grabbed point under the finger, without re-rendering the page.
     if (frame.current !== null) return;
     frame.current = requestAnimationFrame(() => {
@@ -69,7 +98,6 @@ export default function LiquidNav({ items, active, onNavigate }) {
       if (drag.current !== gesture) return;
       const x = Math.max(gesture.minX, Math.min(gesture.maxX, gesture.startX + gesture.clientX - gesture.startClientX));
       lens.current.style.transform = `translate3d(${x}px, ${gesture.y}px, 0)`;
-      previous.current = x;
     });
   }
 
@@ -90,7 +118,7 @@ export default function LiquidNav({ items, active, onNavigate }) {
       destination = gesture.buttons.reduce((nearest, item) => distance(item) < distance(nearest) ? item : nearest);
     }
     setHovered(null); setFocused(null);
-    settle.current?.();
+    settle.current?.(destination?.key ?? active, performance.now() - gesture.lastTime < 90 && !cancelled ? gesture.velocity : 0);
     if (destination) onNavigate(destination.key);
   }
 
@@ -105,8 +133,10 @@ export default function LiquidNav({ items, active, onNavigate }) {
     const rect = button.getBoundingClientRect();
     const buttons = [...container.querySelectorAll('button[data-page]')].map(el => ({ key: el.dataset.page, rect: el.getBoundingClientRect() }));
     animation.current?.cancel();
+    slide.current?.cancel();
     drag.current = {
       pointerId: event.pointerId, buttons, startClientX: event.clientX, clientX: event.clientX,
+      lastClientX: event.clientX, lastTime: performance.now(), velocity: 0,
       startX: rect.left - bounds.left - container.clientLeft,
       y: rect.top - bounds.top - container.clientTop,
       minX: buttons[0].rect.left - bounds.left - container.clientLeft,
@@ -135,7 +165,7 @@ export default function LiquidNav({ items, active, onNavigate }) {
       onPointerDown={() => { nav.current.dataset.pressed = 'true'; }}
       onPointerUp={() => { nav.current.dataset.pressed = 'false'; }}
       onPointerCancel={() => { nav.current.dataset.pressed = 'false'; setHovered(null); }}
-      onFocus={() => setFocused(key)}
+      onFocus={() => { setHovered(null); setFocused(key); }}
       onClick={event => { if (event.detail !== 0 && performance.now() < suppressClickUntil.current) return; setFocused(null); onNavigate(key); }}>
       {icon}<span>{shortLabel || label}</span>{count !== undefined && <span className="nav-count">{count}</span>}
     </button>)}
