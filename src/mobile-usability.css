@@ -1,0 +1,52 @@
+/* Loaded last so compact route styles cannot shrink touch controls. */
+@media (max-width: 800px), (pointer: coarse) {
+  button:not(.nav-item), a.btn, select,
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .btn, .exam-toolbar .btn, .exam-recorder .btn,
+  .lesson-actions .btn, .word-pagination .btn {
+    min-height: 48px;
+    font-size: 14px;
+    line-height: 1.45;
+    padding: 12px 16px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .text-button, .back-link { font-size: 14px; line-height: 1.5; }
+  .hero .btn { min-height: 56px; }
+  .connection { font-size: 11px; padding: 10px 12px; }
+  .favorite-button, .speak-button { flex-shrink: 0; }
+  .word-row { grid-template-columns: minmax(0, 1fr) 44px; }
+  .word-row > .favorite-button { width: 44px; height: 44px; }
+  .button-row, .lesson-actions, .rating-buttons { gap: 12px; flex-wrap: wrap; }
+  .button-row > .btn { flex: 1 1 120px; }
+  .exam-toolbar .button-row > .btn { flex-basis: 110px; }
+  .exam-role-tabs > .btn { flex: 1 1 180px; }
+  input, select, textarea, .speech-settings select { font-size: 16px; }
+  .exam-options label, .exam-rubric { min-height: 48px; }
+  .exam-options input, .exam-rubric input { width: 20px; height: 20px; flex-shrink: 0; }
+  .toast button { flex-shrink: 0; }
+}
+@media (max-width: 700px) {
+  .sidebar { width: calc(100% - 16px); gap: 6px; height: 66px; }
+  .sidebar > .settings { flex: 0 0 48px; width: 48px; height: 48px; align-self: center; }
+  .sidebar .nav-item { min-width: 44px; min-height: 44px; }
+  .sidebar .nav-item > span { font-size: 10px; letter-spacing: -.3px; }
+  .sidebar .nav-item svg { width: 23px; height: 23px; }
+  .content { padding-inline: 16px; }
+  .exam-practice .settings-card { padding: 18px; }
+  .exam-options label { font-size: 15px; }
+  .translation-tabs .btn { font-size: 14px; }
+}
+@media (max-width: 360px) {
+  /* Six tabs stay wide enough; settings sits just above the capsule. */
+  .sidebar { gap: 0; }
+  .sidebar > .settings { position: absolute; right: 0; bottom: 76px; }
+  .sidebar .nav-item > span { font-size: 10px; }
+  main { padding-bottom: calc(180px + env(safe-area-inset-bottom)); }
+  html { scroll-padding-bottom: 185px; }
+  .toast { bottom: calc(150px + env(safe-area-inset-bottom)); }
+  .connection { padding-inline: 8px; }
+}
