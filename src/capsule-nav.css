@@ -1,0 +1,38 @@
+/* One continuous smoked-glass dock, matching the supplied Telegram reference. */
+.sidebar {
+  width: min(640px, calc(100% - 24px)); height: 78px; gap: 0;
+}
+.sidebar .liquid-nav {
+  width: 100%; padding: 5px; gap: 0;
+  background: linear-gradient(160deg,#ffffff0c,#ffffff03 65%),#202020c9;
+  border-color: #ffffff29;
+  box-shadow: inset 0 1px 1px #ffffff28,inset 0 -1px 1px #ffffff12,0 8px 28px #0005;
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+}
+.sidebar .liquid-nav .nav-item { min-width: 44px; min-height: 44px; gap: 5px; }
+.sidebar .liquid-nav .nav-item > span { font-size: 12px; font-weight: 650; letter-spacing: 0; }
+.sidebar .liquid-nav .nav-item svg { width: 27px; height: 27px; stroke-width: 2; }
+.sidebar .liquid-nav .nav-item.active,
+.sidebar .liquid-nav[data-interacting="true"] .nav-item[data-glass-preview="true"] { color: #3695ff; }
+.liquid-nav-surface {
+  background: linear-gradient(150deg,#ffffff0b,#ffffff02),#ffffff12;
+  border-color: #ffffff05;
+  box-shadow: inset 0 1px 1px #ffffff12;
+}
+@media(max-width:700px) {
+  .sidebar { width: calc(100% - 12px); height: 72px; bottom: calc(10px + env(safe-area-inset-bottom)); }
+  .sidebar .liquid-nav { padding: 4px; }
+  .sidebar .liquid-nav .nav-item > span { font-size: 10px; letter-spacing: -.3px; }
+  .sidebar .liquid-nav .nav-item svg { width: 24px; height: 24px; }
+  main { padding-bottom: calc(120px + env(safe-area-inset-bottom)); }
+  html { scroll-padding-bottom: 125px; }
+  .toast { bottom: calc(100px + env(safe-area-inset-bottom)); }
+}
+@media(max-width:360px) {
+  .sidebar { width: calc(100% - 8px); }
+  .sidebar .liquid-nav { padding: 1px; }
+  .sidebar .liquid-nav .nav-item > span { font-size: 9px; }
+  .sidebar .liquid-nav .nav-item svg { width: 23px; height: 23px; }
+}
+@media(prefers-reduced-transparency:reduce) { .sidebar .liquid-nav { background:#202020;backdrop-filter:none;-webkit-backdrop-filter:none; } }

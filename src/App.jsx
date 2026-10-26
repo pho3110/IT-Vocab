@@ -17,7 +17,7 @@ const paths = {
   x: 'm6 6 12 12 M6 18 18 6',
   download: 'M12 3v12 m-5-5 5 5 5-5 M4 17v4h16v-4',
   upload: 'M12 16V4 m-5 5 5-5 5 5 M4 17v4h16v-4',
-  settings: 'M4 7h16 M4 17h16 M8 4v6 M16 14v6',
+  settings: 'M9 3h6l1 3 3 1 2 5-2 5-3 1-1 3H9l-1-3-3-1-2-5 2-5 3-1z M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0',
   briefcase: 'M3 7h18v14H3z M8 7V3h8v4 M3 12h18 M10 12v3h4v-3',
   monitor: 'M3 3h18v13H3z M12 16v5 M8 21h8',
   network: 'M9 2h6v6H9z M2 16h6v6H2z M16 16h6v6h-6z M12 8v4 M5 16v-4h14v4',
@@ -147,9 +147,9 @@ export default function App() {
         { key: 'library', label: 'Từ điển của bạn', shortLabel: 'Từ điển', icon: <Icon name="search" /> },
         { key: 'translation', label: 'Luyện dịch', icon: <Icon name="messages" /> },
         { key: 'exam', label: 'Đề thi', icon: <Icon name="briefcase" /> },
+        { key: 'settings', label: 'Cài đặt & offline', shortLabel: 'Cài đặt', icon: <Icon name="settings" /> },
       ]} />
       <div className="sidebar-note"><span className="note-symbol">✦</span><strong>Mỗi ngày một chút.</strong><p>Một từ mới hôm nay,<br />một cơ hội mới ngày mai.</p><div className="tiny-progress"><span style={{ width: `${Math.min(today / 10 * 100, 100)}%` }} /></div><small>{Math.min(today, 10)}/10 lượt ôn hôm nay</small></div>
-      <button aria-label="Cài đặt & offline" className={`nav-item settings ${page === 'settings' ? 'active' : ''}`} onClick={() => navigate('settings')}><Icon name="settings" /><span>Cài đặt & offline</span></button>
       <span className="sidebar-footer">Made for curious IT minds.</span>
     </aside>
 

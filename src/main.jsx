@@ -9,4 +9,5 @@ import './reference-glass.css';
 import './ios-motion.css';
 import './global-glass.css';
 import './mobile-usability.css';
+import './capsule-nav.css';
 createRoot(document.getElementById('root')).render(<React.StrictMode><SpeechProvider><GlobalGlass /><App /></SpeechProvider></React.StrictMode>);

@@ -39,7 +39,8 @@ try {
   await page.keyboard.press('Enter');
   await expect(library).toHaveAttribute('aria-current', 'page');
   await page.getByRole('button', { name: 'Cài đặt & offline' }).click();
-  await expect(lens).toHaveAttribute('data-visible', 'false');
+  await expect(lens).toHaveAttribute('data-visible', 'true');
+  await aligned(nav.getByRole('button', { name: 'Cài đặt & offline', exact: true }));
   await home.click();
   await page.mouse.move(20, 20);
   await aligned(home);
