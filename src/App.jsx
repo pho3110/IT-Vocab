@@ -2,7 +2,7 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { units, words, workbookWords, wordById } from './data.js';
 import { SpeechReset, SpeechSettings, useReadWord } from './speech.jsx';
 import TranslationPractice from './TranslationPractice.jsx';
-import LiquidNav from './LiquidNav.jsx';
+import ResponsiveNav from './ResponsiveNav.jsx';
 import ExamPractice from './ExamPractice.jsx';
 import { STORAGE_KEY, emptyProgress, dayKey, normalize, shuffle, isDue, isLearned, recordAnswer, validateProgress, quizOptions } from './study.js';
 
@@ -140,7 +140,7 @@ export default function App() {
     <aside className="sidebar">
       <a className="brand" href="#" onClick={e => { e.preventDefault(); navigate('home'); }}><span className="brand-mark">it<span>↗</span></span><span>IT Words<span className="brand-sub">ENGLISH FOR YOUR FUTURE</span></span></a>
       <div className="nav-caption">KHÔNG GIAN HỌC TẬP</div>
-      <LiquidNav active={page} onNavigate={navigate} items={[
+      <ResponsiveNav active={page} onNavigate={navigate} items={[
         { key: 'home', label: 'Tổng quan', icon: <Icon name="grid" /> },
         { key: 'units', label: 'Các unit', icon: <Icon name="book" /> },
         { key: 'review', label: 'Ôn tập', icon: <Icon name="repeat" />, count: due.length },

@@ -23,6 +23,7 @@ try {
   }
   await audit('home');
   for (const name of ['Các unit', 'Ôn tập', 'Từ điển của bạn', 'Luyện dịch', 'Cài đặt & offline']) {
+    if (!await page.getByRole('button', { name, exact: true }).isVisible()) await page.getByRole('button', { name: 'Thêm', exact: true }).click();
     await page.getByRole('button', { name, exact: true }).click();
     await audit(name);
   }
@@ -31,6 +32,7 @@ try {
   await audit('lessons');
   await page.getByRole('button', { name: 'Học flashcard', exact: true }).first().click();
   await audit('flashcard');
+  await page.getByRole('button', { name: 'Thêm', exact: true }).click();
   await page.getByRole('button', { name: 'Đề thi', exact: true }).click();
   await page.getByRole('button', { name: 'Tạo đề trộn & bắt đầu' }).click();
   await audit('exam-reading');

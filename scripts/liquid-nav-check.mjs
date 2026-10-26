@@ -61,13 +61,14 @@ try {
   await page.screenshot({ path: 'qa/liquid-nav-hover.png' });
   const touch = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   await touch.goto('http://localhost:4173/');
+  await touch.getByRole('button', { name: 'Thêm', exact: true }).tap();
   await touch.getByRole('button', { name: 'Luyện dịch', exact: true }).tap();
-  await expect(touch.getByRole('button', { name: 'Luyện dịch', exact: true })).toHaveAttribute('aria-current', 'page');
+  await expect(touch.getByRole('button', { name: 'Thêm', exact: true })).toHaveAttribute('aria-current', 'page');
   await expect(touch.getByRole('heading', { name: 'Luyện dịch IT' })).toBeVisible();
   const touchNav = touch.getByRole('navigation', { name: 'Điều hướng chính' });
   const touchLens = touchNav.locator('.liquid-nav-lens');
   const touchHome = touchNav.getByRole('button', { name: 'Tổng quan', exact: true });
-  const touchLibrary = touchNav.getByRole('button', { name: 'Từ điển của bạn', exact: true });
+  const touchLibrary = touchNav.getByRole('button', { name: 'Ôn tập', exact: true });
   await touchHome.tap();
   const cdp = await touch.context().newCDPSession(touch);
   const [start, end] = await Promise.all([touchHome.boundingBox(), touchLibrary.boundingBox()]);
