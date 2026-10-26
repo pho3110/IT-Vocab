@@ -1,5 +1,15 @@
 # Nguồn và phạm vi ngân hàng đề thi
 
+## Bổ sung Phiếu Tổng Ôn (26/10/2026)
+
+Đã đọc đủ bảy ảnh Phiếu Tổng Ôn Unit 1–8. `exam-master-review.js` bổ sung 19 câu trắc nghiệm, 10 mục nối mới, 2 bài đọc/10 câu, 1 email, 8 nhóm nói mới và 4 thẻ hội thoại A/B. Không lấy phần Nghe. Đáp án và bài mẫu là tham khảo do trợ lý biên soạn. Câu Station 1 số 7 bị loại vì cả “use” (điều kiện loại 0) và “will use” (loại 1) đều phù hợp khi không có ngữ cảnh bổ sung.
+
+Sáu từ nối đã có được dùng lại qua ngân hàng Unit. Tám câu dịch T1–T8 lần lượt là Handout 01 số 15, 26, 35, 50, 38, 41, 11, 14; không tạo bản sao. Mười hai nhóm nói đầu dùng lại bảng Speaking cũ. Câu trắc nghiệm gần trùng nhưng thay thân câu hoặc lựa chọn vẫn giữ là biến thể nguồn.
+
+Ngân hàng hiện có 146 mục ngôn ngữ, 12 bài đọc/60 câu, 80 mục dịch theo nguồn (bộ sinh đề tiếp tục lọc câu dịch trùng), 7 email, 30 nhóm nói và 4 thẻ hội thoại. Đề mới có thêm một thẻ hội thoại bên cạnh ba nhóm nói. Phiên bản ngân hàng 2; bản nháp phiên bản 1 vẫn khôi phục từ ngân hàng cũ, không tự thay câu hay đáp án. Tài liệu gốc trong `/formde/` tiếp tục bị bỏ qua trên Git.
+
+Các ghi chú dưới đây mô tả ngân hàng Unit trước khi bổ sung Phiếu Tổng Ôn.
+
 Đọc trực tiếp 23 ảnh và Handout 01 trong thư mục `formde/` người dùng cung cấp. Ảnh/tệp gốc không được sao chép vào public hoặc đưa vào Git; `/formde/` tiếp tục bị bỏ qua. Các mô-đun `exam-*.js` chứa nội dung đã chuyển thành văn bản và đáp án tham khảo để ứng dụng sử dụng.
 
 | Nguồn | Nội dung sử dụng |

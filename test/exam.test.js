@@ -1,15 +1,16 @@
 import test from 'node:test';
+import { reviewReading, reviewEmail, reviewSpeaking, reviewDialogues, reviewLanguage } from '../content/exam-master-review.js';
 import assert from 'node:assert/strict';
 import { BANK_VERSION, bankCounts, createExam, objectiveQuestions, examAnswerIds, gradeObjective, restoreExam, countWords, usableLanguage } from '../src/exam.js';
 import { readingPassages } from '../content/exam-reading.js';
 import { emailTasks, examTranslations } from '../content/exam-writing.js';
 import { speakingQuestions } from '../content/exam-speaking.js';
 
-test('source bank covers six units, ten complete reading groups and authored open-answer references', () => {
-  assert.deepEqual(bankCounts, { language: 117, reading: 50, passages: 10, translations: 80, email: 6, speaking: 22 });
-  assert.deepEqual([...new Set(usableLanguage.map(q => q.unit))].sort(), [2, 3, 4, 5, 6, 7]);
+test('source bank includes master review and authored open-answer references', () => {
+  assert.deepEqual(bankCounts, { language: 146, reading: 60, passages: 12, translations: 80, email: 7, speaking: 30, dialogues: 4 });
+  assert.deepEqual([...new Set(usableLanguage.map(q => q.unit))].sort(), [1, 2, 3, 4, 5, 6, 7, 8]);
   assert.ok(!usableLanguage.some(q => ['u2-language-11', 'u5-language-6', 'u5-language-17'].includes(q.id)));
-  const questions = [...usableLanguage, ...readingPassages.flatMap(p => p.questions)];
+  const questions = [...usableLanguage, ...[...readingPassages, ...reviewReading].flatMap(p => p.questions)];
   assert.equal(new Set(questions.map(q => q.id)).size, questions.length);
   for (const q of questions) {
     assert.ok(q.options.includes(q.answer), q.id);
@@ -23,11 +24,26 @@ test('source bank covers six units, ten complete reading groups and authored ope
   }
   assert.equal(examTranslations.length, 30);
   assert.ok(examTranslations.every(q => q.reference.length > 30));
-  for (const task of emailTasks) {
+  for (const task of [...emailTasks, ...reviewEmail]) {
     assert.ok(countWords(task.sample) >= task.minWords && countWords(task.sample) <= task.maxWords, task.id);
     assert.ok(task.steps.length >= 3 && task.source);
   }
   assert.ok(speakingQuestions.every(q => q.prompt && q.sample && q.source));
+});
+
+test('legacy drafts retain the old bank while all new sources are reachable', () => {
+  const exam = createExam(123, 1700000000000, 1);
+  const answers = { [exam.language[0].id]: exam.language[0].answer };
+  assert.deepEqual(restoreExam(JSON.stringify({ version: 1, seed: exam.seed, startedAt: exam.startedAt, answers, submitted: false })).exam, exam);
+  assert.equal(exam.speaking.length, 3);
+  assert.ok(exam.language.every(q => !q.id.startsWith('review-')));
+  const seen = new Set();
+  for (let seed = 0; seed < 600; seed++) {
+    const current = createExam(seed, 1700000000000);
+    for (const q of [...current.language, ...current.reading, current.email, ...current.speaking]) seen.add(q.id);
+  }
+  for (const q of [...reviewLanguage, ...reviewReading, ...reviewEmail, ...reviewSpeaking, ...reviewDialogues]) assert.ok(seen.has(q.id), q.id);
+  assert.ok(!reviewLanguage.some(q => q.id === 'review-language-7'));
 });
 
 test('mixed exams are reproducible, balanced, unique and keep questions attached to their passages', () => {
@@ -38,19 +54,20 @@ test('mixed exams are reproducible, balanced, unique and keep questions attached
     const exam = createExam(seed, start);
     assert.equal(exam.language.length, 20);
     assert.equal(exam.language.filter(q => q.kind === 'matching').length, 5);
-    assert.equal(new Set(exam.language.map(q => q.unit)).size, 6);
+    assert.equal(new Set(exam.language.map(q => q.unit)).size, 8);
     assert.equal(exam.reading.length, 2);
     assert.notEqual(exam.reading[0].unit, exam.reading[1].unit);
     assert.deepEqual(exam.reading.map(p => p.kind), ['choice', 'true-false']);
     for (const p of exam.reading) {
-      const original = readingPassages.find(row => row.id === p.id);
+      const original = [...readingPassages, ...reviewReading].find(row => row.id === p.id);
       assert.equal(p.text, original.text);
       assert.deepEqual(new Set(p.questions.map(q => q.id)), new Set(original.questions.map(q => q.id)));
     }
     assert.equal(exam.translations.length, 5);
-    assert.equal(exam.speaking.length, 3);
-    assert.equal(examAnswerIds(exam).length, 39);
-    assert.equal(new Set(examAnswerIds(exam)).size, 39);
+    assert.equal(exam.speaking.length, 4);
+    assert.equal(exam.speaking[3].kind, 'dialogue');
+    assert.equal(examAnswerIds(exam).length, 40);
+    assert.equal(new Set(examAnswerIds(exam)).size, 40);
     assert.equal(exam.deadline, undefined);
     const matching = exam.language.slice(0, 5);
     assert.equal(matching[0].options.length, 6);

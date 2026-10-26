@@ -3,15 +3,20 @@ import { readingPassages } from '../content/exam-reading.js';
 import { examTranslations, emailTasks } from '../content/exam-writing.js';
 import { speakingQuestions } from '../content/exam-speaking.js';
 import { translationQuestions } from './translations.js';
+import { reviewLanguage, reviewReading, reviewEmail, reviewSpeaking, reviewDialogues } from '../content/exam-master-review.js';
 
 export const EXAM_STORAGE_KEY = 'it-words-mixed-exam-v1';
-export const BANK_VERSION = 1;
+export const BANK_VERSION = 2;
 // This item admits two plausible options; do not penalise a learner for the source ambiguity.
-export const usableLanguage = languageQuestions.filter(q => q.id !== 'u5-language-17');
+const legacyLanguage = languageQuestions.filter(q => q.id !== 'u5-language-17');
+export const usableLanguage = [...legacyLanguage, ...reviewLanguage];
+const allReading = [...readingPassages, ...reviewReading];
+const allEmail = [...emailTasks, ...reviewEmail];
+const allSpeaking = [...speakingQuestions, ...reviewSpeaking];
 export const bankCounts = {
-  language: usableLanguage.length, reading: readingPassages.reduce((n, p) => n + p.questions.length, 0),
-  passages: readingPassages.length, translations: examTranslations.length + translationQuestions.length,
-  email: emailTasks.length, speaking: speakingQuestions.length,
+  language: usableLanguage.length, reading: allReading.reduce((n, p) => n + p.questions.length, 0),
+  passages: allReading.length, translations: examTranslations.length + translationQuestions.length,
+  email: allEmail.length, speaking: allSpeaking.length, dialogues: reviewDialogues.length,
 };
 function randomFrom(seed) {
   let value = seed >>> 0;
@@ -40,15 +45,17 @@ function balancedSample(pool, count, random) {
   return shuffled(result, random);
 }
 
-export function createExam(seed, startedAt = Date.now()) {
+export function createExam(seed, startedAt = Date.now(), bankVersion = BANK_VERSION) {
+  const languagePool = bankVersion === 1 ? legacyLanguage : usableLanguage;
+  const passagePool = bankVersion === 1 ? readingPassages : allReading;
   const random = randomFrom(seed);
   const prepare = q => ({ ...q, options: shuffled(q.options, random) });
   const language = [
-    ...balancedSample(usableLanguage.filter(q => q.kind === 'matching'), 5, random),
-    ...balancedSample(usableLanguage.filter(q => q.kind === 'choice'), 15, random),
+    ...balancedSample(languagePool.filter(q => q.kind === 'matching'), 5, random),
+    ...balancedSample(languagePool.filter(q => q.kind === 'choice'), 15, random),
   ].map(prepare);
-  const passageA = shuffled(readingPassages.filter(p => p.kind === 'choice'), random)[0];
-  const passageB = shuffled(readingPassages.filter(p => p.kind === 'true-false' && p.unit !== passageA.unit), random)[0];
+  const passageA = shuffled(passagePool.filter(p => p.kind === 'choice'), random)[0];
+  const passageB = shuffled(passagePool.filter(p => p.kind === 'true-false' && p.unit !== passageA.unit), random)[0];
   const reading = [passageA, passageB].map(p => ({ ...p, questions: shuffled(p.questions, random).map(prepare) }));
   const handout = translationQuestions.map(q => ({ id: q.id, unit: 'handout', prompt: q.english, reference: q.reference, source: `Handout 01 · Câu ${q.number}` }));
   const translationPool = [...examTranslations, ...handout.filter(q => q.id !== 'handout-01-31')];
@@ -62,13 +69,13 @@ export function createExam(seed, startedAt = Date.now()) {
   // Existing drafts retain the same questions, reading texts and writing tasks.
   const matchingRandom = randomFrom((seed ^ 0x41f06c2b) >>> 0);
   const matchingAnswers = language.slice(0, 5).map(q => q.answer);
-  const distractor = shuffled(usableLanguage.filter(q => q.kind === 'matching' && !matchingAnswers.includes(q.answer)), matchingRandom)[0].answer;
+  const distractor = shuffled(languagePool.filter(q => q.kind === 'matching' && !matchingAnswers.includes(q.answer)), matchingRandom)[0].answer;
   const matchingOptions = shuffled([...matchingAnswers, distractor], matchingRandom);
   return {
-    seed: seed >>> 0, startedAt,
+    seed: seed >>> 0, startedAt, bankVersion,
     id: `exam-${seed >>> 0}-${startedAt}`, code: (seed >>> 0).toString(16).toUpperCase().padStart(8, '0'),
-    language: language.map(q => q.kind === 'matching' ? { ...q, options: matchingOptions } : q), reading, translations, email: shuffled(emailTasks, random)[0],
-    speaking: shuffled(speakingQuestions, random).slice(0, 3),
+    language: language.map(q => q.kind === 'matching' ? { ...q, options: matchingOptions } : q), reading, translations, email: shuffled(bankVersion === 1 ? emailTasks : allEmail, random)[0],
+    speaking: [...shuffled(bankVersion === 1 ? speakingQuestions : allSpeaking, random).slice(0, 3), ...(bankVersion === 1 ? [] : shuffled(reviewDialogues, random).slice(0, 1))],
   };
 }
 
@@ -83,10 +90,10 @@ export function countWords(value = '') { return value.trim().match(/\S+/g)?.leng
 
 export function restoreExam(raw) {
   const data = JSON.parse(raw);
-  if (!data || data.version !== BANK_VERSION || !Number.isInteger(data.seed) || data.seed < 0 || data.seed > 0xffffffff
+  if (!data || ![1, BANK_VERSION].includes(data.version) || !Number.isInteger(data.seed) || data.seed < 0 || data.seed > 0xffffffff
     || !Number.isSafeInteger(data.startedAt) || data.startedAt <= 0 || typeof data.submitted !== 'boolean'
     || !data.answers || typeof data.answers !== 'object' || Array.isArray(data.answers)) throw new Error('Bản nháp đề thi không hợp lệ.');
-  const exam = createExam(data.seed, data.startedAt);
+  const exam = createExam(data.seed, data.startedAt, data.version);
   const ids = new Set(examAnswerIds(exam));
   const answers = {};
   for (const [id, value] of Object.entries(data.answers)) {
